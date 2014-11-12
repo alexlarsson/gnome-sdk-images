@@ -10,6 +10,7 @@ URL:            https://wiki.gnome.org/Projects/GnomeCommon
 Source0:        https://download.gnome.org/sources/%{name}/3.14/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
+BuildRequires: yelp-tools
 Requires: yelp-tools
 
 %description
