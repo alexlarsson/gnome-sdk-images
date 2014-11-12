@@ -10,3 +10,4 @@ packages/BUILD/
 packages/RPMS/
 packages/SRPMS/
 packages/rpmdb/
+gnome-sdk.tar.xz

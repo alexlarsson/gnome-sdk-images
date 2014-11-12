@@ -30,6 +30,8 @@ PACKAGES = \
 	dbus cairo dbus-glib \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	itstool yelp-xsl yelp-tools \
+	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
+	gnome-sdk \
 	$(NULL)
 
 SPECS =$(PACKAGES:%=packages/SPECS/%.spec)
@@ -39,5 +41,12 @@ deps: rpm-dependencies.P
 rpm-dependencies.P: $(SPECS) makedeps.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
 	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
 	./build.sh root-sdk var-sdk packages ./makedeps.sh $(SPECS) > rpm-dependencies.P
+
+gnome-sdk-rpmdb.tar.xz gnome-sdk.tar.xz: packages/RPMS/noarch/gnome-sdk-0.1-1.noarch.rpm
+	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	./build.sh root-sdk var-sdk packages smart install -y  packages/RPMS/noarch/gnome-sdk-0.1-1.noarch.rpm
+	rm -rf gnome-sdk.tar.xz
+	tar --transform 's,^root-sdk/usr/,,S' -cJvf gnome-sdk.tar.xz root-sdk/usr --owner=root
+	tar --transform 's,^var-sdk/,,S' -cJvf gnome-sdk-rpmdb.tar.xz var-sdk/lib/rpm --owner=root
 
 -include rpm-dependencies.P
