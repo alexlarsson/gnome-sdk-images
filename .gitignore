@@ -1,0 +1,12 @@
+gnome-sdk-helper
+rpm-dependencies.P
+packages/SOURCES/*.tar.xz
+packages/SOURCES/*.tar.bz2
+gnome-continuous-yocto
+yocto-build
+root-sdk
+var-sdk
+packages/BUILD/
+packages/RPMS/
+packages/SRPMS/
+packages/rpmdb/
