@@ -29,6 +29,8 @@ make %{?_smp_mflags}
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/gtk-doc/html
+# We don't need this
+rm -rf  $RPM_BUILD_ROOT/%{_datadir}/gobject-introspection-1.0
 
 %files
 %defattr(-, root, root,-)
@@ -36,7 +38,6 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/gtk-doc/html
 %{_bindir}/*
 %{_datadir}/aclocal/*
 %{_datadir}/gtk-doc-devel/
-%{_datadir}/gobject-introspection-1.0
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com> - 0.1-1
