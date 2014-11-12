@@ -1,7 +1,7 @@
 srcdir = $(CURDIR)
 builddir = $(CURDIR)
 
-yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz:
+yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz:
 	if test ! -d gnome-continuous-yocto; then \
 		git clone https://github.com/alexlarsson/gnome-continuous-yocto.git --branch gnomeostree-3.14-dizzy-platform;\
 	fi
@@ -48,5 +48,15 @@ gnome-sdk-rpmdb.tar.xz gnome-sdk.tar.xz: packages/RPMS/noarch/gnome-sdk-0.1-1.no
 	rm -rf gnome-sdk.tar.xz
 	tar --transform 's,^root-sdk/usr/,,S' -cJvf gnome-sdk.tar.xz root-sdk/usr --owner=root
 	tar --transform 's,^var-sdk/,,S' -cJvf gnome-sdk-rpmdb.tar.xz var-sdk/lib/rpm --owner=root
+
+gnome-platform-base: packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm
+
+packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm: packages/SPECS/gnome-platform-base.spec  setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+	echo building packages/SPECS/gnome-platform-base.spec
+	cp yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz packages/SOURCES/
+	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	./build.sh root-sdk var-sdk packages rpmbuild -ba packages/SPECS/gnome-platform-base.spec
+
+gnome-sdk-base: packages/RPMS/noarch/gnome-sdk-base-0.1-1.noarch.rpm
 
 -include rpm-dependencies.P
