@@ -1,7 +1,7 @@
 Summary: X.Org X11 libXi runtime library
 Name: libXi
 Version: 1.7.4
-Release: 1%{dist}
+Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
 URL: http://www.x.org
@@ -78,5 +78,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*.3*
 
 %changelog
-* Tue Nov 11 2014 Alexander Larsson <alexl@redhat.com> - 1.7.4-1%{dist}
+* Tue Nov 11 2014 Alexander Larsson <alexl@redhat.com> - 1.7.4-1
 - Initial version based on f21
