@@ -11,6 +11,7 @@ Requires: gnome-platform-base
 Requires: gtk3
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme
+Requires: dejavu-fonts
 
 %description
 Meta package for Gnome SDK dependencies

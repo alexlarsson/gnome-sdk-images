@@ -48,6 +48,7 @@ Requires: libXtst-devel
 Requires: pango-devel
 Requires: pixman-devel
 Requires: vala-devel
+Requires: dejavu-fonts
 
 %description
 Meta package for Gnome SDK dependencies
