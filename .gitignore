@@ -12,4 +12,6 @@ packages/SRPMS/
 packages/rpmdb/
 gnome-sdk.tar.xz
 gnome-sdk-rpmdb.tar.xz
+gnome-platform.tar.xz
+gnome-sdk-rpmdb.tar.xz
 packages/SOURCES/gnomeos-contents-platform-x86_64.tar.gz

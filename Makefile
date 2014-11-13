@@ -59,13 +59,13 @@ packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm: packages/SPECS/gnome-
 
 gnome-sdk-base: packages/RPMS/x86_64/gnome-sdk-base-0.1-1.x86_64.rpm
 
-gnome-platform.tar.gz: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
+gnome-platform.tar.xz: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
 	echo building gnome-platform
 	rm -rf packages/gnome-platform
 	mkdir -p packages/gnome-platform/var/lib/rpm
 	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	(./build.sh root-sdk var-sdk packages smart install --urls gnome-platform) 2> package.list
-	./build.sh root-sdk var-sdk packages rpm --root /self/gnome-platform --initdb
-	./build.sh root-sdk var-sdk packages rpm --root /self/gnome-platform -Uvh `cat package.list | grep -v "warning:"`
+	./build.sh root-sdk var-sdk packages ./install_rpms.sh gnome-platform
+	./build.sh packages/gnome-platform packages/gnome-platform/var packages /bin/sh /self/gnome-platform/post_install.sh
+	tar --transform 's,^packages/gnome-platform/usr/,,S' -cJvf gnome-platform.tar.xz packages/gnome-platform/usr --owner=root
 
 -include rpm-dependencies.P
