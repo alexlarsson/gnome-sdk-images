@@ -9,7 +9,16 @@ for spec in $SPECS; do
    bash -c "`rpmspec -q $spec --qf 'echo packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}.rpm > /tmp/dep/%{NAME}.pkg;'`";
 done
 
+ALL_SOURCES=
+
 for spec in $SPECS; do
+    SOURCES=`rpmspec -P $spec | grep "^Source.*:" | awk '{ print $2 }' /dev/stdin | grep 'http\|ftp'`
+    for i in $SOURCES; do
+        echo packages/SOURCES/`basename $i`:;
+        echo -e "\twget -P packages/SOURCES/ $i\n";
+        ALL_SOURCES="$ALL_SOURCES packages/SOURCES/`basename $i`";
+    done
+
     PACKAGES=`rpmspec -q ${spec} --qf 'packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}.rpm '`
     BUILDREQS=`rpmspec -q ${spec} --buildrequires`
     BRS=""
@@ -27,3 +36,5 @@ for spec in $SPECS; do
     echo "`basename ${spec} .spec`: $PACKAGES"
     echo
 done
+
+echo -e "sources: $ALL_SOURCES"
