@@ -31,7 +31,7 @@ PACKAGES = \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	itstool yelp-xsl yelp-tools \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
-	gnome-sdk \
+	gnome-sdk gnome-platform \
 	$(NULL)
 
 SPECS =$(PACKAGES:%=packages/SPECS/%.spec)
@@ -51,12 +51,21 @@ gnome-sdk-rpmdb.tar.xz gnome-sdk.tar.xz: packages/RPMS/noarch/gnome-sdk-0.1-1.no
 
 gnome-platform-base: packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm
 
-packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm: packages/SPECS/gnome-platform-base.spec  setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm: packages/SPECS/gnome-platform-base.spec  setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
 	echo building packages/SPECS/gnome-platform-base.spec
 	cp yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz packages/SOURCES/
 	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
 	./build.sh root-sdk var-sdk packages rpmbuild -ba packages/SPECS/gnome-platform-base.spec
 
-gnome-sdk-base: packages/RPMS/noarch/gnome-sdk-base-0.1-1.noarch.rpm
+gnome-sdk-base: packages/RPMS/x86_64/gnome-sdk-base-0.1-1.x86_64.rpm
+
+gnome-platform.tar.gz: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
+	echo building gnome-platform
+	rm -rf packages/gnome-platform
+	mkdir -p packages/gnome-platform/var/lib/rpm
+	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	(./build.sh root-sdk var-sdk packages smart install --urls gnome-platform) 2> package.list
+	./build.sh root-sdk var-sdk packages rpm --root /self/gnome-platform --initdb
+	./build.sh root-sdk var-sdk packages rpm --root /self/gnome-platform -Uvh `cat package.list | grep -v "warning:"`
 
 -include rpm-dependencies.P
