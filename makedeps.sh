@@ -13,11 +13,13 @@ ALL_SOURCES=
 
 for spec in $SPECS; do
     SOURCES=`rpmspec -P $spec | grep "^Source.*:" | awk '{ print $2 }' /dev/stdin | grep 'http\|ftp'`
+    SPEC_SOURCES=
     for i in $SOURCES; do
         echo packages/SOURCES/`basename $i`:;
         echo -e "\twget -P packages/SOURCES/ $i\n";
-        ALL_SOURCES="$ALL_SOURCES packages/SOURCES/`basename $i`";
+        SPEC_SOURCES="$SPEC_SOURCES packages/SOURCES/`basename $i`";
     done
+    ALL_SOURCES="$ALL_SOURCES $SPEC_SOURCES";
 
     PACKAGES=`rpmspec -q ${spec} --qf 'packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}.rpm '`
     BUILDREQS=`rpmspec -q ${spec} --buildrequires`
@@ -25,7 +27,7 @@ for spec in $SPECS; do
     for br in $BUILDREQS; do
         BRS="$BRS `cat /tmp/dep/${br}.pkg`"
     done
-    echo "$PACKAGES: $spec $BRS setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz"
+    echo "$PACKAGES: $spec $BRS setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz $SPEC_SOURCES"
     echo "	echo building $spec"
     echo "	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz"
     if [ "x${BRS}" != "x" ]; then
