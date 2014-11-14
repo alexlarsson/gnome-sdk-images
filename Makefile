@@ -49,7 +49,7 @@ gnome-sdk-rpmdb.tar.xz gnome-sdk.tar.xz: packages/RPMS/noarch/gnome-sdk-0.1-1.no
 	tar --transform 's,^root-sdk/usr/,,S' -cJvf gnome-sdk.tar.xz root-sdk/usr --owner=root
 	tar --transform 's,^var-sdk/,,S' -cJvf gnome-sdk-rpmdb.tar.xz var-sdk/lib/rpm --owner=root
 
-gnome-platform-base: packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm
+gnome-platform-base: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm
 
 packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm: packages/SPECS/gnome-platform-base.spec  setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
 	echo building packages/SPECS/gnome-platform-base.spec
