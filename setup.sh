@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ROOT=`realpath $1`
-VAR=`realpath $2`
-IMAGE=`realpath $3`
+ROOT=`readlink -f $1`
+VAR=`readlink -f $2`
+IMAGE=`readlink -f $3`
 
 rm -rf $ROOT
 mkdir -p $ROOT

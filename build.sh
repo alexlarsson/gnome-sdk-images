@@ -1,10 +1,10 @@
 #!/bin/sh
 
-ROOT=`realpath $1`
+ROOT=`readlink -e $1`
 shift
-VAR=`realpath $1`
+VAR=`readlink -e $1`
 shift
-APP=`realpath $1`
+APP=`readlink -e $1`
 shift
 
 HELPER=`which gnome-sdk-helper`
