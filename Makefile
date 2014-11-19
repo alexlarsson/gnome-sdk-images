@@ -1,7 +1,7 @@
 srcdir = $(CURDIR)
 builddir = $(CURDIR)
 
-yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz:
+yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz images:
 	if test ! -d gnome-continuous-yocto; then \
 		git clone https://github.com/alexlarsson/gnome-continuous-yocto.git --branch gnomeostree-3.14-dizzy-platform;\
 	fi
