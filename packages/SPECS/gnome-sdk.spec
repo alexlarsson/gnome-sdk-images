@@ -7,6 +7,16 @@ License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
+BuildRequires: gnome-sdk-base
+BuildRequires: gtk3 gtk3-immodules
+BuildRequires: hicolor-icon-theme
+BuildRequires: adwaita-icon-theme
+BuildRequires: dejavu-fonts
+BuildRequires: dbus-libs
+BuildRequires: librsvg2
+BuildRequires: dbus-glib
+BuildRequires: gobject-introspection
+
 Requires: gtk3-devel
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme
