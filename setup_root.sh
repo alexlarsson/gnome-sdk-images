@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ROOT=`readlink -f $1`
-VAR=`readlink -f $2`
-IMAGE=`readlink -f $3`
+ROOT=`pwd`/root
+VAR=`pwd`/var
+IMAGE=`readlink -f $1`
 
 rm -rf $ROOT
 mkdir -p $ROOT

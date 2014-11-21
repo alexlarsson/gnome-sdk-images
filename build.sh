@@ -1,11 +1,8 @@
 #!/bin/sh
 
-ROOT=`readlink -e $1`
-shift
-VAR=`readlink -e $1`
-shift
-APP=`readlink -e $1`
-shift
+ROOT=`pwd`/root
+VAR=`pwd`/var
+APP=`pwd`/packages
 
 HELPER=`which gnome-sdk-helper`
 

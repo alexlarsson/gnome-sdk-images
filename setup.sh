@@ -1,14 +1,6 @@
 #!/bin/sh
 
-ROOT=`readlink -f $1`
-VAR=`readlink -f $2`
-IMAGE=`readlink -f $3`
-
-rm -rf $ROOT
-mkdir -p $ROOT
-rm -rf $VAR
-mkdir -p $VAR
-(cd $ROOT; tar xvf $IMAGE > /dev/null; mv etc usr; mkdir -p $VAR/lib; mv var/lib/rpm $VAR/lib)
-./build.sh $ROOT $VAR $VAR smart channel -y --add mydb type=rpm-sys name="RPM Database"
-./build.sh $ROOT $VAR $VAR smart channel -y --add noarch type=rpm-dir name="RPM Database" path=/self/RPMS/noarch
-./build.sh $ROOT $VAR $VAR smart channel -y --add x86_64 type=rpm-dir name="RPM Database" path=/self/RPMS/x86_64/
+./setup_root.sh $1
+./build.sh smart channel -y --add mydb type=rpm-sys name="RPM Database"
+./build.sh smart channel -y --add noarch type=rpm-dir name="RPM Database" path=/self/RPMS/noarch
+./build.sh smart channel -y --add x86_64 type=rpm-dir name="RPM Database" path=/self/RPMS/x86_64/
