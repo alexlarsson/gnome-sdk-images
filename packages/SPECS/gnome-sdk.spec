@@ -8,6 +8,7 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
 BuildRequires: gnome-sdk-base
+BuildRequires: gtk2
 BuildRequires: gtk3 gtk3-immodules
 BuildRequires: hicolor-icon-theme
 BuildRequires: adwaita-icon-theme
@@ -17,6 +18,7 @@ BuildRequires: librsvg2
 BuildRequires: dbus-glib
 BuildRequires: gobject-introspection
 
+Requires: gtk2-devel
 Requires: gtk3-devel
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme
