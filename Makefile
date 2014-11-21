@@ -61,10 +61,16 @@ packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm: packages/SPECS/gnome-
 
 gnome-sdk-base: packages/RPMS/noarch/gnome-sdk-base-0.1-1.noarch.rpm
 
-gnome-platform.tar.xz: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
+gnome-platform-packages: packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
+	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	rm -f gnome-platform-packages
+	./build.sh root var packages ./list_packages.sh gnome-platform > gnome-platform-packages
+
+gnome-platform.tar.xz: gnome-platform-packages packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
 	echo building gnome-platform
-	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
-	./build.sh root var packages rpm -Uvh $PLATFORM_RPMS
-	tar --transform 's,^packages/gnome-platform/usr/,,S' -cJf gnome-platform.tar.xz packages/gnome-platform/usr --owner=root
+	./setup_root.sh root var yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+	./build.sh root var packages rpm -Uvh `cat gnome-platform-packages`
+	tar --transform 's,^root/usr/,,S' -cJf gnome-platform.tar.xz root/usr --owner=root
+	tar --transform 's,^var/,,S' -cJf gnome-platform-rpmdb.tar.xz var/lib/rpm --owner=root
 
 -include rpm-dependencies.P

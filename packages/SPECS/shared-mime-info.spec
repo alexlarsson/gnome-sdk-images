@@ -20,6 +20,15 @@ files. Frequently, it is necessary to work out the correct MIME type for
 a file. This is generally done by examining the file's name or contents,
 and looking up the correct MIME type in a database.
 
+%package devel
+Summary: Development files for the shared-mime-info
+Group: Development/Libraries
+Requires: %{name}%{?_isa} = %{version}-%{release}
+
+%description devel
+This package includes libraries, header files, and developer documentation
+needed for shared-mime-info.
+
 %prep
 %setup -q
 
@@ -53,10 +62,10 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/*
 %doc README NEWS HACKING shared-mime-info-spec.xml
 %{_bindir}/*
 %{_datadir}/mime/packages/*
-# better to co-own this dir than to pull in pkgconfig
-%dir %{_datadir}/pkgconfig
-%{_datadir}/pkgconfig/shared-mime-info.pc
 %{_mandir}/man*/*
+
+%files devel
+%{_datadir}/pkgconfig/shared-mime-info.pc
 
 %changelog
 * Tue Nov 11 2014 Alexander Larsson <alexl@redhat.com> - 1.3-1

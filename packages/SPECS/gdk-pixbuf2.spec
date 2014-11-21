@@ -15,7 +15,7 @@ BuildRequires:  libX11-devel
 BuildRequires:  gobject-introspection-devel
 # gdk-pixbuf does a configure time check which uses the GIO mime
 # layer; we need to actually have the mime type database.
-BuildRequires:  shared-mime-info
+BuildRequires:  shared-mime-info-devel
 
 Requires: glib2%{?_isa} >= %{glib2_version}
 
