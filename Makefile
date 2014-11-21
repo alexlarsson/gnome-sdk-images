@@ -39,33 +39,32 @@ SPECS =$(PACKAGES:%=packages/SPECS/%.spec)
 deps: rpm-dependencies.P
 
 rpm-dependencies.P: $(SPECS) makedeps.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	./build.sh root-sdk var-sdk packages ./makedeps.sh $(SPECS) > rpm-dependencies.P
+	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	./build.sh root var packages ./makedeps.sh $(SPECS) > rpm-dependencies.P
 
 gnome-sdk-rpmdb.tar.xz gnome-sdk.tar.xz: packages/RPMS/noarch/gnome-sdk-0.1-1.noarch.rpm
-	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	./build.sh root-sdk var-sdk packages smart install -y  packages/RPMS/noarch/gnome-sdk-0.1-1.noarch.rpm
+	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	./build.sh root var packages smart install -y  packages/RPMS/noarch/gnome-sdk-0.1-1.noarch.rpm
 	rm -rf gnome-sdk.tar.xz
-	tar --transform 's,^root-sdk/usr/,,S' -cJvf gnome-sdk.tar.xz root-sdk/usr --owner=root
-	tar --transform 's,^var-sdk/,,S' -cJvf gnome-sdk-rpmdb.tar.xz var-sdk/lib/rpm --owner=root
+	tar --transform 's,^root/usr/,,S' -cJf gnome-sdk.tar.xz root/usr --owner=root
+	tar --transform 's,^var/,,S' -cJf gnome-sdk-rpmdb.tar.xz var/lib/rpm --owner=root
 
-gnome-platform-base: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm
+gnome-platform-base: packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm
 
-packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm: packages/SPECS/gnome-platform-base.spec  setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+packages/RPMS/noarch/gnome-platform-base-0.1-1.noarch.rpm: packages/SPECS/gnome-platform-base.spec setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
 	echo building packages/SPECS/gnome-platform-base.spec
-	cp yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz packages/SOURCES/
-	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	./build.sh root-sdk var-sdk packages rpmbuild -ba packages/SPECS/gnome-platform-base.spec
+	rm -rf packages/gnome-platform
+	mkdir -p packages/gnome-platform
+	tar -C packages/gnome-platform -xzf yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
+	./build.sh root var packages rpmbuild -ba packages/SPECS/gnome-platform-base.spec
 
-gnome-sdk-base: packages/RPMS/x86_64/gnome-sdk-base-0.1-1.x86_64.rpm
+gnome-sdk-base: packages/RPMS/noarch/gnome-sdk-base-0.1-1.noarch.rpm
 
 gnome-platform.tar.xz: packages/RPMS/x86_64/gnome-platform-base-0.1-1.x86_64.rpm packages/RPMS/noarch/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
 	echo building gnome-platform
-	rm -rf packages/gnome-platform
-	mkdir -p packages/gnome-platform/var/lib/rpm
-	./setup.sh root-sdk var-sdk yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz
-	./build.sh root-sdk var-sdk packages ./install_rpms.sh gnome-platform
-	./build.sh packages/gnome-platform packages/gnome-platform/var packages /bin/sh /self/gnome-platform/post_install.sh
-	tar --transform 's,^packages/gnome-platform/usr/,,S' -cJvf gnome-platform.tar.xz packages/gnome-platform/usr --owner=root
+	./setup.sh root var yocto-build/x86_64/images/gnomeos-contents-platform-x86_64.tar.gz
+	./build.sh root var packages rpm -Uvh $PLATFORM_RPMS
+	tar --transform 's,^packages/gnome-platform/usr/,,S' -cJf gnome-platform.tar.xz packages/gnome-platform/usr --owner=root
 
 -include rpm-dependencies.P
