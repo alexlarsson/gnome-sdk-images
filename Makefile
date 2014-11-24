@@ -39,7 +39,7 @@ PACKAGES = \
 	itstool yelp-xsl yelp-tools \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
 	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts \
-	gtk2 gnome-themes-standard \
+	gtk2 gnome-themes-standard libproxy \
 	$(NULL)
 
 ALL_SPECS =$(PACKAGES:%=$(SPECS)/%.spec)
