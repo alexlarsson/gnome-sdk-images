@@ -48,8 +48,6 @@ suites.
 Summary: Input methods for GTK+
 Group: System Environment/Libraries
 Requires: gtk2 = %{version}-%{release}
-# for /etc/X11/xinit/xinput.d
-Requires: imsettings
 
 %description immodules
 The gtk2-immodules package contains standalone input methods that are shipped

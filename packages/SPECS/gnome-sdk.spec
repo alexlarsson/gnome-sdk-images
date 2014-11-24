@@ -12,6 +12,7 @@ BuildRequires: gtk2
 BuildRequires: gtk3 gtk3-immodules
 BuildRequires: hicolor-icon-theme
 BuildRequires: adwaita-icon-theme
+BuildRequires: gnome-themes-standard
 BuildRequires: dejavu-fonts
 BuildRequires: abattis-cantarell-fonts
 BuildRequires: dbus-libs
@@ -19,11 +20,12 @@ BuildRequires: librsvg2
 BuildRequires: dbus-glib
 BuildRequires: gobject-introspection
 
-Requires: gtk2-devel
-Requires: gtk3-devel
+Requires: gtk2-devel gtk2-immodules
+Requires: gtk3-devel gtk3-immodules
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme-devel
+Requires: gnome-themes-standard
 Requires: gtk-doc-stub
 Requires: atk-devel
 Requires: at-spi2-atk-devel

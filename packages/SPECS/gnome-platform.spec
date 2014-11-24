@@ -8,15 +8,18 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
 Requires: gnome-platform-base
+Requires: gtk2 gtk2-immodules
 Requires: gtk3 gtk3-immodules
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme
+Requires: gnome-themes-standard
 Requires: dejavu-fonts
 Requires: abattis-cantarell-fonts
 Requires: dbus-libs
 Requires: librsvg2
 Requires: dbus-glib
 Requires: gobject-introspection
+Requires: gtk2 gnome-themes-standard
 
 %description
 Meta package for Gnome SDK dependencies
