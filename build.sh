@@ -6,6 +6,7 @@ APP=`pwd`/packages
 
 HELPER=`which gnome-sdk-helper`
 
+declare -x LC_ALL=en_US.utf8
 declare -x HOME=/self
 declare -x ACLOCAL_PATH="/self/share/aclocal"
 declare -x CPLUS_INCLUDE_PATH="/self/include"
