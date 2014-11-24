@@ -38,7 +38,7 @@ PACKAGES = \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	itstool yelp-xsl yelp-tools \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
-	gnome-sdk gnome-platform dejavu-fonts \
+	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts \
 	gtk2 \
 	$(NULL)
 

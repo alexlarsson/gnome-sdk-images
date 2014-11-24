@@ -13,6 +13,7 @@ BuildRequires: gtk3 gtk3-immodules
 BuildRequires: hicolor-icon-theme
 BuildRequires: adwaita-icon-theme
 BuildRequires: dejavu-fonts
+BuildRequires: abattis-cantarell-fonts
 BuildRequires: dbus-libs
 BuildRequires: librsvg2
 BuildRequires: dbus-glib
@@ -61,6 +62,8 @@ Requires: pango-devel
 Requires: pixman-devel
 Requires: vala-devel
 Requires: dejavu-fonts
+Requires: abattis-cantarell-fonts
+
 
 %description
 Meta package for Gnome SDK dependencies

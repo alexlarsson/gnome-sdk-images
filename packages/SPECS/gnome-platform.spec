@@ -12,6 +12,7 @@ Requires: gtk3 gtk3-immodules
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme
 Requires: dejavu-fonts
+Requires: abattis-cantarell-fonts
 Requires: dbus-libs
 Requires: librsvg2
 Requires: dbus-glib
