@@ -19,6 +19,7 @@ BuildRequires: dbus-libs
 BuildRequires: librsvg2
 BuildRequires: dbus-glib
 BuildRequires: gobject-introspection
+BuildRequires: libsoup
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -65,7 +66,10 @@ Requires: pixman-devel
 Requires: vala-devel
 Requires: dejavu-fonts
 Requires: abattis-cantarell-fonts
-
+Requires: dconf-devel
+Requires: libsoup-devel
+Requires: libproxy-devel
+Requires: gsettings-desktop-schemas
 
 %description
 Meta package for Gnome SDK dependencies

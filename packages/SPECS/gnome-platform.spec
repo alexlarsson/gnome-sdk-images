@@ -20,6 +20,9 @@ Requires: librsvg2
 Requires: dbus-glib
 Requires: gobject-introspection
 Requires: gtk2 gnome-themes-standard
+Requires: dconf libsoup
+Requires: gsettings-desktop-schemas
+
 
 %description
 Meta package for Gnome SDK dependencies
