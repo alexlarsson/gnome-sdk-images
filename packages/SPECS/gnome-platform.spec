@@ -26,7 +26,7 @@ Requires: dconf libsoup
 Requires: gsettings-desktop-schemas
 Requires: gvfs
 Requires: desktop-file-utils
-
+Requires: json-glib
 
 %description
 Meta package for Gnome SDK dependencies
