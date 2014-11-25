@@ -81,7 +81,7 @@ This package contains documentation in a devhelp HTML book.
 
 
 %build
-%configure
+%configure --enable-unversioned
 # Don't use rpath!
 sed -i 's|/lib /usr/lib|/lib /usr/lib /lib64 /usr/lib64|' libtool
 make %{?_smp_mflags}
@@ -100,8 +100,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files
 %doc AUTHORS COPYING MAINTAINERS NEWS README THANKS
-%ghost %{_bindir}/vala
-%ghost %{_bindir}/valac
+%{_bindir}/vala
+%{_bindir}/valac
 %{_bindir}/vala-%{api_ver}
 %{_bindir}/valac-%{api_ver}
 # owning only the directories, they should be empty
@@ -109,8 +109,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala-%{api_ver}
 %{_libdir}/libvala-%{api_ver}.so.*
-%ghost %{_mandir}/man1/valac.1.gz
 %{_mandir}/man1/valac-%{api_ver}.1.gz
+%{_mandir}/man1/valac.1.gz
 
 %files devel
 %{_includedir}/vala-%{api_ver}
@@ -120,9 +120,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_datadir}/aclocal/vala.m4
 
 %files tools
-%ghost %{_bindir}/vala-gen-introspect
-%ghost %{_bindir}/vapicheck
-%ghost %{_bindir}/vapigen
+%{_bindir}/vala-gen-introspect
+%{_bindir}/vapicheck
+%{_bindir}/vapigen
 %{_bindir}/vala-gen-introspect-%{api_ver}
 %{_bindir}/vapicheck-%{api_ver}
 %{_bindir}/vapigen-%{api_ver}
@@ -130,8 +130,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_datadir}/aclocal/vapigen.m4
 %{_datadir}/pkgconfig/vapigen*.pc
 %{_datadir}/vala/Makefile.vapigen
-%ghost %{_mandir}/man1/vala-gen-introspect.1.gz
-%ghost %{_mandir}/man1/vapigen.1.gz
+%{_mandir}/man1/vala-gen-introspect.1.gz
+%{_mandir}/man1/vapigen.1.gz
 %{_mandir}/man1/vala-gen-introspect-%{api_ver}.1.gz
 %{_mandir}/man1/vapigen-%{api_ver}.1.gz
 
