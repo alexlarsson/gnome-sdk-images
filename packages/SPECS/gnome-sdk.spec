@@ -24,6 +24,7 @@ BuildRequires: gvfs
 BuildRequires: desktop-file-utils
 BuildRequires: json-glib
 BuildRequires: libnotify-devel
+BuildRequires: vte-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -31,6 +32,7 @@ Requires: desktop-file-utils
 Requires: json-glib-devel
 Requires: libnotify-devel
 Requires: gvfs-devel
+Requires: vte-devel
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme-devel
