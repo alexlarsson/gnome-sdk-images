@@ -27,6 +27,7 @@ Requires: gsettings-desktop-schemas
 Requires: gvfs
 Requires: desktop-file-utils
 Requires: json-glib
+Requires: libnotify
 
 %description
 Meta package for Gnome SDK dependencies
