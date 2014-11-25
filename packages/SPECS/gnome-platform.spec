@@ -25,6 +25,7 @@ Requires: gtk2 gnome-themes-standard
 Requires: dconf libsoup
 Requires: gsettings-desktop-schemas
 Requires: gvfs
+Requires: desktop-file-utils
 
 
 %description

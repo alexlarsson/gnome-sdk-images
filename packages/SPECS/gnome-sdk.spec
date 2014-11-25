@@ -21,9 +21,11 @@ BuildRequires: dbus-glib
 BuildRequires: gobject-introspection
 BuildRequires: libsoup
 BuildRequires: gvfs
+BuildRequires: desktop-file-utils
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
+Requires: desktop-file-utils
 Requires: gvfs-devel
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme

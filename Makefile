@@ -40,7 +40,7 @@ PACKAGES = \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
 	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts \
 	gtk2 gnome-themes-standard libproxy gsettings-desktop-schemas glib-networking libsoup \
-	dconf gvfs \
+	dconf gvfs desktop-file-utils \
 	$(NULL)
 
 ALL_SPECS =$(PACKAGES:%=$(SPECS)/%.spec)
