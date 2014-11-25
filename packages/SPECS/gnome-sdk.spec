@@ -20,9 +20,11 @@ BuildRequires: librsvg2
 BuildRequires: dbus-glib
 BuildRequires: gobject-introspection
 BuildRequires: libsoup
+BuildRequires: gvfs
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
+Requires: gvfs-devel
 Requires: librsvg2-devel
 Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme-devel

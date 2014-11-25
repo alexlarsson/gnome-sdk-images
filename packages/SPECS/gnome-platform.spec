@@ -7,6 +7,8 @@ License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
+BuildRequires: gnome-sdk
+
 Requires: gnome-platform-base
 Requires: gtk2 gtk2-immodules
 Requires: gtk3 gtk3-immodules
@@ -22,6 +24,7 @@ Requires: gobject-introspection
 Requires: gtk2 gnome-themes-standard
 Requires: dconf libsoup
 Requires: gsettings-desktop-schemas
+Requires: gvfs
 
 
 %description
