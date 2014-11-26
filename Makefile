@@ -1,12 +1,13 @@
 srcdir = $(CURDIR)
 builddir = $(CURDIR)
 
+VERSION=3.14
 ARCH=x86_64
 IMAGES=yocto-build/$(ARCH)/images
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
 
-all: gnome-platform.tar.xz gnome-sdk.tar.xz
+all: gnome-platform.tar.gz gnome-sdk.tar.gz
 
 $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz images:
 	if test ! -d gnome-continuous-yocto; then \
@@ -51,12 +52,12 @@ rpm-dependencies.P: $(ALL_SPECS) makedeps.sh $(IMAGES)/gnomeos-contents-sdk-$(AR
 	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
 	./build.sh ./makedeps.sh $(ALL_SPECS) > rpm-dependencies.P
 
-gnome-sdk.tar.xz gnome-sdk-rpmdb.tar.xz: $(NOARCH)/gnome-sdk-0.1-1.noarch.rpm
+gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.noarch.rpm
 	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
 	./build.sh smart install -y  $(NOARCH)/gnome-sdk-0.1-1.noarch.rpm
-	rm -rf gnome-sdk.tar.xz
-	tar --transform 's,^root/usr/,,S' -cJf gnome-sdk.tar.xz root/usr --owner=root
-	tar --transform 's,^var/,,S' -cJf gnome-sdk-rpmdb.tar.xz var/lib/rpm --owner=root
+	rm -rf gnome-sdk.tar.gz
+	tar --transform 's,^root/usr,files,S' -czf gnome-sdk.tar.gz root/usr --owner=root
+	tar --transform 's,^var/,,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
 
 gnome-platform-base: $(NOARCH)/gnome-platform-base-0.1-1.noarch.rpm
 
@@ -75,11 +76,31 @@ gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.noarch.rpm setup.sh buil
 	rm -f gnome-platform-packages
 	./build.sh ./list_packages.sh gnome-platform > gnome-platform-packages
 
-gnome-platform.tar.xz gnome-platform-rpmdb.tar.xz: gnome-platform-packages $(NOARCH)/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOARCH)/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
 	-echo building gnome-platform
 	./setup_root.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat gnome-platform-packages`
-	tar --transform 's,^root/usr/,,S' -cJf gnome-platform.tar.xz root/usr --owner=root
-	tar --transform 's,^var/,,S' -cJf gnome-platform-rpmdb.tar.xz var/lib/rpm --owner=root
+	tar --transform 's,^root/usr,files,S' -czf gnome-platform.tar.gz root/usr --owner=root
+	tar --transform 's,^var/,,S' -czf gnome-platform-rpmdb.tar.gz var/lib/rpm --owner=root
+
+repository:
+	ostree  init --mode=archive-z2 --repo=repository
+
+#TODO: Add --owner-uid=0 --owner-gid=0
+commit-platform: repository gnome-platform.tar.gz
+	rm -rf commit
+	mkdir -p commit
+	tar xvf gnome-platform.tar.gz -C commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+
+commit-sdk: repository gnome-sdk.tar.gz
+	rm -rf commit
+	mkdir -p commit
+	tar xvf gnome-sdk.tar.gz -C commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+
+commit: commit-sdk commit-platform
+
+
 
 -include rpm-dependencies.P
