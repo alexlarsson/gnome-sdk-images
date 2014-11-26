@@ -2,6 +2,7 @@ Name:           gnome-sdk
 Version:        0.1
 Release:        1%{?dist}
 Summary:        Gnome sdk
+Source1:        rpm-macros
 
 License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -93,9 +94,13 @@ Meta package for Gnome SDK dependencies
 
 
 %install
+rm -rf $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rpm/
+install -m 0644 -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rpm/macros
 
 %files
 %doc
+%{_sysconfdir}/rpm/macros
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com>
