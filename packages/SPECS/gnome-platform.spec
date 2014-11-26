@@ -29,6 +29,7 @@ Requires: desktop-file-utils
 Requires: json-glib
 Requires: libnotify
 Requires: vte
+Requires: gjs
 
 %description
 Meta package for Gnome SDK dependencies
