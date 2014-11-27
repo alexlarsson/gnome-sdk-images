@@ -76,6 +76,7 @@ Requires: libXtst-devel
 Requires: pango-devel
 Requires: pixman-devel
 Requires: vala-devel
+Requires: vala-tools
 Requires: dejavu-fonts
 Requires: abattis-cantarell-fonts
 Requires: dconf-devel
