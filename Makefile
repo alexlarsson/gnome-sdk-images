@@ -57,7 +57,7 @@ gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.noarch.rpm
 	./build.sh smart install -y  $(NOARCH)/gnome-sdk-0.1-1.noarch.rpm
 	rm -rf gnome-sdk.tar.gz
 	tar --transform 's,^root/usr,files,S' -czf gnome-sdk.tar.gz root/usr --owner=root
-	tar --transform 's,^var/,,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^var,files,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
 
 gnome-platform-base: $(NOARCH)/gnome-platform-base-0.1-1.noarch.rpm
 
@@ -81,23 +81,31 @@ gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOA
 	./setup_root.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat gnome-platform-packages`
 	tar --transform 's,^root/usr,files,S' -czf gnome-platform.tar.gz root/usr --owner=root
-	tar --transform 's,^var/,,S' -czf gnome-platform-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^var,files,S' -czf gnome-platform-rpmdb.tar.gz var/lib/rpm --owner=root
 
 repository:
 	ostree  init --mode=archive-z2 --repo=repository
 
 #TODO: Add --owner-uid=0 --owner-gid=0
-commit-platform: repository gnome-platform.tar.gz
+commit-platform: repository gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
-	tar xvf gnome-platform.tar.gz -C commit
+	tar xf gnome-platform.tar.gz -C commit
 	ostree commit --repo=repository --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
-
-commit-sdk: repository gnome-sdk.tar.gz
 	rm -rf commit
 	mkdir -p commit
-	tar xvf gnome-sdk.tar.gz -C commit
+	tar xf gnome-platform-rpmdb.tar.gz -C commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.PlatformVar/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+
+commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-sdk.tar.gz -C commit
 	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-sdk-rpmdb.tar.gz -C commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.SdkVar/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
 
 commit: commit-sdk commit-platform
 
