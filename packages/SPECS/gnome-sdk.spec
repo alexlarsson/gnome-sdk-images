@@ -27,6 +27,7 @@ BuildRequires: json-glib
 BuildRequires: libnotify-devel
 BuildRequires: vte-devel
 BuildRequires: gjs-devel
+BuildRequires: zenity
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -84,6 +85,7 @@ Requires: libsoup-devel
 Requires: libproxy-devel
 Requires: gsettings-desktop-schemas
 Requires: gjs-devel mozjs24-devel
+Requires: zenity
 
 %description
 Meta package for Gnome SDK dependencies

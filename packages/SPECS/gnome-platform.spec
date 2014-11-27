@@ -30,6 +30,7 @@ Requires: json-glib
 Requires: libnotify
 Requires: vte
 Requires: gjs
+Requires: zenity
 
 %description
 Meta package for Gnome SDK dependencies
