@@ -83,7 +83,7 @@ Requires: abattis-cantarell-fonts
 Requires: dconf-devel
 Requires: libsoup-devel
 Requires: libproxy-devel
-Requires: gsettings-desktop-schemas
+Requires: gsettings-desktop-schemas-devel
 Requires: gjs-devel mozjs24-devel
 Requires: zenity
 
