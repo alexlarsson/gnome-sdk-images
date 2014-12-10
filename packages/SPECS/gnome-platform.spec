@@ -31,6 +31,9 @@ Requires: libnotify
 Requires: vte
 Requires: gjs
 Requires: zenity
+Requires: mesa-libGL
+Requires: mesa-libEGL
+Requires: mesa-dri-drivers
 
 %description
 Meta package for Gnome SDK dependencies

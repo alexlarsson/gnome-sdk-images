@@ -28,6 +28,9 @@ BuildRequires: libnotify-devel
 BuildRequires: vte-devel
 BuildRequires: gjs-devel
 BuildRequires: zenity
+BuildRequires: mesa-libGL
+BuildRequires: libICE-devel
+BuildRequires: libXxf86vm-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -86,6 +89,11 @@ Requires: libproxy-devel
 Requires: gsettings-desktop-schemas-devel
 Requires: gjs-devel mozjs24-devel
 Requires: zenity
+Requires: mesa-libGL-devel
+Requires: mesa-libEGL-devel
+Requires: mesa-dri-drivers
+Requires: libICE-devel
+Requires: libXxf86vm-devel
 
 %description
 Meta package for Gnome SDK dependencies
