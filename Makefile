@@ -43,7 +43,7 @@ PACKAGES = \
 	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts \
 	gtk2 gnome-themes-standard libproxy gsettings-desktop-schemas glib-networking libsoup \
 	dconf gvfs desktop-file-utils json-glib libnotify vte mozjs24 gjs \
-	cogl clutter \
+	cogl clutter clutter-gtk \
 	zenity \
 	$(NULL)
 
