@@ -32,6 +32,7 @@ BuildRequires: mesa-libGL
 BuildRequires: libICE-devel
 BuildRequires: libXxf86vm-devel
 BuildRequires: libepoxy-devel
+BuildRequires: clutter-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -96,6 +97,8 @@ Requires: mesa-dri-drivers
 Requires: libICE-devel
 Requires: libXxf86vm-devel
 Requires: libepoxy-devel
+Requires: cogl-devel
+Requires: clutter-devel
 
 %description
 Meta package for Gnome SDK dependencies

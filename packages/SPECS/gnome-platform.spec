@@ -35,6 +35,7 @@ Requires: mesa-libGL
 Requires: mesa-libEGL
 Requires: mesa-dri-drivers
 Requires: libepoxy
+Requires: clutter
 
 %description
 Meta package for Gnome SDK dependencies
