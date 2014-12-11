@@ -34,6 +34,7 @@ Requires: zenity
 Requires: mesa-libGL
 Requires: mesa-libEGL
 Requires: mesa-dri-drivers
+Requires: libepoxy
 
 %description
 Meta package for Gnome SDK dependencies

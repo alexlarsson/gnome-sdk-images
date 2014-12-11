@@ -36,7 +36,7 @@ PACKAGES = \
 	libXfixes libXext libXft libXi libXinerama libICE libSM libXpm libXrandr libXtst \
 	libXv libXvMC libXxf86vm libXdamage libXcursor libXcomposite libxkbfile libxshmfence \
 	dbus cairo dbus-glib \
-	libpciaccess libdrm mesa \
+	libpciaccess libdrm mesa libepoxy \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	itstool yelp-xsl yelp-tools \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \

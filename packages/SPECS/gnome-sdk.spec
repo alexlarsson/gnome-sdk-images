@@ -31,6 +31,7 @@ BuildRequires: zenity
 BuildRequires: mesa-libGL
 BuildRequires: libICE-devel
 BuildRequires: libXxf86vm-devel
+BuildRequires: libepoxy-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -94,6 +95,7 @@ Requires: mesa-libEGL-devel
 Requires: mesa-dri-drivers
 Requires: libICE-devel
 Requires: libXxf86vm-devel
+Requires: libepoxy-devel
 
 %description
 Meta package for Gnome SDK dependencies
