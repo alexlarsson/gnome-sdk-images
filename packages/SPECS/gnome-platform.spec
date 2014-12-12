@@ -37,6 +37,7 @@ Requires: mesa-dri-drivers
 Requires: libepoxy
 Requires: clutter
 Requires: clutter-gtk
+Requires: pulseaudio-libs-glib2
 
 %description
 Meta package for Gnome SDK dependencies

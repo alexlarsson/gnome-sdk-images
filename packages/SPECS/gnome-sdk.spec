@@ -33,6 +33,7 @@ BuildRequires: libICE-devel
 BuildRequires: libXxf86vm-devel
 BuildRequires: libepoxy-devel
 BuildRequires: clutter-gtk-devel
+BuildRequires: pulseaudio-libs-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -100,6 +101,7 @@ Requires: libepoxy-devel
 Requires: cogl-devel
 Requires: clutter-devel
 Requires: clutter-gtk-devel
+Requires: pulseaudio-libs-devel
 
 %description
 Meta package for Gnome SDK dependencies
