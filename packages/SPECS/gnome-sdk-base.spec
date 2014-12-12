@@ -11,6 +11,13 @@ BuildArch: noarch
 
 Provides: %(./find_prov.sh /usr)
 
+%if %{__isa_bits} == 64
+%define provides_suffix (64bit)
+%endif
+
+# There is a bug in find_prov.sh which missed this provides:
+Provides: libsndfile.so.1(libsndfile.so.1.0)%{?provides_suffix}
+
 %description
 The base sdk files
 
