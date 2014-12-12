@@ -46,13 +46,17 @@ Meta package for Gnome SDK dependencies
 
 %build
 
-
 %install
+rm -rf $RPM_BUILD_ROOT
+
+# Need empty machine-id to bind mount over
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/
+touch $RPM_BUILD_ROOT%{_sysconfdir}/machine-id
 
 %files
 %doc
+%{_sysconfdir}/machine-id
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com>
 - Initial version
-

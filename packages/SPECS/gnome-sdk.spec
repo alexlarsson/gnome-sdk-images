@@ -115,9 +115,13 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rpm/
 install -m 0644 -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rpm/macros
 
+# Need empty machine-id to bind mount over
+touch $RPM_BUILD_ROOT%{_sysconfdir}/machine-id
+
 %files
 %doc
 %{_sysconfdir}/rpm/macros
+%{_sysconfdir}/machine-id
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com>
