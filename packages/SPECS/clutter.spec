@@ -12,7 +12,7 @@ BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel mesa-libGL-devel pango-devel
 BuildRequires: cairo-gobject-devel gdk-pixbuf2-devel atk-devel
 BuildRequires: cogl-devel
-BuildRequires: gobject-introspection-devel >= 0.9.6
+BuildRequires: gobject-introspection-devel
 BuildRequires: gtk3-devel
 BuildRequires: json-glib-devel
 BuildRequires: libXcomposite-devel
