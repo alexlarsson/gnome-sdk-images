@@ -34,6 +34,7 @@ BuildRequires: libXxf86vm-devel
 BuildRequires: libepoxy-devel
 BuildRequires: clutter-gtk-devel
 BuildRequires: pulseaudio-libs-devel
+BuildRequires: dconf-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
