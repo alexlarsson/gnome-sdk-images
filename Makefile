@@ -75,7 +75,7 @@ $(NOARCH)/gnome-platform-base-0.1-1.noarch.rpm: $(SPECS)/gnome-platform-base.spe
 
 gnome-sdk-base: $(NOARCH)/gnome-sdk-base-0.1-1.noarch.rpm
 
-gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.noarch.rpm setup.sh build.sh
+gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.noarch.rpm $(NOARCH)/gnome-platform-base-0.1-1.noarch.rpm setup.sh build.sh
 	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
 	rm -f gnome-platform-packages
 	./build.sh ./list_packages.sh gnome-platform > gnome-platform-packages
