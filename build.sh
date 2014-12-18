@@ -17,4 +17,4 @@ declare -x PKG_CONFIG_PATH="/self/lib/pkgconfig:/self/share/pkgconfig"
 declare -x PATH="/usr/bin:/self/bin"
 unset INSTALL
 
-$HELPER -w -W -a $APP -v $VAR $ROOT/usr "$@"
+$HELPER -f -w -W -a $APP -v $VAR $ROOT/usr "$@"
