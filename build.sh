@@ -4,7 +4,7 @@ ROOT=`pwd`/root
 VAR=`pwd`/var
 APP=`pwd`/packages
 
-HELPER=`which gnome-sdk-helper`
+HELPER=`which xdg-app-helper`
 
 declare -x LC_ALL=en_US.utf8
 declare -x HOME=/self
