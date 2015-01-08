@@ -99,7 +99,7 @@ commit-platform: repository gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-platform-rpmdb.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.PlatformVar/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Platform.Var/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
 
 commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	rm -rf commit
@@ -109,7 +109,7 @@ commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-sdk-rpmdb.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.SdkVar/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk.Var/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
 
 commit: commit-sdk commit-platform
 
