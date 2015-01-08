@@ -31,6 +31,7 @@ Requires: libnotify
 Requires: vte
 Requires: gjs
 Requires: zenity
+Requires: libXt
 Requires: mesa-libGL
 Requires: mesa-libEGL
 Requires: mesa-dri-drivers

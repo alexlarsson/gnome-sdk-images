@@ -33,7 +33,7 @@ PACKAGES = \
 	xorg-x11-util-macros \
 	xorg-x11-proto-devel \
 	libXau xcb-proto libxcb libXdmcp xorg-x11-xtrans-devel libX11 libXrender \
-	libXfixes libXext libXft libXi libXinerama libICE libSM libXpm libXrandr libXtst \
+	libXfixes libXext libXft libXi libXinerama libICE libSM libXpm libXrandr libXtst libXt \
 	libXv libXvMC libXxf86vm libXdamage libXcursor libXcomposite libxkbfile libxshmfence \
 	dbus cairo dbus-glib \
 	libpciaccess libdrm mesa libepoxy \
