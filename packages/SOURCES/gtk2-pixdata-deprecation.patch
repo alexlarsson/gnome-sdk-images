@@ -1,0 +1,24 @@
+diff -up gtk+-2.24.25/configure.ac.pixdata gtk+-2.24.25/configure.ac
+--- gtk+-2.24.25/configure.ac.pixdata	2015-01-08 10:38:18.270851867 +0100
++++ gtk+-2.24.25/configure.ac	2015-01-08 10:46:31.287706476 +0100
+@@ -621,8 +621,6 @@ if test "x$GLIB_VERSION_MAJOR_MINOR" = "
+   CFLAGS="-DG_DISABLE_DEPRECATED $CFLAGS"
+ fi
+ 
+-CFLAGS="-DGDK_PIXBUF_DISABLE_DEPRECATED $CFLAGS"
+-
+ 
+ dnl
+ dnl Check for bind_textdomain_codeset, including -lintl if GLib brings it in.
+diff -up gtk+-2.24.25/configure.pixdata gtk+-2.24.25/configure
+--- gtk+-2.24.25/configure.pixdata	2015-01-08 10:38:10.417965683 +0100
++++ gtk+-2.24.25/configure	2015-01-08 10:46:45.538499944 +0100
+@@ -20816,8 +20816,6 @@ if test "x$GLIB_VERSION_MAJOR_MINOR" = "
+   CFLAGS="-DG_DISABLE_DEPRECATED $CFLAGS"
+ fi
+ 
+-CFLAGS="-DGDK_PIXBUF_DISABLE_DEPRECATED $CFLAGS"
+-
+ 
+ gtk_save_LIBS=$LIBS
+ LIBS="$LIBS $GLIB_LIBS"

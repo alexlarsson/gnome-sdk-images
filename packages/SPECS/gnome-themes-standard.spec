@@ -1,12 +1,12 @@
 Name: gnome-themes-standard
-Version: 3.14.2
+Version: 3.15.2.2
 Release: 1%{?dist}
 Summary: Standard themes for GNOME applications
 
 Group: User Interface/Desktops
 License: LGPLv2+
 URL: http://git.gnome.org/browse/gnome-themes-standard
-Source0: http://download.gnome.org/sources/%{name}/3.14/%{name}-%{version}.tar.xz
+Source0: http://download.gnome.org/sources/%{name}/3.15/%{name}-%{version}.tar.xz
 Source2: gtkrc
 
 BuildRequires: gnome-sdk-base

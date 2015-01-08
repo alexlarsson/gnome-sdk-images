@@ -11,6 +11,8 @@ URL: http://www.gtk.org
 Source: http://download.gnome.org/sources/gtk+/2.24/gtk+-%{version}.tar.xz
 Source3: im-cedilla.conf
 
+Patch0:	gtk2-pixdata-deprecation.patch
+
 BuildRequires: gnome-sdk-base
 BuildRequires: atk-devel
 BuildRequires: glib2-devel
@@ -27,6 +29,7 @@ BuildRequires: libXinerama-devel
 BuildRequires: libXcomposite-devel
 BuildRequires: libXdamage-devel
 BuildRequires: gobject-introspection-devel
+BuildRequires: gtk-doc-stub
 
 # required for icon theme apis to work
 Requires: hicolor-icon-theme
@@ -92,14 +95,15 @@ This package contains developer documentation for the GTK+ widget toolkit.
 
 %prep
 %setup -q -n gtk+-%{version}
+%patch0 -p1 -b .pixdata
+
 
 %build
-(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
- %configure $CONFIGFLAGS \
-        --enable-man            \
+%configure \
+        --disable-gtk-doc \
+        --disable-man            \
 	--with-xinput=xfree	\
-	--enable-debug		\
-)
+	--enable-debug
 
 # fight unused direct deps
 sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool

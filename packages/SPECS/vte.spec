@@ -1,13 +1,13 @@
 %global apiver 2.91
 
 Name:           vte
-Version:        0.38.2
+Version:        0.39.1
 Release:        1%{?dist}
 Summary:        Terminal emulator library
 
 License:        LGPLv2+
 URL:            http://www.gnome.org/
-Source0:        http://download.gnome.org/sources/vte/0.38/vte-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/vte/0.39/vte-%{version}.tar.xz
 Patch2:         vte-Only-show-the-cursor-on-motion-if-moved.patch
 
 BuildRequires:  gnome-sdk-base

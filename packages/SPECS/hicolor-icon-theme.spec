@@ -1,11 +1,11 @@
 Summary: Basic requirement for icon themes
 Name: hicolor-icon-theme
-Version: 0.13
+Version: 0.14
 Release: 1%{?dist}
 License: GPL+
 Group: User Interface/Desktops
 URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
-Source: http://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.gz
+Source: http://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.xz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 

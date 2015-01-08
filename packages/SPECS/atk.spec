@@ -1,11 +1,11 @@
 Summary: Interfaces for accessibility support
 Name: atk
-Version: 2.14.0
+Version: 2.15.3
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 #VCS: git:git://git.gnome.org/atk
-Source: http://download.gnome.org/sources/atk/2.14/atk-%{version}.tar.xz
+Source: http://download.gnome.org/sources/atk/2.15/atk-%{version}.tar.xz
 URL: http://developer.gnome.org/platform-overview/stable/atk
 
 BuildRequires: gnome-sdk-base

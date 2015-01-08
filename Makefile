@@ -1,7 +1,7 @@
 srcdir = $(CURDIR)
 builddir = $(CURDIR)
 
-VERSION=3.14
+VERSION=3.16
 ARCH=x86_64
 IMAGES=yocto-build/$(ARCH)/images
 SPECS=packages/SPECS

@@ -1,12 +1,12 @@
 Name:           glib-networking
-Version:        2.42.0
+Version:        2.43.1
 Release:        1%{?dist}
 Summary:        Networking support for GLib
 
 Group:          Development/Libraries
 License:        LGPLv2+
 URL:            http://www.gnome.org
-Source:         http://download.gnome.org/sources/glib-networking/2.42/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/glib-networking/2.43/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  glib2-devel

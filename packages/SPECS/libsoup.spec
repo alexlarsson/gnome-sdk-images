@@ -1,12 +1,12 @@
 Name: libsoup
-Version: 2.48.0
+Version: 2.49.1
 Release: 1%{?dist}
 License: LGPLv2
 Group: Development/Libraries
 Summary: Soup, an HTTP library implementation
 URL: http://live.gnome.org/LibSoup
 #VCS: git:git://git.gnome.org/libsoup
-Source: http://download.gnome.org/sources/libsoup/2.48/libsoup-%{version}.tar.xz
+Source: http://download.gnome.org/sources/libsoup/2.49/libsoup-%{version}.tar.xz
 
 BuildRequires: glib2-devel
 BuildRequires: glib-networking

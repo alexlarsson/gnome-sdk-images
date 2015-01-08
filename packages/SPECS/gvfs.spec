@@ -1,12 +1,12 @@
 Summary: Backends for the gio framework in GLib
 Name: gvfs
-Version: 1.22.2
+Version: 1.23.3
 Release: 1%{?dist}
 License: GPLv3 and LGPLv2+ and BSD and MPLv1.1
 Group: System Environment/Libraries
 URL: http://www.gtk.org
 
-Source: http://download.gnome.org/sources/gvfs/1.22/gvfs-%{version}.tar.xz
+Source: http://download.gnome.org/sources/gvfs/1.23/gvfs-%{version}.tar.xz
 BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel
 BuildRequires: dbus-glib-devel

@@ -2,14 +2,14 @@
 
 Summary: The GIMP ToolKit (GTK+), a library for creating GUIs for X
 Name: gtk3
-Version: 3.14.5
+Version: 3.15.3
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 URL: http://www.gtk.org
 #VCS: git:git://git.gnome.org/gtk+
 
-Source: http://download.gnome.org/sources/gtk+/3.14/gtk+-%{version}.tar.xz
+Source: http://download.gnome.org/sources/gtk+/3.15/gtk+-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: gnome-common
@@ -33,6 +33,8 @@ BuildRequires: libXcomposite-devel
 BuildRequires: libXdamage-devel
 BuildRequires: libXi-devel
 BuildRequires: gobject-introspection-devel
+BuildRequires: mesa-libGL-devel
+BuildRequires: libepoxy-devel
 #BuildRequires: colord-devel
 #BuildRequires: avahi-gobject-devel
 #%if 0%{?with_wayland}
@@ -243,6 +245,8 @@ gtk-query-immodules-3.0-%{__isa_bits} --update-cache
 %{_datadir}/applications/gtk3-widget-factory.desktop
 %{_datadir}/icons/hicolor/*/apps/gtk3-demo.png
 %{_datadir}/icons/hicolor/*/apps/gtk3-widget-factory.png
+%{_datadir}/icons/hicolor/*/apps/gtk3-demo-symbolic.symbolic.png
+%{_datadir}/icons/hicolor/*/apps/gtk3-widget-factory-symbolic.symbolic.png
 %{_bindir}/gtk3-demo-application
 %{_bindir}/gtk3-widget-factory
 %{_datadir}/gtk-3.0/gtkbuilder.rng
@@ -251,6 +255,7 @@ gtk-query-immodules-3.0-%{__isa_bits} --update-cache
 %{_mandir}/man1/gtk3-demo.1*
 %{_mandir}/man1/gtk3-icon-browser.1*
 %{_mandir}/man1/gtk3-widget-factory.1*
+%{_mandir}/man1/gtk3-demo-application.1*
 %{_mandir}/man1/gtk-encode-symbolic-svg.1*
 
 %files devel-docs

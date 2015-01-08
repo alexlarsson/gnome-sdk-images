@@ -1,5 +1,5 @@
 Name:           gdk-pixbuf2
-Version:        2.31.1
+Version:        2.31.2
 Release:        1%{?dist}
 Summary:        An image loading library
 

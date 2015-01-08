@@ -1,6 +1,6 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
-Version:        2.40.5
+Version:        2.40.6
 Release:        1%{?dist}
 
 License:        LGPLv2+
