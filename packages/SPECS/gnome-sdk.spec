@@ -35,6 +35,7 @@ BuildRequires: libepoxy-devel
 BuildRequires: clutter-gtk-devel
 BuildRequires: pulseaudio-libs-devel
 BuildRequires: dconf-devel
+BuildRequires: libsecret-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -104,6 +105,7 @@ Requires: cogl-devel
 Requires: clutter-devel
 Requires: clutter-gtk-devel
 Requires: pulseaudio-libs-devel
+Requires: libsecret-devel
 
 %description
 Meta package for Gnome SDK dependencies

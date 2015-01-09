@@ -39,6 +39,7 @@ Requires: libepoxy
 Requires: clutter
 Requires: clutter-gtk
 Requires: pulseaudio-libs-glib2
+Requires: libsecret
 
 %description
 Meta package for Gnome SDK dependencies
