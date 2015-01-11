@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 %define         clutter_version 1.0
 
 Name:           clutter-gtk
@@ -8,7 +10,7 @@ Summary:        A basic GTK clutter widget
 Group:          Development/Languages
 License:        LGPLv2+
 URL:            http://www.clutter-project.org
-Source0:        http://download.gnome.org/sources/clutter-gtk/1.6/clutter-gtk-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/clutter-gtk/%{release_version}/clutter-gtk-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: gtk3-devel

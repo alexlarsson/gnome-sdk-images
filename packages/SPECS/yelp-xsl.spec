@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           yelp-xsl
 Version:        3.14.0
 Release:        1%{?dist}
@@ -6,7 +8,7 @@ Summary:        XSL stylesheets for the yelp help browser
 License:        LGPLv2+
 Group:          Applications/System
 URL:            http://download.gnome.org/sources/yelp-xsl
-Source0:        http://download.gnome.org/sources/yelp-xsl/3.14/yelp-xsl-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/yelp-xsl/%{release_version}/yelp-xsl-%{version}.tar.xz
 BuildArch:      noarch
 
 BuildRequires: gnome-sdk-base

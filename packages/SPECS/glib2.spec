@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Summary: A library of handy utility functions
 Name: glib2
 Version: 2.43.2
@@ -5,7 +7,7 @@ Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 #VCS: git:git://git.gnome.org/glib
-Source: http://download.gnome.org/sources/glib/2.43/glib-%{version}.tar.xz
+Source: http://download.gnome.org/sources/glib/%{release_version}/glib-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 

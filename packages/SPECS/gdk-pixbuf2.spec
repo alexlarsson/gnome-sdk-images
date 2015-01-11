@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           gdk-pixbuf2
 Version:        2.31.2
 Release:        1%{?dist}
@@ -7,7 +9,7 @@ Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://www.gt.org
 #VCS:           git:git://git.gnome.org/gdk-pixbuf
-Source0:        http://download.gnome.org/sources/gdk-pixbuf/2.31/gdk-pixbuf-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gdk-pixbuf/%{release_version}/gdk-pixbuf-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  glib2-devel

@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:          yelp-tools
 Version:       3.14.1
 Release:       1%{?dist}
@@ -6,7 +8,7 @@ Summary:       Create, manage, and publish documentation for Yelp
 Group:         Applications/Publishing
 License:       GPLv2+
 URL:           https://wiki.gnome.org/Apps/Yelp/Tools
-Source0:       https://download.gnome.org/sources/%{name}/3.14/%{name}-%{version}.tar.xz
+Source0:       https://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 BuildArch:     noarch
 
 BuildRequires: gnome-sdk-base

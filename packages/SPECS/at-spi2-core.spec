@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           at-spi2-core
 Version:        2.15.3
 Release:        1%{?dist}
@@ -6,7 +8,7 @@ Summary:        Protocol definitions and daemon for D-Bus at-spi
 Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
-Source0:        http://download.gnome.org/sources/at-spi2-core/2.15/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/at-spi2-core/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  dbus-devel

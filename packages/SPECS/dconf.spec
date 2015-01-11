@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           dconf
 Version:        0.22.0
 Release:        1%{?dist}
@@ -7,7 +9,7 @@ Group:          System Environment/Base
 License:        LGPLv2+ and GPLv2+ and GPLv3+
 URL:            http://live.gnome.org/dconf
 #VCS:           git:git://git.gnome.org/dconf
-Source0:        http://download.gnome.org/sources/dconf/0.22/dconf-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/dconf/%{release_version}/dconf-%{version}.tar.xz
 
 BuildRequires:  glib2-devel
 BuildRequires:  gtk3-devel

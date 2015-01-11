@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name: libsoup
 Version: 2.49.1
 Release: 1%{?dist}
@@ -6,7 +8,7 @@ Group: Development/Libraries
 Summary: Soup, an HTTP library implementation
 URL: http://live.gnome.org/LibSoup
 #VCS: git:git://git.gnome.org/libsoup
-Source: http://download.gnome.org/sources/libsoup/2.49/libsoup-%{version}.tar.xz
+Source: http://download.gnome.org/sources/libsoup/%{release_version}/libsoup-%{version}.tar.xz
 
 BuildRequires: glib2-devel
 BuildRequires: glib-networking

@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:          cogl
 Version:       1.18.2
 Release:       1%{?dist}
@@ -6,7 +8,7 @@ Summary:       A library for using 3D graphics hardware to draw pretty pictures
 Group:         Development/Libraries
 License:       LGPLv2+
 URL:           http://www.clutter-project.org/
-Source0:       http://download.gnome.org/sources/cogl/1.18/cogl-%{version}.tar.xz
+Source0:       http://download.gnome.org/sources/cogl/%{release_version}/cogl-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: cairo-devel

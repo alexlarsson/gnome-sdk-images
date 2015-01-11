@@ -1,3 +1,4 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 %global api_ver 0.26
 
 Name:           vala
@@ -9,7 +10,7 @@ Summary:        A modern programming language for GNOME
 License:        LGPLv2+ and BSD
 URL:            http://live.gnome.org/Vala
 #VCS:           git:git://git.gnome.org/vala
-Source0:        http://download.gnome.org/sources/vala/0.26/vala-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/vala/%{release_version}/vala-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  glib2-devel

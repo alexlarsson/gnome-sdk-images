@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:		json-glib
 Version:	1.0.2
 Release:	1%{?dist}
@@ -7,7 +9,7 @@ Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		https://wiki.gnome.org/Projects/JsonGlib
 #VCS:		git:git://git.gnome.org/json-glib
-Source0:	http://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
+Source0:	http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires:	glib2-devel

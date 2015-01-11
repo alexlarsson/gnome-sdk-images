@@ -1,3 +1,4 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 %global bin_version 3.0.0
 
 Summary: The GIMP ToolKit (GTK+), a library for creating GUIs for X
@@ -9,7 +10,7 @@ Group: System Environment/Libraries
 URL: http://www.gtk.org
 #VCS: git:git://git.gnome.org/gtk+
 
-Source: http://download.gnome.org/sources/gtk+/3.15/gtk+-%{version}.tar.xz
+Source: http://download.gnome.org/sources/gtk+/%{release_version}/gtk+-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: gnome-common

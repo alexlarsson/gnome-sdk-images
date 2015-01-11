@@ -5,8 +5,6 @@
         mkdir -p _license_files ; \
         cp -p %1 _license_files/$(echo '%1' | sed -e 's!/!.!g')
 
-%global _hardened_build 1
-
 Name:           webkitgtk4
 Version:        2.7.3
 Release:        1%{?dist}

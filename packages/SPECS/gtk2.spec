@@ -1,3 +1,4 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 %global bin_version 2.10.0
 
 Summary: The GIMP ToolKit (GTK+), a library for creating GUIs for X
@@ -8,7 +9,7 @@ License: LGPLv2+
 Group: System Environment/Libraries
 URL: http://www.gtk.org
 #VCS: git:git://git.gnome.org/gtk+#gtk-2-24
-Source: http://download.gnome.org/sources/gtk+/2.24/gtk+-%{version}.tar.xz
+Source: http://download.gnome.org/sources/gtk+/%{release_version}/gtk+-%{version}.tar.xz
 Source3: im-cedilla.conf
 
 Patch0:	gtk2-pixdata-deprecation.patch

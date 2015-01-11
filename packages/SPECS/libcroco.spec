@@ -1,10 +1,12 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:             libcroco
 Summary:          A CSS2 parsing library
 Version:          0.6.8
 Release:          5%{?dist}
 License:          LGPLv2
 Group:            System Environment/Libraries
-Source:           http://download.gnome.org/sources/libcroco/0.6/%{name}-%{version}.tar.xz
+Source:           http://download.gnome.org/sources/libcroco/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel

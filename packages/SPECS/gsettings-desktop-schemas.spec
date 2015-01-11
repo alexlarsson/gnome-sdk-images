@@ -1,3 +1,4 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 %global debug_package %{nil}
 
 Name:           gsettings-desktop-schemas
@@ -10,7 +11,7 @@ License:        LGPLv2+
 # no homepage exists for this component
 URL:            http://bugzilla.gnome.org/enter_bug.cgi?product=gsettings-desktop-schemas
 #VCS: git:git://git.gnome.org/gsettings-desktop-schemas
-Source:         http://download.gnome.org/sources/%{name}/3.14/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel

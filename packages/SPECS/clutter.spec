@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:          clutter
 Version:       1.21.2
 Release:       1%{?dist}
@@ -6,7 +8,7 @@ Summary:       Open Source software library for creating rich graphical user int
 Group:         Development/Libraries
 License:       LGPLv2+
 URL:           http://www.clutter-project.org/
-Source0:       http://download.gnome.org/sources/clutter/1.21/clutter-%{version}.tar.xz
+Source0:       http://download.gnome.org/sources/clutter/%{release_version}/clutter-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel mesa-libGL-devel pango-devel

@@ -1,3 +1,4 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 %global bin_version 1.8.0
 
 Summary: System for layout and rendering of internationalized text
@@ -7,7 +8,7 @@ Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 #VCS: git:git://git.gnome.org/pango
-Source: http://download.gnome.org/sources/pango/1.36/pango-%{version}.tar.xz
+Source: http://download.gnome.org/sources/pango/%{release_version}/pango-%{version}.tar.xz
 URL: http://www.pango.org
 
 BuildRequires: gnome-sdk-base

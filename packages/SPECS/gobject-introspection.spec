@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           gobject-introspection
 Version:        1.42.0
 Release:        1%{?dist}
@@ -7,7 +9,7 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.42/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gobject-introspection/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires:  glib2-devel

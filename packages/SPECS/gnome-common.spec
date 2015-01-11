@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           gnome-common
 Version:        3.14.0
 Release:        1%{?dist}
@@ -7,7 +9,7 @@ Group:          Development/Tools
 BuildArch:      noarch
 License:        GPLv2+
 URL:            https://wiki.gnome.org/Projects/GnomeCommon
-Source0:        https://download.gnome.org/sources/%{name}/3.14/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires: yelp-tools

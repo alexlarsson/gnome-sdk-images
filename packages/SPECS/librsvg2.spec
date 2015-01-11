@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.40.6
@@ -6,7 +8,7 @@ Release:        1%{?dist}
 License:        LGPLv2+
 Group:          System Environment/Libraries
 #VCS:           git:git://git.gnome.org/librsvg
-Source:         http://download.gnome.org/sources/librsvg/2.40/librsvg-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/librsvg/%{release_version}/librsvg-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  glib2-devel

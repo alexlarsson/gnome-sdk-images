@@ -1,9 +1,11 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Summary: Desktop notification library
 Name: libnotify
 Version: 0.7.6
 Release: 1%{?dist}
 URL: http://www.gnome.org
-Source0: http://ftp.gnome.org/pub/GNOME/sources/libnotify/0.7/%{name}-%{version}.tar.xz
+Source0: http://ftp.gnome.org/pub/GNOME/sources/libnotify/%{release_version}/%{name}-%{version}.tar.xz
 License: LGPLv2+
 Group: System Environment/Libraries
 
