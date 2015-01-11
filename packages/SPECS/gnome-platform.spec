@@ -40,6 +40,7 @@ Requires: clutter
 Requires: clutter-gtk
 Requires: pulseaudio-libs-glib2
 Requires: libsecret
+Requires: webkitgtk4
 
 %description
 Meta package for Gnome SDK dependencies
