@@ -8,6 +8,7 @@ HELPER=`which xdg-app-helper`
 
 declare -x LC_ALL=en_US.utf8
 declare -x HOME=/self
+unset ACLOCAL_FLAGS
 declare -x ACLOCAL_PATH="/self/share/aclocal"
 declare -x CPLUS_INCLUDE_PATH="/self/include"
 declare -x C_INCLUDE_PATH="/self/include"
