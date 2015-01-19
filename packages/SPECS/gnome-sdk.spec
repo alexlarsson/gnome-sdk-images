@@ -108,6 +108,7 @@ Requires: clutter-gtk-devel
 Requires: pulseaudio-libs-devel
 Requires: libsecret-devel
 Requires: webkitgtk4-devel
+Requires: libxkbcommon-devel libxkbcommon-x11-devel
 
 %description
 Meta package for Gnome SDK dependencies
