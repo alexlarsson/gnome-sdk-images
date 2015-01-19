@@ -10,9 +10,9 @@ Source0:        http://xkbcommon.org/download/%{name}-%{version}.tar.xz
 BuildRequires: gnome-sdk-base
 BuildRequires:  xorg-x11-util-macros
 BuildRequires:  xorg-x11-proto-devel libX11-devel libxcb-devel
-#BuildRequires:  xkeyboard-config-devel
+BuildRequires:  xkeyboard-config-devel
 
-#Requires:       xkeyboard-config
+Requires:       xkeyboard-config
 
 %description
 %{name} is the X.Org library for compiling XKB maps into formats usable by

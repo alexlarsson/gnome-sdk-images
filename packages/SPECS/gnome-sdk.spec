@@ -37,6 +37,7 @@ BuildRequires: pulseaudio-libs-devel
 BuildRequires: dconf-devel
 BuildRequires: libsecret-devel
 BuildRequires: webkitgtk4-devel
+BuildRequires: xkeyboard-config-devel
 
 Requires: gtk2-devel gtk2-immodules
 Requires: gtk3-devel gtk3-immodules
@@ -109,7 +110,8 @@ Requires: pulseaudio-libs-devel
 Requires: libsecret-devel
 Requires: webkitgtk4-devel
 Requires: libxkbcommon-devel libxkbcommon-x11-devel
-Requires: libwayland-client-devel libwayland-cursor-devel libwayland-egl-devel
+Requires: libwayland-client-devel libwayland-cursor-devel mesa-libwayland-egl-devel
+Requires: xkeyboard-config-devel
 
 %description
 Meta package for Gnome SDK dependencies
