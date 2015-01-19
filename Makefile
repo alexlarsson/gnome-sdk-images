@@ -37,7 +37,7 @@ PACKAGES = \
 	libXv libXvMC libXxf86vm libXdamage libXcursor libXcomposite libxkbfile libxshmfence \
 	libxkbcommon \
 	dbus cairo dbus-glib \
-	libpciaccess libdrm mesa libepoxy \
+	libpciaccess libdrm mesa libepoxy wayland \
 	pulseaudio \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	libsecret \
