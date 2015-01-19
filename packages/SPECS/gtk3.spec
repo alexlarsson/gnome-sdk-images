@@ -35,10 +35,11 @@ BuildRequires: libXdamage-devel
 BuildRequires: libXi-devel
 BuildRequires: gobject-introspection-devel
 BuildRequires: mesa-libGL-devel
+BuildRequires: mesa-libEGL-devel
 BuildRequires: libepoxy-devel
 #BuildRequires: colord-devel
 #BuildRequires: avahi-gobject-devel
-BuildRequires: libwayland-egl-devel
+BuildRequires: mesa-libwayland-egl-devel
 BuildRequires: libwayland-client-devel
 BuildRequires: libwayland-cursor-devel
 BuildRequires: libxkbcommon-devel
