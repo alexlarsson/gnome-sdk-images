@@ -57,6 +57,7 @@ Requires: cairo-gobject%{?_isa}
 Requires: libXrandr%{?_isa}
 Requires: libwayland-client%{?_isa}
 Requires: libwayland-cursor%{?_isa}
+Requires: mesa-libwayland-egl
 
 %description
 GTK+ is a multi-platform toolkit for creating graphical user
