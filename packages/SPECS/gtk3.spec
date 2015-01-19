@@ -38,11 +38,10 @@ BuildRequires: mesa-libGL-devel
 BuildRequires: libepoxy-devel
 #BuildRequires: colord-devel
 #BuildRequires: avahi-gobject-devel
-#%if 0%{?with_wayland}
-#BuildRequires: libwayland-client-devel >= %{wayland_version}
-#BuildRequires: libwayland-cursor-devel >= %{wayland_version}
-#BuildRequires: libxkbcommon-devel
-#%endif
+BuildRequires: libwayland-egl-devel
+BuildRequires: libwayland-client-devel
+BuildRequires: libwayland-cursor-devel
+BuildRequires: libxkbcommon-devel
 
 # required for icon theme apis to work
 Requires: hicolor-icon-theme
@@ -55,10 +54,8 @@ Requires(post): pango%{?_isa}
 Requires: cairo%{?_isa}
 Requires: cairo-gobject%{?_isa}
 Requires: libXrandr%{?_isa}
-#%if 0%{?with_wayland}
-#Requires: libwayland-client%{?_isa} >= %{wayland_version}
-#Requires: libwayland-cursor%{?_isa} >= %{wayland_version}
-#%endif
+Requires: libwayland-client%{?_isa}
+Requires: libwayland-cursor%{?_isa}
 
 %description
 GTK+ is a multi-platform toolkit for creating graphical user
@@ -118,11 +115,9 @@ widget toolkit.
         --enable-xfixes \
         --enable-xcomposite \
         --enable-xdamage \
-        --enable-x11-backend
+        --enable-x11-backend \
+        --enable-wayland-backend
 
-#%if 0%{?with_wayland}
-#        --enable-wayland-backend \
-#%endif
 #        --enable-colord \
 )
 

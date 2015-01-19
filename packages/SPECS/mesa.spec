@@ -28,6 +28,8 @@ BuildRequires: libXfixes-devel
 BuildRequires: libXdamage-devel
 BuildRequires: libXi-devel
 BuildRequires: libxshmfence-devel
+BuildRequires: libwayland-client-devel
+BuildRequires: libwayland-server-devel
 
 %description
 Mesa
@@ -113,6 +115,23 @@ Group: System Environment/Libraries
 %description libglapi
 Mesa shared glapi
 
+%package libwayland-egl
+Summary: Mesa libwayland-egl library
+Group: System Environment/Libraries
+Provides: libwayland-egl
+
+%description libwayland-egl
+Mesa libwayland-egl runtime library.
+
+%package libwayland-egl-devel
+Summary: Mesa libwayland-egl development package
+Group: Development/Libraries
+Requires: mesa-libwayland-egl%{?_isa} = %{version}-%{release}
+Provides: libwayland-egl-devel
+
+%description libwayland-egl-devel
+Mesa libwayland-egl development package
+
 %prep
 %setup -q -n Mesa-%{version}
 %patch1 -p1 -b .no-typeid
@@ -139,7 +158,7 @@ export CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
     --enable-gles2 \
     --enable-gallium-egl \
     --disable-xvmc \
-    --with-egl-platforms=x11,drm \
+    --with-egl-platforms=x11,drm,wayland \
     --enable-shared-glapi \
     --enable-gbm \
     --disable-opencl \
@@ -197,6 +216,8 @@ rm -rf $RPM_BUILD_ROOT
 %postun libglapi -p /sbin/ldconfig
 %post libgbm -p /sbin/ldconfig
 %postun libgbm -p /sbin/ldconfig
+%post libwayland-egl -p /sbin/ldconfig
+%postun libwayland-egl -p /sbin/ldconfig
 
 %files libGL
 %defattr(-,root,root,-)
@@ -303,6 +324,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/libgbm.so
 %{_includedir}/gbm.h
 %{_libdir}/pkgconfig/gbm.pc
+
+%files libwayland-egl
+%defattr(-,root,root,-)
+%doc docs/COPYING
+%{_libdir}/libwayland-egl.so.1
+%{_libdir}/libwayland-egl.so.1.*
+
+%files libwayland-egl-devel
+%defattr(-,root,root,-)
+%{_libdir}/libwayland-egl.so
+%{_libdir}/pkgconfig/wayland-egl.pc
 
 %changelog
 * Tue Dec  9 2014 Alexander Larsson <alexl@redhat.com> - 10.3.5-1

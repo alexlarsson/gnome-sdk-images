@@ -109,7 +109,7 @@ Requires: pulseaudio-libs-devel
 Requires: libsecret-devel
 Requires: webkitgtk4-devel
 Requires: libxkbcommon-devel libxkbcommon-x11-devel
-Requires: libwayland-client-devel libwayland-cursor-devel
+Requires: libwayland-client-devel libwayland-cursor-devel libwayland-egl-devel
 
 %description
 Meta package for Gnome SDK dependencies
