@@ -182,7 +182,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 # We moved everything into a GL subdir to allow easy override
 # Need to set up symlinks and otherwise clean this up a bit
 mv -f $RPM_BUILD_ROOT%{_libdir}/GL/pkgconfig $RPM_BUILD_ROOT%{_libdir}
-for I in libEGL.so.1 libGLESv2.so.2 libGL.so.1; do \
+for I in libEGL.so.1 libGLESv2.so.2 libGL.so.1 libwayland-egl.so.1; do \
     ln -s GL/$I $RPM_BUILD_ROOT%{_libdir}/$I; \
     B=`echo $I | sed "s/\\.[0-9]$//"`; \
     ln -s $I $RPM_BUILD_ROOT%{_libdir}/$B; \
@@ -329,7 +329,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc docs/COPYING
 %{_libdir}/libwayland-egl.so.1
-%{_libdir}/libwayland-egl.so.1.*
+%{_libdir}/GL/libwayland-egl.so.1
+%{_libdir}/GL/libwayland-egl.so.1.*
 
 %files libwayland-egl-devel
 %defattr(-,root,root,-)
