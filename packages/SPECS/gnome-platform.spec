@@ -34,6 +34,7 @@ Requires: zenity
 Requires: libXt
 Requires: mesa-libGL
 Requires: mesa-libEGL
+Requires: mesa-libwayland-egl
 Requires: mesa-dri-drivers
 Requires: libepoxy
 Requires: clutter
@@ -41,6 +42,9 @@ Requires: clutter-gtk
 Requires: pulseaudio-libs-glib2
 Requires: libsecret
 Requires: webkitgtk4
+Requires: xkeyboard-config
+Requires: libxkbcommon libxkbcommon-x11 libwayland-cursor
+
 
 %description
 Meta package for Gnome SDK dependencies
