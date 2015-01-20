@@ -115,5 +115,28 @@ commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 commit: commit-sdk commit-platform
 
 
+release-commit-platform: release/repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-platform.tar.gz -C commit
+	ostree commit --repo=release/repo --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-platform-rpmdb.tar.gz -C commit
+	ostree commit --repo=release/repo --branch=runtime/org.gnome.Platform.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+
+release-commit-sdk: release/repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-sdk.tar.gz -C commit
+	ostree commit --repo=release/repo --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	rm -rf commit
+	mkdir -p commit
+	tar xf gnome-sdk-rpmdb.tar.gz -C commit
+	ostree commit --repo=release/repo --branch=runtime/org.gnome.Sdk.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+
+release-commit: release-commit-sdk release-commit-platform
+
+
 
 -include rpm-dependencies.P
