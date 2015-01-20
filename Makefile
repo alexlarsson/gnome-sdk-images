@@ -92,26 +92,25 @@ gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOA
 repository:
 	ostree  init --mode=archive-z2 --repo=repository
 
-#TODO: Add --owner-uid=0 --owner-gid=0
 commit-platform: repository gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-platform.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "commit" commit
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-platform-rpmdb.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.Platform.Var/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Platform.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "commit" commit
 
 commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-sdk.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "commit" commit
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-sdk-rpmdb.tar.gz -C commit
-	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk.Var/$(ARCH)/$(VERSION) --disable-fsync --no-xattrs -s "commit" commit
+	ostree commit --repo=repository --branch=runtime/org.gnome.Sdk.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "commit" commit
 
 commit: commit-sdk commit-platform
 
