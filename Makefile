@@ -120,20 +120,27 @@ release-commit-platform: release/repo gnome-platform.tar.gz  gnome-platform-rpmd
 	mkdir -p commit
 	tar xf gnome-platform.tar.gz -C commit
 	ostree commit --repo=release/repo --branch=runtime/org.gnome.Platform/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	ostree static-delta generate --repo=release/repo --min-fallback-size 1 --empty runtime/org.gnome.Platform/x86_64/3.16
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-platform-rpmdb.tar.gz -C commit
 	ostree commit --repo=release/repo --branch=runtime/org.gnome.Platform.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	ostree static-delta generate --repo=release/repo --min-fallback-size 1 --empty runtime/org.gnome.Platform.Var/x86_64/3.16
+	ostree summary -u --repo=release/repo
 
 release-commit-sdk: release/repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-sdk.tar.gz -C commit
 	ostree commit --repo=release/repo --branch=runtime/org.gnome.Sdk/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	ostree static-delta generate --repo=release/repo --min-fallback-size 1 --empty runtime/org.gnome.Sdk/x86_64/3.16
 	rm -rf commit
 	mkdir -p commit
 	tar xf gnome-sdk-rpmdb.tar.gz -C commit
 	ostree commit --repo=release/repo --branch=runtime/org.gnome.Sdk.Var/$(ARCH)/$(VERSION) --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" commit
+	ostree static-delta generate --repo=release/repo --min-fallback-size 1 --empty runtime/org.gnome.Sdk.Var/x86_64/3.16
+	ostree summary -u --repo=release/repo
+
 
 release-commit: release-commit-sdk release-commit-platform
 
