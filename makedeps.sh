@@ -6,7 +6,7 @@ mkdir -p /tmp/dep
 # Generate mapping package name => package name + full version + arch
 for spec in $SPECS; do
    export spec
-   bash -c "`rpmspec -q $spec --qf 'echo packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}.rpm > /tmp/dep/%{NAME}.pkg;'`";
+   bash -c "`rpmspec -q $spec --qf 'echo packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.sdk.%{ARCH}.rpm > /tmp/dep/%{NAME}.pkg;'`";
 done
 
 ALL_SOURCES=
@@ -21,7 +21,7 @@ for spec in $SPECS; do
     done
     ALL_SOURCES="$ALL_SOURCES $SPEC_SOURCES";
 
-    PACKAGES=`rpmspec -q ${spec} --qf 'packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}.rpm '`
+    PACKAGES=`rpmspec -q ${spec} --qf 'packages/RPMS/%{ARCH}/%{NAME}-%{VERSION}-%{RELEASE}.sdk.%{ARCH}.rpm '`
     BUILDREQS=`rpmspec -q ${spec} --buildrequires`
     BRS=""
     for br in $BUILDREQS; do

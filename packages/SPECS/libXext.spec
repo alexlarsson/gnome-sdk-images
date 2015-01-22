@@ -1,7 +1,7 @@
 Summary: X.Org X11 libXext runtime library
 Name: libXext
 Version: 1.3.3
-Release: 1
+Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
 URL: http://www.x.org

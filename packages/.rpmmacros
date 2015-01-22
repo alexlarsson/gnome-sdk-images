@@ -3,6 +3,7 @@
 %_buildrootdir		%{_topdir}/BUILDROOT
 %_builddir		%{_topdir}/BUILD_XXXXX
 
+%dist .sdk
 
 %_enable_debug_packages 1
 
