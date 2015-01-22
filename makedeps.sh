@@ -37,6 +37,14 @@ for spec in $SPECS; do
     echo
     echo "`basename ${spec} .spec`: $PACKAGES"
     echo
+    echo "only-`basename ${spec} .spec`: "
+    echo "	-echo Building only $spec"
+    echo "	./setup.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz"
+    if [ "x${BRS}" != "x" ]; then
+        echo "	./build.sh smart install -y $BRS"
+    fi
+    echo "	./build.sh rpmbuild -ba $spec"
+    echo
 done
 
 echo -e "sources: $ALL_SOURCES"
