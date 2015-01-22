@@ -9,13 +9,13 @@
 
 Summary: Mesa graphics libraries
 Name: mesa
-Version: 10.3.5
+Version: 10.4.2
 Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
 URL: http://www.mesa3d.org
 
-Source0: ftp://ftp.freedesktop.org/pub/mesa/10.3.5/MesaLib-%{version}.tar.bz2
+Source0: ftp://ftp.freedesktop.org/pub/mesa/%{version}/MesaLib-%{version}.tar.bz2
 
 Patch1: mesa-no-typeid.patch
 
@@ -30,6 +30,7 @@ BuildRequires: libXi-devel
 BuildRequires: libxshmfence-devel
 BuildRequires: libwayland-client-devel
 BuildRequires: libwayland-server-devel
+BuildRequires: llvm-devel
 
 %description
 Mesa
@@ -156,7 +157,6 @@ export CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
     --enable-egl \
     --disable-gles1 \
     --enable-gles2 \
-    --enable-gallium-egl \
     --disable-xvmc \
     --with-egl-platforms=x11,drm,wayland \
     --enable-shared-glapi \
@@ -168,10 +168,9 @@ export CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
     --enable-llvm-shared-libs \
     --enable-dri \
     --enable-sysfs \
-    --with-gallium-drivers=svga,swrast,nouveau \
+    --with-gallium-drivers=svga,swrast,nouveau,r600,r300,radeonsi \
     --with-dri-drivers=%{?base_drivers}%{?platform_drivers}
 
-#removed gallium drivers:    ,r600,r300,radeonsi
 make %{?_smp_mflags} MKDEP=/bin/true
 
 %install
@@ -232,8 +231,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libEGL.so.1
 %{_libdir}/GL/libEGL.so.1
 %{_libdir}/GL/libEGL.so.1.*
-%dir %{_libdir}/GL/egl
-%{_libdir}/GL/egl/egl_gallium.so
 
 %files libGLES
 %defattr(-,root,root,-)
@@ -268,6 +265,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/dri/vmwgfx_dri.so
 %{_libdir}/GL/dri/kms_swrast_dri.so
 %{_libdir}/GL/dri/swrast_dri.so
+%{_libdir}/GL/dri/r300_dri.so
+%{_libdir}/GL/dri/r600_dri.so
+%{_libdir}/GL/dri/radeonsi_dri.so
 
 %files libGL-devel
 %defattr(-,root,root,-)
@@ -316,8 +316,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/COPYING
 %{_libdir}/GL/libgbm.so.1
 %{_libdir}/GL/libgbm.so.1.*
-%dir %{_libdir}/GL/gbm
-%{_libdir}/GL/gbm/gbm_gallium_drm.so
 
 %files libgbm-devel
 %defattr(-,root,root,-)
