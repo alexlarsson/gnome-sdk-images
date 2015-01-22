@@ -80,6 +80,8 @@ Requires: libwayland-client-devel libwayland-cursor-devel mesa-libwayland-egl-de
 Requires: xkeyboard-config-devel
 Requires: hunspell-devel
 Requires: enchant-devel
+Requires: gstreamer1-devel
+
 
 %description
 Meta package for Gnome SDK dependencies
