@@ -1,5 +1,5 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
-%global api_ver 0.26
+%global api_ver 0.28
 
 Name:           vala
 Version:        0.27.1
