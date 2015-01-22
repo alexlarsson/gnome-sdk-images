@@ -7,7 +7,6 @@
 
 Summary: D-BUS message bus
 Name: dbus
-Epoch: 1
 Version: 1.8.14
 Release: 1%{?dist}
 URL: http://www.freedesktop.org/software/dbus/
@@ -18,7 +17,7 @@ Group: System Environment/Libraries
 
 BuildRequires: gnome-sdk-base
 BuildRequires: libX11-devel
-Requires: dbus-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires: dbus-libs%{?_isa} = %{version}-%{release}
 
 %description
 D-BUS is a system for sending messages between applications. It is
@@ -35,7 +34,7 @@ This package contains lowlevel libraries for accessing D-BUS.
 %package doc
 Summary: Developer documentation for D-BUS
 Group: Documentation
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 BuildArch: noarch
 
 %description doc
@@ -45,7 +44,7 @@ other supporting documentation such as the introspect dtd file.
 %package devel
 Summary: Development files for D-BUS
 Group: Development/Libraries
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 
 %description devel
 This package contains libraries and header files needed for
@@ -54,7 +53,7 @@ developing software that uses D-BUS.
 %package x11
 Summary: X11-requiring add-ons for D-BUS
 Group: Development/Libraries
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 
 %description x11
 D-BUS contains some tools that require Xlib to be installed, those are
