@@ -78,6 +78,8 @@ Requires: webkitgtk4-devel
 Requires: libxkbcommon-devel libxkbcommon-x11-devel
 Requires: libwayland-client-devel libwayland-cursor-devel mesa-libwayland-egl-devel
 Requires: xkeyboard-config-devel
+Requires: hunspell-devel
+Requires: enchant-devel
 
 %description
 Meta package for Gnome SDK dependencies

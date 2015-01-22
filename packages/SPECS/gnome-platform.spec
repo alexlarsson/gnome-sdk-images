@@ -37,6 +37,7 @@ BuildRequires: dconf-devel
 BuildRequires: libsecret-devel
 BuildRequires: webkitgtk4-devel
 BuildRequires: xkeyboard-config-devel
+BuildRequires: enchant-devel
 
 Requires: gnome-platform-base
 Requires: gtk2 gtk2-immodules
@@ -73,6 +74,7 @@ Requires: libsecret
 Requires: webkitgtk4
 Requires: xkeyboard-config
 Requires: libxkbcommon libxkbcommon-x11 libwayland-cursor
+Requires: enchant
 
 
 %description
