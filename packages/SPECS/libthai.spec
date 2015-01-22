@@ -6,7 +6,6 @@ License: LGPLv2+
 Group: System Environment/Libraries
 Source: ftp://linux.thai.net/pub/thailinux/software/libthai/libthai-%{version}.tar.xz
 URL: http://linux.thai.net
-BuildRoot: %{_tmppath}/%{name}-%{version}-root-%(%{__id_u} -n)
 
 BuildRequires: gnome-sdk-base
 BuildRequires: libdatrie-devel

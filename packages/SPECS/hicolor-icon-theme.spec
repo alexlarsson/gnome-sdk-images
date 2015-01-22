@@ -6,7 +6,6 @@ License: GPL+
 Group: User Interface/Desktops
 URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
 Source: http://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.xz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 
 BuildRequires: gnome-sdk-base
