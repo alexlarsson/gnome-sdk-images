@@ -9,6 +9,7 @@ URL: http://www.abisource.com/
 BuildRequires: gnome-sdk-base
 BuildRequires: glib2-devel
 BuildRequires: hunspell-devel
+BuildRequires: hunspell-en
 
 %description
 A library that wraps other spell checking backends.
