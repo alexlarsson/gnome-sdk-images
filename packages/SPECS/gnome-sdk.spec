@@ -8,48 +8,18 @@ License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
-BuildRequires: gnome-sdk-base
-BuildRequires: gtk2
-BuildRequires: gtk3 gtk3-immodules
-BuildRequires: hicolor-icon-theme
-BuildRequires: adwaita-icon-theme
-BuildRequires: gnome-themes-standard
-BuildRequires: dejavu-fonts
-BuildRequires: abattis-cantarell-fonts
-BuildRequires: dbus-libs
-BuildRequires: librsvg2
-BuildRequires: dbus-glib
-BuildRequires: gobject-introspection
-BuildRequires: libsoup
-BuildRequires: gvfs
-BuildRequires: desktop-file-utils
-BuildRequires: json-glib
-BuildRequires: libnotify-devel
-BuildRequires: vte-devel
-BuildRequires: gjs-devel
-BuildRequires: zenity
-BuildRequires: mesa-libGL
-BuildRequires: libICE-devel
-BuildRequires: libXxf86vm-devel
-BuildRequires: libepoxy-devel
-BuildRequires: clutter-gtk-devel
-BuildRequires: pulseaudio-libs-devel
-BuildRequires: dconf-devel
-BuildRequires: libsecret-devel
-BuildRequires: webkitgtk4-devel
-BuildRequires: xkeyboard-config-devel
+BuildRequires: gnome-platform
 
-Requires: gtk2-devel gtk2-immodules
-Requires: gtk3-devel gtk3-immodules
+Requires: gnome-platform
+Requires: gtk2-devel
+Requires: gtk3-devel
 Requires: desktop-file-utils
 Requires: json-glib-devel
 Requires: libnotify-devel
 Requires: gvfs-devel
 Requires: vte-devel
 Requires: librsvg2-devel
-Requires: hicolor-icon-theme
 Requires: adwaita-icon-theme-devel
-Requires: gnome-themes-standard
 Requires: gtk-doc-stub
 Requires: atk-devel
 Requires: at-spi2-atk-devel
@@ -89,17 +59,13 @@ Requires: pango-devel
 Requires: pixman-devel
 Requires: vala-devel
 Requires: vala-tools
-Requires: dejavu-fonts
-Requires: abattis-cantarell-fonts
 Requires: dconf-devel
 Requires: libsoup-devel
 Requires: libproxy-devel
 Requires: gsettings-desktop-schemas-devel
 Requires: gjs-devel mozjs24-devel
-Requires: zenity
 Requires: mesa-libGL-devel
 Requires: mesa-libEGL-devel
-Requires: mesa-dri-drivers
 Requires: libICE-devel
 Requires: libXxf86vm-devel
 Requires: libepoxy-devel
@@ -124,18 +90,14 @@ Meta package for Gnome SDK dependencies
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rpm/
 install -m 0644 -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rpm/macros
-
-# Need empty machine-id to bind mount over
-touch $RPM_BUILD_ROOT%{_sysconfdir}/machine-id
 
 %files
 %doc
 %{_sysconfdir}/rpm/macros
-%{_sysconfdir}/machine-id
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com>
 - Initial version
-

@@ -7,7 +7,36 @@ License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
-BuildRequires: gnome-sdk
+BuildRequires: gnome-sdk-base
+BuildRequires: gtk2
+BuildRequires: gtk3 gtk3-immodules
+BuildRequires: hicolor-icon-theme
+BuildRequires: adwaita-icon-theme
+BuildRequires: gnome-themes-standard
+BuildRequires: dejavu-fonts
+BuildRequires: abattis-cantarell-fonts
+BuildRequires: dbus-libs
+BuildRequires: librsvg2
+BuildRequires: dbus-glib
+BuildRequires: gobject-introspection
+BuildRequires: libsoup
+BuildRequires: gvfs
+BuildRequires: desktop-file-utils
+BuildRequires: json-glib
+BuildRequires: libnotify-devel
+BuildRequires: vte-devel
+BuildRequires: gjs-devel
+BuildRequires: zenity
+BuildRequires: mesa-libGL
+BuildRequires: libICE-devel
+BuildRequires: libXxf86vm-devel
+BuildRequires: libepoxy-devel
+BuildRequires: clutter-gtk-devel
+BuildRequires: pulseaudio-libs-devel
+BuildRequires: dconf-devel
+BuildRequires: libsecret-devel
+BuildRequires: webkitgtk4-devel
+BuildRequires: xkeyboard-config-devel
 
 Requires: gnome-platform-base
 Requires: gtk2 gtk2-immodules
