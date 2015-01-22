@@ -17,6 +17,8 @@
 
 %_enable_debug_packages 1
 
+%dist .sdk
+
 %__os_install_post    \
     /usr/lib/rpm/brp-compress \
     %{!?__debug_package:\
