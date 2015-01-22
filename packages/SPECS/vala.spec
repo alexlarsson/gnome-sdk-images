@@ -2,7 +2,7 @@
 %global api_ver 0.26
 
 Name:           vala
-Version:        0.26.1
+Version:        0.27.1
 Release:        1%{?dist}
 Summary:        A modern programming language for GNOME
 

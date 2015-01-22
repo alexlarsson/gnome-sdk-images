@@ -6,7 +6,7 @@
         cp -p %1 _license_files/$(echo '%1' | sed -e 's!/!.!g')
 
 Name:           webkitgtk4
-Version:        2.7.3
+Version:        2.7.4
 Release:        1%{?dist}
 Summary:        GTK+ Web content engine library
 
@@ -16,7 +16,7 @@ Source0:        http://webkitgtk.org/releases/webkitgtk-%{version}.tar.xz
 
 BuildRequires:  at-spi2-core-devel
 BuildRequires:  cairo-devel
-#BuildRequires:  enchant-devel
+BuildRequires:  enchant-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
 #BuildRequires:  geoclue2-devel
@@ -31,7 +31,6 @@ BuildRequires:  harfbuzz-devel
 #BuildRequires:  libicu-devel
 BuildRequires:  libsecret-devel
 BuildRequires:  libsoup-devel
-#BuildRequires:  libwebp-devel
 BuildRequires:  libXt-devel
 BuildRequires:  mesa-libGL-devel
 #Requires:       geoclue2
@@ -82,7 +81,6 @@ CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_GTKDOC=OFF \
         \
-        -DENABLE_SPELLCHECK=OFF \
         -DENABLE_VIDEO=OFF \
         -DENABLE_WEB_AUDIO=OFF \
   ..

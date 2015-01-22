@@ -8,7 +8,7 @@
 Summary: D-BUS message bus
 Name: dbus
 Epoch: 1
-Version: 1.8.6
+Version: 1.8.14
 Release: 1%{?dist}
 URL: http://www.freedesktop.org/software/dbus/
 #VCS: git:git://git.freedesktop.org/git/dbus/dbus
