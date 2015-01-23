@@ -111,7 +111,6 @@ release-commit-sdk: release/repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 
 
 release-commit: release-commit-sdk release-commit-platform
-
-
+	echo done
 
 -include rpm-dependencies.P
