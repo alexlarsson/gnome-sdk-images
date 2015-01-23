@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          clutter
-Version:       1.21.2
+Version:       1.21.4
 Release:       1%{?dist}
 Summary:       Open Source software library for creating rich graphical user interfaces
 
@@ -68,9 +68,6 @@ make install DESTDIR=%{buildroot} INSTALL='install -p'
 find %{buildroot} -name '*.la' -delete
 
 %find_lang clutter-1.0
-
-%check
-make check %{?_smp_mflags} V=1
 
 %post -p /sbin/ldconfig
 
