@@ -101,7 +101,7 @@ commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	./commit.sh repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz metadata.sdk org.gnome.Sdk $(ARCH) $(VERSION)
 
 commit: commit-sdk commit-platform
-
+	echo done
 
 release-commit-platform: release/repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
 	./commit.sh release/repo gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz metadata.platform org.gnome.Platform $(ARCH) $(VERSION)
