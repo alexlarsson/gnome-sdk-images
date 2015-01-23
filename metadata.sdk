@@ -1,0 +1,13 @@
+[Runtime]
+runtime=org.gnome.Platform/x86_64/3.16
+sdk=org.gnome.Sdk/x86_64/3.16
+
+[Extension org.gnome.Sdk.GL]
+directory=lib/GL
+
+[Extension org.gnome.Platform.Timezones]
+directory=share/zoneinfo
+
+[Extension org.gnome.Sdk.Locale]
+directory=share/gnome-sdk/locale
+subdirectories=true
