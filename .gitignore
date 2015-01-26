@@ -1,5 +1,7 @@
 gnome-sdk-helper
 rpm-dependencies.P
+packages/SOURCES/*.tgz
+packages/SOURCES/*.tar.gz
 packages/SOURCES/*.tar.xz
 packages/SOURCES/*.tar.bz2
 gnome-continuous-yocto
@@ -7,6 +9,7 @@ yocto-build
 root
 var
 packages/BUILD/
+packages/BUILD_XXXXX/
 packages/RPMS/
 packages/SRPMS/
 packages/rpmdb/
@@ -17,4 +20,9 @@ gnome-sdk.tar.xz
 gnome-sdk-rpmdb.tar.xz
 gnome-platform.tar.xz
 gnome-platform-rpmdb.tar.xz
+gnome-sdk.tar.gz
+gnome-sdk-rpmdb.tar.gz
+gnome-platform.tar.gz
+gnome-platform-rpmdb.tar.gz
 gnome-platform-packages
+*~
