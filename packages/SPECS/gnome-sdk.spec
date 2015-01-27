@@ -55,6 +55,7 @@ Requires: libXrandr-devel
 Requires: libXrender-devel
 Requires: libXtst-devel
 Requires: libXt-devel
+Requires: libXv-devel
 Requires: pango-devel
 Requires: pixman-devel
 Requires: vala-devel

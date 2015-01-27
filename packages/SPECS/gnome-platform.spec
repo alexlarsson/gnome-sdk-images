@@ -63,6 +63,7 @@ Requires: vte
 Requires: gjs
 Requires: zenity
 Requires: libXt
+Requires: libXv
 Requires: mesa-libGL
 Requires: mesa-libEGL
 Requires: mesa-libwayland-egl
