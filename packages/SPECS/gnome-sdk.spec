@@ -78,6 +78,7 @@ Requires: webkitgtk4-devel
 Requires: libxkbcommon-devel libxkbcommon-x11-devel
 Requires: libwayland-client-devel libwayland-cursor-devel mesa-libwayland-egl-devel
 Requires: xkeyboard-config-devel
+Requires: xorg-x11-util-macros
 Requires: hunspell-devel
 Requires: enchant-devel
 Requires: gstreamer1-devel
