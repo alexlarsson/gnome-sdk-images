@@ -10,7 +10,7 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
+BuildRequires: xorg-x11-proto-dev
 
 %description
 This is a very simple mechanism for providing individual access to an X Window
@@ -19,14 +19,14 @@ authorization data in the connection setup block to restrict use of the display
 to only those clients that show that they know a server-specific key 
 called a "magic cookie".
 
-%package devel
+%package dev
 Summary: Development files for %{name}
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
-Requires: xorg-x11-proto-devel
-BuildRequires: xorg-x11-proto-devel
+Requires: xorg-x11-proto-dev
+BuildRequires: xorg-x11-proto-dev
 
-%description devel
+%description dev
 X.Org X11 libXau development package
 
 %prep
@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXau.so.6
 %{_libdir}/libXau.so.6.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/Xauth.h
 %{_libdir}/libXau.so

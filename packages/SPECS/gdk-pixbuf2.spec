@@ -12,12 +12,12 @@ URL:            http://www.gt.org
 Source0:        http://download.gnome.org/sources/gdk-pixbuf/%{release_version}/gdk-pixbuf-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  glib2-devel
-BuildRequires:  libX11-devel
-BuildRequires:  gobject-introspection-devel
+BuildRequires:  glib2-dev
+BuildRequires:  libX11-dev
+BuildRequires:  gobject-introspection-dev
 # gdk-pixbuf does a configure time check which uses the GIO mime
 # layer; we need to actually have the mime type database.
-BuildRequires:  shared-mime-info-devel
+BuildRequires:  shared-mime-info-dev
 
 Requires: glib2%{?_isa} >= %{glib2_version}
 
@@ -29,13 +29,13 @@ gdk-pixbuf is an image loading library that can be extended by loadable
 modules for new image formats. It is used by toolkits such as GTK+ or
 clutter.
 
-%package devel
+%package dev
 Summary: Development files for gdk-pixbuf
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
-Requires: glib2-devel%{?_isa}
+Requires: glib2-dev%{?_isa}
 
-%description devel
+%description dev
 This package contains the libraries and header files that are needed
 for writing applications that are using gdk-pixbuf.
 
@@ -102,7 +102,7 @@ fi
 %{_bindir}/gdk-pixbuf-query-loaders-%{__isa_bits}
 %{_mandir}/man1/gdk-pixbuf-query-loaders.1*
 
-%files devel
+%files dev
 %{_includedir}/gdk-pixbuf-2.0
 %{_libdir}/libgdk_pixbuf-2.0.so
 %{_libdir}/libgdk_pixbuf_xlib-2.0.so

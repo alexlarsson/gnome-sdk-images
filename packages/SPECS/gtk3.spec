@@ -14,35 +14,35 @@ Source: http://download.gnome.org/sources/gtk+/%{release_version}/gtk+-%{version
 
 BuildRequires: gnome-sdk-base
 BuildRequires: gnome-common
-BuildRequires: atk-devel
-BuildRequires: at-spi2-atk-devel
-BuildRequires: glib2-devel
-BuildRequires: cairo-devel
-BuildRequires: cairo-gobject-devel
-BuildRequires: pango-devel
-BuildRequires: gdk-pixbuf2-devel
-BuildRequires: libXi-devel
-#BuildRequires: cups-devel
-#BuildRequires: rest-devel
-#BuildRequires: json-glib-devel
-BuildRequires: libXrandr-devel
-BuildRequires: libXrender-devel
-BuildRequires: libXcursor-devel
-BuildRequires: libXfixes-devel
-BuildRequires: libXinerama-devel
-BuildRequires: libXcomposite-devel
-BuildRequires: libXdamage-devel
-BuildRequires: libXi-devel
-BuildRequires: gobject-introspection-devel
-BuildRequires: mesa-libGL-devel
-BuildRequires: mesa-libEGL-devel
-BuildRequires: libepoxy-devel
-#BuildRequires: colord-devel
-#BuildRequires: avahi-gobject-devel
-BuildRequires: mesa-libwayland-egl-devel
-BuildRequires: libwayland-client-devel
-BuildRequires: libwayland-cursor-devel
-BuildRequires: libxkbcommon-devel
+BuildRequires: atk-dev
+BuildRequires: at-spi2-atk-dev
+BuildRequires: glib2-dev
+BuildRequires: cairo-dev
+BuildRequires: cairo-gobject-dev
+BuildRequires: pango-dev
+BuildRequires: gdk-pixbuf2-dev
+BuildRequires: libXi-dev
+#BuildRequires: cups-dev
+#BuildRequires: rest-dev
+#BuildRequires: json-glib-dev
+BuildRequires: libXrandr-dev
+BuildRequires: libXrender-dev
+BuildRequires: libXcursor-dev
+BuildRequires: libXfixes-dev
+BuildRequires: libXinerama-dev
+BuildRequires: libXcomposite-dev
+BuildRequires: libXdamage-dev
+BuildRequires: libXi-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: mesa-libGL-dev
+BuildRequires: mesa-libEGL-dev
+BuildRequires: libepoxy-dev
+#BuildRequires: colord-dev
+#BuildRequires: avahi-gobject-dev
+BuildRequires: mesa-libwayland-egl-dev
+BuildRequires: libwayland-client-dev
+BuildRequires: libwayland-cursor-dev
+BuildRequires: libxkbcommon-dev
 
 # required for icon theme apis to work
 Requires: hicolor-icon-theme
@@ -84,23 +84,23 @@ Requires: gtk3%{?_isa} = %{version}-%{release}
 %description immodule-xim
 The gtk3-immodule-xim package contains XIM support for GTK+ 3.
 
-%package devel
+%package dev
 Summary: Development files for GTK+
 Group: Development/Libraries
 Requires: gtk3%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package contains the libraries and header files that are needed
 for writing applications with version 3 of the GTK+ widget toolkit. If
 you plan to develop applications with GTK+, consider installing the
-gtk3-devel-docs package.
+gtk3-dev-docs package.
 
-%package devel-docs
+%package dev-docs
 Summary: Developer documentation for GTK+
 Group: Development/Libraries
 Requires: gtk3 = %{version}-%{release}
 
-%description devel-docs
+%description dev-docs
 This package contains developer documentation for version 3 of the GTK+
 widget toolkit.
 
@@ -157,7 +157,7 @@ mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-3.0/%{bin_version}/theming-engines
 gtk-query-immodules-3.0-%{__isa_bits} --update-cache
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
-%post devel
+%post dev
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %post immodules
@@ -173,7 +173,7 @@ if [ $1 -gt 0 ]; then
 fi
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
-%postun devel
+%postun dev
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %postun immodules
@@ -230,7 +230,7 @@ gtk-query-immodules-3.0-%{__isa_bits} --update-cache
 %files immodule-xim
 %{_libdir}/gtk-3.0/%{bin_version}/immodules/im-xim.so
 
-%files devel -f gtk30-properties.lang
+%files dev -f gtk30-properties.lang
 %{_libdir}/lib*.so
 %{_includedir}/*
 %{_datadir}/aclocal/*
@@ -256,7 +256,7 @@ gtk-query-immodules-3.0-%{__isa_bits} --update-cache
 %{_mandir}/man1/gtk3-demo-application.1*
 %{_mandir}/man1/gtk-encode-symbolic-svg.1*
 
-%files devel-docs
+%files dev-docs
 %{_datadir}/gtk-doc
 
 %changelog

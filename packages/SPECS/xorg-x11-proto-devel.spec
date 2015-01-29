@@ -5,7 +5,7 @@
 %define debug_package %{nil}
 
 Summary: X.Org X11 Protocol headers
-Name: xorg-x11-proto-devel
+Name: xorg-x11-proto-dev
 Version: 7.7
 Release: 1%{?dist}
 License: MIT
@@ -50,8 +50,8 @@ BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
 
 %if ! %{build_bootstrap}
-Requires: mesa-libGL-devel
-Requires: libXau-devel
+Requires: mesa-libGL-dev
+Requires: libXau-dev
 %endif
 
 %description

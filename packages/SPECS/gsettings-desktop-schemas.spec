@@ -14,8 +14,8 @@ URL:            http://bugzilla.gnome.org/enter_bug.cgi?product=gsettings-deskto
 Source:         http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
 
 Requires: glib2
 
@@ -23,13 +23,13 @@ Requires: glib2
 gsettings-desktop-schemas contains a collection of GSettings schemas for
 settings shared by various components of a desktop.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries
+%description    dev
+The %{name}-dev package contains libraries
 and header files for developing applications that use %{name}.
 
 
@@ -62,7 +62,7 @@ fi
 %{_datadir}/GConf/gsettings/wm-schemas.convert
 %{_libdir}/girepository-1.0/GDesktopEnums-3.0.typelib
 
-%files devel
+%files dev
 %doc HACKING
 %{_includedir}/*
 %{_datadir}/pkgconfig/*

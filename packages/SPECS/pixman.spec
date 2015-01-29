@@ -14,12 +14,12 @@ BuildRequires:  gnome-sdk-base
 %description
 Pixman is a pixel manipulation library for X and cairo.
 
-%package devel
+%package dev
 Summary: Pixel manipulation library development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 Development library for pixman.
 
 %prep
@@ -52,7 +52,7 @@ make check %{?_smp_mflags} V=1 ||:
 %doc COPYING
 %{_libdir}/libpixman-1*.so.*
 
-%files devel
+%files dev
 %dir %{_includedir}/pixman-1
 %{_includedir}/pixman-1/pixman.h
 %{_includedir}/pixman-1/pixman-version.h

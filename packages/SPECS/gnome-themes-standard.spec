@@ -12,9 +12,9 @@ Source0: http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{
 Source2: gtkrc
 
 BuildRequires: gnome-sdk-base
-BuildRequires: gtk2-devel
-BuildRequires: gtk3-devel
-BuildRequires: librsvg2-devel
+BuildRequires: gtk2-dev
+BuildRequires: gtk3-dev
+BuildRequires: librsvg2-dev
 Requires: abattis-cantarell-fonts
 Requires: adwaita-gtk2-theme = %{version}-%{release}
 Requires: adwaita-icon-theme

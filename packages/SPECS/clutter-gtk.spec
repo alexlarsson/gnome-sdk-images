@@ -13,21 +13,21 @@ URL:            http://www.clutter-project.org
 Source0:        http://download.gnome.org/sources/clutter-gtk/%{release_version}/clutter-gtk-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: gtk3-devel
-BuildRequires: clutter-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: gtk3-dev
+BuildRequires: clutter-dev
+BuildRequires: gobject-introspection-dev
 
 %description
 clutter-gtk is a library which allows the embedding of a Clutter
 canvas (or "stage") into a GTK+ application, as well as embedding
 GTK+ widgets inside the stage.
 
-%package devel
+%package dev
 Summary:        Clutter-gtk development environment
 Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Header files and libraries for building a extension library for the
 clutter-gtk.
 
@@ -61,7 +61,7 @@ make check %{?_smp_mflags} V=1
 %{_libdir}/*.so.*
 %{_libdir}/girepository-1.0/GtkClutter-%{clutter_version}.typelib
 
-%files devel
+%files dev
 %{_includedir}/clutter-gtk-%{clutter_version}/
 %{_libdir}/pkgconfig/clutter-gtk-%{clutter_version}.pc
 %{_libdir}/*.so

@@ -11,13 +11,13 @@ URL:            http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
 Source0:        http://download.gnome.org/sources/at-spi2-core/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  dbus-devel
-BuildRequires:  dbus-glib-devel
-BuildRequires:  glib2-devel
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  libXtst-devel
-BuildRequires:  libXext-devel
-BuildRequires:  libXi-devel
+BuildRequires:  dbus-dev
+BuildRequires:  dbus-glib-dev
+BuildRequires:  glib2-dev
+BuildRequires:  gobject-introspection-dev
+BuildRequires:  libXtst-dev
+BuildRequires:  libXext-dev
+BuildRequires:  libXi-dev
 
 Requires:       dbus
 
@@ -31,13 +31,13 @@ This version of at-spi is a major break from previous versions.
 It has been completely rewritten to use D-Bus rather than
 ORBIT / CORBA for its transport protocol.
 
-%package devel
+%package dev
 Summary: Development files and headers for at-spi2-core
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
-The at-spi2-core-devel package includes the header files and
+%description dev
+The at-spi2-core-dev package includes the header files and
 API documentation for libatspi.
 
 %prep
@@ -71,7 +71,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/libatspi.la
 %{_datadir}/dbus-1/services/org.a11y.Bus.service
 
 
-%files devel
+%files dev
 %{_libdir}/libatspi.so
 %{_datadir}/gtk-doc/html/libatspi
 %{_datadir}/gir-1.0/Atspi-2.0.gir

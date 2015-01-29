@@ -9,7 +9,7 @@ URL:            http://sourceforge.net/projects/silgraphite/
 Source0:        http://downloads.sourceforge.net/silgraphite/graphite2-%{version}.tgz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: freetype-devel
+BuildRequires: freetype-dev
 
 %description
 Graphite2 is a project within SIL’s Non-Roman Script Initiative and Language
@@ -19,12 +19,12 @@ of displaying writing systems with various complex behaviors. With respect to
 the Text Encoding Model, Graphite handles the "Rendering" aspect of writing
 system implementation.
 
-%package devel
+%package dev
 Requires: %{name}%{?_isa} = %{version}-%{release}
 Summary: Files for developing with graphite2
 Group: Development/Libraries
 
-%description devel
+%description dev
 Includes and definitions for developing with graphite2.
 
 %prep
@@ -65,7 +65,7 @@ ctest
 %{_libdir}/libgraphite2.so.3
 %{_libdir}/libgraphite2.so.3.0.1
 
-%files devel
+%files dev
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/graphite2-release.cmake
 %{_datadir}/%{name}/graphite2.cmake

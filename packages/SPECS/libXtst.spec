@@ -12,21 +12,21 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXext-devel
-BuildRequires: libXi-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXext-dev
+BuildRequires: libXi-dev
 
 %description
 X.Org X11 libXtst runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXtst development package
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
-Requires: libXi-devel%{?_isa}
+Requires: libXi-dev%{?_isa}
 
-%description devel
+%description dev
 X.Org X11 libXtst development package
 
 %prep
@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXtst.so.6
 %{_libdir}/libXtst.so.6.1.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/XTest.h
 %{_includedir}/X11/extensions/record.h

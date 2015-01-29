@@ -10,19 +10,19 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: xorg-x11-xtrans-devel
-BuildRequires: libICE-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: xorg-x11-xtrans-dev
+BuildRequires: libICE-dev
 
 %description
 The X.Org X11 SM (Session Management) runtime library.
 
-%package devel
+%package dev
 Summary: X.Org X11 SM development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 The X.Org X11 SM (Session Management) development package.
 
 %prep
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libSM.so.6
 %{_libdir}/libSM.so.6.*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %dir %{_includedir}/X11/SM
 %{_includedir}/X11/SM/SM.h

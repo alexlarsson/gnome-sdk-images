@@ -6,19 +6,19 @@ License: MIT
 URL: http://github.com/anholt/libepoxy
 Source0: https://github.com/anholt/libepoxy/archive/v%{version}.tar.gz
 BuildRequires: gnome-sdk-base
-BuildRequires: mesa-libGL-devel
-BuildRequires: mesa-libEGL-devel
-BuildRequires: mesa-libGLES-devel
+BuildRequires: mesa-libGL-dev
+BuildRequires: mesa-libEGL-dev
+BuildRequires: mesa-libGLES-dev
 BuildRequires: xorg-x11-util-macros
 
 %description
 A library for handling OpenGL function pointer management.
 
-%package devel
+%package dev
 Summary: Development files for libepoxy
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -44,7 +44,7 @@ find $RPM_BUILD_ROOT -type f -name '*.la' -delete -print
 %{_libdir}/libepoxy.so.0
 %{_libdir}/libepoxy.so.0.0.0
 
-%files devel
+%files dev
 %dir %{_includedir}/epoxy/
 %{_includedir}/epoxy/*
 %{_libdir}/libepoxy.so

@@ -12,15 +12,15 @@ Source: http://download.gnome.org/sources/pango/%{release_version}/pango-%{versi
 URL: http://www.pango.org
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: freetype-devel
-BuildRequires: fontconfig-devel
-BuildRequires: libXft-devel
-BuildRequires: cairo-devel
-BuildRequires: libthai-devel
-BuildRequires: harfbuzz-devel
-BuildRequires: gobject-introspection-devel
-BuildRequires: cairo-gobject-devel
+BuildRequires: glib2-dev
+BuildRequires: freetype-dev
+BuildRequires: fontconfig-dev
+BuildRequires: libXft-dev
+BuildRequires: cairo-dev
+BuildRequires: libthai-dev
+BuildRequires: harfbuzz-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: cairo-gobject-dev
 
 Requires: glib2%{?_isa}
 Requires: freetype%{?_isa}
@@ -40,17 +40,17 @@ with different font backends.
 The integration of Pango with Cairo provides a complete solution with high
 quality text handling and graphics rendering.
 
-%package devel
+%package dev
 Summary: Development files for pango
 Group: Development/Libraries
 Requires: pango%{?_isa} = %{version}-%{release}
-Requires: glib2-devel%{?_isa}
-Requires: freetype-devel%{?_isa}
-Requires: fontconfig-devel%{?_isa}
-Requires: cairo-devel%{?_isa}
+Requires: glib2-dev%{?_isa}
+Requires: freetype-dev%{?_isa}
+Requires: fontconfig-dev%{?_isa}
+Requires: cairo-dev%{?_isa}
 
-%description devel
-The pango-devel package includes the header files and developer documentation
+%description dev
+The pango-dev package includes the header files and developer documentation
 for the pango package.
 
 %package tests
@@ -131,7 +131,7 @@ fi
 %{_libdir}/girepository-1.0/PangoXft-1.0.typelib
 
 
-%files devel
+%files dev
 %{_libdir}/libpango*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*

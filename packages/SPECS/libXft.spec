@@ -10,21 +10,21 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: libXrender-devel
-BuildRequires: freetype-devel
-BuildRequires: fontconfig-devel
+BuildRequires: libXrender-dev
+BuildRequires: freetype-dev
+BuildRequires: fontconfig-dev
 
 Requires: fontconfig
 
 %description
 X.Org X11 libXft runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXft development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXft development package
 
 %prep
@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING README ChangeLog
 %{_libdir}/libXft.so.2*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 #%{_bindir}/xft-config
 %dir %{_includedir}/X11/Xft

@@ -9,8 +9,8 @@ Source0:        http://xkbcommon.org/download/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
 BuildRequires:  xorg-x11-util-macros
-BuildRequires:  xorg-x11-proto-devel libX11-devel libxcb-devel
-BuildRequires:  xkeyboard-config-devel
+BuildRequires:  xorg-x11-proto-dev libX11-dev libxcb-dev
+BuildRequires:  xkeyboard-config-dev
 
 Requires:       xkeyboard-config
 
@@ -18,11 +18,11 @@ Requires:       xkeyboard-config
 %{name} is the X.Org library for compiling XKB maps into formats usable by
 the X Server or other display servers.
 
-%package devel
+%package dev
 Summary:        X.Org X11 XKB parsing development package
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 XKB parsing development package
 
 %package x11
@@ -33,11 +33,11 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %{name}-x11 is the X.Org library for creating keymaps by querying the X
 server.
 
-%package x11-devel
+%package x11-dev
 Summary:        X.Org X11 XKB keymap creation library
 Requires:       %{name}-x11%{?_isa} = %{version}-%{release}
 
-%description x11-devel
+%description x11-dev
 X.Org X11 XKB keymap creation library development package
 
 %prep
@@ -66,7 +66,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -fv {} ';'
 %{_libdir}/libxkbcommon.so.0.0.0
 %{_libdir}/libxkbcommon.so.0
 
-%files devel
+%files dev
 %{_libdir}/libxkbcommon.so
 %dir %{_includedir}/xkbcommon/
 %{_includedir}/xkbcommon/xkbcommon.h
@@ -83,7 +83,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -fv {} ';'
 %{_libdir}/libxkbcommon-x11.so.0.0.0
 %{_libdir}/libxkbcommon-x11.so.0
 
-%files x11-devel
+%files x11-dev
 %{_libdir}/libxkbcommon-x11.so
 %{_includedir}/xkbcommon/xkbcommon-x11.h
 %{_libdir}/pkgconfig/xkbcommon-x11.pc

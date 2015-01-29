@@ -11,20 +11,20 @@ Source0: http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.t
 Requires: libX11
 
 BuildRequires: gnome-sdk-base
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXau-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXau-dev
 BuildRequires: xorg-x11-util-macros
 
 %description
 X.Org X11 libXext runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXext development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXext development package
 
 %prep
@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXext.so.6
 %{_libdir}/libXext.so.6.4.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/MITMisc.h
 %{_includedir}/X11/extensions/XEVI.h

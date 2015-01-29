@@ -10,17 +10,17 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: libXext-devel libXau-devel
+BuildRequires: libXext-dev libXau-dev
 
 %description
 X.Org X11 libXpm runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXpm development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXpm development package
 
 %prep
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXpm.so.4
 %{_libdir}/libXpm.so.4.11.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_bindir}/cxpm
 %{_includedir}/X11/xpm.h

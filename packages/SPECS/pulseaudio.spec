@@ -10,15 +10,15 @@ URL:            http://www.freedesktop.org/wiki/Software/PulseAudio
 Source0:        http://freedesktop.org/software/pulseaudio/releases/pulseaudio-%{version}.tar.xz
 
 Requires: gnome-platform-base
-BuildRequires:  glib2-devel
-BuildRequires:  gtk2-devel
-BuildRequires:  xorg-x11-proto-devel
-BuildRequires:  libXtst-devel
-BuildRequires:  libXi-devel
-BuildRequires:  libSM-devel
-BuildRequires:  libX11-devel
-BuildRequires:  libICE-devel
-BuildRequires:  dbus-devel
+BuildRequires:  glib2-dev
+BuildRequires:  gtk2-dev
+BuildRequires:  xorg-x11-proto-dev
+BuildRequires:  libXtst-dev
+BuildRequires:  libXi-dev
+BuildRequires:  libSM-dev
+BuildRequires:  libX11-dev
+BuildRequires:  libICE-dev
+BuildRequires:  dbus-dev
 
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
@@ -45,12 +45,12 @@ Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 This package contains bindings to integrate the PulseAudio client library with
 a GLIB 2.x based application.
 
-%package libs-devel
+%package libs-dev
 Summary:        Headers and libraries for PulseAudio client development
 License:        LGPLv2+
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:       %{name}-libs-glib2%{?_isa} = %{version}-%{release}
-%description libs-devel
+%description libs-dev
 Headers and libraries for developing applications that can communicate with
 a PulseAudio sound server.
 
@@ -227,7 +227,7 @@ rm -fv $RPM_BUILD_ROOT%{_libdir}/*.la $RPM_BUILD_ROOT%{_libdir}/pulse-%{pa_major
 %files libs-glib2
 %{_libdir}/libpulse-mainloop-glib.so.0*
 
-%files libs-devel
+%files libs-dev
 %{_includedir}/pulse/
 %{_libdir}/libpulse.so
 %{_libdir}/libpulse-mainloop-glib.so

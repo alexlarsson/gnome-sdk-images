@@ -11,22 +11,22 @@ License: AFL and GPLv2+
 Group: System Environment/Libraries
 
 BuildRequires: gnome-sdk-base
-BuildRequires: dbus-devel
-BuildRequires: glib2-devel
+BuildRequires: dbus-dev
+BuildRequires: glib2-dev
 
 %description
 
 D-Bus add-on library to integrate the standard D-Bus library with
 the GLib thread abstraction and main loop.
 
-%package devel
+%package dev
 Summary: Libraries and headers for the D-Bus GLib bindings
 Group: Development/Libraries
 Requires: %name = %{version}-%{release}
-Requires: glib2-devel
-Requires: dbus-devel
+Requires: glib2-dev
+Requires: dbus-dev
 
-%description devel
+%description dev
 
 Headers and static libraries for the D-Bus GLib bindings
 
@@ -64,7 +64,7 @@ rm -rf %{buildroot}
 %{_libdir}/*glib*.so.*
 %{_bindir}/dbus-binding-tool
 
-%files devel
+%files dev
 %defattr(-,root,root)
 
 %{_libdir}/lib*.so

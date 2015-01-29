@@ -14,25 +14,25 @@ License:        LGPLv2
 URL:            http://www.webkitgtk.org/
 Source0:        http://webkitgtk.org/releases/webkitgtk-%{version}.tar.xz
 
-BuildRequires:  at-spi2-core-devel
-BuildRequires:  cairo-devel
-BuildRequires:  enchant-devel
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype-devel
-#BuildRequires:  geoclue2-devel
-BuildRequires:  glib2-devel
-BuildRequires:  gobject-introspection-devel
-#BuildRequires:  gstreamer1-devel
-#BuildRequires:  gstreamer1-plugins-base-devel
-BuildRequires:  gtk2-devel
-BuildRequires:  gtk3-devel
+BuildRequires:  at-spi2-core-dev
+BuildRequires:  cairo-dev
+BuildRequires:  enchant-dev
+BuildRequires:  fontconfig-dev
+BuildRequires:  freetype-dev
+#BuildRequires:  geoclue2-dev
+BuildRequires:  glib2-dev
+BuildRequires:  gobject-introspection-dev
+#BuildRequires:  gstreamer1-dev
+#BuildRequires:  gstreamer1-plugins-base-dev
+BuildRequires:  gtk2-dev
+BuildRequires:  gtk3-dev
 #BuildRequires:  gtk-doc
-BuildRequires:  harfbuzz-devel
-#BuildRequires:  libicu-devel
-BuildRequires:  libsecret-devel
-BuildRequires:  libsoup-devel
-BuildRequires:  libXt-devel
-BuildRequires:  mesa-libGL-devel
+BuildRequires:  harfbuzz-dev
+#BuildRequires:  libicu-dev
+BuildRequires:  libsecret-dev
+BuildRequires:  libsoup-dev
+BuildRequires:  libXt-dev
+BuildRequires:  mesa-libGL-dev
 #Requires:       geoclue2
 
 # Filter out provides for private libraries
@@ -44,12 +44,12 @@ GTK+ platform.
 
 This package contains WebKitGTK+ for GTK+ 3.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries, build data, and header
+%description    dev
+The %{name}-dev package contains libraries, build data, and header
 files for developing applications that use %{name}.
 
 %prep
@@ -122,7 +122,7 @@ make %{?_smp_mflags} -C %{_target_platform}
 %{_libdir}/webkit2gtk-4.0/
 %{_libexecdir}/webkit2gtk-4.0/
 
-%files devel
+%files dev
 %{_bindir}/jsc
 %{_includedir}/webkitgtk-4.0/
 %{_libdir}/libjavascriptcoregtk-4.0.so

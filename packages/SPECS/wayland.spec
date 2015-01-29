@@ -17,10 +17,10 @@ display server running on Linux kernel modesetting and evdev input devices,
 an X application, or a wayland client itself. The clients can be traditional
 applications, X servers (rootless or fullscreen) or other display servers.
 
-%package devel
+%package dev
 Summary: Common headers for wayland
 License: MIT
-%description devel
+%description dev
 Common headers for wayland
 
 %package -n libwayland-client
@@ -41,28 +41,28 @@ License: MIT
 %description -n libwayland-server
 Wayland server library
 
-%package -n libwayland-client-devel
+%package -n libwayland-client-dev
 Summary: Headers and symlinks for developing wayland client applications
 License: MIT
 Requires: libwayland-client%{?_isa} = %{version}-%{release}
-Requires: wayland-devel%{?_isa} = %{version}-%{release}
-%description -n libwayland-client-devel
+Requires: wayland-dev%{?_isa} = %{version}-%{release}
+%description -n libwayland-client-dev
 Headers and symlinks for developing wayland client applications.
 
-%package -n libwayland-cursor-devel
+%package -n libwayland-cursor-dev
 Summary: Headers and symlinks for developing wayland cursor applications
 License: MIT
 Requires: libwayland-cursor%{?_isa} = %{version}-%{release}
-Requires: wayland-devel%{?_isa} = %{version}-%{release}
-%description -n libwayland-cursor-devel
+Requires: wayland-dev%{?_isa} = %{version}-%{release}
+%description -n libwayland-cursor-dev
 Headers and symlinks for developing wayland cursor applications.
 
-%package -n libwayland-server-devel
+%package -n libwayland-server-dev
 Summary: Headers and symlinks for developing wayland server applications
 License: MIT
 Requires: libwayland-server%{?_isa} = %{version}-%{release}
-Requires: wayland-devel%{?_isa} = %{version}-%{release}
-%description -n libwayland-server-devel
+Requires: wayland-dev%{?_isa} = %{version}-%{release}
+%description -n libwayland-server-dev
 Headers and symlinks for developing wayland server applications.
 
 %prep
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO
 #doc %{_datadir}/doc/wayland/*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_bindir}/wayland-scanner
 %{_includedir}/wayland-util.h
@@ -123,19 +123,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %{_libdir}/libwayland-server.so.0*
 
-%files -n libwayland-client-devel
+%files -n libwayland-client-dev
 %defattr(-,root,root,-)
 %{_includedir}/wayland-client*.h
 %{_libdir}/libwayland-client.so
 %{_libdir}/pkgconfig/wayland-client.pc
 
-%files -n libwayland-cursor-devel
+%files -n libwayland-cursor-dev
 %defattr(-,root,root,-)
 %{_includedir}/wayland-cursor*.h
 %{_libdir}/libwayland-cursor.so
 %{_libdir}/pkgconfig/wayland-cursor.pc
 
-%files -n libwayland-server-devel
+%files -n libwayland-server-dev
 %defattr(-,root,root,-)
 %{_includedir}/wayland-server*.h
 %{_libdir}/libwayland-server.so

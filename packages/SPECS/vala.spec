@@ -13,7 +13,7 @@ URL:            http://live.gnome.org/Vala
 Source0:        http://download.gnome.org/sources/vala/%{release_version}/vala-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-dev
 
 %description
 Vala is a new programming language that aims to bring modern programming
@@ -31,11 +31,11 @@ The syntax of Vala is similar to C#, modified to better fit the GObject
 type system.
 
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
+%description    dev
 Vala is a new programming language that aims to bring modern programming
 language features to GNOME developers without imposing any additional
 runtime requirements and without using a different ABI compared to
@@ -50,7 +50,7 @@ Summary:        Tools for creating projects and bindings for %{name}
 License:        LGPLv2+
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       gnome-common
-Requires:       gobject-introspection-devel
+Requires:       gobject-introspection-dev
 
 %description    tools
 Vala is a new programming language that aims to bring modern programming
@@ -113,7 +113,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_mandir}/man1/valac-%{api_ver}.1.gz
 %{_mandir}/man1/valac.1.gz
 
-%files devel
+%files dev
 %{_includedir}/vala-%{api_ver}
 %{_libdir}/libvala-%{api_ver}.so
 %{_libdir}/pkgconfig/libvala-%{api_ver}.pc

@@ -25,14 +25,14 @@ other technical enhancements over Ispell such as using shared memory for
 dictionaries and intelligently handling personal dictionaries when more
 than one Aspell process is open at once.
 
-%package devel
+%package dev
 Summary: Libraries and header files for Aspell development
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 Requires: pkgconfig
 
-%description devel
-The aspell-devel package includes libraries
+%description dev
+The aspell-dev package includes libraries
 and header files needed for Aspell development.
 
 %prep
@@ -95,7 +95,7 @@ rm -f ${RPM_BUILD_ROOT}%{_mandir}/man1/aspell-import.1
 %{_mandir}/man1/word-list-compress.1*
 %{_mandir}/man1/prezip-bin.1*
 
-%files devel
+%files dev
 %dir %{_includedir}/pspell
 %{_bindir}/pspell-config
 %{_includedir}/aspell.h

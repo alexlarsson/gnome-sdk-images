@@ -12,19 +12,19 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXext-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXext-dev
 
 %description
 X.Org X11 libXxf86vm runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXxf86vm development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXxf86vm development package
 
 %prep
@@ -49,7 +49,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/libXxf86vm.so.1
 %{_libdir}/libXxf86vm.so.1.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_libdir}/libXxf86vm.so
 %{_libdir}/pkgconfig/xxf86vm.pc

@@ -16,7 +16,7 @@ License: GPLv2+ or AFL
 Group: System Environment/Libraries
 
 BuildRequires: gnome-sdk-base
-BuildRequires: libX11-devel
+BuildRequires: libX11-dev
 Requires: dbus-libs%{?_isa} = %{version}-%{release}
 
 %description
@@ -41,12 +41,12 @@ BuildArch: noarch
 This package contains developer documentation for D-Bus along with
 other supporting documentation such as the introspect dtd file.
 
-%package devel
+%package dev
 Summary: Development files for D-BUS
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 This package contains libraries and header files needed for
 developing software that uses D-BUS.
 
@@ -150,7 +150,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_pkgdocdir}/*
 
-%files devel
+%files dev
 %defattr(-,root,root)
 
 /%{_lib}/lib*.so

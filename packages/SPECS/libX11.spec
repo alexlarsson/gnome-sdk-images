@@ -12,10 +12,10 @@ Patch0: 0001-Fix-XNextRequest-after-direct-usage-of-XCB.patch
 Patch2: dont-forward-keycode-0.patch
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: xorg-x11-xtrans-devel
-BuildRequires: libxcb-devel
-BuildRequires: libXau-devel libXdmcp-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: xorg-x11-xtrans-dev
+BuildRequires: libxcb-dev
+BuildRequires: libXau-dev libXdmcp-dev
 
 Requires: %{name}-common >= %{version}-%{release}
 
@@ -30,12 +30,12 @@ BuildArch: noarch
 %description common
 libX11 common data
 
-%package devel
+%package dev
 Summary: Development files for %{name}
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libX11 development package
 
 %prep
@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/X11/locale/
 %{_datadir}/X11/XErrorDB
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/ImUtil.h
 %{_includedir}/X11/XKBlib.h

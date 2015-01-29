@@ -8,7 +8,7 @@ URL: http://freedesktop.org/Software/shared-mime-info
 Source0: http://people.freedesktop.org/~hadess/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-dev
 
 Requires(post): glib2
 
@@ -20,12 +20,12 @@ files. Frequently, it is necessary to work out the correct MIME type for
 a file. This is generally done by examining the file's name or contents,
 and looking up the correct MIME type in a database.
 
-%package devel
+%package dev
 Summary: Development files for the shared-mime-info
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package includes libraries, header files, and developer documentation
 needed for shared-mime-info.
 
@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/*
 %{_datadir}/mime/packages/*
 %{_mandir}/man*/*
 
-%files devel
+%files dev
 %{_datadir}/pkgconfig/shared-mime-info.pc
 
 %changelog

@@ -7,20 +7,20 @@ License: LGPLv2+
 Source: http://www.abisource.com/downloads/enchant/%{version}/enchant-%{version}.tar.gz
 URL: http://www.abisource.com/
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: hunspell-devel
+BuildRequires: glib2-dev
+BuildRequires: hunspell-dev
 BuildRequires: hunspell-en
 
 %description
 A library that wraps other spell checking backends.
 
-%package devel
+%package dev
 Summary: Support files necessary to compile applications with libenchant.
 Group: Development/Libraries
 Requires: enchant = %{version}-%{release}
-Requires: glib2-devel
+Requires: glib2-dev
 
-%description devel
+%description dev
 Libraries, headers, and support files necessary to compile applications using libenchant.
 
 %prep
@@ -46,7 +46,7 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/enchant/*.la
 %{_mandir}/man1/enchant.1*
 %{_datadir}/enchant
 
-%files devel
+%files dev
 %defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/enchant.pc

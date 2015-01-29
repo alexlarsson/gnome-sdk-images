@@ -16,12 +16,12 @@ designed for languages with rich morphology and complex word compounding or
 character encoding. Hunspell interfaces: Ispell-like terminal interface using 
 Curses library, Ispell pipe interface, OpenOffice.org UNO module.
 
-%package devel
+%package dev
 Requires: hunspell = %{version}-%{release}, pkgconfig
 Summary: Files for developing with hunspell
 Group: Development/Libraries
 
-%description devel
+%description dev
 Includes and definitions for developing with hunspell
 
 %prep
@@ -57,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/hunspell.1*
 %lang(hu) %{_mandir}/hu/man1/hunspell.1*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/%{name}
 %{_libdir}/*.so

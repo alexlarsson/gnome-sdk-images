@@ -10,19 +10,19 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libXfixes-devel
-BuildRequires: libXext-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libXfixes-dev
+BuildRequires: libXext-dev
 
 %description
 X Composite Extension library
 
-%package devel
+%package dev
 Summary: Development files for %{name}
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXcomposite development package
 
 %prep
@@ -50,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXcomposite.so.1
 %{_libdir}/libXcomposite.so.1.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/Xcomposite.h
 %{_libdir}/libXcomposite.so

@@ -8,7 +8,7 @@ Source: ftp://linux.thai.net/pub/thailinux/software/libthai/libthai-%{version}.t
 URL: http://linux.thai.net
 
 BuildRequires: gnome-sdk-base
-BuildRequires: libdatrie-devel
+BuildRequires: libdatrie-dev
 
 %description
 LibThai is a set of Thai language support routines aimed to ease
@@ -16,16 +16,16 @@ developers' tasks to incorporate Thai language support in their applications.
 It includes important Thai-specific functions e.g. word breaking, input and
 output methods as well as basic character and string supports.
 
-%package devel
+%package dev
 Summary:  Thai language support routines
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
-The libthai-devel package includes the header files and developer docs 
+%description dev
+The libthai-dev package includes the header files and developer docs 
 for the libthai package.
 
-Install libthai-devel if you want to develop programs which will use
+Install libthai-dev if you want to develop programs which will use
 libthai.
 
 %prep
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.so.*
 %{_datadir}/libthai
 
-%files devel
+%files dev
 %defattr(-, root, root)
 %{_includedir}/thai
 %{_libdir}/lib*.so

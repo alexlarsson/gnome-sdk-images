@@ -13,20 +13,20 @@ Source0: http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.t
 Requires: libX11%{?_isa}
 
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libSM-devel
-BuildRequires: libX11-devel
-BuildRequires: libICE-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libSM-dev
+BuildRequires: libX11-dev
+BuildRequires: libICE-dev
 
 %description
 X.Org X11 libXt runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXt development package
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXt development package
 
 %prep
@@ -65,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/COPYING
 
-%files devel
+%files dev
 %{_docdir}/%{name}/*.xml
 %{_includedir}/X11/CallbackI.h
 %{_includedir}/X11/Composite.h

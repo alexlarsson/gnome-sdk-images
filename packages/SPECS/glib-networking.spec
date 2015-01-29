@@ -11,9 +11,9 @@ URL:            http://www.gnome.org
 Source:         http://download.gnome.org/sources/glib-networking/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  glib2-devel
-BuildRequires:  libproxy-devel
-BuildRequires:  gsettings-desktop-schemas-devel
+BuildRequires:  glib2-dev
+BuildRequires:  libproxy-dev
+BuildRequires:  gsettings-desktop-schemas-dev
 
 Requires:       ca-certificates
 Requires:       glib2

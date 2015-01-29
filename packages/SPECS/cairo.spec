@@ -10,16 +10,16 @@ License:	LGPLv2 or MPLv1.1
 Group:		System Environment/Libraries
 
 BuildRequires: gnome-sdk-base
-BuildRequires: libXrender-devel
-BuildRequires: libXext-devel
-BuildRequires: libX11-devel
-BuildRequires: pixman-devel
-BuildRequires: freetype-devel
-BuildRequires: fontconfig-devel
-BuildRequires: glib2-devel
-#BuildRequires: librsvg2-devel
-#BuildRequires: mesa-libGL-devel
-#BuildRequires: mesa-libEGL-devel
+BuildRequires: libXrender-dev
+BuildRequires: libXext-dev
+BuildRequires: libX11-dev
+BuildRequires: pixman-dev
+BuildRequires: freetype-dev
+BuildRequires: fontconfig-dev
+BuildRequires: glib2-dev
+#BuildRequires: librsvg2-dev
+#BuildRequires: mesa-libGL-dev
+#BuildRequires: mesa-libEGL-dev
 
 %description
 Cairo is a 2D graphics library designed to provide high-quality display
@@ -31,16 +31,16 @@ Cairo is designed to produce consistent output on all output media while
 taking advantage of display hardware acceleration when available (e.g.
 through the X Render Extension or OpenGL).
 
-%package devel
+%package dev
 Summary: Development files for cairo
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
-Requires: libXrender-devel
-Requires: pixman-devel
-Requires: freetype-devel
-Requires: fontconfig-devel
+Requires: libXrender-dev
+Requires: pixman-dev
+Requires: freetype-dev
+Requires: fontconfig-dev
 
-%description devel
+%description dev
 Cairo is a 2D graphics library designed to provide high-quality display
 and print output.
 
@@ -59,13 +59,13 @@ and print output.
 This package contains functionality to make cairo graphics library
 integrate well with the GObject object system used by GNOME.
 
-%package gobject-devel
+%package gobject-dev
 Summary: Development files for cairo-gobject
 Group: Development/Libraries
-Requires: %{name}-devel = %{version}-%{release}
+Requires: %{name}-dev = %{version}-%{release}
 Requires: %{name}-gobject = %{version}-%{release}
 
-%description gobject-devel
+%description gobject-dev
 Cairo is a 2D graphics library designed to provide high-quality display
 and print output.
 
@@ -123,7 +123,7 @@ make check V=1 %{?_smp_mflags} ||:
 %{_libdir}/libcairo-script-interpreter.so.*
 %{_bindir}/cairo-sphinx
 
-%files devel
+%files dev
 %doc ChangeLog PORTING_GUIDE
 %dir %{_includedir}/cairo/
 %{_includedir}/cairo/cairo-deprecated.h
@@ -164,7 +164,7 @@ make check V=1 %{?_smp_mflags} ||:
 %files gobject
 %{_libdir}/libcairo-gobject.so.*
 
-%files gobject-devel
+%files gobject-dev
 %{_includedir}/cairo/cairo-gobject.h
 %{_libdir}/libcairo-gobject.so
 %{_libdir}/pkgconfig/cairo-gobject.pc

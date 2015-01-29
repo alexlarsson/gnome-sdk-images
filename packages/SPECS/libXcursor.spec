@@ -13,10 +13,10 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXfixes-devel
-BuildRequires: libXrender-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXfixes-dev
+BuildRequires: libXrender-dev
 
 %description
 This is  a simple library designed to help locate and load cursors.
@@ -24,12 +24,12 @@ Cursors can be loaded from files or memory. A library of common cursors
 exists which map to the standard X cursor names.Cursors can exist in
 several sizes and the library automatically picks the best size.
 
-%package devel
+%package dev
 Summary: Development files for %{name}
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 libXcursor development package.
 
 %prep
@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/icons/default
 %{_datadir}/icons/default/index.theme
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %dir %{_includedir}/X11/Xcursor
 %{_includedir}/X11/Xcursor/Xcursor.h

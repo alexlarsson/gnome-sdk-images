@@ -10,24 +10,24 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXext-devel
-BuildRequires: libXfixes-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXext-dev
+BuildRequires: libXfixes-dev
 
 Requires: libX11
 
 %description
 X.Org X11 libXi runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXi development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 # required by xi.pc
-Requires: xorg-x11-proto-devel
+Requires: xorg-x11-proto-dev
 
-%description devel
+%description dev
 X.Org X11 libXi development package
 
 %prep
@@ -65,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXi.so.6
 %{_libdir}/libXi.so.6.1.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %if %{with_static}
 %{_libdir}/libXi.a

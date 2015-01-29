@@ -8,22 +8,22 @@ URL:            http://freedesktop.org/wiki/Software/HarfBuzz
 Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.bz2
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  cairo-devel
-BuildRequires:  freetype-devel
-BuildRequires:  glib2-devel
-BuildRequires:  graphite2-devel
+BuildRequires:  cairo-dev
+BuildRequires:  freetype-dev
+BuildRequires:  glib2-dev
+BuildRequires:  graphite2-dev
 
 %description
 HarfBuzz is an implementation of the OpenType Layout engine.
 
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       %{name}-icu%{?_isa} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
+%description    dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %package        icu
@@ -63,7 +63,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %doc NEWS AUTHORS COPYING README
 %{_libdir}/libharfbuzz.so.*
 
-%files devel
+%files dev
 %doc %{_datadir}/gtk-doc
 %{_bindir}/hb-view
 %{_bindir}/hb-ot-shape-closure

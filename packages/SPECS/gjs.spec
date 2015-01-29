@@ -16,11 +16,11 @@ URL:           http://live.gnome.org/Gjs/
 Source0:       http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: mozjs24-devel
-BuildRequires: cairo-gobject-devel
-BuildRequires: gobject-introspection-devel
-BuildRequires: dbus-glib-devel
-BuildRequires: gtk3-devel
+BuildRequires: mozjs24-dev
+BuildRequires: cairo-gobject-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: dbus-glib-dev
+BuildRequires: gtk3-dev
 BuildRequires: gnome-common
 
 Requires: gobject-introspection%{?_isa}
@@ -30,12 +30,12 @@ Gjs allows using GNOME libraries from Javascript. It's based on the
 Spidermonkey Javascript engine from Mozilla and the GObject introspection
 framework.
 
-%package devel
+%package dev
 Summary: Development package for %{name}
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Files for development with %{name}.
 
 %prep
@@ -67,7 +67,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/*.so.*
 %{_libdir}/gjs
 
-%files devel
+%files dev
 %doc examples/*
 %{_includedir}/gjs-1.0
 %{_libdir}/pkgconfig/gjs-1.0.pc

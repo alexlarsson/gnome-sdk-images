@@ -12,7 +12,7 @@ URL:            http://live.gnome.org/GObjectIntrospection
 Source0:        http://download.gnome.org/sources/gobject-introspection/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-dev
 BuildRequires:  gtk-doc-stub
 
 %description
@@ -21,12 +21,12 @@ generate introspection "typelib" files.  It also provides an API to examine
 typelib files, useful for creating language bindings among other
 things.
 
-%package devel
+%package dev
 Summary: Libraries and headers for gobject-introspection
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Libraries and headers for gobject-introspection
 
 %prep
@@ -56,7 +56,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
 
-%files devel
+%files dev
 %{_libdir}/lib*.so
 %dir %{_libdir}/gobject-introspection
 %{_libdir}/gobject-introspection/*

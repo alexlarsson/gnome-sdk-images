@@ -12,17 +12,17 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: libX11-devel
+BuildRequires: libX11-dev
 
 %description
 X.Org X11 libXrender runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXrender development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXrender development package
 
 %prep
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXrender.so.1
 %{_libdir}/libXrender.so.1.3.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %doc doc/libXrender.txt
 %{_includedir}/X11/extensions/Xrender.h

@@ -18,11 +18,11 @@ This makes it ideal for lexical analyzers, as well as spelling dictionaries.
 
 Details of the implementation: http://linux.thai.net/~thep/datrie/datrie.html
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
+%description    dev
 This package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -32,7 +32,7 @@ developing applications that use %{name}.
 %build
 #sed -i '/sys_lib_dlsearch_path_spec/s|/usr/lib |/usr/lib /usr/lib64|' configure
 %configure --disable-static \
-           --with-html-docdir=%{_pkgdocdir}-devel
+           --with-html-docdir=%{_pkgdocdir}-dev
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 make
@@ -53,7 +53,7 @@ LD_LIBRARY_PATH=../datrie/.libs make check %{?_smp_mflags}
 %doc COPYING
 %{_libdir}/libdatrie.so.*
 
-%files devel
+%files dev
 %doc AUTHORS ChangeLog NEWS README*
 %{_includedir}/datrie/
 %{_libdir}/libdatrie.so

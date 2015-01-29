@@ -20,17 +20,17 @@ Source0: ftp://ftp.freedesktop.org/pub/mesa/%{version}/MesaLib-%{version}.tar.bz
 Patch1: mesa-no-typeid.patch
 
 BuildRequires: gnome-sdk-base
-BuildRequires: libdrm-devel
-BuildRequires: libXxf86vm-devel
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libXext-devel
-BuildRequires: libXfixes-devel
-BuildRequires: libXdamage-devel
-BuildRequires: libXi-devel
-BuildRequires: libxshmfence-devel
-BuildRequires: libwayland-client-devel
-BuildRequires: libwayland-server-devel
-BuildRequires: llvm-devel
+BuildRequires: libdrm-dev
+BuildRequires: libXxf86vm-dev
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libXext-dev
+BuildRequires: libXfixes-dev
+BuildRequires: libXdamage-dev
+BuildRequires: libXi-dev
+BuildRequires: libxshmfence-dev
+BuildRequires: libwayland-client-dev
+BuildRequires: libwayland-server-dev
+BuildRequires: llvm-dev
 
 %description
 Mesa
@@ -70,28 +70,28 @@ Requires: mesa-filesystem%{?_isa}
 %description dri-drivers
 Mesa-based DRI drivers.
 
-%package libGL-devel
+%package libGL-dev
 Summary: Mesa libGL development package
 Group: Development/Libraries
 Requires: mesa-libGL = %{version}-%{release}
 
-%description libGL-devel
+%description libGL-dev
 Mesa libGL development package
 
-%package libEGL-devel
+%package libEGL-dev
 Summary: Mesa libEGL development package
 Group: Development/Libraries
 Requires: mesa-libEGL = %{version}-%{release}
 
-%description libEGL-devel
+%description libEGL-dev
 Mesa libEGL development package
 
-%package libGLES-devel
+%package libGLES-dev
 Summary: Mesa libGLES development package
 Group: Development/Libraries
 Requires: mesa-libGLES = %{version}-%{release}
 
-%description libGLES-devel
+%description libGLES-dev
 Mesa libGLES development package
 
 %package libgbm
@@ -101,12 +101,12 @@ Group: System Environment/Libraries
 %description libgbm
 Mesa gbm runtime library.
 
-%package libgbm-devel
+%package libgbm-dev
 Summary: Mesa libgbm development package
 Group: Development/Libraries
 Requires: mesa-libgbm%{?_isa} = %{version}-%{release}
 
-%description libgbm-devel
+%description libgbm-dev
 Mesa libgbm development package
 
 %package libglapi
@@ -124,13 +124,13 @@ Provides: libwayland-egl
 %description libwayland-egl
 Mesa libwayland-egl runtime library.
 
-%package libwayland-egl-devel
+%package libwayland-egl-dev
 Summary: Mesa libwayland-egl development package
 Group: Development/Libraries
 Requires: mesa-libwayland-egl%{?_isa} = %{version}-%{release}
-Provides: libwayland-egl-devel
+Provides: libwayland-egl-dev
 
-%description libwayland-egl-devel
+%description libwayland-egl-dev
 Mesa libwayland-egl development package
 
 %prep
@@ -269,7 +269,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/dri/r600_dri.so
 %{_libdir}/GL/dri/radeonsi_dri.so
 
-%files libGL-devel
+%files libGL-dev
 %defattr(-,root,root,-)
 %{_includedir}/GL/gl.h
 %{_includedir}/GL/gl_mangle.h
@@ -285,7 +285,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/libglapi.so
 %{_libdir}/pkgconfig/gl.pc
 
-%files libEGL-devel
+%files libEGL-dev
 %defattr(-,root,root,-)
 %dir %{_includedir}/EGL
 %{_includedir}/EGL/eglext.h
@@ -298,7 +298,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/egl.pc
 %{_libdir}/libEGL.so
 
-%files libGLES-devel
+%files libGLES-dev
 %defattr(-,root,root,-)
 %dir %{_includedir}/GLES2
 %{_includedir}/GLES2/gl2platform.h
@@ -317,7 +317,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/libgbm.so.1
 %{_libdir}/GL/libgbm.so.1.*
 
-%files libgbm-devel
+%files libgbm-dev
 %defattr(-,root,root,-)
 %{_libdir}/GL/libgbm.so
 %{_includedir}/gbm.h
@@ -330,7 +330,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/GL/libwayland-egl.so.1
 %{_libdir}/GL/libwayland-egl.so.1.*
 
-%files libwayland-egl-devel
+%files libwayland-egl-dev
 %defattr(-,root,root,-)
 %{_libdir}/libwayland-egl.so
 %{_libdir}/pkgconfig/wayland-egl.pc

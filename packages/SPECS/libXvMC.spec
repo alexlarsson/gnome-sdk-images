@@ -12,19 +12,19 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXv-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXv-dev
 
 %description
 X.Org X11 libXvMC runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXvMC development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXvMC development package
 
 %prep
@@ -61,7 +61,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/libXvMCW.so.1.0.0
 %ghost %config(missingok,noreplace) %verify (not md5 size mtime) %{_sysconfdir}/X11/XvMCConfig
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %doc XvMC_API.txt
 %{_includedir}/X11/extensions/XvMClib.h

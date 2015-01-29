@@ -40,16 +40,16 @@ individual glyphs. FreeType is not a font server or a complete
 text-rendering library.
 
 
-%package devel
+%package dev
 Summary: FreeType development libraries and header files
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
-The freetype-devel package includes the static libraries and header files
+%description dev
+The freetype-dev package includes the static libraries and header files
 for the FreeType font rendering engine.
 
-Install freetype-devel if you want to develop programs which will use
+Install freetype-dev if you want to develop programs which will use
 FreeType.
 
 
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/LICENSE.TXT docs/FTL.TXT docs/GPLv2.TXT
 %doc docs/CHANGES docs/VERSION.DLL docs/formats.txt
 
-%files devel
+%files dev
 %defattr(-,root,root)
 %dir %{_includedir}/freetype2
 %{_datadir}/aclocal/freetype2.m4

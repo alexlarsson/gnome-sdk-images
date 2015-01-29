@@ -11,10 +11,10 @@ URL:            http://live.gnome.org/dconf
 #VCS:           git:git://git.gnome.org/dconf
 Source0:        http://download.gnome.org/sources/dconf/%{release_version}/dconf-%{version}.tar.xz
 
-BuildRequires:  glib2-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  dbus-devel
-BuildRequires:  vala-devel
+BuildRequires:  glib2-dev
+BuildRequires:  gtk3-dev
+BuildRequires:  dbus-dev
+BuildRequires:  vala-dev
 
 Requires:       glib2
 
@@ -22,12 +22,12 @@ Requires:       glib2
 dconf is a low-level configuration system. Its main purpose is to provide a
 backend to the GSettings API in GLib.
 
-%package devel
+%package dev
 Summary: Header files and libraries for dconf development
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 dconf development package. Contains files needed for doing software
 development using dconf.
 
@@ -107,7 +107,7 @@ done
 %{_libdir}/libdconf-dbus-1.so.*
 %{_datadir}/bash-completion/completions/dconf
 
-%files devel
+%files dev
 %{_includedir}/dconf
 %{_libdir}/libdconf.so
 %{_libdir}/pkgconfig/dconf.pc

@@ -10,8 +10,8 @@ URL: http://www.gtk.org
 
 Source: http://download.gnome.org/sources/gvfs/%{release_version}/gvfs-%{version}.tar.xz
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: dbus-glib-devel
+BuildRequires: glib2-dev
+BuildRequires: dbus-glib-dev
 
 # Remove warnings from failed remote monitors that don't
 # actually exist on the host
@@ -24,13 +24,13 @@ Requires: glib2%{?_isa}
 The gvfs package provides backend implementations for the gio
 framework in GLib. It includes ftp, sftp, cifs.
 
-%package devel
+%package dev
 Summary: Development files for gvfs
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
-The gvfs-devel package contains headers and other files that are
+%description dev
+The gvfs-dev package contains headers and other files that are
 required to develop applications using gvfs.
 
 %prep
@@ -106,7 +106,7 @@ gio-querymodules-%{__isa_bits} %{_libdir}/gio/modules &> /dev/null || :
 %{_bindir}/gvfs-tree
 %{_bindir}/gvfs-set-attribute
 
-%files devel
+%files dev
 %dir %{_includedir}/gvfs-client
 %dir %{_includedir}/gvfs-client/gvfs
 %{_includedir}/gvfs-client/gvfs/gvfsurimapper.h

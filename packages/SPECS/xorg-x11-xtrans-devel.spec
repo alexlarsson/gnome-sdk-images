@@ -6,7 +6,7 @@
 %define debug_package %{nil}
 
 Summary: X.Org X11 developmental X transport library
-Name: xorg-x11-xtrans-devel
+Name: xorg-x11-xtrans-dev
 Version: 1.3.5
 Release: 1%{?dist}
 License: MIT

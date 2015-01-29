@@ -11,7 +11,7 @@ License: GPLv2+
 Group: Development/Tools
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
+BuildRequires: glib2-dev
 
 %description
 .desktop files are used to describe an application for inclusion in

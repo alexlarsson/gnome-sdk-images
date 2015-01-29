@@ -9,18 +9,18 @@ URL: http://www.x.org
 Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
 
 %description
 X.Org X11 libxkbfile runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libxkbfile development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libxkbfile development package
 
 %prep
@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxkbfile.so.1
 %{_libdir}/libxkbfile.so.1.0.2
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/XKBbells.h
 %{_includedir}/X11/extensions/XKBconfig.h

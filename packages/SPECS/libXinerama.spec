@@ -12,19 +12,19 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
-BuildRequires: libXext-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
+BuildRequires: libXext-dev
 
 %description
 X.Org X11 libXinerama runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXinerama development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXinerama development package
 
 %prep
@@ -56,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXinerama.so.1
 %{_libdir}/libXinerama.so.1.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_libdir}/libXinerama.so
 %{_libdir}/pkgconfig/xinerama.pc

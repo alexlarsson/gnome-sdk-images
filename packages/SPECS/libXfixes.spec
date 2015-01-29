@@ -12,18 +12,18 @@ Requires: libX11 >= 1.5.99.902
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libX11-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libX11-dev
 
 %description
 X Fixes library.
 
-%package devel
+%package dev
 Summary: Development files for %{name}
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 libXfixes development package
 
 %prep
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXfixes.so.3
 %{_libdir}/libXfixes.so.3.1.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/Xfixes.h
 %{_libdir}/libXfixes.so

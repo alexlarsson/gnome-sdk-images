@@ -12,20 +12,20 @@ BuildRequires: gnome-sdk-base
 Patch0:		mozjs-build-fixes.patch
 
 %description
-JavaScript is the Netscape-developed object scripting language used in millions
+JavaScript is the Netscape-devoped object scripting language used in millions
 of web pages and server applications worldwide. Netscape's JavaScript is a
 super set of the ECMA-262 Edition 3 (ECMAScript) standard scripting language,
 with only mild differences from the published standard.
 
-%package devel
+%package dev
 Summary: Header files, libraries and development documentation for %{name}
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package contains the header files, static libraries and development
 documentation for %{name}. If you like to develop programs using %{name},
-you will need to install %{name}-devel.
+you will need to install %{name}-dev.
 
 %prep
 %setup -q -n mozjs-%{version}
@@ -67,7 +67,7 @@ rm -f %{buildroot}%{_bindir}/js24-config
 %doc LICENSE README
 %{_libdir}/*.so
 
-%files devel
+%files dev
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/mozjs-24
 

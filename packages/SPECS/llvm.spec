@@ -32,12 +32,12 @@ arbitrary programming languages.  The compiler infrastructure includes
 mirror sets of programming tools as well as libraries with equivalent
 functionality.
 
-%package devel
+%package dev
 Summary:        Libraries and header files for LLVM
 Group:          Development/Languages
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package contains library and header files needed to develop new
 native programs that use the LLVM infrastructure.
 
@@ -61,7 +61,7 @@ Shared libraries for the LLVM compiler infrastructure.
 %package static
 Summary:        LLVM static libraries
 Group:          Development/Languages
-Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
+Requires:       %{name}-dev%{?_isa} = %{version}-%{release}
 
 %description static
 Static libraries for the LLVM compiler infrastructure.  Not recommended
@@ -172,8 +172,8 @@ file %{buildroot}/%{_libdir}/%{name}/*.so | awk -F: '$2~/ELF/{print $1}' | xargs
 # broken makefiles in the doc dirs.
 
 # LLVM test suite failing on ARM, PPC64 and s390(x)
-mkdir -p %{buildroot}%{llvmdocdir %{name}-devel}
-make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-devel}/testlog-%{_arch}.txt || :
+mkdir -p %{buildroot}%{llvmdocdir %{name}-dev}
+make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-dev}/testlog-%{_arch}.txt || :
 
 
 %post libs -p /sbin/ldconfig
@@ -192,8 +192,8 @@ make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-devel}/te
 %{_bindir}/macho-dump
 %{_bindir}/opt
 
-%files devel
-%doc %{llvmdocdir %{name}-devel}/
+%files dev
+%doc %{llvmdocdir %{name}-dev}/
 %{_bindir}/llvm-config
 %{_includedir}/%{name}
 %{_includedir}/%{name}-c

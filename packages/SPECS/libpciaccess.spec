@@ -18,12 +18,12 @@ BuildRequires:  gnome-sdk-base xorg-x11-util-macros
 libpciaccess is a library for portable PCI access routines across multiple
 operating systems.
 
-%package devel
+%package dev
 Summary:        PCI access library development package
 Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 Development package for libpciaccess.
 
 %prep
@@ -52,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libpciaccess.so.0
 %{_libdir}/libpciaccess.so.0.11.*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/pciaccess.h
 %{_libdir}/libpciaccess.so

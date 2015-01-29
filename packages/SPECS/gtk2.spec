@@ -15,21 +15,21 @@ Source3: im-cedilla.conf
 Patch0:	gtk2-pixdata-deprecation.patch
 
 BuildRequires: gnome-sdk-base
-BuildRequires: atk-devel
-BuildRequires: glib2-devel
-BuildRequires: cairo-devel
-BuildRequires: gdk-pixbuf2-devel
-BuildRequires: pango-devel
-BuildRequires: libXi-devel
-#BuildRequires: cups-devel
-BuildRequires: libXrandr-devel
-BuildRequires: libXrender-devel
-BuildRequires: libXcursor-devel
-BuildRequires: libXfixes-devel
-BuildRequires: libXinerama-devel
-BuildRequires: libXcomposite-devel
-BuildRequires: libXdamage-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: atk-dev
+BuildRequires: glib2-dev
+BuildRequires: cairo-dev
+BuildRequires: gdk-pixbuf2-dev
+BuildRequires: pango-dev
+BuildRequires: libXi-dev
+#BuildRequires: cups-dev
+BuildRequires: libXrandr-dev
+BuildRequires: libXrender-dev
+BuildRequires: libXcursor-dev
+BuildRequires: libXfixes-dev
+BuildRequires: libXinerama-dev
+BuildRequires: libXcomposite-dev
+BuildRequires: libXdamage-dev
+BuildRequires: gobject-introspection-dev
 BuildRequires: gtk-doc-stub
 
 # required for icon theme apis to work
@@ -65,33 +65,33 @@ Requires: gtk2 = %{version}-%{release}
 %description immodule-xim
 The gtk2-immodule-xim package contains XIM support for GTK+.
 
-%package devel
+%package dev
 Summary: Development files for GTK+
 Group: Development/Libraries
 Requires: gtk2 = %{version}-%{release}
-Requires: pango-devel
-Requires: atk-devel
-Requires: glib2-devel
-Requires: gdk-pixbuf2-devel
-Requires: cairo-devel
-Requires: libX11-devel, libXcursor-devel, libXinerama-devel
-Requires: libXext-devel, libXi-devel, libXrandr-devel
-Requires: libXfixes-devel, libXcomposite-devel
+Requires: pango-dev
+Requires: atk-dev
+Requires: glib2-dev
+Requires: gdk-pixbuf2-dev
+Requires: cairo-dev
+Requires: libX11-dev, libXcursor-dev, libXinerama-dev
+Requires: libXext-dev, libXi-dev, libXrandr-dev
+Requires: libXfixes-dev, libXcomposite-dev
 Requires: pkgconfig
 
-%description devel
+%description dev
 This package contains the libraries and header files that are needed
 for writing applications with the GTK+ widget toolkit. If you plan
-to develop applications with GTK+, consider installing the gtk2-devel-docs
+to develop applications with GTK+, consider installing the gtk2-dev-docs
 package.
 
-%package devel-docs
+%package dev-docs
 Summary: Developer documentation for GTK+
 Group: Development/Libraries
 Requires: gtk2 = %{version}-%{release}
 #BuildArch: noarch
 
-%description devel-docs
+%description dev-docs
 This package contains developer documentation for the GTK+ widget toolkit.
 
 %prep
@@ -202,7 +202,7 @@ gtk-query-immodules-2.0 --update-cache
 %files immodule-xim
 %{_libdir}/gtk-2.0/%{bin_version}/immodules/im-xim.so
 
-%files devel -f gtk20-properties.lang
+%files dev -f gtk20-properties.lang
 %{_libdir}/lib*.so
 %{_libdir}/gtk-2.0/include
 %{_includedir}/*
@@ -213,7 +213,7 @@ gtk-query-immodules-2.0 --update-cache
 %{_datadir}/gtk-2.0/demo
 %{_datadir}/gir-1.0
 
-%files devel-docs
+%files dev-docs
 %{_datadir}/gtk-doc
 
 %changelog

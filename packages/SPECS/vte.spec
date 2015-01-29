@@ -12,8 +12,8 @@ Source0:        http://download.gnome.org/sources/vte/%{release_version}/vte-%{v
 Patch2:         vte-Only-show-the-cursor-on-motion-if-moved.patch
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk3-devel
+BuildRequires:  gobject-introspection-dev
+BuildRequires:  gtk3-dev
 BuildRequires:  vala-tools
 
 Requires:       vte-profile
@@ -23,12 +23,12 @@ VTE is a library implementing a terminal emulator widget for GTK+. VTE
 is mainly used in gnome-terminal, but can also be used to embed a
 console/terminal in games, editors, IDEs, etc.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
-The %{name}-devel package contains libraries and header files for
+%description dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %package -n     vte-profile
@@ -74,7 +74,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libvte-%{apiver}.so.0*
 %{_libdir}/girepository-1.0/
 
-%files devel
+%files dev
 %{_bindir}/vte-%{apiver}
 %{_includedir}/vte-%{apiver}/
 %{_libdir}/libvte-%{apiver}.so

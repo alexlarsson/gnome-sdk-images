@@ -11,8 +11,8 @@ Source: http://download.gnome.org/sources/atk/%{release_version}/atk-%{version}.
 URL: http://developer.gnome.org/platform-overview/stable/atk
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
 
 %description
 The ATK library provides a set of interfaces for adding accessibility
@@ -21,12 +21,12 @@ supporting the ATK interfaces, an application or toolkit can be used
 with tools such as screen readers, magnifiers, and alternative input
 devices.
 
-%package devel
+%package dev
 Summary: Development files for the ATK accessibility toolkit
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package includes libraries, header files, and developer documentation
 needed for development of applications or toolkits which use ATK.
 
@@ -55,7 +55,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libatk-1.0.so.*
 %{_libdir}/girepository-1.0
 
-%files devel
+%files dev
 %{_libdir}/libatk-1.0.so
 %{_includedir}/atk-1.0
 %{_libdir}/pkgconfig/atk.pc

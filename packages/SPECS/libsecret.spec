@@ -11,10 +11,10 @@ URL:            https://live.gnome.org/Libsecret
 Source0:        http://download.gnome.org/sources/libsecret/%{release_version}/libsecret-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
 BuildRequires: gtk-doc-stub
-BuildRequires: vala-devel
+BuildRequires: vala-dev
 BuildRequires: vala-tools
 
 %description
@@ -22,12 +22,12 @@ libsecret is a library for storing and retrieving passwords and other secrets.
 It communicates with the "Secret Service" using DBus. gnome-keyring and
 KSecretService are both implementations of a Secret Service.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
+%description    dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
@@ -57,7 +57,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/libsecret-1.so.*
 %{_libdir}/girepository-1.0/Secret-1.typelib
 
-%files devel
+%files dev
 %{_includedir}/libsecret-1/
 %{_libdir}/libsecret-1.so
 %{_libdir}/pkgconfig/libsecret-1.pc

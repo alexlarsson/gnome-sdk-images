@@ -8,18 +8,18 @@ URL: http://dri.sourceforge.net
 Source0: http://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
-BuildRequires: libxcb-devel
-BuildRequires: libpciaccess-devel
+BuildRequires: libxcb-dev
+BuildRequires: libpciaccess-dev
 
 %description
 Direct Rendering Manager runtime library
 
-%package devel
+%package dev
 Summary: Direct Rendering Manager development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 Direct Rendering Manager development package
 
 %prep
@@ -61,7 +61,7 @@ done
 %{_libdir}/libkms.so.1
 %{_libdir}/libkms.so.1.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 # FIXME should be in drm/ too
 %{_includedir}/xf86drm.h

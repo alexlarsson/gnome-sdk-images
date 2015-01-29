@@ -12,11 +12,11 @@ URL:            http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
 Source0:        http://download.gnome.org/sources/at-spi2-atk/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  atk-devel
-BuildRequires:  at-spi2-core-devel
-BuildRequires:  dbus-devel
-BuildRequires:  dbus-glib-devel
-BuildRequires:  glib2-devel
+BuildRequires:  atk-dev
+BuildRequires:  at-spi2-core-dev
+BuildRequires:  dbus-dev
+BuildRequires:  dbus-glib-dev
+BuildRequires:  glib2-dev
 
 Requires:       atk%{?_isa} >= %{atk_version}
 Requires:       at-spi2-core%{?_isa} >= %{at_spi2_core_version}
@@ -34,12 +34,12 @@ ORBIT / CORBA for its transport protocol.
 This package includes a gtk-module that bridges ATK to the new
 D-Bus based at-spi.
 
-%package devel
+%package dev
 Summary:        A GTK+ module that bridges ATK to D-Bus at-spi
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
-The %{name}-devel package includes the header files for the %{name} library.
+%description dev
+The %{name}-dev package includes the header files for the %{name} library.
 
 %prep
 %setup -q
@@ -69,7 +69,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/libatk-bridge-2.0.la
 %{_libdir}/gnome-settings-daemon-3.0/gtk-modules/at-spi2-atk.desktop
 %{_libdir}/libatk-bridge-2.0.so.*
 
-%files devel
+%files dev
 %{_includedir}/at-spi2-atk/2.0/atk-bridge.h
 %{_libdir}/libatk-bridge-2.0.so
 %{_libdir}/pkgconfig/atk-bridge-2.0.pc

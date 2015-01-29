@@ -14,8 +14,8 @@ Source1:        gstreamer1.prov
 Source2:        gstreamer1.attr
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
 
 %description
 GStreamer is a streaming media framework, based on graphs of filters which
@@ -26,24 +26,24 @@ types or processing capabilities can be added simply by installing new
 plugins.
 
 
-%package devel
+%package dev
 Summary:        Libraries/include files for GStreamer streaming media framework
 Requires:       %{name} = %{version}-%{release}
-Requires:       glib2-devel
+Requires:       glib2-dev
 
-%description devel
-The %{name}-devel package contains libraries and header files for
+%description dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 
-%package devel-docs
+%package dev-docs
 Summary:         Developer documentation for GStreamer streaming media framework
 Requires:        %{name} = %{version}-%{release}
 BuildArch:       noarch
 
 
-%description devel-docs
-This %{name}-devel-docs contains developer documentation for the
+%description dev-docs
+This %{name}-dev-docs contains developer documentation for the
 GStreamer streaming media framework.
 
 
@@ -120,7 +120,7 @@ install -m0644 -D %{SOURCE2} $RPM_BUILD_ROOT%{_rpmconfigdir}/fileattrs/gstreamer
 %doc %{_mandir}/man1/gst-launch-%{majorminor}.*
 %doc %{_mandir}/man1/gst-typefind-%{majorminor}.*
 
-%files devel
+%files dev
 %dir %{_includedir}/gstreamer-%{majorminor}
 %dir %{_includedir}/gstreamer-%{majorminor}/gst
 %dir %{_includedir}/gstreamer-%{majorminor}/gst/base
@@ -154,7 +154,7 @@ install -m0644 -D %{SOURCE2} $RPM_BUILD_ROOT%{_rpmconfigdir}/fileattrs/gstreamer
 %{_libdir}/pkgconfig/gstreamer-net-%{majorminor}.pc
 
 
-%files devel-docs
+%files dev-docs
 %doc %{_datadir}/gtk-doc/html/gstreamer-%{majorminor}
 %doc %{_datadir}/gtk-doc/html/gstreamer-libs-%{majorminor}
 %doc %{_datadir}/gtk-doc/html/gstreamer-plugins-%{majorminor}

@@ -11,15 +11,15 @@ Group:          System Environment/Libraries
 Source:         http://download.gnome.org/sources/librsvg/%{release_version}/librsvg-%{version}.tar.xz
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  glib2-devel
-BuildRequires:  gdk-pixbuf2-devel
-BuildRequires:  pango-devel
-BuildRequires:  freetype-devel
-BuildRequires:  cairo-devel
-BuildRequires:  cairo-gobject-devel
-BuildRequires:  libcroco-devel
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  vala-devel
+BuildRequires:  glib2-dev
+BuildRequires:  gdk-pixbuf2-dev
+BuildRequires:  pango-dev
+BuildRequires:  freetype-dev
+BuildRequires:  cairo-dev
+BuildRequires:  cairo-gobject-dev
+BuildRequires:  libcroco-dev
+BuildRequires:  gobject-introspection-dev
+BuildRequires:  vala-dev
 BuildRequires:  vala-tools
 
 Requires(post):   gdk-pixbuf2%{?_isa}
@@ -29,12 +29,12 @@ Requires(postun): gdk-pixbuf2%{?_isa}
 An SVG library based on cairo.
 
 
-%package devel
+%package dev
 Summary:        Libraries and include files for developing with librsvg
 Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 This package provides the necessary development libraries and include
 files to allow you to develop with librsvg.
 
@@ -86,7 +86,7 @@ gdk-pixbuf-query-loaders-%{__isa_bits} --update-cache || :
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-svg.so
 %{_libdir}/girepository-1.0/*
 
-%files devel
+%files dev
 %{_libdir}/librsvg-2.so
 %{_includedir}/librsvg-2.0
 %{_libdir}/pkgconfig/librsvg-2.0.pc

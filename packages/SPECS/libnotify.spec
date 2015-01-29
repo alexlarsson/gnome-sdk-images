@@ -10,12 +10,12 @@ License: LGPLv2+
 Group: System Environment/Libraries
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: gdk-pixbuf2-devel
-BuildRequires: gtk3-devel
-BuildRequires: dbus-devel
-BuildRequires: dbus-glib-devel
-BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-dev
+BuildRequires: gdk-pixbuf2-dev
+BuildRequires: gtk3-dev
+BuildRequires: dbus-dev
+BuildRequires: dbus-glib-dev
+BuildRequires: gobject-introspection-dev
 
 Requires: glib2
 
@@ -25,15 +25,15 @@ daemon, as defined in the freedesktop.org Desktop Notifications spec. These
 notifications can be used to inform the user about an event or display some
 form of information without getting in the user's way.
 
-%package devel
+%package dev
 Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
-Requires:       glib2-devel
-Requires:       dbus-devel
-Requires:       dbus-glib-devel
+Requires:       glib2-dev
+Requires:       dbus-dev
+Requires:       dbus-glib-dev
 
-%description devel
+%description dev
 This package contains libraries and header files needed for
 development of programs using %{name}.
 
@@ -61,7 +61,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 %{_libdir}/libnotify.so.*
 %{_libdir}/girepository-1.0/Notify-0.7.typelib
 
-%files devel
+%files dev
 %dir %{_includedir}/libnotify
 %{_includedir}/libnotify/*
 %{_libdir}/libnotify.so

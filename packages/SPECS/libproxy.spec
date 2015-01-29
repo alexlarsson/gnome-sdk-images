@@ -42,14 +42,14 @@ BuildArch:      noarch
 %description    python
 The %{name}-python package contains the python binding for %{name}
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
 Requires:       pkgconfig
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
+%description    dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
@@ -111,7 +111,7 @@ make test
 %defattr(-,root,root,-)
 %{python_sitelib}/*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/proxy.h
 %{_libdir}/*.so
@@ -178,7 +178,7 @@ make test
 - Add support for webkitgtk3
 - Add support for xulrunner 2.0
 - fix #683015 - libproxy fails with autoconfiguration
-- fix #683018 - libproxy needs BR: NetworkManager-glib-devel  (f14)
+- fix #683018 - libproxy needs BR: NetworkManager-glib-dev  (f14)
 - Manually fix libproxy-1.0.pc version field - #664781 / #674854
 
 * Wed Nov 24 2010 Nicolas Chauvet <kwizart@gmail.com> - 0.4.6-3
@@ -211,7 +211,7 @@ make test
 - Disable webkit subpackage in order to resolve circular dep
 
 * Sat Jul 03 2010 Nathaniel McCallum <nathaniel@natemccallum.com> - 0.4.4-2
-- Fix missing BuildRequires: libmodman-devel
+- Fix missing BuildRequires: libmodman-dev
 
 * Sun Jun 13 2010 Nathaniel McCallum <nathaniel@natemccallum.com> - 0.4.4-1
 - Update to 0.4.4
@@ -223,12 +223,12 @@ make test
 - Run tests
 
 * Thu Mar 11 2010 Nicolas Chauvet <kwizart@fedoraproject.org> - 0.3.1-4
-- Add missing libXmu-devel
+- Add missing libXmu-dev
 
 * Sun Feb 21 2010 Nicolas Chauvet <kwizart@fedoraproject.org> - 0.3.1-4
 - Globalism and update gecko to 1.9.2
 - Avoid rpath on _libdir
-- Fix BR for kde4 to kdelibs-devel
+- Fix BR for kde4 to kdelibs-dev
 
 * Sun Dec 27 2009 Nicolas Chauvet <kwizart@fedoraproject.org> - 0.3.1-1
 - Update to 0.3.1

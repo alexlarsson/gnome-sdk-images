@@ -10,9 +10,9 @@ URL: http://live.gnome.org/LibSoup
 #VCS: git:git://git.gnome.org/libsoup
 Source: http://download.gnome.org/sources/libsoup/%{release_version}/libsoup-%{version}.tar.xz
 
-BuildRequires: glib2-devel
+BuildRequires: glib2-dev
 BuildRequires: glib-networking
-BuildRequires: gobject-introspection-devel
+BuildRequires: gobject-introspection-dev
 
 Requires: glib2%{?_isa}
 Requires: glib-networking%{?_isa}
@@ -28,12 +28,12 @@ on the network in a completely asynchronous fashion, very similar to
 the Gtk+ programming model (a synchronous operation mode is also
 supported for those who want it).
 
-%package devel
+%package dev
 Summary: Header files for the Soup library
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Libsoup is an HTTP library implementation in C. This package allows
 you to develop applications that use the libsoup library.
 
@@ -64,7 +64,7 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
 %{_libdir}/lib*.so.*
 %{_libdir}/girepository-1.0/Soup*2.4.typelib
 
-%files devel
+%files dev
 %{_includedir}/%{name}-2.4
 %{_includedir}/%{name}-gnome-2.4
 %{_libdir}/*.so

@@ -9,17 +9,17 @@ Source0:        http://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
+BuildRequires: xorg-x11-proto-dev
 
 %description
 Shared memory fences for X11, as used in DRI3.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
+%description    dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
@@ -41,7 +41,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %doc
 %{_libdir}/libxshmfence.so.1*
 
-%files devel
+%files dev
 %doc
 %{_includedir}/*
 %{_libdir}/pkgconfig/xshmfence.pc

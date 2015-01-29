@@ -13,10 +13,10 @@ Source0:    http://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-
 BuildArch:  noarch
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
-BuildRequires: libX11-devel
+BuildRequires: glib2-dev
+BuildRequires: libX11-dev
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
+BuildRequires: xorg-x11-proto-dev
 #BuildRequires: xkbcomp
 
 
@@ -24,11 +24,11 @@ BuildRequires: xorg-x11-proto-devel
 This package contains configuration data used by the X Keyboard Extension (XKB),
 which allows selection of keyboard layouts when using a graphical interface.
 
-%package devel
+%package dev
 Summary:    Development files for %{name}
 Requires:   %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 Development files for %{name}.
 
 %prep
@@ -66,7 +66,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 %{_datadir}/X11/xkb/rules/xorg.xml
 %{_mandir}/man7/xkeyboard-config.*
 
-%files devel
+%files dev
 %{_datadir}/pkgconfig/xkeyboard-config.pc
 
 %changelog

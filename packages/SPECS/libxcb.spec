@@ -16,9 +16,9 @@ Source0:        http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.bz2
 Source1:	pthread-stubs.pc.in
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:  libXau-devel
+BuildRequires:  libXau-dev
 BuildRequires:  xcb-proto
-BuildRequires:  xorg-x11-proto-devel
+BuildRequires:  xorg-x11-proto-dev
 BuildRequires:  xorg-x11-util-macros
 
 %description
@@ -26,13 +26,13 @@ The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a
 small footprint, latency hiding, direct access to the protocol, improved
 threading support, and extensibility.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
+%description    dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 %package        doc
@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxcb-xvmc.so.0*
 %{_libdir}/libxcb.so.1*
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/xcb
 %{_libdir}/*.so

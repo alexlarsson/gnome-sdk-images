@@ -18,7 +18,7 @@ Patch1:		%{name}-fix-fccache-fail.patch
 Patch2:		%{name}-fix-broken-cache.patch
 
 BuildRequires:  gnome-sdk-base
-BuildRequires:	freetype-devel
+BuildRequires:	freetype-dev
 
 Requires(pre):	freetype
 
@@ -27,27 +27,27 @@ Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by
 applications.
 
-%package	devel
+%package	dev
 Summary:	Font configuration and customization library
 Group:		Development/Libraries
 Requires:	%{name}%{?_isa} = %{version}-%{release}
-Requires:	freetype-devel >= %{freetype_version}
+Requires:	freetype-dev >= %{freetype_version}
 
-%description	devel
-The fontconfig-devel package includes the header files,
+%description	dev
+The fontconfig-dev package includes the header files,
 and developer docs for the fontconfig package.
 
-Install fontconfig-devel if you want to develop programs which
+Install fontconfig-dev if you want to develop programs which
 will use fontconfig.
 
-%package	devel-doc
+%package	dev-doc
 Summary:	Development Documentation files for fontconfig library
 Group:		Documentation
 BuildArch:	noarch
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-dev = %{version}-%{release}
 
-%description	devel-doc
-The fontconfig-devel-doc package contains the documentation files
+%description	dev-doc
+The fontconfig-dev-doc package contains the documentation files
 which is useful for developing applications that uses fontconfig.
 
 %prep
@@ -119,13 +119,13 @@ fi
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
-%files devel
+%files dev
 %{_libdir}/libfontconfig.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/fontconfig
 %{_mandir}/man3/*
 
-%files devel-doc
+%files dev-doc
 %doc fontconfig-devel.txt fontconfig-devel
 
 %changelog

@@ -18,12 +18,12 @@ BuildRequires: itstool
 This package contains XSL stylesheets that are used by the yelp help browser.
 
 
-%package devel
+%package dev
 Summary: Developer documentation for yelp-xsl
 Requires: %{name} = %{version}-%{release}
 
-%description devel
-The yelp-xsl-devel package contains developer documentation for the
+%description dev
+The yelp-xsl-dev package contains developer documentation for the
 XSL stylesheets in yelp-xsl.
 
 
@@ -45,7 +45,7 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 %{_datadir}/yelp-xsl
 
 
-%files devel
+%files dev
 %{_datadir}/pkgconfig/yelp-xsl.pc
 
 

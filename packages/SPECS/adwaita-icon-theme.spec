@@ -14,7 +14,7 @@ BuildArch:      noarch
 
 BuildRequires:  gnome-sdk-base
 BuildRequires:  librsvg2
-BuildRequires:  gtk3-devel
+BuildRequires:  gtk3-dev
 BuildRequires:  hicolor-icon-theme
 
 Requires:       adwaita-cursor-theme = %{version}-%{release}
@@ -29,12 +29,12 @@ Summary:        Adwaita cursor theme
 The adwaita-cursor-theme package contains a modern set of cursors originally
 designed for the GNOME desktop.
 
-%package        devel
+%package        dev
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains the pkgconfig file for
+%description    dev
+The %{name}-dev package contains the pkgconfig file for
 developing applications that use %{name}.
 
 %prep
@@ -83,7 +83,7 @@ gtk-update-icon-cache %{_datadir}/icons/Adwaita &>/dev/null || :
 %doc COPYING*
 %{_datadir}/icons/Adwaita/cursors/
 
-%files devel
+%files dev
 %{_datadir}/pkgconfig/adwaita-icon-theme.pc
 
 %changelog

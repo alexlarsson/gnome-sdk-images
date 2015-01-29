@@ -12,19 +12,19 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libXext-devel
-BuildRequires: libX11-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libXext-dev
+BuildRequires: libX11-dev
 
 %description
 X.Org X11 libXv runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXv development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXv development package
 
 %prep
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXv.so.1
 %{_libdir}/libXv.so.1.0.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %doc man/xv-library-v2.2.txt
 %{_includedir}/X11/extensions/Xvlib.h

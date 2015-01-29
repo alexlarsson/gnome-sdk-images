@@ -9,18 +9,18 @@ Group:            System Environment/Libraries
 Source:           http://download.gnome.org/sources/libcroco/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel
+BuildRequires: glib2-dev
 
 %description
 CSS2 parsing and manipulation library for GNOME
 
-%package devel
+%package dev
 Summary:          Libraries and include files for developing with libcroco
 Group:            Development/Libraries
 Requires:         %{name} = %{version}-%{release}
-Requires:         glib2-devel
+Requires:         glib2-dev
 
-%description devel
+%description dev
 This package provides the necessary development libraries and include
 files to allow you to develop with libcroco.
 
@@ -47,7 +47,7 @@ make check
 %{_bindir}/csslint-0.6
 %{_libdir}/*.so.*
 
-%files devel
+%files dev
 %{_libdir}/*.so
 %{_includedir}/libcroco-0.6
 %{_bindir}/croco-0.6-config

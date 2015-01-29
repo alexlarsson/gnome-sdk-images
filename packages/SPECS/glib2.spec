@@ -18,13 +18,13 @@ portability wrappers, and interfaces for such runtime functionality
 as an event loop, threads, dynamic loading, and an object system.
 
 
-%package devel
+%package dev
 Summary: A library of handy utility functions
 Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
-The glib2-devel package includes the header files for the GLib library.
+%description dev
+The glib2-dev package includes the header files for the GLib library.
 
 %package doc
 Summary: A library of handy utility functions
@@ -52,7 +52,7 @@ make %{?_smp_mflags}
 # to help multilib: https://bugzilla.redhat.com/show_bug.cgi?id=718404
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p -c"
 # Also since this is a generated .py file, set it to a known timestamp,
-# otherwise it will vary by build time, and thus break multilib -devel
+# otherwise it will vary by build time, and thus break multilib -dev
 # installs.
 touch -r gio/gdbus-2.0/codegen/config.py.in $RPM_BUILD_ROOT/%{_datadir}/glib-2.0/codegen/config.py
 chrpath --delete $RPM_BUILD_ROOT%{_libdir}/*.so
@@ -107,7 +107,7 @@ gio-querymodules-%{__isa_bits} %{_libdir}/gio/modules
 %{_bindir}/gdbus
 %{_bindir}/gapplication
 
-%files devel
+%files dev
 %{_libdir}/lib*.so
 %{_libdir}/glib-2.0
 %{_includedir}/*

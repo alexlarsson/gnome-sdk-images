@@ -12,7 +12,7 @@ Source0:       https://download.gnome.org/sources/%{name}/%{release_version}/%{n
 BuildArch:     noarch
 
 BuildRequires: gnome-sdk-base
-BuildRequires: yelp-xsl-devel
+BuildRequires: yelp-xsl-dev
 BuildRequires: itstool
 
 Requires: /usr/bin/itstool

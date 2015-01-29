@@ -10,8 +10,8 @@ URL:           https://wiki.gnome.org/Projects/Zenity
 Source:        https://download.gnome.org/sources/zenity/%{release_version}/zenity-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: gtk3-devel
-BuildRequires: libnotify-devel
+BuildRequires: gtk3-dev
+BuildRequires: libnotify-dev
 BuildRequires: itstool
 
 %description

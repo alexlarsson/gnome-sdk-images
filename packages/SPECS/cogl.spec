@@ -11,19 +11,19 @@ URL:           http://www.clutter-project.org/
 Source0:       http://download.gnome.org/sources/cogl/%{release_version}/cogl-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: cairo-devel
-BuildRequires: gdk-pixbuf2-devel
-BuildRequires: glib2-devel
-BuildRequires: gobject-introspection-devel
-BuildRequires: libXrandr-devel
-BuildRequires: libXcomposite-devel
-BuildRequires: libXdamage-devel
-BuildRequires: libXext-devel
-BuildRequires: libXfixes-devel
-BuildRequires: mesa-libGL-devel
-BuildRequires: mesa-libEGL-devel
-BuildRequires: mesa-libgbm-devel
-BuildRequires: pango-devel
+BuildRequires: cairo-dev
+BuildRequires: gdk-pixbuf2-dev
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: libXrandr-dev
+BuildRequires: libXcomposite-dev
+BuildRequires: libXdamage-dev
+BuildRequires: libXext-dev
+BuildRequires: libXfixes-dev
+BuildRequires: mesa-libGL-dev
+BuildRequires: mesa-libEGL-dev
+BuildRequires: mesa-libgbm-dev
+BuildRequires: pango-dev
 
 %description
 Cogl is a small open source library for using 3D graphics hardware to draw
@@ -42,12 +42,12 @@ once and there is no risk of inconsistency between implementations.
 Having other backends, besides OpenGL, such as drm, Gallium or D3D are
 options we are interested in for the future.
 
-%package devel
+%package dev
 Summary:       %{name} development environment
 Group:         Development/Libraries
 Requires:      %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Header files and libraries for building and developing apps with %{name}.
 
 %prep
@@ -86,7 +86,7 @@ rm %{buildroot}%{_datadir}/cogl/examples-data/crate.jpg
 %{_libdir}/libcogl*.so.20*
 %{_libdir}/girepository-1.0/Cogl*.typelib
 
-%files devel
+%files dev
 %{_includedir}/cogl
 %{_libdir}/libcogl*.so
 %{_libdir}/pkgconfig/*.pc

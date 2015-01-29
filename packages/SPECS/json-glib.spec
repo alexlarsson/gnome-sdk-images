@@ -12,8 +12,8 @@ URL:		https://wiki.gnome.org/Projects/JsonGlib
 Source0:	http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires:	glib2-devel
-BuildRequires:	gobject-introspection-devel
+BuildRequires:	glib2-dev
+BuildRequires:	gobject-introspection-dev
 
 
 %description
@@ -21,13 +21,13 @@ BuildRequires:	gobject-introspection-devel
 for the JavaScript Object Notation (JSON) format.
 
 
-%package devel
+%package dev
 Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name}%{_isa} = %{version}-%{release}
 
-%description devel
-The %{name}-devel package contains libraries and header files for
+%description dev
+The %{name}-dev package contains libraries and header files for
 developing applications that use %{name}.
 
 
@@ -56,7 +56,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/Json-1.0.typelib
 
-%files devel
+%files dev
 %{_libdir}/lib%{name}*.so
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 %{_includedir}/%{name}-1.0/

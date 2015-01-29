@@ -11,15 +11,15 @@ URL:           http://www.clutter-project.org/
 Source0:       http://download.gnome.org/sources/clutter/%{release_version}/clutter-%{version}.tar.xz
 
 BuildRequires: gnome-sdk-base
-BuildRequires: glib2-devel mesa-libGL-devel pango-devel
-BuildRequires: cairo-gobject-devel gdk-pixbuf2-devel atk-devel
-BuildRequires: cogl-devel
-BuildRequires: gobject-introspection-devel
-BuildRequires: gtk3-devel
-BuildRequires: json-glib-devel
-BuildRequires: libXcomposite-devel
-BuildRequires: libXdamage-devel
-BuildRequires: libXi-devel
+BuildRequires: glib2-dev mesa-libGL-dev pango-dev
+BuildRequires: cairo-gobject-dev gdk-pixbuf2-dev atk-dev
+BuildRequires: cogl-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: gtk3-dev
+BuildRequires: json-glib-dev
+BuildRequires: libXcomposite-dev
+BuildRequires: libXdamage-dev
+BuildRequires: libXi-dev
 
 Requires:      gobject-introspection
 
@@ -29,12 +29,12 @@ visually rich graphical user interfaces. The most obvious example
 of potential usage is in media center type applications.
 We hope however it can be used for a lot more.
 
-%package devel
+%package dev
 Summary:       Clutter development environment
 Group:         Development/Libraries
 Requires:      %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description dev
 Header files and libraries for building a extension library for the
 clutter
 
@@ -79,7 +79,7 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/*.so.0.*
 %{_libdir}/girepository-1.0/*.typelib
 
-%files devel
+%files dev
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

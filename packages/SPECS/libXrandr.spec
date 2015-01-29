@@ -12,20 +12,20 @@ Requires: libX11
 
 BuildRequires: gnome-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: xorg-x11-proto-devel
-BuildRequires: libXrender-devel
-BuildRequires: libXext-devel
-BuildRequires: libX11-devel
+BuildRequires: xorg-x11-proto-dev
+BuildRequires: libXrender-dev
+BuildRequires: libXext-dev
+BuildRequires: libX11-dev
 
 %description
 X.Org X11 libXrandr runtime library
 
-%package devel
+%package dev
 Summary: X.Org X11 libXrandr development package
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
-%description devel
+%description dev
 X.Org X11 libXrandr development package
 
 %prep
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libXrandr.so.2
 %{_libdir}/libXrandr.so.2.2.0
 
-%files devel
+%files dev
 %defattr(-,root,root,-)
 %{_includedir}/X11/extensions/Xrandr.h
 %{_libdir}/libXrandr.so
