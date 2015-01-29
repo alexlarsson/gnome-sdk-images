@@ -39,6 +39,7 @@ BuildRequires: webkitgtk4-devel
 BuildRequires: xkeyboard-config-devel
 BuildRequires: enchant-devel
 BuildRequires: gstreamer1
+BuildRequires: libXv
 
 Requires: gnome-platform-base
 Requires: gtk2 gtk2-immodules
