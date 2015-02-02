@@ -14,7 +14,7 @@ Source3: im-cedilla.conf
 
 Patch0:	gtk2-pixdata-deprecation.patch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: atk-dev
 BuildRequires: glib2-dev
 BuildRequires: cairo-dev

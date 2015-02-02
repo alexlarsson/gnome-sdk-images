@@ -22,7 +22,7 @@ Source0:        http://llvm.org/releases/%{version}/llvm-%{version}.src.tar.xz
 # patches
 Patch1:         llvm-3.5.0-build-fix.patch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description

@@ -11,7 +11,7 @@ URL:            http://www.linuxfoundation.org/en/AT-SPI_on_D-Bus
 #VCS: git:git://git.gnome.org/at-spi-atk
 Source0:        http://download.gnome.org/sources/at-spi2-atk/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  atk-dev
 BuildRequires:  at-spi2-core-dev
 BuildRequires:  dbus-dev

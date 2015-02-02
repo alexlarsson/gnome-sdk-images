@@ -12,8 +12,9 @@ URL:            http://live.gnome.org/Vala
 #VCS:           git:git://git.gnome.org/vala
 Source0:        http://download.gnome.org/sources/vala/%{release_version}/vala-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  glib2-dev
+BuildRequires:  gnome-common
 
 %description
 Vala is a new programming language that aims to bring modern programming

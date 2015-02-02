@@ -10,7 +10,7 @@ License:        LGPLv2+
 URL:            http://www.gnome.org
 Source:         http://download.gnome.org/sources/glib-networking/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  glib2-dev
 BuildRequires:  libproxy-dev
 BuildRequires:  gsettings-desktop-schemas-dev

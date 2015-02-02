@@ -9,7 +9,7 @@ Group: System Environment/Libraries
 URL: http://www.gtk.org
 
 Source: http://download.gnome.org/sources/gvfs/%{release_version}/gvfs-%{version}.tar.xz
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: dbus-glib-dev
 

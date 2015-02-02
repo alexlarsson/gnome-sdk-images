@@ -11,7 +11,7 @@ Source1: index.theme
 
 Requires: libX11
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: xorg-x11-util-macros
 BuildRequires: xorg-x11-proto-dev
 BuildRequires: libX11-dev

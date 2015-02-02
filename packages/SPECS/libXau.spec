@@ -8,7 +8,7 @@ URL: http://www.x.org
 
 Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: xorg-x11-util-macros
 BuildRequires: xorg-x11-proto-dev
 

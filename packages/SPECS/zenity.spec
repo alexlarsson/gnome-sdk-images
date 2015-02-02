@@ -9,7 +9,7 @@ License:       LGPLv2+
 URL:           https://wiki.gnome.org/Projects/Zenity
 Source:        https://download.gnome.org/sources/zenity/%{release_version}/zenity-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: gtk3-dev
 BuildRequires: libnotify-dev
 BuildRequires: itstool

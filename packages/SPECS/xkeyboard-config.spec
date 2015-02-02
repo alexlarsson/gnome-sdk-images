@@ -12,7 +12,7 @@ Source0:    http://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-
 
 BuildArch:  noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: libX11-dev
 BuildRequires: xorg-x11-util-macros

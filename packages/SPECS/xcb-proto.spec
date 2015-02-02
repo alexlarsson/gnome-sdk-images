@@ -12,7 +12,7 @@ URL:            http://xcb.freedesktop.org/
 Source0:        http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 XCB is a project to enable efficient language bindings to the X11 protocol.

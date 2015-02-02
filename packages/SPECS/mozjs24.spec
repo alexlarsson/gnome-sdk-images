@@ -7,7 +7,7 @@ Group:		Development/Languages
 URL:		http://www.mozilla.org/js/
 Source0:	http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-%{version}.tar.bz2
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 Patch0:		mozjs-build-fixes.patch
 

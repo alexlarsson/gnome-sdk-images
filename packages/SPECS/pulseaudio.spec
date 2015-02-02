@@ -9,7 +9,7 @@ License:        LGPLv2+
 URL:            http://www.freedesktop.org/wiki/Software/PulseAudio
 Source0:        http://freedesktop.org/software/pulseaudio/releases/pulseaudio-%{version}.tar.xz
 
-Requires: gnome-platform-base
+Requires: freedesktop-platform-base
 BuildRequires:  glib2-dev
 BuildRequires:  gtk2-dev
 BuildRequires:  xorg-x11-proto-dev

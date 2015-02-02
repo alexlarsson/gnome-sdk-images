@@ -9,7 +9,7 @@ Source0:	http://cairographics.org/releases/%{name}-%{version}.tar.xz
 License:	LGPLv2 or MPLv1.1
 Group:		System Environment/Libraries
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: libXrender-dev
 BuildRequires: libXext-dev
 BuildRequires: libX11-dev

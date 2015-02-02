@@ -8,7 +8,7 @@ License:        MIT
 URL:            http://%{name}.freedesktop.org/
 Source0:        http://wayland.freedesktop.org/releases/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 Wayland is a protocol for a compositor to talk to its clients as well as a C

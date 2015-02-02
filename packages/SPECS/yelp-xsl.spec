@@ -11,7 +11,7 @@ URL:            http://download.gnome.org/sources/yelp-xsl
 Source0:        http://download.gnome.org/sources/yelp-xsl/%{release_version}/yelp-xsl-%{version}.tar.xz
 BuildArch:      noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: itstool
 
 %description

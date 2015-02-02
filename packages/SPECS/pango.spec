@@ -11,7 +11,7 @@ Group: System Environment/Libraries
 Source: http://download.gnome.org/sources/pango/%{release_version}/pango-%{version}.tar.xz
 URL: http://www.pango.org
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: freetype-dev
 BuildRequires: fontconfig-dev

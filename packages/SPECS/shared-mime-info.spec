@@ -7,7 +7,7 @@ Group: System Environment/Base
 URL: http://freedesktop.org/Software/shared-mime-info
 Source0: http://people.freedesktop.org/~hadess/%{name}-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  glib2-dev
 
 Requires(post): glib2

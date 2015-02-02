@@ -6,7 +6,7 @@ License:        LGPLv2+
 URL:            http://linux.thai.net/projects/datrie
 Source0:        http://linux.thai.net/pub/thailinux/software/libthai/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 datrie is an implementation of double-array structure for representing trie.

@@ -9,7 +9,7 @@ URL:            http://cgit.freedesktop.org/pixman/
 #VCS:		git:git://git.freedesktop.org/git/pixman
 Source0:	http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 
 %description
 Pixman is a pixel manipulation library for X and cairo.

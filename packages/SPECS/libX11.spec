@@ -10,7 +10,7 @@ Source0: http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.t
 
 Patch0: 0001-Fix-XNextRequest-after-direct-usage-of-XCB.patch
 Patch2: dont-forward-keycode-0.patch
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: xorg-x11-util-macros
 BuildRequires: xorg-x11-proto-dev
 BuildRequires: xorg-x11-xtrans-dev

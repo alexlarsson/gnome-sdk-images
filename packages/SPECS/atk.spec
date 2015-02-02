@@ -10,7 +10,7 @@ Group: System Environment/Libraries
 Source: http://download.gnome.org/sources/atk/%{release_version}/atk-%{version}.tar.xz
 URL: http://developer.gnome.org/platform-overview/stable/atk
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: gobject-introspection-dev
 

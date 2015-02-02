@@ -13,7 +13,7 @@ Group: Applications/Text
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/aspell-%{version}.tar.gz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 GNU Aspell is a spell checker designed to eventually replace Ispell. It can

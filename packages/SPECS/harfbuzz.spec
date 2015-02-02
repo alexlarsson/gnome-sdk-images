@@ -7,7 +7,7 @@ License:        MIT
 URL:            http://freedesktop.org/wiki/Software/HarfBuzz
 Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.bz2
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  cairo-dev
 BuildRequires:  freetype-dev
 BuildRequires:  glib2-dev

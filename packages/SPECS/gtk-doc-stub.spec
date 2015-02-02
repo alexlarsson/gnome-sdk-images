@@ -7,7 +7,7 @@ Group: Development/Tools
 #VCS: git:git://git.gnome.org/gtk-doc-stub
 Source: gtk-doc-stub.tar.gz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 BuildArch: noarch
 URL: http://www.gtk.org/gtk-doc

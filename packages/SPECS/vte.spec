@@ -11,7 +11,7 @@ URL:            http://www.gnome.org/
 Source0:        http://download.gnome.org/sources/vte/%{release_version}/vte-%{version}.tar.xz
 Patch2:         vte-Only-show-the-cursor-on-motion-if-moved.patch
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  gobject-introspection-dev
 BuildRequires:  gtk3-dev
 BuildRequires:  vala-tools

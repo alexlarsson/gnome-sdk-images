@@ -11,7 +11,7 @@ URL:           https://wiki.gnome.org/Apps/Yelp/Tools
 Source0:       https://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 BuildArch:     noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: yelp-xsl-dev
 BuildRequires: itstool
 

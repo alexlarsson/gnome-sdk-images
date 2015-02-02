@@ -7,7 +7,7 @@ Group: System Environment/Libraries
 Source: ftp://linux.thai.net/pub/thailinux/software/libthai/libthai-%{version}.tar.xz
 URL: http://linux.thai.net
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: libdatrie-dev
 
 %description

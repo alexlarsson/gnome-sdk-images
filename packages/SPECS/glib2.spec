@@ -9,7 +9,7 @@ Group: System Environment/Libraries
 #VCS: git:git://git.gnome.org/glib
 Source: http://download.gnome.org/sources/glib/%{release_version}/glib-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 GLib is the low-level core library that forms the basis for projects

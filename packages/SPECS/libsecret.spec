@@ -10,7 +10,7 @@ License:        LGPLv2+
 URL:            https://live.gnome.org/Libsecret
 Source0:        http://download.gnome.org/sources/libsecret/%{release_version}/libsecret-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: gobject-introspection-dev
 BuildRequires: gtk-doc-stub

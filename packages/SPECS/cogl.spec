@@ -10,7 +10,7 @@ License:       LGPLv2+
 URL:           http://www.clutter-project.org/
 Source0:       http://download.gnome.org/sources/cogl/%{release_version}/cogl-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: cairo-dev
 BuildRequires: gdk-pixbuf2-dev
 BuildRequires: glib2-dev

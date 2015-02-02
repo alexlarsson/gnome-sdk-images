@@ -10,7 +10,7 @@ Source0:        http://files.itstool.org/itstool/%{name}-%{version}.tar.bz2
 
 BuildArch:      noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 ITS Tool allows you to translate XML documents with PO files, using rules from

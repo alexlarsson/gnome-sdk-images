@@ -8,7 +8,7 @@ URL: http://icon-theme.freedesktop.org/wiki/HicolorTheme
 Source: http://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.xz
 BuildArch: noarch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 Contains the basic directories and files needed for icon theme support.

@@ -11,7 +11,7 @@ URL: http://git.gnome.org/browse/gnome-themes-standard
 Source0: http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 Source2: gtkrc
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: gtk2-dev
 BuildRequires: gtk3-dev
 BuildRequires: librsvg2-dev

@@ -15,7 +15,7 @@ Source0: http://dbus.freedesktop.org/releases/dbus/%{name}-%{version}.tar.gz
 License: GPLv2+ or AFL
 Group: System Environment/Libraries
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: libX11-dev
 Requires: dbus-libs%{?_isa} = %{version}-%{release}
 

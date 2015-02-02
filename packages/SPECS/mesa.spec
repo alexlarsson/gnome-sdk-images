@@ -19,7 +19,7 @@ Source0: ftp://ftp.freedesktop.org/pub/mesa/%{version}/MesaLib-%{version}.tar.bz
 
 Patch1: mesa-no-typeid.patch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: libdrm-dev
 BuildRequires: libXxf86vm-dev
 BuildRequires: xorg-x11-proto-dev

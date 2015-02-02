@@ -8,7 +8,7 @@ License:        (LGPLv2+ or GPLv2+ or MPL) and (Netscape or GPLv2+ or LGPLv2+)
 URL:            http://sourceforge.net/projects/silgraphite/
 Source0:        http://downloads.sourceforge.net/silgraphite/graphite2-%{version}.tgz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: freetype-dev
 
 %description

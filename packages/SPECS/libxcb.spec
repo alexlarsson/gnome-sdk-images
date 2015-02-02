@@ -15,7 +15,7 @@ Source0:        http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.bz2
 # the pkgconfig file so libs that link against libxcb know this...
 Source1:	pthread-stubs.pc.in
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  libXau-dev
 BuildRequires:  xcb-proto
 BuildRequires:  xorg-x11-proto-dev

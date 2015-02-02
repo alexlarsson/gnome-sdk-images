@@ -9,81 +9,40 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
 BuildRequires: gnome-platform
+BuildRequires: freedesktop-sdk
 
 Requires: gnome-platform
-Requires: gtk2-dev
-Requires: gtk3-dev
-Requires: desktop-file-utils
-Requires: json-glib-dev
-Requires: libnotify-dev
-Requires: gvfs-dev
-Requires: vte-dev
-Requires: librsvg2-dev
+Requires: freedesktop-sdk
+
 Requires: adwaita-icon-theme-dev
-Requires: gtk-doc-stub
-Requires: atk-dev
 Requires: at-spi2-atk-dev
 Requires: at-spi2-core-dev
-Requires: cairo-dev
-Requires: cairo-gobject-dev
-Requires: dbus-dev
-Requires: dbus-glib-dev
-Requires: fontconfig-dev
-Requires: freetype-dev
-Requires: gdk-pixbuf2-dev
-Requires: glib2-dev
-Requires: gobject-introspection-dev
-Requires: graphite2-dev
-Requires: gtk3-dev
-Requires: harfbuzz-dev
-Requires: libcroco-dev
-Requires: librsvg2-dev
-Requires: libthai-dev
-Requires: libX11-dev
-Requires: libXau-dev
-Requires: libxcb-dev
-Requires: libXcomposite-dev
-Requires: libXcursor-dev
-Requires: libXdamage-dev
-Requires: libXdmcp-dev
-Requires: libXext-dev
-Requires: libXfixes-dev
-Requires: libXft-dev
-Requires: libXi-dev
-Requires: libXinerama-dev
-Requires: libXrandr-dev
-Requires: libXrender-dev
-Requires: libXtst-dev
-Requires: libXt-dev
-Requires: libXv-dev
-Requires: pango-dev
-Requires: pixman-dev
-Requires: vala-dev
-Requires: vala-tools
-Requires: dconf-dev
-Requires: libsoup-dev
-Requires: libproxy-dev
-Requires: gsettings-desktop-schemas-dev
-Requires: gjs-dev mozjs24-dev
-Requires: mesa-libGL-dev
-Requires: mesa-libEGL-dev
-Requires: libICE-dev
-Requires: libXxf86vm-dev
-Requires: libepoxy-dev
-Requires: cogl-dev
+Requires: atk-dev
 Requires: clutter-dev
 Requires: clutter-gtk-dev
-Requires: pulseaudio-libs-dev
-Requires: libsecret-dev
-Requires: webkitgtk4-dev
-Requires: libxkbcommon-dev libxkbcommon-x11-dev
-Requires: libwayland-client-dev libwayland-cursor-dev mesa-libwayland-egl-dev
-Requires: xkeyboard-config-dev
-Requires: xorg-x11-util-macros
-Requires: hunspell-dev
+Requires: cogl-dev
+Requires: dbus-glib-dev
+Requires: dconf-dev
 Requires: enchant-dev
-Requires: gstreamer1-dev
-
+Requires: gdk-pixbuf2-dev
+Requires: gjs-dev
+Requires: gsettings-desktop-schemas-dev
+Requires: gtk2-dev
+Requires: gtk3-dev
+Requires: gvfs-dev
+Requires: json-glib-dev
+Requires: libcroco-dev
+Requires: libnotify-dev
+Requires: librsvg2-dev
+Requires: libsecret-dev
+Requires: libsoup-dev
+Requires: libthai-dev
+Requires: mozjs24-dev
+Requires: pango-dev
+Requires: vala-dev
+Requires: vala-tools
+Requires: vte-dev
+Requires: webkitgtk4-dev
 
 %description
 Meta package for Gnome SDK dependencies

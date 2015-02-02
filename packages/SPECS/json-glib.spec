@@ -11,9 +11,9 @@ URL:		https://wiki.gnome.org/Projects/JsonGlib
 #VCS:		git:git://git.gnome.org/json-glib
 Source0:	http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
-BuildRequires:	glib2-dev
-BuildRequires:	gobject-introspection-dev
+BuildRequires: freedesktop-sdk-base
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
 
 
 %description

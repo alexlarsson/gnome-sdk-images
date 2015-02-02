@@ -10,7 +10,7 @@ Group:          System Environment/Libraries
 #VCS:           git:git://git.gnome.org/librsvg
 Source:         http://download.gnome.org/sources/librsvg/%{release_version}/librsvg-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  glib2-dev
 BuildRequires:  gdk-pixbuf2-dev
 BuildRequires:  pango-dev

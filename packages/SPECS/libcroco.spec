@@ -8,7 +8,7 @@ License:          LGPLv2
 Group:            System Environment/Libraries
 Source:           http://download.gnome.org/sources/libcroco/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 
 %description

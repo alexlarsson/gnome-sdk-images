@@ -7,7 +7,7 @@ Group:     System Environment/Libraries
 URL:       http://hunspell.sourceforge.net/
 License:   LGPLv2+ or GPLv2+ or MPLv1.1
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 Requires:  hunspell-en-US
 
 %description

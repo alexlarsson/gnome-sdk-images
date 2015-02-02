@@ -10,7 +10,7 @@ License:       LGPLv2+
 URL:           http://www.clutter-project.org/
 Source0:       http://download.gnome.org/sources/clutter/%{release_version}/clutter-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev mesa-libGL-dev pango-dev
 BuildRequires: cairo-gobject-dev gdk-pixbuf2-dev atk-dev
 BuildRequires: cogl-dev

@@ -12,7 +12,7 @@ Source0:        http://download.gnome.org/sources/adwaita-icon-theme/3.14/%{name
 
 BuildArch:      noarch
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  librsvg2
 BuildRequires:  gtk3-dev
 BuildRequires:  hicolor-icon-theme

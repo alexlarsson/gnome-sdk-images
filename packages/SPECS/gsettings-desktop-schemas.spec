@@ -13,7 +13,7 @@ URL:            http://bugzilla.gnome.org/enter_bug.cgi?product=gsettings-deskto
 #VCS: git:git://git.gnome.org/gsettings-desktop-schemas
 Source:         http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: gobject-introspection-dev
 

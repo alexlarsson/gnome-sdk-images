@@ -24,7 +24,7 @@ Patch91:  freetype-2.5.3-freetype-config-libs.patch
 
 Buildroot: %{_tmppath}/%{name}-%{version}-root-%(%{__id_u} -n)
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 
 Provides: %{name}-bytecode
 %if %{?_with_subpixel_rendering:1}%{!?_with_subpixel_rendering:0}

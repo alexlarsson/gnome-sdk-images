@@ -7,7 +7,7 @@ Group: System Environment/Libraries
 URL: http://dri.sourceforge.net
 Source0: http://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.bz2
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: libxcb-dev
 BuildRequires: libpciaccess-dev
 

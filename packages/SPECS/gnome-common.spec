@@ -11,7 +11,7 @@ License:        GPLv2+
 URL:            https://wiki.gnome.org/Projects/GnomeCommon
 Source0:        https://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: yelp-tools
 Requires: yelp-tools
 

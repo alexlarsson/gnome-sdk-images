@@ -11,9 +11,9 @@ URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
-BuildRequires:  glib2-dev
-BuildRequires:  gtk-doc-stub
+BuildRequires: freedesktop-sdk-base
+BuildRequires: glib2-dev
+BuildRequires: gtk-doc-stub
 
 %description
 GObject Introspection can scan C header and source files in order to

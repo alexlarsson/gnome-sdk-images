@@ -9,7 +9,7 @@ Source0: http://ftp.gnome.org/pub/GNOME/sources/libnotify/%{release_version}/%{n
 License: LGPLv2+
 Group: System Environment/Libraries
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 BuildRequires: gdk-pixbuf2-dev
 BuildRequires: gtk3-dev

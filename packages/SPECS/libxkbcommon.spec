@@ -7,7 +7,7 @@ URL:            http://www.x.org
 
 Source0:        http://xkbcommon.org/download/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires:  xorg-x11-util-macros
 BuildRequires:  xorg-x11-proto-dev libX11-dev libxcb-dev
 BuildRequires:  xkeyboard-config-dev

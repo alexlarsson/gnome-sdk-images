@@ -10,7 +10,7 @@ Source0: http://dbus.freedesktop.org/releases/dbus-glib/%{name}-%{version}.tar.g
 License: AFL and GPLv2+
 Group: System Environment/Libraries
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: dbus-dev
 BuildRequires: glib2-dev
 

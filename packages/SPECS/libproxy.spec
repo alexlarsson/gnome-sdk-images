@@ -11,7 +11,7 @@ Source0:        http://libproxy.googlecode.com/files/libproxy-%{version}%{?svn}.
 Patch3:         libproxy-0.4.11-fdleak.patch
 Patch4:         libproxy-0.4.11-crash.patch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 libproxy offers the following features:

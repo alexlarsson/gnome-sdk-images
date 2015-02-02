@@ -7,79 +7,56 @@ License: Various
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
-BuildRequires: gnome-sdk-base
-BuildRequires: gtk2
-BuildRequires: gtk3 gtk3-immodules
-BuildRequires: hicolor-icon-theme
-BuildRequires: adwaita-icon-theme
-BuildRequires: gnome-themes-standard
-BuildRequires: dejavu-fonts
+BuildRequires: freedesktop-platform
+
 BuildRequires: abattis-cantarell-fonts
-BuildRequires: dbus-libs
-BuildRequires: librsvg2
+BuildRequires: adwaita-icon-theme
+BuildRequires: clutter-gtk-dev
 BuildRequires: dbus-glib
-BuildRequires: gobject-introspection
-BuildRequires: libsoup
+BuildRequires: dconf-dev
+BuildRequires: dejavu-fonts
+BuildRequires: enchant-dev
+BuildRequires: gjs-dev
+BuildRequires: gnome-themes-standard
+BuildRequires: gtk2
+BuildRequires: gtk3
 BuildRequires: gvfs
-BuildRequires: desktop-file-utils
+BuildRequires: hicolor-icon-theme
 BuildRequires: json-glib
 BuildRequires: libnotify-dev
-BuildRequires: vte-dev
-BuildRequires: gjs-dev
-BuildRequires: zenity
-BuildRequires: mesa-libGL
-BuildRequires: libICE-dev
-BuildRequires: libXxf86vm-dev
-BuildRequires: libepoxy-dev
-BuildRequires: clutter-gtk-dev
-BuildRequires: pulseaudio-libs-dev
-BuildRequires: dconf-dev
+BuildRequires: librsvg2
 BuildRequires: libsecret-dev
+BuildRequires: libsoup
+BuildRequires: vte-dev
 BuildRequires: webkitgtk4-dev
-BuildRequires: xkeyboard-config-dev
-BuildRequires: enchant-dev
-BuildRequires: gstreamer1
-BuildRequires: libXv
+BuildRequires: zenity
 
-Requires: gnome-platform-base
-Requires: gtk2 gtk2-immodules
-Requires: gtk3 gtk3-immodules
-Requires: hicolor-icon-theme
-Requires: adwaita-icon-theme
-Requires: gnome-themes-standard
-Requires: dejavu-fonts
+Requires: freedesktop-platform
+
 Requires: abattis-cantarell-fonts
-Requires: dbus-libs
-Requires: librsvg2
-Requires: dbus-glib
-Requires: gobject-introspection
-Requires: gtk2 gnome-themes-standard
-Requires: dconf libsoup
-Requires: gsettings-desktop-schemas
-Requires: gvfs
-Requires: desktop-file-utils
-Requires: json-glib
-Requires: libnotify
-Requires: vte
-Requires: gjs
-Requires: zenity
-Requires: libXt
-Requires: libXv
-Requires: mesa-libGL
-Requires: mesa-libEGL
-Requires: mesa-libwayland-egl
-Requires: mesa-dri-drivers
-Requires: libepoxy
+Requires: adwaita-icon-theme
 Requires: clutter
 Requires: clutter-gtk
-Requires: pulseaudio-libs-glib2
-Requires: libsecret
-Requires: webkitgtk4
-Requires: xkeyboard-config
-Requires: libxkbcommon libxkbcommon-x11 libwayland-cursor
+Requires: dbus-glib
+Requires: dconf
+Requires: dejavu-fonts
 Requires: enchant
-Requires: gstreamer1
-
+Requires: gjs
+Requires: gnome-themes-standard
+Requires: gsettings-desktop-schemas
+Requires: gtk2
+Requires: gtk2-immodules
+Requires: gtk3
+Requires: gtk3-immodules
+Requires: gvfs
+Requires: json-glib
+Requires: libnotify
+Requires: librsvg2
+Requires: libsecret
+Requires: libsoup
+Requires: vte
+Requires: webkitgtk4
+Requires: zenity
 
 %description
 Meta package for Gnome SDK dependencies

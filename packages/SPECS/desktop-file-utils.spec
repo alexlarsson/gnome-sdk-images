@@ -10,7 +10,7 @@ Source0: http://www.freedesktop.org/software/desktop-file-utils/releases/%{name}
 License: GPLv2+
 Group: Development/Tools
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
 
 %description

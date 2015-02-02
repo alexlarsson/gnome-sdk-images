@@ -17,7 +17,7 @@ Patch0:		%{name}-sleep-less.patch
 Patch1:		%{name}-fix-fccache-fail.patch
 Patch2:		%{name}-fix-broken-cache.patch
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:	freetype-dev
 
 Requires(pre):	freetype

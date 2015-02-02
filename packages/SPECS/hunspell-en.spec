@@ -27,7 +27,7 @@ Group: Applications/Text
 URL: http://wordlist.sourceforge.net/
 License: LGPLv2+ and LGPLv2 and BSD
 BuildArch: noarch
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: aspell
 Requires: hunspell
 Requires: hunspell-en-US = %{version}-%{release}

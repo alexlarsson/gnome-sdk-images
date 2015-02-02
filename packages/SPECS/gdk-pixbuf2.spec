@@ -11,7 +11,7 @@ URL:            http://www.gt.org
 #VCS:           git:git://git.gnome.org/gdk-pixbuf
 Source0:        http://download.gnome.org/sources/gdk-pixbuf/%{release_version}/gdk-pixbuf-%{version}.tar.xz
 
-BuildRequires:  gnome-sdk-base
+BuildRequires:  freedesktop-sdk-base
 BuildRequires:  glib2-dev
 BuildRequires:  libX11-dev
 BuildRequires:  gobject-introspection-dev

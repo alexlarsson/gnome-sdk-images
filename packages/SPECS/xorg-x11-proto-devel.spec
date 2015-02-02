@@ -46,7 +46,7 @@ Source30: http://xorg.freedesktop.org/archive/individual/proto/xproxymanagementp
 Patch1: presentproto-0001-Force-Window-and-Pixmap-to-be-CARD32-on-the-wire.patch
 Patch2: randrproto-0001-Add-a-GUID-property.patch
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: xorg-x11-util-macros
 
 %if ! %{build_bootstrap}

@@ -15,7 +15,7 @@ URL:           http://live.gnome.org/Gjs/
 #VCS:          git://git.gnome.org/gjs
 Source0:       http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: mozjs24-dev
 BuildRequires: cairo-gobject-dev
 BuildRequires: gobject-introspection-dev

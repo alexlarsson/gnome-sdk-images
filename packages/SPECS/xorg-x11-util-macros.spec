@@ -11,7 +11,7 @@ URL: http://www.x.org
 BuildArch: noarch
 Source0:  ftp://ftp.x.org/pub/individual/util/util-macros-%{version}.tar.bz2
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 
 %description
 X.Org X11 autotools macros required for building the various packages that

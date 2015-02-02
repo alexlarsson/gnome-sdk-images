@@ -21,7 +21,7 @@ $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-platfor
 NULL=
 
 PACKAGES = \
-	gnome-sdk-base \
+	freedesktop-platform-base freedesktop-sdk-base \
 	gtk-doc-stub \
 	glib2 \
 	gnome-common \
@@ -39,6 +39,7 @@ PACKAGES = \
 	dbus cairo dbus-glib \
 	libpciaccess libdrm llvm mesa libepoxy wayland \
 	pulseaudio \
+	freedesktop-platform freedesktop-sdk \
 	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
 	libsecret \
 	itstool yelp-xsl yelp-tools \
@@ -67,19 +68,19 @@ gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rp
 	tar --transform 's,^root/usr,files,S' -czf gnome-sdk.tar.gz root/usr --owner=root
 	tar --transform 's,^var,files,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
 
-gnome-platform-base: $(NOARCH)/gnome-platform-base-0.1-1.sdk.noarch.rpm
+freedesktop-platform-base: $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm
 
-$(NOARCH)/gnome-platform-base-0.1-1.sdk.noarch.rpm: $(SPECS)/gnome-platform-base.spec setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
-	-echo building gnome-platform-base.spec
-	rm -rf packages/gnome-platform
-	mkdir -p packages/gnome-platform
-	tar -C packages/gnome-platform -xzf $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+$(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm: $(SPECS)/freedesktop-platform-base.spec setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	-echo building freedesktop-platform-base.spec
+	rm -rf packages/freedesktop-platform
+	mkdir -p packages/freedesktop-platform
+	tar -C packages/freedesktop-platform -xzf $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
 	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
-	./build.sh rpmbuild -ba $(SPECS)/gnome-platform-base.spec
+	./build.sh rpmbuild -ba $(SPECS)/freedesktop-platform-base.spec
 
-gnome-sdk-base: $(NOARCH)/gnome-sdk-base-0.1-1.sdk.noarch.rpm
+freedesktop-sdk-base: $(NOARCH)/freedesktop-sdk-base-0.1-1.sdk.noarch.rpm
 
-gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm $(NOARCH)/gnome-platform-base-0.1-1.sdk.noarch.rpm setup.sh build.sh
+gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm setup.sh build.sh
 	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
 	rm -f gnome-platform-packages
 	./build.sh ./list_packages.sh gnome-platform > gnome-platform-packages

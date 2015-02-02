@@ -12,7 +12,8 @@ Source0:	http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.t
 Patch1:		libpciaccess-sysfs.patch
 Patch2:		libpciaccess-rom-size.patch
 
-BuildRequires:  gnome-sdk-base xorg-x11-util-macros
+BuildRequires: freedesktop-sdk-base
+BuildRequires: xorg-x11-util-macros
 
 %description
 libpciaccess is a library for portable PCI access routines across multiple

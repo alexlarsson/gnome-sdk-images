@@ -12,7 +12,7 @@ URL: http://www.gtk.org
 
 Source: http://download.gnome.org/sources/gtk+/%{release_version}/gtk+-%{version}.tar.xz
 
-BuildRequires: gnome-sdk-base
+BuildRequires: freedesktop-sdk-base
 BuildRequires: gnome-common
 BuildRequires: atk-dev
 BuildRequires: at-spi2-atk-dev
