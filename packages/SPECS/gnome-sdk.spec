@@ -43,6 +43,8 @@ Requires: vala-dev
 Requires: vala-tools
 Requires: vte-dev
 Requires: webkitgtk4-dev
+Requires: python3-cairo-dev
+Requires: pygobject3-dev
 
 %description
 Meta package for Gnome SDK dependencies

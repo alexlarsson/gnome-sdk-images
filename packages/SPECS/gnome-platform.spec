@@ -33,6 +33,10 @@ BuildRequires: zenity
 
 Requires: freedesktop-platform
 
+# We really only provide python3, but the auto-requires picks up
+# a python requirement. This is a hacky workaround for that.
+Provides: python
+
 Requires: abattis-cantarell-fonts
 Requires: adwaita-icon-theme
 Requires: clutter
@@ -54,6 +58,7 @@ Requires: libnotify
 Requires: librsvg2
 Requires: libsecret
 Requires: libsoup
+Requires: pygobject3
 Requires: vte
 Requires: webkitgtk4
 Requires: zenity

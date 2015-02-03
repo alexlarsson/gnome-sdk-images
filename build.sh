@@ -16,6 +16,8 @@ declare -x GI_TYPELIB_PATH="/self/lib/girepository-1.0"
 declare -x LDFLAGS="-L/self/lib "
 declare -x PKG_CONFIG_PATH="/self/lib/pkgconfig:/self/share/pkgconfig"
 declare -x PATH="/usr/bin:/self/bin"
+unset PYTHONPATH
 unset INSTALL
+unset PERL5LIB
 
 $HELPER -f -w -W -E -a $APP -v $VAR $ROOT/usr "$@"
