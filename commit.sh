@@ -21,17 +21,17 @@ for F in commit/files/share/locale/*; do
     BASENAME=`basename $F`
     LOCALE=`basename $F | sed s/[@_].*//`
     mkdir -p commit-locales/$LOCALE/files/share
-    mkdir -p commit/files/share/gnome-sdk/locale/$LOCALE/share/$BASENAME
+    mkdir -p commit/files/share/runtime/locale/$LOCALE/share/$BASENAME
     mv $F commit-locales/$LOCALE/files/share
-    ln -s ../gnome-sdk/locale/$LOCALE/share/$BASENAME $F
+    ln -s ../runtime/locale/$LOCALE/share/$BASENAME $F
 done
 for F in commit/files/lib/locale/*; do
     BASENAME=`basename $F`
     LOCALE=`basename $F | sed s/[@_].*//`
     mkdir -p commit-locales/$LOCALE/files/lib
-    mkdir -p commit/files/share/gnome-sdk/locale/$LOCALE/lib/$BASENAME
+    mkdir -p commit/files/share/runtime/locale/$LOCALE/lib/$BASENAME
     mv $F commit-locales/$LOCALE/files/lib
-    ln -s ../../share/gnome-sdk/locale/$LOCALE/lib/$BASENAME $F
+    ln -s ../../share/runtime/locale/$LOCALE/lib/$BASENAME $F
 done
 
 echo "commiting runtime/${NAME}/${ARCH}/${VERSION}"

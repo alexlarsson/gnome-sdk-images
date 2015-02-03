@@ -9,5 +9,5 @@ directory=lib/GL
 directory=share/zoneinfo
 
 [Extension org.gnome.Platform.Locale]
-directory=share/gnome-sdk/locale
+directory=share/runtime/locale
 subdirectories=true
