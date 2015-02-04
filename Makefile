@@ -136,10 +136,13 @@ commit-freedesktop: commit-freedesktop-sdk commit-freedesktop-platform
 commit: commit-gnome commit-freedesktop
 	echo done
 
-release-commit-freedesktop-platform: repository freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
+release/repo:
+	ostree  init --mode=archive-z2 --repo=release/repo
+
+release-commit-freedesktop-platform: release/repo freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
 	./commit.sh release/repo freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz metadata.freedesktop-platform org.freedesktop.Platform $(ARCH) $(FREEDESKTOP_VERSION)
 
-release-commit-freedesktop-sdk: repository freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
+release-commit-freedesktop-sdk: release/repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
 	./commit.sh release/repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz metadata.freedesktop-sdk org.freedesktop.Sdk $(ARCH) $(FREEDESKTOP_VERSION)
 
 release-commit-platform: release/repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
