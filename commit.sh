@@ -52,8 +52,8 @@ ostree commit --repo=${REPO} --branch=runtime/${NAME}.Var/${ARCH}/${VERSION} --o
 
 if [ ${REPO} == "release/repo" ]; then
     echo "commiting generating deltas"
-    ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}/x86_64/3.16
-    ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}.Var/x86_64/3.16
+    ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}/x86_64/$VERSION
+    ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}.Var/x86_64/$VERSION
 fi
 
 echo "commiting summary"
