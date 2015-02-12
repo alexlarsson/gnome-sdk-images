@@ -37,6 +37,7 @@ PACKAGES = \
 	libXfixes libXext libXft libXi libXinerama libICE libSM libXpm libXrandr libXtst libXt libXScrnSaver libXpm \
 	libXv libXvMC libXxf86vm libXdamage libXcursor libXcomposite libxkbfile libxshmfence \
 	xkeyboard-config libxkbcommon \
+	SDL2 \
 	dbus cairo dbus-glib \
 	libpciaccess libdrm llvm mesa libepoxy wayland \
 	pulseaudio \

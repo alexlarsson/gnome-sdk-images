@@ -61,6 +61,7 @@ Requires: pixman-dev
 Requires: pulseaudio-libs-dev
 Requires: xkeyboard-config-dev
 Requires: xorg-x11-util-macros
+Requires: SDL2-dev
 
 %description
 Meta package for Gnome SDK dependencies

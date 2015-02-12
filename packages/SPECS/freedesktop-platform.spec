@@ -25,6 +25,7 @@ BuildRequires: mesa-libGL
 BuildRequires: pulseaudio-libs-dev
 BuildRequires: xkeyboard-config-dev
 BuildRequires: gobject-introspection
+BuildRequires: SDL2
 
 Requires: freedesktop-platform-base
 
@@ -82,6 +83,7 @@ Requires: pulseaudio-libs
 Requires: pulseaudio-libs-glib2
 Requires: shared-mime-info
 Requires: xkeyboard-config
+Requires: SDL2
 
 %description
 Meta package for Freedesktop platform dependencies
