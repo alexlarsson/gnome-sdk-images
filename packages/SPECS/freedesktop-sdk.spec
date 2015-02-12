@@ -29,6 +29,7 @@ Requires: harfbuzz-dev
 Requires: hunspell-dev
 Requires: libICE-dev
 Requires: libX11-dev
+Requires: libXScrnSaver-dev
 Requires: libXau-dev
 Requires: libXcomposite-dev
 Requires: libXcursor-dev
@@ -39,6 +40,7 @@ Requires: libXfixes-dev
 Requires: libXft-dev
 Requires: libXi-dev
 Requires: libXinerama-dev
+Requires: libXpm-dev
 Requires: libXrandr-dev
 Requires: libXrender-dev
 Requires: libXt-dev

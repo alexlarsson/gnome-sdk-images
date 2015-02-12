@@ -17,6 +17,7 @@ BuildRequires: gstreamer1
 BuildRequires: hicolor-icon-theme
 BuildRequires: libICE-dev
 BuildRequires: libXv
+BuildRequires: libXpm
 BuildRequires: libXxf86vm-dev
 BuildRequires: libepoxy-dev
 BuildRequires: libproxy
@@ -47,6 +48,7 @@ Requires: hunspell-en
 Requires: libICE
 Requires: libSM
 Requires: libX11
+Requires: libXScrnSaver
 Requires: libXau
 Requires: libXcomposite
 Requires: libXcursor
@@ -56,6 +58,7 @@ Requires: libXfixes
 Requires: libXft
 Requires: libXi
 Requires: libXinerama
+Requires: libXpm
 Requires: libXrandr
 Requires: libXrender
 Requires: libXt

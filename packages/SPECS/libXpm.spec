@@ -10,7 +10,9 @@ Source0: ftp://ftp.x.org/pub/individual/lib/%{name}-%{version}.tar.bz2
 
 BuildRequires: freedesktop-sdk-base
 BuildRequires: xorg-x11-util-macros
-BuildRequires: libXext-dev libXau-dev
+BuildRequires: libXt-dev
+BuildRequires: libXext-dev
+BuildRequires: libXau-dev
 
 %description
 X.Org X11 libXpm runtime library
@@ -54,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %files dev
 %defattr(-,root,root,-)
 %{_bindir}/cxpm
+%{_bindir}/sxpm
 %{_includedir}/X11/xpm.h
 %{_libdir}/libXpm.so
 %{_libdir}/pkgconfig/xpm.pc
@@ -62,5 +65,5 @@ rm -rf $RPM_BUILD_ROOT
 #%{_mandir}/man1/*.1x*
 
 %changelog
-* Tue Nov 11 2014 Alexander Larsson <alexl@redhat.com> - 3.5.11-3
-- Initial version based on f21
+* Thu Feb 12 2015 Alexander Larsson <alexl@redhat.com> - 3.5.11-1
+- Initial version
