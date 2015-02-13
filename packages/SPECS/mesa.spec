@@ -9,7 +9,7 @@
 
 Summary: Mesa graphics libraries
 Name: mesa
-Version: 10.4.2
+Version: 10.4.4
 Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
@@ -139,7 +139,7 @@ Mesa libwayland-egl development package
 
 %build
 
-autoreconf --install
+autoreconf --install --force
 
 export CFLAGS="$RPM_OPT_FLAGS"
 export CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
