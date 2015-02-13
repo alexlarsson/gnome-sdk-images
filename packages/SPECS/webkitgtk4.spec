@@ -13,7 +13,7 @@ Summary:        GTK+ Web content engine library
 License:        LGPLv2
 URL:            http://www.webkitgtk.org/
 Source0:        http://webkitgtk.org/releases/webkitgtk-%{version}.tar.xz
-
+Patch1:         webkit-glib-gmutexlocker.patch
 BuildRequires:  at-spi2-core-dev
 BuildRequires:  cairo-dev
 BuildRequires:  enchant-dev
@@ -54,6 +54,7 @@ files for developing applications that use %{name}.
 
 %prep
 %setup -q -n webkitgtk-%{version}
+%patch1 -p1
 
 %build
 
