@@ -7,7 +7,7 @@
 
 Summary: D-BUS message bus
 Name: dbus
-Version: 1.8.14
+Version: 1.8.16
 Release: 1%{?dist}
 URL: http://www.freedesktop.org/software/dbus/
 #VCS: git:git://git.freedesktop.org/git/dbus/dbus
