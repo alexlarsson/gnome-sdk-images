@@ -62,6 +62,10 @@ Requires: pulseaudio-libs-dev
 Requires: xkeyboard-config-dev
 Requires: xorg-x11-util-macros
 Requires: SDL2-dev
+Requires: SDL2_image-dev
+Requires: SDL2_net-dev
+Requires: SDL2_ttf-dev
+Requires: SDL2_mixer-dev
 
 %description
 Meta package for Gnome SDK dependencies

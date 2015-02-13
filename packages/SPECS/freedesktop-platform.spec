@@ -26,6 +26,10 @@ BuildRequires: pulseaudio-libs-dev
 BuildRequires: xkeyboard-config-dev
 BuildRequires: gobject-introspection
 BuildRequires: SDL2
+BuildRequires: SDL2_image
+BuildRequires: SDL2_net
+BuildRequires: SDL2_ttf
+BuildRequires: SDL2_mixer
 
 Requires: freedesktop-platform-base
 
@@ -84,6 +88,10 @@ Requires: pulseaudio-libs-glib2
 Requires: shared-mime-info
 Requires: xkeyboard-config
 Requires: SDL2
+Requires: SDL2_image
+Requires: SDL2_net
+Requires: SDL2_ttf
+Requires: SDL2_mixer
 
 %description
 Meta package for Freedesktop platform dependencies
