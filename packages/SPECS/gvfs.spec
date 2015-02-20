@@ -2,7 +2,7 @@
 
 Summary: Backends for the gio framework in GLib
 Name: gvfs
-Version: 1.23.4
+Version: 1.23.90
 Release: 1%{?dist}
 License: GPLv3 and LGPLv2+ and BSD and MPLv1.1
 Group: System Environment/Libraries
@@ -82,7 +82,7 @@ gio-querymodules-%{__isa_bits} %{_libdir}/gio/modules &> /dev/null || :
 %dir %{_datadir}/gvfs
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/gvfs
+%{_datadir}/bash-completion/completions/gvfs*
 %{_libdir}/gvfs/libgvfscommon.so
 %{_libdir}/gio/modules/libgioremote-volume-monitor.so
 %{_libdir}/gio/modules/libgvfsdbus.so
