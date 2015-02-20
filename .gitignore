@@ -4,8 +4,7 @@ packages/SOURCES/*.tgz
 packages/SOURCES/*.tar.gz
 packages/SOURCES/*.tar.xz
 packages/SOURCES/*.tar.bz2
-gnome-continuous-yocto
-yocto-build
+freedesktop-sdk-base
 root
 var
 packages/BUILD/

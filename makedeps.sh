@@ -27,9 +27,9 @@ for spec in $SPECS; do
     for br in $BUILDREQS; do
         BRS="$BRS `cat /tmp/dep/${br}.pkg`"
     done
-    echo "$PACKAGES: $spec $BRS setup.sh build.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz $SPEC_SOURCES"
+    echo "$PACKAGES: $spec $BRS setup.sh build.sh freedesktop-sdk-base/build/x86_64/images/freedesktop-contents-sdk-x86_64.tar.gz $SPEC_SOURCES"
     echo "	-echo Building $spec"
-    echo "	./setup.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz"
+    echo "	./setup.sh freedesktop-sdk-base/build/x86_64/images/freedesktop-contents-sdk-x86_64.tar.gz"
     if [ "x${BRS}" != "x" ]; then
         echo "	./build.sh smart install -y $BRS"
     fi
@@ -39,7 +39,7 @@ for spec in $SPECS; do
     echo
     echo "only-`basename ${spec} .spec`: "
     echo "	-echo Building only $spec"
-    echo "	./setup.sh yocto-build/x86_64/images/gnomeos-contents-sdk-x86_64.tar.gz"
+    echo "	./setup.sh freedesktop-sdk-base/build/x86_64/images/freedesktop-contents-sdk-x86_64.tar.gz"
     if [ "x${BRS}" != "x" ]; then
         echo "	./build.sh smart install -y $BRS"
     fi

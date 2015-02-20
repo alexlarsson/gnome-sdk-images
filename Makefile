@@ -4,20 +4,18 @@ builddir = $(CURDIR)
 FREEDESKTOP_VERSION=0.1
 GNOME_VERSION=3.16
 ARCH=x86_64
-IMAGES=yocto-build/$(ARCH)/images
+IMAGES=freedesktop-sdk-base/build/$(ARCH)/images
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
 
 all: gnome-platform.tar.gz gnome-sdk.tar.gz
 
-$(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz images:
-	if test ! -d gnome-continuous-yocto; then \
-		git clone https://github.com/alexlarsson/gnome-continuous-yocto.git --branch gnomeostree-3.14-dizzy-platform;\
+$(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz images:
+	if test ! -d freedesktop-sdk-base; then \
+		git clone https://github.com/alexlarsson/freedesktop-sdk-base.git;\
 	fi
-	(cd  gnome-continuous-yocto; git pull;)
-	(cd  gnome-continuous-yocto; git submodule update --init;)
-	mkdir -p yocto-build/$(ARCH)
-	./gnome-sdk-build-yocto ${srcdir}/gnome-continuous-yocto ${builddir}/yocto-build/ $(ARCH)
+	(cd  freedesktop-sdk-base; git pull;)
+	(cd  freedesktop-sdk-base; make;)
 
 NULL=
 
@@ -59,19 +57,19 @@ ALL_SPECS =$(PACKAGES:%=$(SPECS)/%.spec)
 
 deps: rpm-dependencies.P
 
-rpm-dependencies.P: $(ALL_SPECS) makedeps.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+rpm-dependencies.P: $(ALL_SPECS) makedeps.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh ./makedeps.sh $(ALL_SPECS) > rpm-dependencies.P
 
 gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rpm
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh smart install -y  $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rpm
 	rm -rf gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	tar --transform 's,^root/usr,files,S' -czf gnome-sdk.tar.gz root/usr --owner=root
 	tar --transform 's,^var,files,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
 
 freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz: $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh smart install -y  $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
 	rm -rf freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
 	tar --transform 's,^root/usr,files,S' -czf freedesktop-sdk.tar.gz root/usr --owner=root
@@ -79,36 +77,36 @@ freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz: $(NOARCH)/freedesktop-sdk-0
 
 freedesktop-platform-base: $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm
 
-$(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm: $(SPECS)/freedesktop-platform-base.spec setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+$(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm: $(SPECS)/freedesktop-platform-base.spec setup.sh build.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	-echo building freedesktop-platform-base.spec
 	rm -rf packages/freedesktop-platform
 	mkdir -p packages/freedesktop-platform
-	tar -C packages/freedesktop-platform -xzf $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	tar -C packages/freedesktop-platform -xzf $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh rpmbuild -ba $(SPECS)/freedesktop-platform-base.spec
 
 freedesktop-sdk-base: $(NOARCH)/freedesktop-sdk-base-0.1-1.sdk.noarch.rpm
 
 freedesktop-platform-packages: $(NOARCH)/freedesktop-platform-0.1-1.sdk.noarch.rpm $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm setup.sh build.sh
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	rm -f freedesktop-platform-packages
 	./build.sh ./list_packages.sh freedesktop-platform > freedesktop-platform-packages
 
-freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz: freedesktop-platform-packages $(NOARCH)/freedesktop-platform-0.1-1.sdk.noarch.rpm setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz: freedesktop-platform-packages $(NOARCH)/freedesktop-platform-0.1-1.sdk.noarch.rpm setup.sh build.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	-echo building freedesktop-platform
-	./setup_root.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+	./setup_root.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat freedesktop-platform-packages`
 	tar --transform 's,^root/usr,files,S' -czf freedesktop-platform.tar.gz root/usr --owner=root
 	tar --transform 's,^var,files,S' -czf freedesktop-platform-rpmdb.tar.gz var/lib/rpm --owner=root
 
 gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm setup.sh build.sh
-	./setup.sh $(IMAGES)/gnomeos-contents-sdk-$(ARCH).tar.gz
+	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	rm -f gnome-platform-packages
 	./build.sh ./list_packages.sh gnome-platform > gnome-platform-packages
 
-gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm setup.sh build.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm setup.sh build.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	-echo building gnome-platform
-	./setup_root.sh $(IMAGES)/gnomeos-contents-platform-$(ARCH).tar.gz
+	./setup_root.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat gnome-platform-packages`
 	tar --transform 's,^root/usr,files,S' -czf gnome-platform.tar.gz root/usr --owner=root
 	tar --transform 's,^var,files,S' -czf gnome-platform-rpmdb.tar.gz var/lib/rpm --owner=root
