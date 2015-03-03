@@ -20,18 +20,22 @@ echo "extracting locales"
 for F in commit/files/share/locale/*; do
     BASENAME=`basename $F`
     LOCALE=`basename $F | sed s/[@_].*//`
-    mkdir -p commit-locales/$LOCALE/files/share
-    mkdir -p commit/files/share/runtime/locale/$LOCALE/share/$BASENAME
-    mv $F commit-locales/$LOCALE/files/share
-    ln -s ../runtime/locale/$LOCALE/share/$BASENAME $F
+    if [ ${BASENAME} != "en_US" ]; then
+        mkdir -p commit-locales/$LOCALE/files/share
+        mkdir -p commit/files/share/runtime/locale/$LOCALE/share/$BASENAME
+        mv $F commit-locales/$LOCALE/files/share
+        ln -s ../runtime/locale/$LOCALE/share/$BASENAME $F
+    fi
 done
 for F in commit/files/lib/locale/*; do
     BASENAME=`basename $F`
     LOCALE=`basename $F | sed s/[@_].*//`
-    mkdir -p commit-locales/$LOCALE/files/lib
-    mkdir -p commit/files/share/runtime/locale/$LOCALE/lib/$BASENAME
-    mv $F commit-locales/$LOCALE/files/lib
-    ln -s ../../share/runtime/locale/$LOCALE/lib/$BASENAME $F
+    if [ ${BASENAME} != "en_US" ]; then
+        mkdir -p commit-locales/$LOCALE/files/lib
+        mkdir -p commit/files/share/runtime/locale/$LOCALE/lib/$BASENAME
+        mv $F commit-locales/$LOCALE/files/lib
+        ln -s ../../share/runtime/locale/$LOCALE/lib/$BASENAME $F
+    fi
 done
 
 echo "commiting runtime/${NAME}/${ARCH}/${VERSION}"
