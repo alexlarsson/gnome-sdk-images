@@ -37,12 +37,6 @@ sed -i "s|='-O'|='-q'|g" .waf*/waflib/Tools/python.py
 export CFLAGS="$RPM_OPT_FLAGS"
 export PYTHON=/usr/bin/python3
 
-# Need this for OE python config to work
-export STAGING_LIBDIR=""
-export STAGING_INCDIR=""
-export BUILD_SYS=""
-export HOST_SYS=""
-
 python3 ./waf --prefix=%{_usr} \
               --libdir=%{_libdir} \
               configure
@@ -54,11 +48,6 @@ LANG=en_US.utf8 python3 ./waf build -v
 find ./examples/ -type f -print0 | xargs -0 chmod -x
 
 %install
-# Need this for OE python config to work
-export STAGING_LIBDIR=""
-export STAGING_INCDIR=""
-export BUILD_SYS=""
-export HOST_SYS=""
 
 DESTDIR=$RPM_BUILD_ROOT strace -o log -f -s 256 python3 ./waf install -v
 # add executable bit to the .so libraries so we strip the debug info

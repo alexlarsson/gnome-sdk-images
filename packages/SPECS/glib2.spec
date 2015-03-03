@@ -2,7 +2,7 @@
 
 Summary: A library of handy utility functions
 Name: glib2
-Version: 2.43.90
+Version: 2.43.91
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries

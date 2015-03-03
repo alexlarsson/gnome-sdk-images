@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name: libsoup
-Version: 2.49.1
+Version: 2.49.91
 Release: 1%{?dist}
 License: LGPLv2
 Group: Development/Libraries

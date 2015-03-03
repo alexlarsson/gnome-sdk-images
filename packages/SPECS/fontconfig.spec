@@ -1,6 +1,6 @@
 Summary:	Font configuration and customization library
 Name:		fontconfig
-Version:	2.11.1
+Version:	2.11.92
 Release:	1%{?dist}
 # src/ftglue.[ch] is in Public Domain
 # src/fccache.c contains Public Domain code
@@ -13,9 +13,6 @@ URL:		http://fontconfig.org
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=140335
 Patch0:		%{name}-sleep-less.patch
-# https://bugs.freedesktop.org/show_bug.cgi?id=77252
-Patch1:		%{name}-fix-fccache-fail.patch
-Patch2:		%{name}-fix-broken-cache.patch
 
 BuildRequires:  freedesktop-sdk-base
 BuildRequires:	freetype-dev
@@ -53,8 +50,6 @@ which is useful for developing applications that uses fontconfig.
 %prep
 %setup -q
 %patch0 -p1 -b .sleep-less
-%patch1 -p1 -b .cache-fail
-%patch2 -p1 -b .broken-cache
 
 %build
 # We don't want to rebuild the docs, but we want to install the included ones.

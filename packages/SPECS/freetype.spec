@@ -4,7 +4,7 @@
 
 Summary: A free and portable font rendering engine
 Name: freetype
-Version: 2.5.3
+Version: 2.5.5
 Release: 1%{?dist}
 License: (FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement
 Group: System Environment/Libraries
@@ -15,12 +15,6 @@ Patch21:  freetype-2.3.0-enable-spr.patch
 
 # Enable otvalid and gxvalid modules
 Patch46:  freetype-2.2.1-enable-valid.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=961855
-Patch90:  freetype-2.4.12-pkgconfig.patch
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1079302
-Patch91:  freetype-2.5.3-freetype-config-libs.patch
 
 Buildroot: %{_tmppath}/%{name}-%{version}-root-%(%{__id_u} -n)
 
@@ -61,10 +55,6 @@ FreeType.
 %endif
 
 %patch46  -p1 -b .enable-valid
-
-%patch90 -p1 -b .pkgconfig
-
-%patch91 -p1 -b .freetype-config-libs
 
 %build
 

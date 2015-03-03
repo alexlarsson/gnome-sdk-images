@@ -1,14 +1,13 @@
-# Set boostrap to 1 for initial bootstrapping when gtk3 is not yet built
-%global bootstrap 0
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           adwaita-icon-theme
-Version:        3.14.1
+Version:        3.15.90
 Release:        1%{?dist}
 Summary:        Adwaita icon theme
 
 License:        LGPLv3+ or CC-BY-SA
 URL:            http://www.gnome.org
-Source0:        http://download.gnome.org/sources/adwaita-icon-theme/3.14/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/adwaita-icon-theme/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildArch:      noarch
 
@@ -69,10 +68,8 @@ gtk-update-icon-cache %{_datadir}/icons/Adwaita &>/dev/null || :
 %{_datadir}/icons/Adwaita/24x24/
 %{_datadir}/icons/Adwaita/32x32/
 %{_datadir}/icons/Adwaita/48x48/
-%if ! 0%{bootstrap}
 %{_datadir}/icons/Adwaita/64x64/
 %{_datadir}/icons/Adwaita/96x96/
-%endif
 %{_datadir}/icons/Adwaita/256x256/
 %{_datadir}/icons/Adwaita/scalable/
 %{_datadir}/icons/Adwaita/scalable-up-to-32/

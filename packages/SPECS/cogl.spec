@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          cogl
-Version:       1.18.2
+Version:       1.20.0
 Release:       1%{?dist}
 Summary:       A library for using 3D graphics hardware to draw pretty pictures
 

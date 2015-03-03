@@ -38,22 +38,10 @@ find -name '*.py' | xargs sed -i '1s|^#!python|#!/usr/bin/python3|'
 %build
 export PYTHON=python3
 
-# Need this for OE python config to work
-export STAGING_LIBDIR=""
-export STAGING_INCDIR=""
-export BUILD_SYS=""
-export HOST_SYS=""
-
 %configure
 make %{?_smp_mflags} V=1
 
 %install
-# Need this for OE python config to work
-export STAGING_LIBDIR=""
-export STAGING_INCDIR=""
-export BUILD_SYS=""
-export HOST_SYS=""
-
 make DESTDIR=$RPM_BUILD_ROOT install V=1
 find $RPM_BUILD_ROOT -name '*.la' -delete
 find $RPM_BUILD_ROOT -name '*.a' -delete

@@ -9,7 +9,7 @@
 
 Summary: Mesa graphics libraries
 Name: mesa
-Version: 10.4.4
+Version: 10.4.5
 Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
