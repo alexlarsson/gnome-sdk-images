@@ -5,8 +5,7 @@ packages/SOURCES/*.tar.gz
 packages/SOURCES/*.tar.xz
 packages/SOURCES/*.tar.bz2
 freedesktop-sdk-base
-root
-var
+build
 packages/BUILD/
 packages/BUILD_XXXXX/
 packages/RPMS/

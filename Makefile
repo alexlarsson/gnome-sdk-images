@@ -65,15 +65,15 @@ gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rp
 	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh smart install -y  $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rpm
 	rm -rf gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
-	tar --transform 's,^root/usr,files,S' -czf gnome-sdk.tar.gz root/usr --owner=root
-	tar --transform 's,^var,files,S' -czf gnome-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^build/root/usr,files,S' -czf gnome-sdk.tar.gz build/root/usr --owner=root
+	tar --transform 's,^build/var,files,S' -czf gnome-sdk-rpmdb.tar.gz build/var/lib/rpm --owner=root
 
 freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz: $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
 	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
 	./build.sh smart install -y  $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
 	rm -rf freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
-	tar --transform 's,^root/usr,files,S' -czf freedesktop-sdk.tar.gz root/usr --owner=root
-	tar --transform 's,^var,files,S' -czf freedesktop-sdk-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^build/root/usr,files,S' -czf freedesktop-sdk.tar.gz build/root/usr --owner=root
+	tar --transform 's,^build/var,files,S' -czf freedesktop-sdk-rpmdb.tar.gz build/var/lib/rpm --owner=root
 
 freedesktop-platform-base: $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm
 
@@ -96,8 +96,8 @@ freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz: freedesktop-platf
 	-echo building freedesktop-platform
 	./setup_root.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat freedesktop-platform-packages`
-	tar --transform 's,^root/usr,files,S' -czf freedesktop-platform.tar.gz root/usr --owner=root
-	tar --transform 's,^var,files,S' -czf freedesktop-platform-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^build/root/usr,files,S' -czf freedesktop-platform.tar.gz build/root/usr --owner=root
+	tar --transform 's,^build/var,files,S' -czf freedesktop-platform-rpmdb.tar.gz build/var/lib/rpm --owner=root
 
 gnome-platform-packages: $(NOARCH)/gnome-platform-0.1-1.sdk.noarch.rpm $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm setup.sh build.sh
 	./setup.sh $(IMAGES)/freedesktop-contents-sdk-$(ARCH).tar.gz
@@ -108,8 +108,8 @@ gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOA
 	-echo building gnome-platform
 	./setup_root.sh $(IMAGES)/freedesktop-contents-platform-$(ARCH).tar.gz
 	./build.sh rpm -Uvh `cat gnome-platform-packages`
-	tar --transform 's,^root/usr,files,S' -czf gnome-platform.tar.gz root/usr --owner=root
-	tar --transform 's,^var,files,S' -czf gnome-platform-rpmdb.tar.gz var/lib/rpm --owner=root
+	tar --transform 's,^build/root/usr,files,S' -czf gnome-platform.tar.gz build/root/usr --owner=root
+	tar --transform 's,^build/var,files,S' -czf gnome-platform-rpmdb.tar.gz build/var/lib/rpm --owner=root
 
 repository:
 	ostree  init --mode=archive-z2 --repo=repository

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-ROOT=`pwd`/root
-VAR=`pwd`/var
+ROOT=`pwd`/build/root
+VAR=`pwd`/build/var
 APP=`pwd`/packages
 
 HELPER=`which xdg-app-helper`

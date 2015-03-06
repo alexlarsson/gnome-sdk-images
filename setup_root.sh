@@ -1,7 +1,13 @@
 #!/bin/sh
 
-ROOT=`pwd`/root
-VAR=`pwd`/var
+if test -L build; then
+    mkdir -p `readlink -f build`
+else
+    mkdir -p build
+fi
+
+ROOT=`pwd`/build/root
+VAR=`pwd`/build/var
 IMAGE=`readlink -f $1`
 
 rm -rf $ROOT
