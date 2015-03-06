@@ -9,6 +9,7 @@ Release:	1%{?dist}
 License:	MIT and Public Domain and UCD
 Group:		System Environment/Libraries
 Source:		http://fontconfig.org/release/%{name}-%{version}.tar.bz2
+Source2:	fontconfig-xdg-app.conf
 URL:		http://fontconfig.org
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=140335
@@ -70,6 +71,8 @@ mv $RPM_BUILD_ROOT%{_docdir}/fontconfig/* .
 rmdir $RPM_BUILD_ROOT%{_docdir}/fontconfig/
 
 rm -f $RPM_BUILD_ROOT/etc/fonts/fonts.conf.bak
+
+install -m 0644 -p -T %{SOURCE2} $RPM_BUILD_ROOT/etc/fonts/conf.d/50-xdg-app.conf
 
 %check
 make check
