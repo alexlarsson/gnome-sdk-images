@@ -16,8 +16,11 @@ declare -x GI_TYPELIB_PATH="/self/lib/girepository-1.0"
 declare -x LDFLAGS="-L/self/lib "
 declare -x PKG_CONFIG_PATH="/self/lib/pkgconfig:/self/share/pkgconfig"
 declare -x PATH="/usr/bin:/self/bin"
+if test -d packages/.ccache; then
+    declare -x PATH="/self/bin/ccache:$PATH"
+fi
 unset PYTHONPATH
 unset INSTALL
 unset PERL5LIB
 
-$HELPER -f -w -W -E -a $APP -v $VAR $ROOT/usr "$@"
+$HELPER -f -w -W -E -a $APP -v $VAR $ROOT/usr env PATH="$PATH" "$@"
