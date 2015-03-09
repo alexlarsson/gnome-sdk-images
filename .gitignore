@@ -1,5 +1,6 @@
 gnome-sdk-helper
 rpm-dependencies.P
+packages/SOURCES/*.zip
 packages/SOURCES/*.tgz
 packages/SOURCES/*.tar.gz
 packages/SOURCES/*.tar.xz
