@@ -26,4 +26,9 @@ gnome-sdk-rpmdb.tar.gz
 gnome-platform.tar.gz
 gnome-platform-rpmdb.tar.gz
 gnome-platform-packages
+freedesktop-platform-packages
+freedesktop-platform-rpmdb.tar.gz
+freedesktop-platform.tar.gz
+freedesktop-sdk-rpmdb.tar.gz
+freedesktop-sdk.tar.gz
 *~
