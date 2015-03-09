@@ -1,4 +1,7 @@
 %global fontname    dejavu
+%global _fontdir %{_datadir}/fonts/%{fontname}
+%global _fontconfig_templatedir %{_datadir}/fontconfig/conf.avail
+%global _fontconfig_confdir %{_sysconfdir}/fonts/conf.d
 
 Name:    %{fontname}-fonts
 Version: 2.34
@@ -26,17 +29,17 @@ original style, using an open collaborative development process.
 %install
 rm -fr %{buildroot}
 
-install -m 0755 -d %{buildroot}%{_datadir}/fonts/dejavu
-install -m 0644 -p ttf/*.ttf %{buildroot}%{_datadir}/fonts/dejavu
+install -m 0755 -d %{buildroot}%{_fontdir}
+install -m 0644 -p ttf/*.ttf %{buildroot}%{_fontdir}
 
-install -m 0755 -d %{buildroot}%{_sysconfdir}/fonts/conf.d \
-                   %{buildroot}%{_datadir}/fontconfig/conf.avail
+install -m 0755 -d %{buildroot}%{_fontconfig_confdir} \
+                   %{buildroot}%{_fontconfig_templatedir}
 
 cd fontconfig
 for fontconf in *conf ; do
-  install -m 0644 -p $fontconf %{buildroot}%{_datadir}/fontconfig/conf.avail
-  ln -s %{_datadir}/fontconfig/conf.avail/$fontconf \
-        %{buildroot}%{_sysconfdir}/fonts/conf.d/$fontconf
+  install -m 0644 -p $fontconf %{buildroot}%{_fontconfig_templatedir}
+  ln -s %{_fontconfig_templatedir}/$fontconf \
+        %{buildroot}%{_fontconfig_confdir}/$fontconf
 done
 
 %clean
@@ -46,9 +49,9 @@ rm -fr %{buildroot}
 %files
 %defattr(0644,root,root,0755)
 %doc AUTHORS BUGS LICENSE NEWS README
-%{_datadir}/fonts/dejavu
-%{_datadir}/fontconfig/conf.avail/*
-%{_sysconfdir}/fonts/conf.d/*
+%{_fontdir}
+%{_fontconfig_templatedir}/*
+%{_fontconfig_confdir}/*
 
 %changelog
 * Thu Nov 13 2014 Alexander Larsson <alexl@redhat.com> - 2.34-1%{?dist}

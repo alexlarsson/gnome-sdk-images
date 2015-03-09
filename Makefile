@@ -44,7 +44,7 @@ PACKAGES = \
 	libsecret \
 	itstool yelp-xsl yelp-tools \
 	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
-	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts \
+	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts liberation-fonts gnu-free-fonts google-crosextra-caladea-fonts google-crosextra-carlito-fonts \
 	gtk2 gnome-themes-standard libproxy gsettings-desktop-schemas glib-networking libsoup \
 	dconf gvfs desktop-file-utils json-glib libnotify vte mozjs24 gjs \
 	gstreamer1 python3-cairo pygobject3 \
