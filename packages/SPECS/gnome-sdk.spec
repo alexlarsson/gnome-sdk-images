@@ -10,6 +10,7 @@ BuildArch: noarch
 
 BuildRequires: gnome-platform
 BuildRequires: freedesktop-sdk
+BuildRequires: libappstream-glib
 
 Requires: gnome-platform
 Requires: freedesktop-sdk
@@ -31,6 +32,8 @@ Requires: gtk2-dev
 Requires: gtk3-dev
 Requires: gvfs-dev
 Requires: json-glib-dev
+Requires: libappstream-glib-dev
+Requires: libappstream-glib-builder-dev
 Requires: libcroco-dev
 Requires: libnotify-dev
 Requires: librsvg2-dev

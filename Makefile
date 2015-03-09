@@ -50,7 +50,7 @@ PACKAGES = \
 	gstreamer1 python3-cairo pygobject3 \
 	cogl clutter clutter-gtk webkitgtk4 \
 	aspell hunspell-en hunspell enchant \
-	zenity \
+	zenity libappstream-glib \
 	$(NULL)
 
 ALL_SPECS =$(PACKAGES:%=$(SPECS)/%.spec)
