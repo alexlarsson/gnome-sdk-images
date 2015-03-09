@@ -7,6 +7,8 @@ packages/SOURCES/*.tar.xz
 packages/SOURCES/*.tar.bz2
 freedesktop-sdk-base
 build
+repository
+release
 packages/BUILD/
 packages/BUILD_XXXXX/
 packages/RPMS/
