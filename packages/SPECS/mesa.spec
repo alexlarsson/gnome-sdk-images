@@ -9,13 +9,13 @@
 
 Summary: Mesa graphics libraries
 Name: mesa
-Version: 10.4.5
+Version: 10.5.0
 Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
 URL: http://www.mesa3d.org
 
-Source0: ftp://ftp.freedesktop.org/pub/mesa/%{version}/MesaLib-%{version}.tar.bz2
+Source0: ftp://ftp.freedesktop.org/pub/mesa/%{version}/mesa-%{version}.tar.xz
 
 Patch1: mesa-no-typeid.patch
 
@@ -134,7 +134,7 @@ Provides: libwayland-egl-dev
 Mesa libwayland-egl development package
 
 %prep
-%setup -q -n Mesa-%{version}
+%setup -q -n mesa-%{version}
 %patch1 -p1 -b .no-typeid
 
 %build

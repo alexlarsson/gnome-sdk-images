@@ -2,10 +2,8 @@
 
 %global llvmdocdir() %{_docdir}/%1
 
-#global prerel rc3
-
 Name:           llvm
-Version:        3.5.0
+Version:        3.6.0
 Release:        1%{?dist}
 Summary:        The Low Level Virtual Machine
 
@@ -15,12 +13,6 @@ URL:            http://llvm.org/
 
 # source archives
 Source0:        http://llvm.org/releases/%{version}/llvm-%{version}.src.tar.xz
-#Source1:        http://llvm.org/releases/%{version}/cfe-%{version}.src.tar.xz
-#Source2:        http://llvm.org/releases/%{version}/compiler-rt-%{version}.src.tar.xz
-#Source3:        http://llvm.org/releases/%{version}/lldb-%{version}.src.tar.xz
-
-# patches
-Patch1:         llvm-3.5.0-build-fix.patch
 
 BuildRequires: freedesktop-sdk-base
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
@@ -70,8 +62,6 @@ for general consumption.
 %prep
 %setup -q -n llvm-%{version}.src
 rm -rf tools/clang tools/lldb projects/compiler-rt
-
-%patch1 -p1
 
 # fix library paths
 sed -i 's|/lib /usr/lib $lt_ld_extra|%{_libdir} $lt_ld_extra|' configure
@@ -191,6 +181,9 @@ make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-dev}/test
 %{_bindir}/llvm*
 %{_bindir}/macho-dump
 %{_bindir}/opt
+%{_bindir}/obj2yaml
+%{_bindir}/verify-uselistorder
+%{_bindir}/yaml2obj
 
 %files dev
 %doc %{llvmdocdir %{name}-dev}/
