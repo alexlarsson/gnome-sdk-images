@@ -34,6 +34,7 @@ for spec in $SPECS; do
         echo "	./build.sh smart install -y $BRS"
     fi
     echo "	./build.sh rpmbuild -ba $spec"
+    echo "	./clear_root.sh"
     echo
     echo "`basename ${spec} .spec`: $PACKAGES"
     echo
@@ -44,6 +45,7 @@ for spec in $SPECS; do
         echo "	./build.sh smart install -y $BRS"
     fi
     echo "	./build.sh rpmbuild -ba $spec"
+    echo "	./clear_root.sh"
     echo
 done
 
