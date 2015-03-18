@@ -2,7 +2,7 @@
 
 Summary: GLib bindings for D-Bus
 Name: dbus-glib
-Version: 0.100.2
+Version: 0.104
 Release: 1%{?dist}
 URL: http://www.freedesktop.org/software/dbus/
 #VCS: git:git://git.freedesktop.org/git/dbus/dbus-glib

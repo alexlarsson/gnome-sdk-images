@@ -13,7 +13,7 @@ Group:         System Environment/Libraries
 License:       MIT and (MPLv1.1 or GPLv2+ or LGPLv2+)
 URL:           http://live.gnome.org/Gjs/
 #VCS:          git://git.gnome.org/gjs
-Source0:       http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
+Source0:       http://download.gnome.org/sources/gjs/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: freedesktop-sdk-base
 BuildRequires: mozjs24-dev

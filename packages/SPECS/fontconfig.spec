@@ -1,6 +1,6 @@
 Summary:	Font configuration and customization library
 Name:		fontconfig
-Version:	2.11.92
+Version:	2.11.93
 Release:	1%{?dist}
 # src/ftglue.[ch] is in Public Domain
 # src/fccache.c contains Public Domain code

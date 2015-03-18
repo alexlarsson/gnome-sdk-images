@@ -8,7 +8,7 @@ Summary: Standard themes for GNOME applications
 Group: User Interface/Desktops
 License: LGPLv2+
 URL: http://git.gnome.org/browse/gnome-themes-standard
-Source0: http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
+Source0: http://download.gnome.org/sources/gnome-themes-standard/%{release_version}/%{name}-%{version}.tar.xz
 Source2: gtkrc
 
 BuildRequires: freedesktop-sdk-base

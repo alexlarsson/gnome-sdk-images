@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          clutter
-Version:       1.21.4
+Version:       1.21.8
 Release:       1%{?dist}
 Summary:       Open Source software library for creating rich graphical user interfaces
 

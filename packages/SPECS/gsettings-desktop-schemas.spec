@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           gsettings-desktop-schemas
-Version:        3.15.90
+Version:        3.15.92
 Release:        1%{?dist}
 Summary:        A collection of GSettings schemas
 
@@ -11,7 +11,7 @@ License:        LGPLv2+
 # no homepage exists for this component
 URL:            http://bugzilla.gnome.org/enter_bug.cgi?product=gsettings-desktop-schemas
 #VCS: git:git://git.gnome.org/gsettings-desktop-schemas
-Source:         http://download.gnome.org/sources/%{name}/%{release_version}/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/gsettings-desktop-schemas/%{release_version}/%{name}-%{version}.tar.xz
 
 BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev

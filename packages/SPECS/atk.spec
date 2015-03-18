@@ -2,7 +2,7 @@
 
 Summary: Interfaces for accessibility support
 Name: atk
-Version: 2.15.4
+Version: 2.15.91
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
