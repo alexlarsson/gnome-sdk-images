@@ -18,6 +18,7 @@ BuildRequires: gobject-introspection
 BuildRequires: google-crosextra-caladea-fonts
 BuildRequires: google-crosextra-carlito-fonts
 BuildRequires: gstreamer1
+BuildRequires: gstreamer1-plugins-base
 BuildRequires: hicolor-icon-theme
 BuildRequires: libICE-dev
 BuildRequires: libXpm
@@ -52,6 +53,7 @@ Requires: google-crosextra-caladea-fonts
 Requires: google-crosextra-carlito-fonts
 Requires: graphite2
 Requires: gstreamer1
+Requires: gstreamer1-plugins-base
 Requires: harfbuzz
 Requires: harfbuzz-icu
 Requires: hicolor-icon-theme
@@ -91,6 +93,7 @@ Requires: mesa-dri-drivers
 Requires: mesa-libEGL
 Requires: mesa-libGL
 Requires: mesa-libwayland-egl
+Requires: orc-dev
 Requires: pulseaudio-libs
 Requires: pulseaudio-libs-glib2
 Requires: shared-mime-info

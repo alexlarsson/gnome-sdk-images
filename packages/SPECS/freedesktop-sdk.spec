@@ -24,6 +24,8 @@ Requires: glib2-dev
 Requires: gobject-introspection-dev
 Requires: graphite2-dev
 Requires: gstreamer1-dev
+Requires: gstreamer1-plugins-base-dev
+Requires: gstreamer1-plugins-base-tools
 Requires: gtk-doc-stub
 Requires: harfbuzz-dev
 Requires: hunspell-dev
@@ -57,6 +59,7 @@ Requires: libxkbcommon-x11-dev
 Requires: mesa-libEGL-dev
 Requires: mesa-libGL-dev
 Requires: mesa-libwayland-egl-dev
+Requires: orc-dev
 Requires: pixman-dev
 Requires: pulseaudio-libs-dev
 Requires: xkeyboard-config-dev
