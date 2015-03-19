@@ -32,7 +32,6 @@ Summary:	Development files and libraries for Orc
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-compiler
-Requires:	pkgconfig
 
 %description dev
 This package contains the files needed to build packages that depend
@@ -42,7 +41,6 @@ on orc.
 Summary:	Orc compiler
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	pkgconfig
 
 %description compiler
 The Orc compiler, to produce optimized code.
