@@ -6,33 +6,30 @@
         cp -p %1 _license_files/$(echo '%1' | sed -e 's!/!.!g')
 
 Name:           webkitgtk4
-Version:        2.7.4
+Version:        2.7.92
 Release:        1%{?dist}
 Summary:        GTK+ Web content engine library
 
 License:        LGPLv2
 URL:            http://www.webkitgtk.org/
 Source0:        http://webkitgtk.org/releases/webkitgtk-%{version}.tar.xz
-Patch1:         webkit-glib-gmutexlocker.patch
 BuildRequires:  at-spi2-core-dev
 BuildRequires:  cairo-dev
 BuildRequires:  enchant-dev
 BuildRequires:  fontconfig-dev
 BuildRequires:  freetype-dev
-#BuildRequires:  geoclue2-dev
 BuildRequires:  glib2-dev
 BuildRequires:  gobject-introspection-dev
-#BuildRequires:  gstreamer1-dev
-#BuildRequires:  gstreamer1-plugins-base-dev
+BuildRequires:  gstreamer1-dev
+BuildRequires:  gstreamer1-plugins-base-dev
 BuildRequires:  gtk2-dev
 BuildRequires:  gtk3-dev
-#BuildRequires:  gtk-doc
 BuildRequires:  harfbuzz-dev
-#BuildRequires:  libicu-dev
 BuildRequires:  libsecret-dev
 BuildRequires:  libsoup-dev
 BuildRequires:  libXt-dev
 BuildRequires:  mesa-libGL-dev
+#BuildRequires:  geoclue2-dev
 #Requires:       geoclue2
 
 # Filter out provides for private libraries
@@ -54,7 +51,6 @@ files for developing applications that use %{name}.
 
 %prep
 %setup -q -n webkitgtk-%{version}
-%patch1 -p1
 
 %build
 
@@ -81,9 +77,8 @@ CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
         -DPORT=GTK \
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_GTKDOC=OFF \
-        \
-        -DENABLE_VIDEO=OFF \
-        -DENABLE_WEB_AUDIO=OFF \
+        -DENABLE_VIDEO=ON \
+        -DENABLE_WEB_AUDIO=ON \
   ..
 popd
 
@@ -138,4 +133,3 @@ make %{?_smp_mflags} -C %{_target_platform}
 %changelog
 * Thu Jan  8 2015 Alexander Larsson <alexl@redhat.com> - 2.7.3-1
 - import from fedora
-
