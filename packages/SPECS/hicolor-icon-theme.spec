@@ -1,6 +1,6 @@
 Summary: Basic requirement for icon themes
 Name: hicolor-icon-theme
-Version: 0.14
+Version: 0.15
 Release: 1%{?dist}
 License: GPL+
 Group: User Interface/Desktops

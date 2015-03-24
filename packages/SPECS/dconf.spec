@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           dconf
-Version:        0.23.2
+Version:        0.24.0
 Release:        1%{?dist}
 Summary:        A configuration system
 

@@ -1,5 +1,5 @@
 Name: pygobject3
-Version: 3.14.0
+Version: 3.16.0
 Release: 1%{?dist}
 License: LGPLv2+ and MIT
 Group: Development/Languages

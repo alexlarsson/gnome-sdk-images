@@ -1,4 +1,4 @@
-%global pa_major   5.0
+%global pa_major   6.0
 #global pa_minor   0
 
 Name:           pulseaudio

@@ -2,7 +2,7 @@
 %global apiver 2.91
 
 Name:           vte
-Version:        0.39.90
+Version:        0.40.0
 Release:        1%{?dist}
 Summary:        Terminal emulator library
 

@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           adwaita-icon-theme
-Version:        3.15.90
+Version:        3.16.0
 Release:        1%{?dist}
 Summary:        Adwaita icon theme
 
