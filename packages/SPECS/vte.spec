@@ -46,9 +46,9 @@ emulator library.
 %build
 
 # We disable gnome-pty-helper as we don't want setuid binaries
-CFLAGS="%optflags -fPIE -DPIE" \
-CXXFLAGS="$CFLAGS" \
-LDFLAGS="$LDFLAGS -Wl,-z,relro -Wl,-z,now -pie -lssp" \
+CFLAGS="%optflags -fPIE -DPIE"; export CFLAGS;
+CXXFLAGS="$CFLAGS"; export CXXFLAGS;
+LDFLAGS="$LDFLAGS -Wl,-z,relro -Wl,-z,now -pie -lssp"; export LDFLAGS;
 %configure \
         --disable-static \
         --with-gtk=3.0 \
