@@ -6,8 +6,8 @@ ROOT=$BUILD/root
 VAR=$BUILD/var
 SRC=`pwd`
 
-XDG_APP_HELPER=`which xdg-app-helper`
-LINUX_USER_CHROOT=`which linux-user-chroot`
+XDG_APP_HELPER=`which xdg-app-helper 2> /dev/null`
+LINUX_USER_CHROOT=`which linux-user-chroot 2> /dev/null`
 
 declare -x LC_ALL=en_US.utf8
 declare -x HOME=/self/packages
