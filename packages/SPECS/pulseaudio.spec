@@ -125,6 +125,7 @@ rm -fv $RPM_BUILD_ROOT%{_libdir}/*.la $RPM_BUILD_ROOT%{_libdir}/pulse-%{pa_major
 %dir %{_sysconfdir}/bash_completion.d/
 %{_sysconfdir}/bash_completion.d/pa*
 %{_sysconfdir}/bash_completion.d/pulseaudio
+%{_datadir}/zsh/site-functions/_pulseaudio
 %{_bindir}/pulseaudio
 %{_libdir}/libpulsecore-%{pa_major}.so
 %dir %{_libdir}/pulse-%{pa_major}/
@@ -238,6 +239,8 @@ rm -fv $RPM_BUILD_ROOT%{_libdir}/*.la $RPM_BUILD_ROOT%{_libdir}/pulse-%{pa_major
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libpulse.vapi
 %{_datadir}/vala/vapi/libpulse.deps
+%{_datadir}/vala/vapi/libpulse-simple.vapi
+%{_datadir}/vala/vapi/libpulse-simple.deps
 %{_datadir}/vala/vapi/libpulse-mainloop-glib.vapi
 %{_datadir}/vala/vapi/libpulse-mainloop-glib.deps
 %dir %{_libdir}/cmake
