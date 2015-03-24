@@ -123,7 +123,8 @@ rm -fv $RPM_BUILD_ROOT%{_libdir}/*.la $RPM_BUILD_ROOT%{_libdir}/pulse-%{pa_major
 %config(noreplace) %{_sysconfdir}/pulse/system.pa
 %{_sysconfdir}/dbus-1/system.d/pulseaudio-system.conf
 %dir %{_sysconfdir}/bash_completion.d/
-%{_sysconfdir}/bash_completion.d/pulseaudio-bash-completion.sh
+%{_sysconfdir}/bash_completion.d/pa*
+%{_sysconfdir}/bash_completion.d/pulseaudio
 %{_bindir}/pulseaudio
 %{_libdir}/libpulsecore-%{pa_major}.so
 %dir %{_libdir}/pulse-%{pa_major}/
