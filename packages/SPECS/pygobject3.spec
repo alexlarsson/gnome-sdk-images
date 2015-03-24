@@ -1,3 +1,5 @@
+%global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
+
 Name: pygobject3
 Version: 3.16.0
 Release: 1%{?dist}
@@ -6,7 +8,7 @@ Group: Development/Languages
 Summary: Python 3 bindings for GObject Introspection
 URL: https://live.gnome.org/PyGObject
 #VCS: git:git://git.gnome.org/pygobject
-Source: http://ftp.gnome.org/pub/GNOME/sources/pygobject/3.14/pygobject-%{version}.tar.xz
+Source: http://ftp.gnome.org/pub/GNOME/sources/pygobject/%{release_version}/pygobject-%{version}.tar.xz
 
 BuildRequires: freedesktop-sdk-base
 BuildRequires: glib2-dev
