@@ -4,7 +4,7 @@ BUILD=`pwd`/build
 CHROOT=$BUILD/chroot
 ROOT=$BUILD/root
 VAR=$BUILD/var
-SRC=`pwd`/
+SRC=`pwd`
 
 XDG_APP_HELPER=`which xdg-app-helper`
 LINUX_USER_CHROOT=`which linux-user-chroot`
@@ -32,9 +32,9 @@ fi
 echo "builduser:x:`id  -u`:`id -u`:Build user:/self/packages:/sbin/nologin" >> $ROOT/usr/etc/passwd
 echo "builduser:x:`id  -g`:" >> $ROOT/usr/etc/group
 
-if "x${XDG_APP_HELPER}" != "x"; then
-    $XDG_APP_HELPER -w -W -E -a $SRC -v $VAR $ROOT/usr env PATH="$PATH" "$@"
-else
+if test "x${XDG_APP_HELPER}" != "x"; then
+    $XDG_APP_HELPER -w -W -E -a $SRC -v $VAR $ROOT/usr env PATH="$PATH" /self/cd.sh "$@"
+elif test "x${LINUX_USER_CHROOT}" != "x"; then
     $LINUX_USER_CHROOT --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $SRC /self --chdir /self $CHROOT "$@"
 else
     echo "No containment helper found"
