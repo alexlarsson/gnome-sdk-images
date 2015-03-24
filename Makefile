@@ -7,7 +7,7 @@ ARCH=x86_64
 IMAGES=freedesktop-sdk-base/build/$(ARCH)/images
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
-BASE_HASH=367d7b42f20c0c86d79fc6bf83f73f1efd23915c
+BASE_HASH=46466befa88445480f51815e7ae1f2232963836d
 all: gnome-platform.tar.gz gnome-sdk.tar.gz
 
 SDK_BASE_IMAGE=$(IMAGES)/freedesktop-contents-sdk-$(ARCH)-$(BASE_HASH).tar.gz
