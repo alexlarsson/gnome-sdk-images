@@ -1,53 +1,37 @@
 #!/bin/sh
 
-ROOT=`pwd`/build/root
-VAR=`pwd`/build/var
-APP=`pwd`/packages
+BUILD=`pwd`/build
+CHROOT=$BUILD/chroot
+ROOT=$BUILD/root
+VAR=$BUILD/var
 SRC=`pwd`/
 
 HELPER=`which linux-user-chroot`
 
 declare -x LC_ALL=en_US.utf8
-declare -x HOME=/self
+declare -x HOME=/self/packages
 unset ACLOCAL_FLAGS
-declare -x ACLOCAL_PATH="/self/share/aclocal"
-declare -x CPLUS_INCLUDE_PATH="/self/include"
-declare -x C_INCLUDE_PATH="/self/include"
-declare -x GI_TYPELIB_PATH="/self/lib/girepository-1.0"
-declare -x LDFLAGS="-L/self/lib "
-declare -x LD_LIBRARY_PATH="/self/lib"
-declare -x PATH="/usr/bin:/self/bin"
-declare -x PKG_CONFIG_PATH="/self/lib/pkgconfig:/self/share/pkgconfig"
-declare -x XDG_CONFIG_DIRS="/self/etc/xdg:/etc/xdg"
-declare -x XDG_DATA_DIRS="/self/share:/usr/share"
-if test -d packages/.ccache; then
-    declare -x PATH="/self/bin/ccache:$PATH"
-fi
-unset PYTHONPATH
+unset ACLOCAL_PATH
+unset CPLUS_INCLUDE_PATH
+unset C_INCLUDE_PATH
+unset GI_TYPELIB_PATH
 unset INSTALL
+unset LDFLAGS
+unset LD_LIBRARY_PATH
 unset PERL5LIB
+unset PKG_CONFIG_PATH
+unset PYTHONPATH
+unset XDG_CONFIG_DIRS
+unset XDG_DATA_DIRS
+declare -x PATH="/usr/bin:/self/packages/bin"
+if test -d packages/.ccache; then
+    declare -x PATH="/self/packages/bin/ccache:$PATH"
+fi
 
-CHROOT=`mktemp -d`
-mkdir $CHROOT/var
-mkdir $CHROOT/usr
-mkdir $CHROOT/tmp
-mkdir $CHROOT/self
-mkdir $CHROOT/proc
-mkdir $CHROOT/dev
-mkdir $CHROOT/src
-ln -s usr/lib $CHROOT/lib
-ln -s usr/bin $CHROOT/bin
-ln -s usr/sbin $CHROOT/sbin
-ln -s usr/etc $CHROOT/etc
+echo "builduser:x:`id  -u`:`id -u`:Build user:/self/packages:/sbin/nologin" >> $ROOT/usr/etc/passwd
+echo "builduser:x:`id  -g`:" >> $ROOT/usr/etc/group
 
-cp -a $ROOT/usr/etc/passwd $CHROOT
-cp -a $ROOT/usr/etc/group $CHROOT
-cp  /etc/passwd $ROOT/usr/etc/
-cp  /etc/group $ROOT/usr/etc/
+$HELPER --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $SRC /self --chdir /self $CHROOT "$@"
 
-$HELPER --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $APP /self  --mount-bind $SRC /src --chdir /src $CHROOT "$@"
-
-cp -a $CHROOT/passwd $ROOT/usr/etc/
-cp -a $CHROOT/group $ROOT/usr/etc/
-
-rm -rf $CHROOT
+cp -a $BUILD/passwd.orig $ROOT/usr/etc/passwd
+cp -a $BUILD/group.orig $ROOT/usr/etc/group

@@ -6,12 +6,22 @@ else
     mkdir -p build
 fi
 
-ROOT=`pwd`/build/root
-VAR=`pwd`/build/var
+BUILD=`pwd`/build
+CHROOT=$BUILD/chroot
+ROOT=$BUILD/root
+VAR=$BUILD/var
 IMAGE=`readlink -f $1`
 
-rm -rf $ROOT
-mkdir -p $ROOT
-rm -rf $VAR
-mkdir -p $VAR
+rm -rf $ROOT $VAR $CHROOT
+mkdir -p $ROOT $VAR $CHROOT
+
+mkdir -p $CHROOT/var $CHROOT/usr $CHROOT/tmp $CHROOT/self $CHROOT/proc $CHROOT/dev
+ln -s usr/lib $CHROOT/lib
+ln -s usr/bin $CHROOT/bin
+ln -s usr/sbin $CHROOT/sbin
+ln -s /usr/etc $CHROOT/etc
+
 (cd $ROOT; tar xvf $IMAGE > /dev/null; mv etc usr; mkdir -p $VAR/lib; mv var/lib/rpm $VAR/lib)
+
+cp -a $ROOT/usr/etc/passwd $BUILD/passwd.orig
+cp -a $ROOT/usr/etc/group $BUILD/group.orig
