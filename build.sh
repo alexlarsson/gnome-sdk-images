@@ -32,10 +32,13 @@ fi
 echo "builduser:x:`id  -u`:`id -u`:Build user:/self/packages:/sbin/nologin" >> $ROOT/usr/etc/passwd
 echo "builduser:x:`id  -g`:" >> $ROOT/usr/etc/group
 
+rc = 1;
 if test "x${XDG_APP_HELPER}" != "x"; then
     $XDG_APP_HELPER -w -W -E -a $SRC -v $VAR $ROOT/usr env PATH="$PATH" /self/cd.sh "$@"
+    rc=$?;
 elif test "x${LINUX_USER_CHROOT}" != "x"; then
     $LINUX_USER_CHROOT --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $SRC /self --chdir /self $CHROOT "$@"
+    rc=$?;
 else
     echo "No containment helper found"
     exit 1
@@ -43,3 +46,5 @@ fi
 
 cp -a $BUILD/passwd.orig $ROOT/usr/etc/passwd
 cp -a $BUILD/group.orig $ROOT/usr/etc/group
+
+exit $rc
