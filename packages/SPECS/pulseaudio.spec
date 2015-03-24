@@ -249,14 +249,11 @@ rm -fv $RPM_BUILD_ROOT%{_libdir}/*.la $RPM_BUILD_ROOT%{_libdir}/pulse-%{pa_major
 
 %files module-x11
 %{_sysconfdir}/xdg/autostart/pulseaudio.desktop
-%{_sysconfdir}/xdg/autostart/pulseaudio-kde.desktop
-%{_bindir}/start-pulseaudio-kde
 %{_bindir}/start-pulseaudio-x11
 %{_libdir}/pulse-%{pa_major}/modules/module-x11-bell.so
 %{_libdir}/pulse-%{pa_major}/modules/module-x11-publish.so
 %{_libdir}/pulse-%{pa_major}/modules/module-x11-xsmp.so
 %{_libdir}/pulse-%{pa_major}/modules/module-x11-cork-request.so
-%{_mandir}/man1/start-pulseaudio-kde.1.gz
 %{_mandir}/man1/start-pulseaudio-x11.1.gz
 
 %files utils
