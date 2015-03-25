@@ -1,3 +1,6 @@
+# Disable debug info by default.
+%define with_webkit_debug 0
+
 ## NOTE: Lots of files in various subdirectories have the same name (such as
 ## "LICENSE") so this short macro allows us to distinguish them by using their
 ## directory names (from the source tree) as prefixes for the files.
@@ -54,8 +57,13 @@ files for developing applications that use %{name}.
 
 %build
 
+%if %{with_webkit_debug}
 # Decrease debuginfo verbosity to reduce memory consumption even more
 %global optflags %(echo %{optflags} | sed 's/-g /-g1 /')
+%else
+# Disable -g to save disk space during build
+%global optflags %(echo %{optflags} | sed 's/-g / /')
+%endif
 
 # Disable ld.gold on s390 as it does not have it.
 # Also for aarch64 as the support is in upstream, but not packaged in Fedora.
