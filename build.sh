@@ -11,6 +11,10 @@ LINUX_USER_CHROOT=`which linux-user-chroot 2> /dev/null`
 
 declare -x LC_ALL=en_US.utf8
 declare -x HOME=/self/packages
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+unset FFLAGS
 unset ACLOCAL_FLAGS
 unset ACLOCAL_PATH
 unset CPLUS_INCLUDE_PATH
