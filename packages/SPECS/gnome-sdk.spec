@@ -33,7 +33,6 @@ Requires: gtk3-dev
 Requires: gvfs-dev
 Requires: json-glib-dev
 Requires: libappstream-glib-dev
-Requires: libappstream-glib-builder-dev
 Requires: libcroco-dev
 Requires: libnotify-dev
 Requires: librsvg2-dev
