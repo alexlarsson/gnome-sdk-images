@@ -69,9 +69,6 @@ make %{?_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
-
 %makeinstall gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
 # Don't package static a or .la files

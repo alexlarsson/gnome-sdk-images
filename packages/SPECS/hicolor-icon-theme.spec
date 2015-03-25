@@ -23,7 +23,6 @@ chmod 0644 COPYING
 %configure
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT PREFIX=/usr install
 
 touch $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/icon-theme.cache

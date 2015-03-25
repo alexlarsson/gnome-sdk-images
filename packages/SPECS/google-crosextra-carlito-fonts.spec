@@ -33,8 +33,6 @@ coverage as Calibri. This font is sans-serif typeface family based on Lato.
 %build
 
 %install
-rm -rf %{buildroot}
-
 install -m 0755 -d %{buildroot}%{_fontdir}
 install -m 0644 -p *.ttf %{buildroot}%{_fontdir}
 

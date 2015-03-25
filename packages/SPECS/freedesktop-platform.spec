@@ -113,8 +113,6 @@ Meta package for Freedesktop platform dependencies
 %build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 # Need empty machine-id to bind mount over
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/
 touch $RPM_BUILD_ROOT%{_sysconfdir}/machine-id

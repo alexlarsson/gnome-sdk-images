@@ -33,8 +33,6 @@ autoreconf -v --install --force
 V=1 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=$RPM_BUILD_ROOT
 
 # We intentionally don't ship *.la files

@@ -42,8 +42,6 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 V=1 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=$RPM_BUILD_ROOT
 mkdir -p -m 0755 $RPM_BUILD_ROOT%{_datadir}/X11/app-defaults
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la

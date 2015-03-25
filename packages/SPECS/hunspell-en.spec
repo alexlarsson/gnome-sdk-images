@@ -80,7 +80,6 @@ for i in README_en_CA.txt README_en_US.txt; do
 done
 
 %install
-rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/myspell
 cp -p en_*.dic en_*.aff $RPM_BUILD_ROOT/%{_datadir}/myspell
 cd scowl/speller

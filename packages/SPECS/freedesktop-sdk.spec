@@ -80,8 +80,6 @@ Meta package for Gnome SDK dependencies
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rpm/
 install -m 0644 -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rpm/macros
 

@@ -40,8 +40,6 @@ with which most of the glyphs used in LaTeX can be displayed.
 %build
 
 %install
-rm -rf %{buildroot}
-
 install -m 0755 -d %{buildroot}%{_fontdir}
 install -p -m 644 *.ttf  %{buildroot}%{_fontdir}
 

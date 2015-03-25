@@ -36,8 +36,6 @@ libthai.
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 %makeinstall
 
 rm $RPM_BUILD_ROOT%{_libdir}/*.la

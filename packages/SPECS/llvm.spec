@@ -115,8 +115,6 @@ make %{?_smp_mflags} REQUIRES_RTTI=1 VERBOSE=1
 #make REQUIRES_RTTI=1 VERBOSE=1
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=%{buildroot} PROJ_docsdir=/moredocs
 
 # you have got to be kidding me

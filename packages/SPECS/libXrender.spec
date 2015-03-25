@@ -34,8 +34,6 @@ autoreconf -v --install --force
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=$RPM_BUILD_ROOT
 # undo this, we'll add it ourselves in %%doc
 rm $RPM_BUILD_ROOT/%{_docdir}/*/libXrender.txt

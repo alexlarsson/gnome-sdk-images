@@ -41,8 +41,6 @@ Headers and static libraries for the D-Bus GLib bindings
 make
 
 %install
-rm -rf %{buildroot}
-
 make install DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a

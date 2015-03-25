@@ -174,8 +174,6 @@ export CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
 make %{?_smp_mflags} MKDEP=/bin/true
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 make install DESTDIR=$RPM_BUILD_ROOT
 
 # We moved everything into a GL subdir to allow easy override

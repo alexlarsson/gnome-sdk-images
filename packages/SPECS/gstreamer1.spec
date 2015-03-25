@@ -62,7 +62,6 @@ make %{?_smp_mflags} V=1
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 # Remove rpath.
 chrpath --delete $RPM_BUILD_ROOT%{_libdir}/libgstbase-1.0.so.*

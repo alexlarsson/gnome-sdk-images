@@ -68,8 +68,6 @@ if test -f autogen.sh; then env NOCONFIGURE=1 ./autogen.sh; else autoreconf -v -
 make
 
 %install
-rm -rf %{buildroot}
-
 make install DESTDIR=%{buildroot}
 
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
