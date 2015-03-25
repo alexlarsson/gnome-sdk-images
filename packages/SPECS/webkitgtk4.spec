@@ -57,20 +57,19 @@ files for developing applications that use %{name}.
 
 %build
 
-%if %{with_webkit_debug}
-# Decrease debuginfo verbosity to reduce memory consumption even more
-%global optflags %(echo %{optflags} | sed 's/-g /-g1 /')
-%else
-# Disable -g to save disk space during build
-%global optflags %(echo %{optflags} | sed 's/-g / /')
-%endif
-
 # Disable ld.gold on s390 as it does not have it.
 # Also for aarch64 as the support is in upstream, but not packaged in Fedora.
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
-CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+%if %{with_webkit_debug}
+# Decrease debuginfo verbosity to reduce memory consumption even more
+CFLAGS="%(echo %{optflags} | sed 's/-g/-g1/')"
+%else
+# Disable -g to save disk space during build
+CFLAGS="%(echo %{optflags} | sed 's/-g//')"
+%endif
+export CFLAGS ; \
+CXXFLAGS="${CFLAGS}" ; export CXXFLAGS ; \
 %{?__global_ldflags:LDFLAGS="${LDFLAGS:-%__global_ldflags}" ; export LDFLAGS ;} \
 /usr/bin/cmake \
         -DCMAKE_C_FLAGS_RELEASE:STRING="-DNDEBUG" \
