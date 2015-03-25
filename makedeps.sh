@@ -33,7 +33,7 @@ for spec in $SPECS; do
     if [ "x${BRS}" != "x" ]; then
         echo "	./build.sh smart install -y $BRS"
     fi
-    echo "	./build.sh rpmbuild -bb $spec"
+    echo "	./build.sh rpmbuild --clean -bb $spec"
     echo "	./clear_root.sh"
     echo
     echo "`basename ${spec} .spec`: $PACKAGES"
@@ -44,7 +44,7 @@ for spec in $SPECS; do
     if [ "x${BRS}" != "x" ]; then
         echo "	./build.sh smart install -y $BRS"
     fi
-    echo "	./build.sh rpmbuild -bb $spec"
+    echo "	./build.sh rpmbuild --clean -bb $spec"
     echo "	./clear_root.sh"
     echo
 done
