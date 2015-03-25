@@ -62,9 +62,6 @@ find $RPM_BUILD_ROOT -name 'Xcms.txt' -delete
 # FIXME package these properly
 rm -rf $RPM_BUILD_ROOT%{_docdir}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 

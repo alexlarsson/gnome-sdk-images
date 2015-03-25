@@ -98,9 +98,6 @@ for lang in $en_US_aliases; do
 done
 popd
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(-,root,root,-)
 %doc scowl/speller/README_en_CA.txt

@@ -96,9 +96,6 @@ mkdir -p %{buildroot}/var/lib/dbus
 install -pm 644 -t %{buildroot}%{_pkgdocdir} \
     doc/introspect.dtd doc/introspect.xsl doc/system-activation.txt
 
-%clean
-rm -rf %{buildroot}
-
 %post libs -p /sbin/ldconfig
 
 %postun libs -p /sbin/ldconfig

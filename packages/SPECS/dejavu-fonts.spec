@@ -40,10 +40,6 @@ for fontconf in *conf ; do
         %{buildroot}%{_fontconfig_confdir}/$fontconf
 done
 
-%clean
-rm -fr %{buildroot}
-
-
 %files
 %defattr(0644,root,root,0755)
 %doc AUTHORS BUGS LICENSE NEWS README

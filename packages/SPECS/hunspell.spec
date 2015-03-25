@@ -40,9 +40,6 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
 mkdir $RPM_BUILD_ROOT/%{_datadir}/myspell
 %find_lang %{name}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig

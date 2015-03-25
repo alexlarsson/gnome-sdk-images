@@ -79,9 +79,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 find $RPM_BUILD_ROOT -name \*.la | xargs rm -f
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post -n libwayland-client -p /sbin/ldconfig
 %postun -n libwayland-client -p /sbin/ldconfig
 

@@ -43,9 +43,6 @@ for f in AUTHORS ChangeLog COPYING ; do
     cp -p $f ${RPM_BUILD_ROOT}%{_docdir}/%{name}/${f}
 done
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 

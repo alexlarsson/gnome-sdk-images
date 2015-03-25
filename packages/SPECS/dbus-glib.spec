@@ -46,10 +46,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
-%clean
-rm -rf %{buildroot}
-
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig

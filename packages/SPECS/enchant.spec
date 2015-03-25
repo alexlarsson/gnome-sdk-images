@@ -55,9 +55,6 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/enchant/*.la
 
 %postun -p /sbin/ldconfig
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %changelog
 * Thu Jan 22 2015 Alexander Larsson <alexl@redhat.com> - 1.6.0-1
 - Initial version

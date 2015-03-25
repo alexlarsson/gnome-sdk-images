@@ -49,9 +49,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 # adding to installed docs in order to avoid using %%doc magic
 cp -p COPYING ${RPM_BUILD_ROOT}%{_datadir}/doc/%{name}/COPYING
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 

@@ -198,9 +198,6 @@ rm -f $RPM_BUILD_ROOT%{_includedir}/GL/osmesa.h
 # remove .la files
 find $RPM_BUILD_ROOT -name \*.la | xargs rm -f
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %check
 
 %post libGL -p /sbin/ldconfig
