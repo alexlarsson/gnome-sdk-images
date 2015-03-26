@@ -8,6 +8,8 @@ NAME=$5
 ARCH=$6
 VERSION=$7
 
+REV=`git rev-parse HEAD`
+
 rm -rf build/commit
 mkdir -p build/commit
 rm -rf build/commit-locales
@@ -15,6 +17,14 @@ mkdir -p build/commit-locales
 echo "extracting ${TAR}"
 tar xf ${TAR} -C build/commit
 cp ${METADATA} build/commit/metadata
+
+COMMIT_ARGS="--repo=${REPO} --owner-uid=0 --owner-gid=0 --no-xattrs"
+if [ "x${GPG_KEY}" != "x" ]; then
+    COMMIT_ARGS="${COMMIT_ARGS} --gpg-sign=${GPG_KEY}"
+fi
+if [ "x${GPG_HOME}" != "x" ]; then
+    COMMIT_ARGS="${COMMIT_ARGS} --gpg-homedir=${GPG_HOME}"
+fi
 
 echo "extracting locales"
 for F in build/commit/files/share/locale/*; do
@@ -39,12 +49,12 @@ for F in build/commit/files/lib/locale/*; do
 done
 
 echo "commiting runtime/${NAME}/${ARCH}/${VERSION}"
-ostree commit --repo=${REPO} --branch=runtime/${NAME}/${ARCH}/${VERSION} --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" build/commit
+ostree commit ${COMMIT_ARGS} --branch=runtime/${NAME}/${ARCH}/${VERSION}  -s "build of ${REV}" build/commit
 
 for F in build/commit-locales/*; do
     LOCALE=`basename $F`
     echo "commiting runtime/${NAME}.Locale.$LOCALE/${ARCH}/${VERSION}"
-    ostree commit --repo=${REPO} --branch=runtime/${NAME}.Locale.$LOCALE/${ARCH}/${VERSION} --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" $F
+    ostree commit ${COMMIT_ARGS} --branch=runtime/${NAME}.Locale.$LOCALE/${ARCH}/${VERSION} -s "build of ${REV}" $F
 done
 
 rm -rf build/commit
@@ -52,9 +62,9 @@ mkdir -p build/commit
 echo "extracting ${TAR_VAR}"
 tar xf ${TAR_VAR} -C build/commit
 echo "commiting runtime/${NAME}.Var/${ARCH}/${VERSION}"
-ostree commit --repo=${REPO} --branch=runtime/${NAME}.Var/${ARCH}/${VERSION} --owner-uid=0 --owner-gid=0 --disable-fsync --no-xattrs -s "release" build/commit
+ostree commit ${COMMIT_ARGS} --branch=runtime/${NAME}.Var/${ARCH}/${VERSION}  -s "build of ${REV}" build/commit
 
-if [ ${REPO} == "release/repo" ]; then
+if [ "x${DELTAS}" != "x" ]; then
     echo "commiting generating deltas"
     ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}/x86_64/$VERSION
     ostree static-delta generate --repo=${REPO} --min-fallback-size 1 --empty runtime/${NAME}.Var/x86_64/$VERSION

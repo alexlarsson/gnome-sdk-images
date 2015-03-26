@@ -1,24 +1,30 @@
 srcdir = $(CURDIR)
 builddir = $(CURDIR)
 
-FREEDESKTOP_VERSION=0.1
+FREEDESKTOP_VERSION=1.0
 GNOME_VERSION=3.16
 ARCH=x86_64
-IMAGES=freedesktop-sdk-base/build/$(ARCH)/images
+IMAGEDIR=freedesktop-sdk-base/images/$(ARCH)
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
-BASE_HASH=46466befa88445480f51815e7ae1f2232963836d
+BASE_HASH=8e6d1e5b50a962710a63f544531b6676513ed565
+EXTRA_NAME=
+DELTAS=
+GPG_KEY=
+GPG_HOME=
 all: gnome-platform.tar.gz gnome-sdk.tar.gz
 
-SDK_BASE_IMAGE=$(IMAGES)/freedesktop-contents-sdk-$(ARCH)-$(BASE_HASH).tar.gz
-PLATFORM_BASE_IMAGE=$(IMAGES)/freedesktop-contents-platform-$(ARCH)-$(BASE_HASH).tar.gz
+SDK_BASE_IMAGE=$(IMAGEDIR)/freedesktop-contents-sdk-$(ARCH)-$(BASE_HASH).tar.gz
+PLATFORM_BASE_IMAGE=$(IMAGEDIR)/freedesktop-contents-platform-$(ARCH)-$(BASE_HASH).tar.gz
 
-images:
+$(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
 	if test ! -d freedesktop-sdk-base; then \
-		git clone https://github.com/alexlarsson/freedesktop-sdk-base.git;\
+		git clone git://git.gnome.org/freedesktop-sdk-base;\
 	fi
-	(cd  freedesktop-sdk-base; git pull;)
-	(cd  freedesktop-sdk-base; make;)
+	(cd  freedesktop-sdk-base && \
+	 git fetch origin && \
+	 git checkout $(BASE_HASH) && \
+	 make)
 
 NULL=
 
@@ -123,19 +129,19 @@ gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOA
 	./clear_root.sh
 
 repository:
-	ostree  init --mode=archive-z2 --repo=repository
+	ostree  init --mode=archive-z2 --repo=repo
 
-commit-freedesktop-platform: repository freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
-	./commit.sh repository freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz metadata.freedesktop-platform org.freedesktop.Platform $(ARCH) $(FREEDESKTOP_VERSION)
+commit-freedesktop-platform: repo freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
+	./commit.sh repo freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz metadata.freedesktop-platform org.freedesktop.Platform$(EXTRA_NAME) $(ARCH) $(FREEDESKTOP_VERSION)
 
-commit-freedesktop-sdk: repository freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
-	./commit.sh repository freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz metadata.freedesktop-sdk org.freedesktop.Sdk $(ARCH) $(FREEDESKTOP_VERSION)
+commit-freedesktop-sdk: repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
+	./commit.sh repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz metadata.freedesktop-sdk org.freedesktop.Sdk$(EXTRA_NAME) $(ARCH) $(FREEDESKTOP_VERSION)
 
-commit-platform: repository gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
-	./commit.sh repository gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz metadata.platform org.gnome.Platform $(ARCH) $(GNOME_VERSION)
+commit-platform: repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
+	./commit.sh repo gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz metadata.platform org.gnome.Platform$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
 
-commit-sdk: repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
-	./commit.sh repository gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz metadata.sdk org.gnome.Sdk $(ARCH) $(GNOME_VERSION)
+commit-sdk: repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
+	./commit.sh repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz metadata.sdk org.gnome.Sdk$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
 
 commit-gnome: commit-sdk commit-platform
 	echo done
@@ -146,28 +152,10 @@ commit-freedesktop: commit-freedesktop-sdk commit-freedesktop-platform
 commit: commit-gnome commit-freedesktop
 	echo done
 
-release/repo:
-	ostree  init --mode=archive-z2 --repo=release/repo
-
-release-commit-freedesktop-platform: release/repo freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
-	./commit.sh release/repo freedesktop-platform.tar.gz freedesktop-platform-rpmdb.tar.gz metadata.freedesktop-platform org.freedesktop.Platform $(ARCH) $(FREEDESKTOP_VERSION)
-
-release-commit-freedesktop-sdk: release/repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
-	./commit.sh release/repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz metadata.freedesktop-sdk org.freedesktop.Sdk $(ARCH) $(FREEDESKTOP_VERSION)
-
-release-commit-platform: release/repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
-	./commit.sh release/repo gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz metadata.platform org.gnome.Platform $(ARCH) $(GNOME_VERSION)
-
-release-commit-sdk: release/repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
-	./commit.sh release/repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz metadata.sdk org.gnome.Sdk $(ARCH) $(GNOME_VERSION)
-
-release-commit-gnome: release-commit-sdk release-commit-platform
-	echo done
-
-release-commit-freedesktop: release-commit-freedesktop-sdk release-commit-freedesktop-platform
-	echo done
-
-release-commit: release-commit-gnome release-commit-freedesktop
-	echo done
+untag:
+	./untag.sh repo org.freedesktop.Platform $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.freedesktop.Sdk $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.gnome.Platform $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.gnome.Sdk $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
 
 -include rpm-dependencies.P
