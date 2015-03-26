@@ -1,5 +1,5 @@
 # Disable debug info by default.
-%define with_webkit_debug 0
+%define with_webkit_debug 1
 
 ## NOTE: Lots of files in various subdirectories have the same name (such as
 ## "LICENSE") so this short macro allows us to distinguish them by using their
