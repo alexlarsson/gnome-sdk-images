@@ -13,6 +13,8 @@ URL:            http://llvm.org/
 
 # source archives
 Source0:        http://llvm.org/releases/%{version}/llvm-%{version}.src.tar.xz
+Source1:        http://llvm.org/releases/%{version}/cfe-%{version}.src.tar.xz
+Source2:        http://llvm.org/releases/%{version}/compiler-rt-%{version}.src.tar.xz
 
 BuildRequires: freedesktop-sdk-base
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
@@ -59,9 +61,59 @@ Requires:       %{name}-dev%{?_isa} = %{version}-%{release}
 Static libraries for the LLVM compiler infrastructure.  Not recommended
 for general consumption.
 
+%package -n clang
+Summary:        A C language family front-end for LLVM
+License:        NCSA
+Group:          Development/Languages
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description -n clang
+clang: noun
+    1. A loud, resonant, metallic sound.
+    2. The strident call of a crane or goose.
+    3. C-language family front-end toolkit.
+
+The goal of the Clang project is to create a new C, C++, Objective C
+and Objective C++ front-end for the LLVM compiler. Its tools are built
+as libraries and designed to be loosely-coupled and extensible.
+
+
+%Package -n clang-libs
+Summary:        Runtime library for clang
+Group:          System Environment/Libraries
+
+%description -n clang-libs
+Runtime library for clang.
+
+
+%package -n clang-dev
+Summary:        Header files for clang
+Group:          Development/Languages
+Requires:       clang%{?_isa} = %{version}-%{release}
+
+%description -n clang-dev
+This package contains header files for the Clang compiler.
+
+
+%package -n clang-analyzer
+Summary:        A source code analysis framework
+License:        NCSA
+Group:          Development/Languages
+BuildArch:      noarch
+Requires:       clang = %{version}-%{release}
+
+%description -n clang-analyzer
+The Clang Static Analyzer consists of both a source code analysis
+framework and a standalone tool that finds bugs in C and Objective-C
+programs. The standalone tool is invoked from the command-line, and is
+intended to run in tandem with a build of a project or code base.
+
 %prep
-%setup -q -n llvm-%{version}.src
+%setup -q -a1 -a2 -n llvm-%{version}.src
 rm -rf tools/clang tools/lldb projects/compiler-rt
+
+mv cfe-*/ tools/clang
+mv compiler-rt-*/ projects/compiler-rt
 
 # fix library paths
 sed -i 's|/lib /usr/lib $lt_ld_extra|%{_libdir} $lt_ld_extra|' configure
@@ -70,7 +122,10 @@ sed -i 's|/lib\>|/%{_lib}/%{name}|g' tools/llvm-config/llvm-config.cpp
 
 %build
 
-# clang is lovely and all, but fedora builds with gcc
+# Decrease debuginfo verbosity to reduce memory consumption even more
+CFLAGS="%(echo %{optflags} | sed 's/-g/-g1/')"; export CFLAGS ;
+CXXFLAGS="${CFLAGS}" ; export CXXFLAGS ;
+
 # -fno-devirtualize shouldn't be necessary, but gcc has scary template-related
 # bugs that make it so.  gcc 5 ought to be fixed.
 export CC=gcc
@@ -93,7 +148,7 @@ export CXX=g++
   --enable-debug-runtime \
   --enable-keep-symbols \
   --enable-jit \
-  --enable-docs \
+  --disable-docs \
   --disable-doxygen \
   --enable-threads \
   --enable-pthreads \
@@ -109,7 +164,8 @@ export CXX=g++
   --enable-ltdl-install \
   \
   --with-c-include-dirs=%{_includedir}:$(echo %{_prefix}/lib/gcc/%{_target_cpu}*/*/include) \
-  --with-optimize-option=-O3
+  --with-optimize-option=-O3 \
+  ac_cv_prog_XML2CONFIG=""
 
 make %{?_smp_mflags} REQUIRES_RTTI=1 VERBOSE=1
 #make REQUIRES_RTTI=1 VERBOSE=1
@@ -126,6 +182,27 @@ cat >> %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf << EOF
 %{_libdir}/%{name}
 EOF
 
+# Static analyzer not installed by default:
+# http://clang-analyzer.llvm.org/installation#OtherPlatforms
+
+# scan-view
+mkdir -p %{buildroot}%{_libexecdir}/clang-analyzer/
+cp -pr tools/clang/tools/scan-view %{buildroot}%{_libexecdir}/clang-analyzer/
+
+# scan-build
+mkdir -p %{buildroot}%{_libexecdir}/clang-analyzer/scan-build
+for file in c++-analyzer ccc-analyzer scan-build scanview.css sorttable.js; do
+  cp -p tools/clang/tools/scan-build/$file %{buildroot}%{_libexecdir}/clang-analyzer/scan-build/
+done
+
+# scan-build requires clang in search path
+ln -s ../../../bin/clang %{buildroot}%{_libexecdir}/clang-analyzer/scan-build/clang
+
+# launchers in /bin
+for f in scan-{build,view}; do
+  ln -s %{_libexecdir}/clang-analyzer/$f/$f %{buildroot}%{_bindir}/$f
+done
+
 # Get rid of erroneously installed example files.
 rm %{buildroot}%{_libdir}/%{name}/*LLVMHello.*
 
@@ -140,6 +217,12 @@ mkdir -p %{buildroot}%{_docdir}
 mkdir -p %{buildroot}%{llvmdocdir %{name}-doc}
 cp -ar examples %{buildroot}%{llvmdocdir %{name}-doc}/examples
 find %{buildroot}%{llvmdocdir %{name}-doc} -name Makefile -o -name CMakeLists.txt -o -name LLVMBuild.txt -print0 | xargs -0 rm -f
+
+#clang
+mkdir -p %{buildroot}%{llvmdocdir clang}
+for f in LICENSE.TXT NOTES.txt README.txt CODE_OWNERS.TXT; do
+  cp tools/clang/$f %{buildroot}%{llvmdocdir clang}/
+done
 
 # delete the rest of installed documentation (because it's bad)
 rm -rf %{buildroot}/moredocs
@@ -166,6 +249,9 @@ make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-dev}/test
 
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
+
+%post -n clang-libs -p /sbin/ldconfig
+%postun -n clang-libs -p /sbin/ldconfig
 
 %files
 %doc CREDITS.TXT
@@ -194,10 +280,29 @@ make -k check LIT_ARGS="-v -j4" | tee %{buildroot}%{llvmdocdir %{name}-dev}/test
 %doc LICENSE.TXT
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}.conf
 %dir %{_libdir}/%{name}
+%exclude %{_libdir}/%{name}/libclang.so
 %{_libdir}/%{name}/*.so
 
 %files static
 %{_libdir}/%{name}/*.a
+
+%files -n clang
+%doc %{llvmdocdir clang}/
+%{_bindir}/clang*
+%{_bindir}/c-index-test
+%{_prefix}/lib/clang
+
+%files -n clang-libs
+%{_libdir}/%{name}/libclang.so
+
+%files -n clang-dev
+%{_includedir}/clang
+%{_includedir}/clang-c
+
+%files -n clang-analyzer
+%{_bindir}/scan-build
+%{_bindir}/scan-view
+%{_libexecdir}/clang-analyzer
 
 %files doc
 %doc %{llvmdocdir %{name}-doc}/
