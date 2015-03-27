@@ -128,7 +128,7 @@ gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz: gnome-platform-packages $(NOA
 	tar --transform 's,^build/var,files,S' -czf gnome-platform-rpmdb.tar.gz build/var/lib/rpm --owner=root
 	./clear_root.sh
 
-repository:
+repo:
 	ostree  init --mode=archive-z2 --repo=repo
 
 commit-freedesktop-platform: repo freedesktop-platform.tar.gz  freedesktop-platform-rpmdb.tar.gz
