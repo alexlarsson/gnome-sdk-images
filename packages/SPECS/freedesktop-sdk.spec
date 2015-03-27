@@ -31,6 +31,7 @@ Requires: gstreamer1-plugins-base-tools
 Requires: gtk-doc-stub
 Requires: harfbuzz-dev
 Requires: hunspell-dev
+Requires: llvm-dev
 Requires: libICE-dev
 Requires: libX11-dev
 Requires: libXScrnSaver-dev
