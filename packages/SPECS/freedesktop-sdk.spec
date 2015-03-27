@@ -84,10 +84,12 @@ Meta package for Gnome SDK dependencies
 %install
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rpm/
 install -m 0644 -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rpm/macros
+ln -s /self/lib/debug $RPM_BUILD_ROOT%{_libdir}/debug/self
 
 %files
 %doc
 %{_sysconfdir}/rpm/macros
+%{_libdir}/debug/self
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com>
