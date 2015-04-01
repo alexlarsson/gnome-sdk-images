@@ -12,6 +12,7 @@ EXTRA_NAME=
 DELTAS=
 GPG_KEY=
 GPG_HOME=
+
 all: gnome-platform.tar.gz gnome-sdk.tar.gz
 
 SDK_BASE_IMAGE=$(IMAGEDIR)/freedesktop-contents-sdk-$(ARCH)-$(BASE_HASH).tar.gz
