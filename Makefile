@@ -8,6 +8,7 @@ IMAGEDIR=freedesktop-sdk-base/images/$(ARCH)
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
 BASE_HASH=8e44c998adbf1546c45cf733c688fed74e8ddc89
+
 EXTRA_NAME=
 DELTAS=
 GPG_KEY=
