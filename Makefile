@@ -30,37 +30,120 @@ $(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
 NULL=
 
 PACKAGES = \
-	freedesktop-platform-base freedesktop-sdk-base \
-	gtk-doc-stub \
+	freedesktop-platform-base \
+	freedesktop-sdk-base \
+	freedesktop-platform \
+	freedesktop-sdk \
+	gnome-platform \
+	gnome-sdk \
+	\
+	SDL2 \
+	SDL2_image \
+	SDL2_mixer \
+	SDL2_net \
+	SDL2_ttf \
+	abattis-cantarell-fonts \
+	adwaita-icon-theme \
+	aspell \
+	at-spi2-atk \
+	at-spi2-core \
+	atk \
+	cairo \
+	clutter \
+	clutter-gtk \
+	cogl \
+	dbus \
+	dbus-glib \
+	dconf \
+	dejavu-fonts \
+	desktop-file-utils \
+	enchant \
+	fontconfig \
+	freetype \
+	gdk-pixbuf2 \
+	gjs \
+	glib-networking \
 	glib2 \
 	gnome-common \
+	gnome-themes-standard \
+	gnu-free-fonts \
 	gobject-introspection \
-	shared-mime-info \
-	pixman \
-	freetype \
-	fontconfig \
-	xorg-x11-util-macros \
-	xorg-x11-proto-devel \
-	libXau xcb-proto libxcb libXdmcp xorg-x11-xtrans-devel libX11 libXrender \
-	libXfixes libXext libXft libXi libXinerama libICE libSM libXpm libXrandr libXtst libXt libXScrnSaver \
-	libXv libXvMC libXxf86vm libXdamage libXcursor libXcomposite libxkbfile libxshmfence \
-	xkeyboard-config libxkbcommon \
-	SDL2 SDL2_image SDL2_net SDL2_ttf SDL2_mixer \
-	dbus cairo dbus-glib \
-	libpciaccess libdrm llvm mesa libepoxy wayland \
-	pulseaudio \
-	freedesktop-platform freedesktop-sdk \
-	graphite2 harfbuzz libdatrie libthai pango atk at-spi2-core at-spi2-atk gdk-pixbuf2 gtk3 \
+	google-crosextra-caladea-fonts \
+	google-crosextra-carlito-fonts \
+	graphite2 \
+	gsettings-desktop-schemas \
+	gstreamer1 \
+	gstreamer1-plugins-base \
+	gtk-doc-stub \
+	gtk2 \
+	gtk3 \
+	gvfs \
+	harfbuzz \
+	hicolor-icon-theme \
+	hunspell-en hunspell \
+	itstool \
+	json-glib \
+	libICE \
+	libSM \
+	libX11 \
+	libXScrnSaver \
+	libXau \
+	libXcomposite \
+	libXcursor \
+	libXdamage \
+	libXdmcp \
+	libXext \
+	libXfixes \
+	libXft \
+	libXi \
+	libXinerama \
+	libXpm \
+	libXrandr \
+	libXrender \
+	libXt \
+	libXtst \
+	libXv \
+	libXvMC \
+	libXxf86vm \
+	libappstream-glib \
+	libcroco \
+	libdatrie \
+	libdrm \
+	libepoxy \
+	liberation-fonts \
+	libnotify \
+	libpciaccess \
+	libproxy \
+	librsvg2 \
 	libsecret \
-	itstool yelp-xsl yelp-tools \
-	hicolor-icon-theme libcroco vala librsvg2 adwaita-icon-theme \
-	gnome-sdk gnome-platform dejavu-fonts abattis-cantarell-fonts liberation-fonts gnu-free-fonts google-crosextra-caladea-fonts google-crosextra-carlito-fonts \
-	gtk2 gnome-themes-standard libproxy gsettings-desktop-schemas glib-networking libsoup \
-	dconf gvfs desktop-file-utils json-glib libnotify vte mozjs24 gjs \
-	orc gstreamer1 gstreamer1-plugins-base python3-cairo pygobject3 \
-	cogl clutter clutter-gtk webkitgtk4 \
-	aspell hunspell-en hunspell enchant \
-	zenity libappstream-glib \
+	libsoup \
+	libthai \
+	libxcb \
+	libxkbcommon \
+	libxkbfile \
+	libxshmfence \
+	llvm \
+	mesa \
+	mozjs24 \
+	orc \
+	pango \
+	pixman \
+	pulseaudio \
+	pygobject3 \
+	python3-cairo \
+	shared-mime-info \
+	vala \
+	vte \
+	wayland \
+	webkitgtk4 \
+	xcb-proto \
+	xkeyboard-config \
+	xorg-x11-proto-devel \
+	xorg-x11-util-macros \
+	xorg-x11-xtrans-devel \
+	yelp-tools \
+	yelp-xsl \
+	zenity \
 	$(NULL)
 
 ALL_SPECS =$(PACKAGES:%=$(SPECS)/%.spec)
