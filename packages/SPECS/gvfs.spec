@@ -2,7 +2,7 @@
 
 Summary: Backends for the gio framework in GLib
 Name: gvfs
-Version: 1.24.0
+Version: 1.24.1
 Release: 1%{?dist}
 License: GPLv3 and LGPLv2+ and BSD and MPLv1.1
 Group: System Environment/Libraries

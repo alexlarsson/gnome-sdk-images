@@ -1,6 +1,6 @@
 Summary: Direct Rendering Manager runtime library
 Name: libdrm
-Version: 2.4.60
+Version: 2.4.61
 Release: 1%{?dist}
 License: MIT
 Group: System Environment/Libraries
@@ -10,6 +10,7 @@ Source0: http://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.bz2
 BuildRequires: freedesktop-sdk-base
 BuildRequires: libxcb-dev
 BuildRequires: libpciaccess-dev
+BuildRequires: xorg-x11-util-macros
 
 %description
 Direct Rendering Manager runtime library

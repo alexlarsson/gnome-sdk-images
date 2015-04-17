@@ -1,5 +1,5 @@
 Name:           harfbuzz
-Version:        0.9.39
+Version:        0.9.40
 Release:        1%{?dist}
 Summary:        Text shaping library
 
