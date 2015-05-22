@@ -11,3 +11,6 @@ directory=share/zoneinfo
 [Extension org.freedesktop.Sdk.Locale]
 directory=share/runtime/locale
 subdirectories=true
+
+[Environment]
+GI_TYPELIB_PATH=/app/lib/girepository-1.0
