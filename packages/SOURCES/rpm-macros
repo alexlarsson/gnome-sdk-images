@@ -1,4 +1,4 @@
-%_prefix		/self
+%_prefix		/app
 %_exec_prefix           %{_prefix}
 %_bindir                %{_exec_prefix}/bin
 %_sbindir               %{_exec_prefix}/sbin

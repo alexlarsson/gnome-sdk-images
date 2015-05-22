@@ -10,7 +10,7 @@ XDG_APP_HELPER=`which xdg-app-helper 2> /dev/null`
 LINUX_USER_CHROOT=`which linux-user-chroot 2> /dev/null`
 
 declare -x LC_ALL=en_US.utf8
-declare -x HOME=/self/packages
+declare -x HOME=/app/packages
 unset CFLAGS
 unset CXXFLAGS
 unset LDFLAGS
@@ -28,20 +28,20 @@ unset PKG_CONFIG_PATH
 unset PYTHONPATH
 unset XDG_CONFIG_DIRS
 unset XDG_DATA_DIRS
-declare -x PATH="/usr/bin:/self/packages/bin"
+declare -x PATH="/usr/bin:/app/packages/bin"
 if test -d packages/.ccache; then
-    declare -x PATH="/self/packages/bin/ccache:$PATH"
+    declare -x PATH="/app/packages/bin/ccache:$PATH"
 fi
 
-echo "builduser:x:`id  -u`:`id -u`:Build user:/self/packages:/sbin/nologin" >> $ROOT/usr/etc/passwd
+echo "builduser:x:`id  -u`:`id -u`:Build user:/app/packages:/sbin/nologin" >> $ROOT/usr/etc/passwd
 echo "builduser:x:`id  -g`:" >> $ROOT/usr/etc/group
 
 rc=1
 if test "x${XDG_APP_HELPER}" != "x"; then
-    $XDG_APP_HELPER -w -W -E -a $SRC -v $VAR $ROOT/usr env PATH="$PATH" /self/cd.sh "$@"
+    $XDG_APP_HELPER -w -W -E -a $SRC -v $VAR $ROOT/usr env PATH="$PATH" /app/cd.sh "$@"
     rc=$?;
 elif test "x${LINUX_USER_CHROOT}" != "x"; then
-    $LINUX_USER_CHROOT --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $SRC /self --chdir /self $CHROOT "$@"
+    $LINUX_USER_CHROOT --unshare-ipc --unshare-pid --unshare-net --mount-bind /dev /dev --mount-proc /proc --mount-bind $ROOT/usr /usr --mount-bind $VAR /var --mount-bind $SRC /app --chdir /app $CHROOT "$@"
     rc=$?;
 else
     echo "No containment helper found"

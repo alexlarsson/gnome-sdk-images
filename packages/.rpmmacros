@@ -1,5 +1,5 @@
-%_topdir        /self/packages
-%_srcrpmdir     /self/packages/SRPMS
+%_topdir        /app/packages
+%_srcrpmdir     /app/packages/SRPMS
 %_buildrootdir		%{_topdir}/BUILDROOT
 %_builddir		%{_topdir}/BUILD_XXXXX
 

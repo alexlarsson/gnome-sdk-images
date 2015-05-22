@@ -8,7 +8,7 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
 # Yocto builds without the normal find-provides, we supply those provides in the gnome-platform-base package
-Provides: %(./find_prov.sh /self/freedesktop-platform/usr)
+Provides: %(./find_prov.sh /app/freedesktop-platform/usr)
 
 %if %{__isa_bits} == 64
 %define provides_suffix (64bit)

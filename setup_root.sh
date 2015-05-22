@@ -15,7 +15,7 @@ IMAGE=`readlink -f $1`
 rm -rf $ROOT $VAR $CHROOT
 mkdir -p $ROOT $VAR $CHROOT
 
-mkdir -p $CHROOT/var $CHROOT/usr $CHROOT/tmp $CHROOT/self $CHROOT/proc $CHROOT/dev
+mkdir -p $CHROOT/var $CHROOT/usr $CHROOT/tmp $CHROOT/app $CHROOT/proc $CHROOT/dev
 ln -s usr/lib $CHROOT/lib
 ln -s usr/bin $CHROOT/bin
 ln -s usr/sbin $CHROOT/sbin
