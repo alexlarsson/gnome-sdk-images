@@ -7,7 +7,7 @@ ARCH=x86_64
 IMAGEDIR=freedesktop-sdk-base/images/$(ARCH)
 SPECS=packages/SPECS
 NOARCH=packages/RPMS/noarch
-BASE_HASH=8e44c998adbf1546c45cf733c688fed74e8ddc89
+BASE_HASH=7c8b7a164472f67b5ed69802e3119bc1804127aa
 
 EXTRA_NAME=
 DELTAS=
