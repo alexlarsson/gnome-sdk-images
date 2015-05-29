@@ -35,8 +35,10 @@ PACKAGES = \
 	freedesktop-sdk-base \
 	freedesktop-platform \
 	freedesktop-sdk \
+	freedesktop-debug \
 	gnome-platform \
 	gnome-sdk \
+	gnome-debug \
 	\
 	SDL2 \
 	SDL2_image \
@@ -164,12 +166,28 @@ gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz: $(NOARCH)/gnome-sdk-0.1-1.sdk.noarch.rp
 	tar --transform 's,^build/var,files,S' -czf gnome-sdk-rpmdb.tar.gz build/var/lib/rpm --owner=root
 	./clear_root.sh
 
+gnome-debug.tar.gz gnome-debug-src.tar.gz: $(NOARCH)/gnome-debug-0.1-1.sdk.noarch.rpm
+	./setup.sh $(SDK_BASE_IMAGE)
+	./build.sh smart install -y  $(NOARCH)/gnome-debug-0.1-1.sdk.noarch.rpm
+	rm -rf gnome-debug.tar.gz gnome-debug-src.tar.gz
+	tar --transform 's,^build/root/usr/lib/debug,files,S' -czf gnome-debug.tar.gz build/root/usr/lib/debug --owner=root
+	tar --transform 's,^build/root/usr/src/debug,files,S' -czf gnome-debug-src.tar.gz build/root/usr/src/debug --owner=root
+	./clear_root.sh
+
 freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz: $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
 	./setup.sh $(SDK_BASE_IMAGE)
 	./build.sh smart install -y  $(NOARCH)/freedesktop-sdk-0.1-1.sdk.noarch.rpm
 	rm -rf freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
 	tar --transform 's,^build/root/usr,files,S' -czf freedesktop-sdk.tar.gz build/root/usr --owner=root
 	tar --transform 's,^build/var,files,S' -czf freedesktop-sdk-rpmdb.tar.gz build/var/lib/rpm --owner=root
+	./clear_root.sh
+
+freedesktop-debug.tar.gz freedesktop-debug-src.tar.gz: $(NOARCH)/freedesktop-debug-0.1-1.sdk.noarch.rpm
+	./setup.sh $(SDK_BASE_IMAGE)
+	./build.sh smart install -y  $(NOARCH)/freedesktop-debug-0.1-1.sdk.noarch.rpm
+	rm -rf freedesktop-debug.tar.gz freedesktop-debug-src.tar.gz
+	tar --transform 's,^build/root/usr/lib/debug,files,S' -czf freedesktop-debug.tar.gz build/root/usr/lib/debug --owner=root
+	tar --transform 's,^build/root/usr/src/debug,files,S' -czf freedesktop-debug-src.tar.gz build/root/usr/src/debug --owner=root
 	./clear_root.sh
 
 freedesktop-platform-base: $(NOARCH)/freedesktop-platform-base-0.1-1.sdk.noarch.rpm
@@ -222,16 +240,24 @@ commit-freedesktop-platform: repo freedesktop-platform.tar.gz  freedesktop-platf
 commit-freedesktop-sdk: repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz
 	./commit.sh repo freedesktop-sdk.tar.gz freedesktop-sdk-rpmdb.tar.gz metadata.freedesktop-sdk org.freedesktop.Sdk$(EXTRA_NAME) $(ARCH) $(FREEDESKTOP_VERSION)
 
+commit-freedesktop-debug: repo freedesktop-debug.tar.gz freedesktop-debug-src.tar.gz
+	./simple-commit.sh repo freedesktop-debug.tar.gz org.freedesktop.Debug$(EXTRA_NAME) $(ARCH) $(FREEDESKTOP_VERSION)
+	./simple-commit.sh repo freedesktop-debug-src.tar.gz org.freedesktop.DebugSrc$(EXTRA_NAME) $(ARCH) $(FREEDESKTOP_VERSION)
+
 commit-platform: repo gnome-platform.tar.gz  gnome-platform-rpmdb.tar.gz
 	./commit.sh repo gnome-platform.tar.gz gnome-platform-rpmdb.tar.gz metadata.platform org.gnome.Platform$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
 
 commit-sdk: repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz
 	./commit.sh repo gnome-sdk.tar.gz gnome-sdk-rpmdb.tar.gz metadata.sdk org.gnome.Sdk$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
 
-commit-gnome: commit-sdk commit-platform
+commit-debug: repo gnome-debug.tar.gz gnome-debug-src.tar.gz
+	./simple-commit.sh repo gnome-debug.tar.gz org.gnome.Debug$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
+	./simple-commit.sh repo gnome-debug-src.tar.gz org.gnome.DebugSrc$(EXTRA_NAME) $(ARCH) $(GNOME_VERSION)
+
+commit-gnome: commit-sdk commit-platform commit-debug
 	echo done
 
-commit-freedesktop: commit-freedesktop-sdk commit-freedesktop-platform
+commit-freedesktop: commit-freedesktop-sdk commit-freedesktop-platform commit-freedesktop-debug
 	echo done
 
 commit: commit-gnome commit-freedesktop
