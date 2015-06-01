@@ -8,6 +8,7 @@ License: LGPLv2+
 Group: System Environment/Libraries
 #VCS: git:git://git.gnome.org/glib
 Source: http://download.gnome.org/sources/glib/%{release_version}/glib-%{version}.tar.xz
+Patch0:		gio-netlink.patch
 
 BuildRequires: freedesktop-sdk-base
 
@@ -26,23 +27,14 @@ Requires: %{name}%{?_isa} = %{version}-%{release}
 %description dev
 The glib2-dev package includes the header files for the GLib library.
 
-%package doc
-Summary: A library of handy utility functions
-Group: Development/Libraries
-Requires: %{name} = %{version}-%{release}
-BuildArch: noarch
-
-%description doc
-The glib2-doc package includes documentation for the GLib library.
-
 %prep
 %setup -q -n glib-%{version}
+%patch0 -p1 -b .gio-netlink
 
 %build
 # Support builds of both git snapshots and tarballs packed with autogoo
-(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
- %configure $CONFIGFLAGS 
-)
+./autogen.sh
+%configure
 
 make %{?_smp_mflags}
 
@@ -129,9 +121,6 @@ gio-querymodules-%{__isa_bits} %{_libdir}/gio/modules
 %attr (0755, root, root) %{_bindir}/gtester-report
 %{_datadir}/gdb/auto-load%{_libdir}/libglib-2.0.so.*-gdb.py*
 %{_datadir}/gdb/auto-load%{_libdir}/libgobject-2.0.so.*-gdb.py*
-
-%files doc
-%doc %{_datadir}/gtk-doc/html/*
 
 %changelog
 * Fri Nov  7 2014 Alexander Larsson <alexl@redhat.com> - 2.42.0-1
