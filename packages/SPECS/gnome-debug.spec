@@ -8,6 +8,7 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
 BuildRequires: freedesktop-sdk
+BuildRequires: freedesktop-debug
 
 Requires: freedesktop-debug
 Requires: gtk3-debuginfo
