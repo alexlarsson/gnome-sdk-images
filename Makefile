@@ -270,7 +270,11 @@ commit: commit-gnome commit-freedesktop
 untag:
 	./untag.sh repo org.freedesktop.Platform $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
 	./untag.sh repo org.freedesktop.Sdk $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.freedesktop.Debug $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.freedesktop.DebugSrc $(ARCH) $(FREEDESKTOP_VERSION) $(EXTRA_NAME)
 	./untag.sh repo org.gnome.Platform $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
 	./untag.sh repo org.gnome.Sdk $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.gnome.Debug $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
+	./untag.sh repo org.gnome.DebugSrc $(ARCH) $(GNOME_VERSION) $(EXTRA_NAME)
 
 -include rpm-dependencies.P
