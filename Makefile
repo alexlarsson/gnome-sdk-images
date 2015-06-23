@@ -21,7 +21,7 @@ PLATFORM_BASE_IMAGE=$(IMAGEDIR)/freedesktop-contents-platform-$(ARCH)-$(BASE_HAS
 
 $(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
 	if test ! -d freedesktop-sdk-base; then \
-		git clone git://git.gnome.org/freedesktop-sdk-base;\
+		git clone git://anongit.freedesktop.org/xdg-app/freedesktop-sdk-base;\
 	fi
 	(cd  freedesktop-sdk-base && \
 	 git fetch origin && \
