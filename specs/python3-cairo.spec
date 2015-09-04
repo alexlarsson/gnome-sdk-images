@@ -49,7 +49,7 @@ find ./examples/ -type f -print0 | xargs -0 chmod -x
 
 %install
 
-DESTDIR=$RPM_BUILD_ROOT strace -o log -f -s 256 python3 ./waf install -v
+DESTDIR=$RPM_BUILD_ROOT python3 ./waf install -v
 # add executable bit to the .so libraries so we strip the debug info
 find $RPM_BUILD_ROOT -name '*.so' | xargs chmod +x
 

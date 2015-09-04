@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name: gnome-themes-standard
-Version: 3.16.0
+Version: 3.16.2
 Release: 1%{?dist}
 Summary: Standard themes for GNOME applications
 

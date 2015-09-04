@@ -22,7 +22,6 @@ BuildRequires: gtk2
 BuildRequires: gtk3
 BuildRequires: gvfs
 BuildRequires: hicolor-icon-theme
-BuildRequires: json-glib
 BuildRequires: libnotify-dev
 BuildRequires: librsvg2
 BuildRequires: libsecret-dev

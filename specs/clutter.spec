@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          clutter
-Version:       1.22.0
+Version:       1.23.6
 Release:       1%{?dist}
 Summary:       Open Source software library for creating rich graphical user interfaces
 
@@ -87,7 +87,6 @@ find %{buildroot} -name '*.la' -delete
 
 %files doc
 %{_datadir}/gtk-doc/html/clutter
-%{_datadir}/gtk-doc/html/cally
 
 %changelog
 * Thu Dec 11 2014 Alexander Larsson <alexl@redhat.com> - 1.20.0-1

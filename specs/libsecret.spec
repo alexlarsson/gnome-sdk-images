@@ -2,7 +2,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           libsecret
-Version:        0.18
+Version:        0.18.3
 Release:        1%{?dist}
 Summary:        Library for storing and retrieving passwords and other secrets
 

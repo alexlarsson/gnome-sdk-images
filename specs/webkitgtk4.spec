@@ -9,31 +9,35 @@
         cp -p %1 _license_files/$(echo '%1' | sed -e 's!/!.!g')
 
 Name:           webkitgtk4
-Version:        2.8.3
+Version:        2.9.91
 Release:        1%{?dist}
 Summary:        GTK+ Web content engine library
 
 License:        LGPLv2
 URL:            http://www.webkitgtk.org/
 Source0:        http://webkitgtk.org/releases/webkitgtk-%{version}.tar.xz
-BuildRequires:  at-spi2-core-dev
-BuildRequires:  cairo-dev
-BuildRequires:  enchant-dev
-BuildRequires:  fontconfig-dev
-BuildRequires:  freetype-dev
-BuildRequires:  glib2-dev
-BuildRequires:  gobject-introspection-dev
-BuildRequires:  gstreamer1-dev
-BuildRequires:  gstreamer1-plugins-base-dev
-BuildRequires:  gtk2-dev
-BuildRequires:  gtk3-dev
-BuildRequires:  harfbuzz-dev
-BuildRequires:  libsecret-dev
-BuildRequires:  libsoup-dev
-BuildRequires:  libXt-dev
-BuildRequires:  mesa-libGL-dev
-#BuildRequires:  geoclue2-dev
-#Requires:       geoclue2
+BuildRequires: at-spi2-core-dev
+BuildRequires: cairo-dev
+BuildRequires: enchant-dev
+BuildRequires: fontconfig-dev
+BuildRequires: freetype-dev
+BuildRequires: glib2-dev
+BuildRequires: gobject-introspection-dev
+BuildRequires: gstreamer1-dev
+BuildRequires: gstreamer1-plugins-base-dev
+BuildRequires: gtk2-dev
+BuildRequires: gtk3-dev
+BuildRequires: harfbuzz-dev
+BuildRequires: libsecret-dev
+BuildRequires: libsoup-dev
+BuildRequires: libXt-dev
+BuildRequires: mesa-libGL-dev
+BuildRequires: mesa-libEGL-dev
+BuildRequires: geoclue2-dev
+BuildRequires: libwayland-client-dev
+BuildRequires: libwayland-cursor-dev
+BuildRequires: libwayland-server-dev
+BuildRequires: libnotify-dev
 
 # Filter out provides for private libraries
 %global __provides_exclude_from ^%{_libdir}/webkit2gtk-4\\.0/.*\\.so$
@@ -86,6 +90,7 @@ CXXFLAGS="${CFLAGS}" ; export CXXFLAGS ; \
         -DENABLE_GTKDOC=OFF \
         -DENABLE_VIDEO=ON \
         -DENABLE_WEB_AUDIO=ON \
+        -DUSE_LIBHYPHEN=OFF \
   ..
 popd
 

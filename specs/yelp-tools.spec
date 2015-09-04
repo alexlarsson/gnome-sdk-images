@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          yelp-tools
-Version:       3.14.1
+Version:       3.17.4
 Release:       1%{?dist}
 Summary:       Create, manage, and publish documentation for Yelp
 

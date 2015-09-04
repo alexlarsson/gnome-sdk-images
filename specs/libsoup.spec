@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name: libsoup
-Version: 2.50.0
+Version: 2.51.90
 Release: 1%{?dist}
 License: LGPLv2
 Group: Development/Libraries
@@ -13,6 +13,7 @@ Source: http://download.gnome.org/sources/libsoup/%{release_version}/libsoup-%{v
 BuildRequires: glib2-dev
 BuildRequires: glib-networking
 BuildRequires: gobject-introspection-dev
+BuildRequires: vala-tools
 
 Requires: glib2%{?_isa}
 Requires: glib-networking%{?_isa}
@@ -71,6 +72,7 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/Soup*2.4.gir
 %{_datadir}/gtk-doc/html/%{name}-2.4
+%{_datadir}/vala/vapi/libsoup-2.4.vapi
 
 %changelog
 * Mon Nov 24 2014 Alexander Larsson <alexl@redhat.com> - 2.48.0-1

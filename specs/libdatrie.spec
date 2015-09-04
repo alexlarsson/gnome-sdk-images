@@ -1,5 +1,5 @@
 Name:           libdatrie
-Version:        0.2.8
+Version:        0.2.9
 Release:        1%{?dist}
 Summary:        Implementation of Double-Array structure for representing trie
 License:        LGPLv2+

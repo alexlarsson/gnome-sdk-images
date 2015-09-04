@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           at-spi2-core
-Version:        2.16.0
+Version:        2.17.90
 Release:        1%{?dist}
 Summary:        Protocol definitions and daemon for D-Bus at-spi
 

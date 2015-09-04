@@ -2,7 +2,7 @@
 
 Summary: Backends for the gio framework in GLib
 Name: gvfs
-Version: 1.24.1
+Version: 1.25.91
 Release: 1%{?dist}
 License: GPLv3 and LGPLv2+ and BSD and MPLv1.1
 Group: System Environment/Libraries
@@ -41,6 +41,7 @@ required to develop applications using gvfs.
 %configure \
         --disable-hal \
         --disable-gdu \
+        --disable-gcr \
         --disable-obexftp \
         --disable-avahi \
         --disable-documentation

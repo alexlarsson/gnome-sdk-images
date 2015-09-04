@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:          zenity
-Version:       3.14.0
+Version:       3.16.3
 Release:       1%{?dist}
 Summary:       Display dialog boxes from shell scripts
 Group:         Applications/System

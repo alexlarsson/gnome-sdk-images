@@ -1,6 +1,6 @@
 Summary:   Library for AppStream metadata
 Name:      libappstream-glib
-Version:   0.3.4
+Version:   0.5.0
 Release:   1%{?dist}
 License:   LGPLv2+
 URL:       http://people.freedesktop.org/~hughsient/appstream-glib/
@@ -12,6 +12,7 @@ BuildRequires: gobject-introspection-dev
 BuildRequires: libsoup-dev
 BuildRequires: gdk-pixbuf2-dev
 BuildRequires: gtk3-dev
+BuildRequires: gcab
 
 # for the builder component
 BuildRequires: fontconfig-dev
@@ -64,7 +65,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 %__rm -f %{buildroot}%{_libdir}/libappstream-glib*.la
 %__rm -f %{buildroot}%{_libdir}/libappstream-builder*.la
-%__rm -f %{buildroot}%{_libdir}/asb-plugins/*.la
+%__rm -f %{buildroot}%{_libdir}/asb-plugins-2/*.la
 
 %find_lang appstream-glib
 
@@ -76,7 +77,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 %files -f appstream-glib.lang
 %doc README.md AUTHORS NEWS COPYING
-%{_libdir}/libappstream-glib.so.7*
+%{_libdir}/libappstream-glib.so.8*
 %{_libdir}/girepository-1.0/*.typelib
 %{_bindir}/appstream-util
 %{_bindir}/appdata-validate
@@ -97,8 +98,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %doc COPYING
 %{_bindir}/appstream-builder
 %{_datadir}/bash-completion/completions/appstream-builder
-%{_libdir}/asb-plugins/*.so
-%{_libdir}/libappstream-builder.so.7*
+%{_libdir}/asb-plugins-2/*.so
+%{_libdir}/libappstream-builder.so.8*
 
 %files builder-dev
 %doc COPYING

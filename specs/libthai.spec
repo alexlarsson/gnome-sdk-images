@@ -1,10 +1,10 @@
 Summary:  Thai language support routines
 Name: libthai
-Version: 0.1.21
+Version: 0.1.22
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
-Source: ftp://linux.thai.net/pub/thailinux/software/libthai/libthai-%{version}.tar.xz
+Source: http://linux.thai.net/pub/thailinux/software/libthai/libthai-%{version}.tar.xz
 URL: http://linux.thai.net
 
 BuildRequires: freedesktop-sdk-base
