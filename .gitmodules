@@ -1,0 +1,3 @@
+[submodule "freedesktop-sdk-images"]
+	path = freedesktop-sdk-images
+	url = https://github.com/alexlarsson/freedesktop-sdk-images.git

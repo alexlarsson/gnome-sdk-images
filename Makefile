@@ -2,7 +2,7 @@ NAME=gnome
 ID=org.gnome
 VERSION=3.18
 ARCH=x86_64
-IMAGEDIR=freedesktop-sdk-images/freedesktop-sdk-base/images/$(ARCH)
+IMAGEDIR=freedesktop-sdk-base/images/$(ARCH)
 BASE_HASH=87cdc9cb901f19c0398c5f27998e915fa49d9d93
 
 EXTRA_NAME=
@@ -21,6 +21,15 @@ ALL_SPECS = $(addprefix freedesktop-sdk-images/specs/,$(filter-out $(GNOME_SPECS
 all: $(NAME)-$(VERSION)-platform.tar.gz $(NAME)-$(VERSION)-sdk.tar.gz
 
 debug: $(NAME)-$(VERSION)-debug.tar.gz
+
+$(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
+	if test ! -d freedesktop-sdk-base; then \
+		git clone git://anongit.freedesktop.org/xdg-app/freedesktop-sdk-base;\
+	fi
+	(cd  freedesktop-sdk-base && \
+	 git fetch origin && \
+	 git checkout $(BASE_HASH) && \
+	 make)
 
 include freedesktop-sdk-images/Makefile.inc
 -include rpm-dependencies.P
