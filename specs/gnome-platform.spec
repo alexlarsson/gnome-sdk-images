@@ -45,6 +45,7 @@ Requires: dbus-glib
 Requires: dconf
 Requires: dejavu-fonts
 Requires: enchant
+Requires: hyphen
 Requires: gjs
 Requires: gnome-themes-standard
 Requires: gsettings-desktop-schemas

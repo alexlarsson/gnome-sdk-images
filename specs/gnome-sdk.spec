@@ -31,6 +31,7 @@ Requires: gsettings-desktop-schemas-dev
 Requires: gtk2-dev
 Requires: gtk3-dev
 Requires: gvfs-dev
+Requires: hyphen-dev
 Requires: libappstream-glib-dev
 Requires: libcroco-dev
 Requires: libnotify-dev

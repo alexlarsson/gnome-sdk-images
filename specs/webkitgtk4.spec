@@ -38,6 +38,7 @@ BuildRequires: libwayland-client-dev
 BuildRequires: libwayland-cursor-dev
 BuildRequires: libwayland-server-dev
 BuildRequires: libnotify-dev
+BuildRequires: hyphen-dev
 
 # Filter out provides for private libraries
 %global __provides_exclude_from ^%{_libdir}/webkit2gtk-4\\.0/.*\\.so$
@@ -90,7 +91,6 @@ CXXFLAGS="${CFLAGS}" ; export CXXFLAGS ; \
         -DENABLE_GTKDOC=OFF \
         -DENABLE_VIDEO=ON \
         -DENABLE_WEB_AUDIO=ON \
-        -DUSE_LIBHYPHEN=OFF \
   ..
 popd
 
