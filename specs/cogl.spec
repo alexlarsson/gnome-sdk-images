@@ -24,6 +24,12 @@ BuildRequires: mesa-libGL-dev
 BuildRequires: mesa-libEGL-dev
 BuildRequires: mesa-libgbm-dev
 BuildRequires: pango-dev
+BuildRequires: libwayland-server-dev
+BuildRequires: libwayland-client-dev
+BuildRequires: libwayland-cursor-dev
+BuildRequires: mesa-libwayland-egl-dev
+BuildRequires: mesa-libgbm-dev
+BuildRequires: libxkbcommon-dev
 
 %description
 Cogl is a small open source library for using 3D graphics hardware to draw
@@ -62,6 +68,9 @@ CFLAGS="$RPM_OPT_FLAGS -fPIC"
   --enable-glx=yes \
   --disable-gtk-doc \
   --enable-introspection=yes \
+  --enable-kms-egl-platform \
+  --enable-wayland-egl-platform \
+  --enable-wayland-egl-server \
   --enable-xlib-egl-platform
 
 make %{?_smp_mflags} V=1
