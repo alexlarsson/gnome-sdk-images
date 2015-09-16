@@ -3,7 +3,7 @@
 
 Summary: System for layout and rendering of internationalized text
 Name: pango
-Version: 1.37.4
+Version: 1.37.5
 Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
