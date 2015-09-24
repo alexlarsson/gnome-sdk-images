@@ -22,6 +22,9 @@ all: $(NAME)-$(VERSION)-platform.tar.gz $(NAME)-$(VERSION)-sdk.tar.gz
 
 debug: $(NAME)-$(VERSION)-debug.tar.gz
 
+include freedesktop-sdk-images/Makefile.inc
+-include rpm-dependencies.P
+
 $(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
 	if test ! -d freedesktop-sdk-base; then \
 		git clone git://anongit.freedesktop.org/xdg-app/freedesktop-sdk-base;\
@@ -31,5 +34,3 @@ $(SDK_BASE_IMAGE) $(PLATFORM_BASE_IMAGE) images:
 	 git checkout $(BASE_HASH) && \
 	 make)
 
-include freedesktop-sdk-images/Makefile.inc
--include rpm-dependencies.P
