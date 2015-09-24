@@ -28,16 +28,14 @@ a GNOME application.
 %build
 %configure
 make %{?_smp_mflags}
-cp -p doc-build/README doc-README
 
 %install
 make DESTDIR=%{buildroot} INSTALL="install -p" install
 
 %files
-%doc doc-README ChangeLog COPYING README
+%doc ChangeLog COPYING README
 %{_bindir}/*
 %{_datadir}/aclocal/*
-%{_datadir}/%{name}
 
 %changelog
 * Tue Nov 11 2014 Alexander Larsson <alexl@redhat.com> - 3.14.0-1
