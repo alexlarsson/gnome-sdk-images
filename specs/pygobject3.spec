@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name: pygobject3
-Version: 3.17.90
+Version: 3.18.0
 Release: 1%{?dist}
 License: LGPLv2+ and MIT
 Group: Development/Languages

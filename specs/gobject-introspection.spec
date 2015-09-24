@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           gobject-introspection
-Version:        1.45.4
+Version:        1.46.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 

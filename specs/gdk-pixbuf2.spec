@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           gdk-pixbuf2
-Version:        2.31.7
+Version:        2.32.0
 Release:        1%{?dist}
 Summary:        An image loading library
 

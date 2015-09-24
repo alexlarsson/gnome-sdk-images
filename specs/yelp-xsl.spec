@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           yelp-xsl
-Version:        3.17.90
+Version:        3.18.0
 Release:        1%{?dist}
 Summary:        XSL stylesheets for the yelp help browser
 

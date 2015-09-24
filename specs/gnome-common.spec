@@ -1,7 +1,7 @@
 %global release_version %%(echo %{version} | awk -F. '{print $1"."$2}')
 
 Name:           gnome-common
-Version:        3.14.0
+Version:        3.18.0
 Release:        1%{?dist}
 Summary:        Useful things common to building GNOME packages from scratch
 
