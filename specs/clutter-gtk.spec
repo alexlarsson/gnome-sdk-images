@@ -3,7 +3,7 @@
 %define         clutter_version 1.0
 
 Name:           clutter-gtk
-Version:        1.6.4
+Version:        1.6.6
 Release:        1%{?dist}
 Summary:        A basic GTK clutter widget
 

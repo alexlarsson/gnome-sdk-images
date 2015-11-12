@@ -2,7 +2,7 @@
 
 Summary: Backends for the gio framework in GLib
 Name: gvfs
-Version: 1.26.0
+Version: 1.26.2
 Release: 1%{?dist}
 License: GPLv3 and LGPLv2+ and BSD and MPLv1.1
 Group: System Environment/Libraries
@@ -62,6 +62,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/gio/modules/*.la
 rm $RPM_BUILD_ROOT%{_libdir}/gvfs/libgvfsdaemon.*
 rm $RPM_BUILD_ROOT%{_libexecdir}/gvfsd*
 rm $RPM_BUILD_ROOT%{_datadir}/dbus-1/services/*
+rm $RPM_BUILD_ROOT%{_libdir}/systemd/user/*
 rm -rf $RPM_BUILD_ROOT%{_datadir}/gvfs/mounts
 rm -rf $RPM_BUILD_ROOT%{_datadir}/glib-2.0/schemas
 
