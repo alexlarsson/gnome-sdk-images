@@ -27,6 +27,7 @@ BuildRequires: librsvg2
 BuildRequires: libsecret-dev
 BuildRequires: libsoup
 BuildRequires: pygobject3
+BuildRequires: python-gstreamer1
 BuildRequires: vte-dev
 BuildRequires: webkitgtk4-dev
 BuildRequires: zenity
