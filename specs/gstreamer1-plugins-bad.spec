@@ -20,6 +20,7 @@ BuildRequires:  gtk-doc-stub
 BuildRequires:  gobject-introspection-dev
 BuildRequires:  libvdpau-dev
 
+BuildRequires:  gtk3-dev
 BuildRequires:  librsvg2-dev
 BuildRequires:  mesa-libGL-dev
 BuildRequires:  orc-dev
@@ -166,6 +167,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/gstreamer-%{majorminor}/libgstdvdspu.so
 %{_libdir}/gstreamer-%{majorminor}/libgstsiren.so
 %{_libdir}/gstreamer-%{majorminor}/libgstwebp.so
+%{_libdir}/gstreamer-%{majorminor}/libgstgtksink.so
 
 #debugging plugin
 %{_libdir}/gstreamer-%{majorminor}/libgstdebugutilsbad.so
