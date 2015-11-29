@@ -61,6 +61,7 @@ Requires: librsvg2
 Requires: libsecret
 Requires: libsoup
 Requires: pygobject3
+Requires: python-gstreamer1
 Requires: vte
 Requires: webkitgtk4
 Requires: zenity
