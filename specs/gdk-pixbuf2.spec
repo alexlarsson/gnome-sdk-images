@@ -55,9 +55,9 @@ the functionality of the installed %{name} package.
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
  %configure $CONFIGFLAGS             \
-        --with-x11                   \
+        --without-x11                \
         --without-libjasper          \
-        --with-included-loaders=png  \
+        --with-included-loaders="png,jpeg"  \
         --enable-installed-tests
 )
 make %{?_smp_mflags}
@@ -92,7 +92,6 @@ fi
 %files -f gdk-pixbuf.lang
 %doc AUTHORS COPYING NEWS
 %{_libdir}/libgdk_pixbuf-2.0.so.*
-%{_libdir}/libgdk_pixbuf_xlib-2.0.so.*
 %{_libdir}/girepository-1.0
 %dir %{_libdir}/gdk-pixbuf-2.0
 %dir %{_libdir}/gdk-pixbuf-2.0/2.10.0
@@ -105,9 +104,7 @@ fi
 %files dev
 %{_includedir}/gdk-pixbuf-2.0
 %{_libdir}/libgdk_pixbuf-2.0.so
-%{_libdir}/libgdk_pixbuf_xlib-2.0.so
 %{_libdir}/pkgconfig/gdk-pixbuf-2.0.pc
-%{_libdir}/pkgconfig/gdk-pixbuf-xlib-2.0.pc
 %{_bindir}/gdk-pixbuf-csource
 %{_bindir}/gdk-pixbuf-pixdata
 %{_datadir}/gir-1.0
