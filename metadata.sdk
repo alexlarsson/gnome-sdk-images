@@ -1,7 +1,7 @@
 [Runtime]
-name=org.gnome.Sdk/x86_64/3.16
-runtime=org.gnome.Platform/x86_64/3.16
-sdk=org.gnome.Sdk/x86_64/3.16
+name=org.gnome.Sdk
+runtime=org.gnome.Platform/x86_64/master
+sdk=org.gnome.Sdk/x86_64/master
 
 [Extension org.freedesktop.Platform.GL]
 version=1.2
@@ -10,16 +10,6 @@ directory=lib/GL
 [Extension org.freedesktop.Platform.Timezones]
 version=1.2
 directory=share/zoneinfo
-
-[Extension org.gnome.Sdk.Locale]
-directory=share/runtime/locale
-subdirectories=true
-
-[Extension org.gnome.Debug]
-directory=lib/debug
-
-[Extension org.gnome.DebugSrc]
-directory=src/debug
 
 [Environment]
 GI_TYPELIB_PATH=/app/lib/girepository-1.0
