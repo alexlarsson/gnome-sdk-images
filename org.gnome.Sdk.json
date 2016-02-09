@@ -27,6 +27,7 @@
                           "/share/aclocal",
                           "/share/pkgconfig",
                           "/lib/pkgconfig",
+                          "/share/gir-1.0",
                           "/share/vala"
                         ],
     "build-options" : {
