@@ -158,6 +158,10 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/dconf"
+                },
+                {
+                    "type": "patch",
+                    "path": "dconf-override.patch"
                 }
             ]
         },
