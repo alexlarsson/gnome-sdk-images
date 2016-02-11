@@ -562,8 +562,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.webkitgtk.org/releases/webkitgtk-2.11.4.tar.xz",
-                    "sha256": "47631d5d66967ebda2683c065706d5d91d4d886fc11f382eecd39451c71dfe3c"
+                    "url": "http://www.webkitgtk.org/releases/webkitgtk-2.11.5.tar.xz",
+                    "sha256": "f6bb102ec2db2f1c134280551cd19fac9ea067324268709df97c2221b08baa02"
                 },
                 {
                     "type": "patch",
