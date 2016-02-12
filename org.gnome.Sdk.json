@@ -5,7 +5,6 @@
     "branch": "master",
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
-    "initial-debug": "org.freedesktop.Debug",
     "runtime-version": "master",
     "writable-sdk": true,
     "sdk-extensions": ["org.freedesktop.Sdk.Debug"],
