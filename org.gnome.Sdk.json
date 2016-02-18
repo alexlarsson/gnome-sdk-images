@@ -48,16 +48,6 @@
             ]
         },
         {
-            /* TODO: Replace with real gtk-doc */
-            "name": "gtk-doc-stub",
-            "sources": [
-                 {
-                     "type": "git",
-                     "url": "git://git.gnome.org/gtk-doc-stub"
-                 }
-            ]
-        },
-        {
             "name": "yelp-xsl",
             "cleanup-platform": [ "*" ],
             "config-opts": ["--disable-doc"],
