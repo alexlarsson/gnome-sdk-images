@@ -4,11 +4,11 @@ runtime=org.gnome.Platform/x86_64/master
 sdk=org.gnome.Sdk/x86_64/master
 
 [Extension org.freedesktop.Platform.GL]
-version=1.2
+version=1.4
 directory=lib/GL
 
 [Extension org.freedesktop.Platform.Timezones]
-version=1.2
+version=1.4
 directory=share/zoneinfo
 
 [Environment]
