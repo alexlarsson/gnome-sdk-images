@@ -84,6 +84,13 @@
         {
             "name": "glib",
             "config-opts": [ "--with-pcre=system" ],
+            "cleanup-platform": [ "/share/glib-2.0/codegen",
+                                  "/bin/gdbus-codegen",
+                                  "/bin/glib-*",
+                                  "/bin/gobject-query",
+                                  "/bin/gresource",
+                                  "/bin/gtester*"
+                               ],
             "sources": [
                 {
                     "type": "git",
@@ -93,7 +100,10 @@
         },
         {
             "name": "gobject-introspection",
-            "config-opts": ["--disable-static"],
+            "config-opts": ["--disable-gtk-doc", "--disable-static" ],
+            "cleanup-platform": ["/lib/gobject-introspection/giscanner",
+                                 "/share/gobject-introspection/giscanner",
+                                 "/bin"],
             "sources": [
                 {
                     "type": "git",
@@ -185,6 +195,8 @@
         },
         {
             "name": "json-glib",
+            "config-opts": [ "--disable-static",
+                             "--disable-gtk-doc" ],
             "sources": [
                 {
                     "type": "git",
