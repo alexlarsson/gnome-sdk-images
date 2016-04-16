@@ -5,3 +5,6 @@ all: repo org.gnome.Sdk.json
 
 repo:
 	ostree  init --mode=archive-z2 --repo=repo
+
+check:
+	json-glib-validate org.gnome.Sdk.json
