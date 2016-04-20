@@ -1,0 +1,969 @@
+diff -upr mozjs24-1/mfbt/double-conversion/bignum.cc mozjs24-double-conversion-update/mfbt/double-conversion/bignum.cc
+--- mozjs24-1/mfbt/double-conversion/bignum.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/bignum.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -40,6 +40,7 @@ Bignum::Bignum()
+ 
+ template<typename S>
+ static int BitSize(S value) {
++  (void) value;  // Mark variable as used.
+   return 8 * sizeof(value);
+ }
+ 
+@@ -103,7 +104,7 @@ void Bignum::AssignDecimalString(Vector<
+   const int kMaxUint64DecimalDigits = 19;
+   Zero();
+   int length = value.length();
+-  int pos = 0;
++  unsigned int pos = 0;
+   // Let's just say that each digit needs 4 bits.
+   while (length >= kMaxUint64DecimalDigits) {
+     uint64_t digits = ReadUInt64(value, pos, kMaxUint64DecimalDigits);
+@@ -122,9 +123,8 @@ void Bignum::AssignDecimalString(Vector<
+ static int HexCharValue(char c) {
+   if ('0' <= c && c <= '9') return c - '0';
+   if ('a' <= c && c <= 'f') return 10 + c - 'a';
+-  if ('A' <= c && c <= 'F') return 10 + c - 'A';
+-  UNREACHABLE();
+-  return 0;  // To make compiler happy.
++  ASSERT('A' <= c && c <= 'F');
++  return 10 + c - 'A';
+ }
+ 
+ 
+@@ -501,13 +501,14 @@ uint16_t Bignum::DivideModuloIntBignum(c
+   // Start by removing multiples of 'other' until both numbers have the same
+   // number of digits.
+   while (BigitLength() > other.BigitLength()) {
+-    // This naive approach is extremely inefficient if the this divided other
+-    // might be big. This function is implemented for doubleToString where
++    // This naive approach is extremely inefficient if `this` divided by other
++    // is big. This function is implemented for doubleToString where
+     // the result should be small (less than 10).
+     ASSERT(other.bigits_[other.used_digits_ - 1] >= ((1 << kBigitSize) / 16));
++    ASSERT(bigits_[used_digits_ - 1] < 0x10000);
+     // Remove the multiples of the first digit.
+     // Example this = 23 and other equals 9. -> Remove 2 multiples.
+-    result += bigits_[used_digits_ - 1];
++    result += static_cast<uint16_t>(bigits_[used_digits_ - 1]);
+     SubtractTimes(other, bigits_[used_digits_ - 1]);
+   }
+ 
+@@ -523,13 +524,15 @@ uint16_t Bignum::DivideModuloIntBignum(c
+     // Shortcut for easy (and common) case.
+     int quotient = this_bigit / other_bigit;
+     bigits_[used_digits_ - 1] = this_bigit - other_bigit * quotient;
+-    result += quotient;
++    ASSERT(quotient < 0x10000);
++    result += static_cast<uint16_t>(quotient);
+     Clamp();
+     return result;
+   }
+ 
+   int division_estimate = this_bigit / (other_bigit + 1);
+-  result += division_estimate;
++  ASSERT(division_estimate < 0x10000);
++  result += static_cast<uint16_t>(division_estimate);
+   SubtractTimes(other, division_estimate);
+ 
+   if (other_bigit * (division_estimate + 1) > this_bigit) {
+@@ -560,8 +563,8 @@ static int SizeInHexChars(S number) {
+ 
+ static char HexCharOfValue(int value) {
+   ASSERT(0 <= value && value <= 16);
+-  if (value < 10) return value + '0';
+-  return value - 10 + 'A';
++  if (value < 10) return static_cast<char>(value + '0');
++  return static_cast<char>(value - 10 + 'A');
+ }
+ 
+ 
+@@ -755,7 +758,6 @@ void Bignum::SubtractTimes(const Bignum&
+     Chunk difference = bigits_[i] - borrow;
+     bigits_[i] = difference & kBigitMask;
+     borrow = difference >> (kChunkSize - 1);
+-    ++i;
+   }
+   Clamp();
+ }
+diff -upr mozjs24-1/mfbt/double-conversion/bignum-dtoa.cc mozjs24-double-conversion-update/mfbt/double-conversion/bignum-dtoa.cc
+--- mozjs24-1/mfbt/double-conversion/bignum-dtoa.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/bignum-dtoa.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -192,13 +192,13 @@ static void GenerateShortestDigits(Bignu
+     delta_plus = delta_minus;
+   }
+   *length = 0;
+-  while (true) {
++  for (;;) {
+     uint16_t digit;
+     digit = numerator->DivideModuloIntBignum(*denominator);
+     ASSERT(digit <= 9);  // digit is a uint16_t and therefore always positive.
+     // digit = numerator / denominator (integer division).
+     // numerator = numerator % denominator.
+-    buffer[(*length)++] = digit + '0';
++    buffer[(*length)++] = static_cast<char>(digit + '0');
+ 
+     // Can we stop already?
+     // If the remainder of the division is less than the distance to the lower
+@@ -282,7 +282,7 @@ static void GenerateShortestDigits(Bignu
+ // exponent (decimal_point), when rounding upwards.
+ static void GenerateCountedDigits(int count, int* decimal_point,
+                                   Bignum* numerator, Bignum* denominator,
+-                                  Vector<char>(buffer), int* length) {
++                                  Vector<char> buffer, int* length) {
+   ASSERT(count >= 0);
+   for (int i = 0; i < count - 1; ++i) {
+     uint16_t digit;
+@@ -290,7 +290,7 @@ static void GenerateCountedDigits(int co
+     ASSERT(digit <= 9);  // digit is a uint16_t and therefore always positive.
+     // digit = numerator / denominator (integer division).
+     // numerator = numerator % denominator.
+-    buffer[i] = digit + '0';
++    buffer[i] = static_cast<char>(digit + '0');
+     // Prepare for next iteration.
+     numerator->Times10();
+   }
+@@ -300,7 +300,8 @@ static void GenerateCountedDigits(int co
+   if (Bignum::PlusCompare(*numerator, *numerator, *denominator) >= 0) {
+     digit++;
+   }
+-  buffer[count - 1] = digit + '0';
++  ASSERT(digit <= 10);
++  buffer[count - 1] = static_cast<char>(digit + '0');
+   // Correct bad digits (in case we had a sequence of '9's). Propagate the
+   // carry until we hat a non-'9' or til we reach the first digit.
+   for (int i = count - 1; i > 0; --i) {
+diff -upr mozjs24-1/mfbt/double-conversion/bignum.h mozjs24-double-conversion-update/mfbt/double-conversion/bignum.h
+--- mozjs24-1/mfbt/double-conversion/bignum.h	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/bignum.h	2016-04-20 16:03:03.706387583 +0100
+@@ -49,7 +49,6 @@ class Bignum {
+ 
+   void AssignPowerUInt16(uint16_t base, int exponent);
+ 
+-  void AddUInt16(uint16_t operand);
+   void AddUInt64(uint64_t operand);
+   void AddBignum(const Bignum& other);
+   // Precondition: this >= other.
+diff -upr mozjs24-1/mfbt/double-conversion/cached-powers.cc mozjs24-double-conversion-update/mfbt/double-conversion/cached-powers.cc
+--- mozjs24-1/mfbt/double-conversion/cached-powers.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/cached-powers.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -131,7 +131,6 @@ static const CachedPower kCachedPowers[]
+   {UINT64_2PART_C(0xaf87023b, 9bf0ee6b), 1066, 340},
+ };
+ 
+-static const int kCachedPowersLength = ARRAY_SIZE(kCachedPowers);
+ static const int kCachedPowersOffset = 348;  // -1 * the first decimal_exponent.
+ static const double kD_1_LOG2_10 = 0.30102999566398114;  //  1 / lg(10)
+ // Difference between the decimal exponents in the table above.
+@@ -149,9 +148,10 @@ void PowersOfTenCache::GetCachedPowerFor
+   int foo = kCachedPowersOffset;
+   int index =
+       (foo + static_cast<int>(k) - 1) / kDecimalExponentDistance + 1;
+-  ASSERT(0 <= index && index < kCachedPowersLength);
++  ASSERT(0 <= index && index < static_cast<int>(ARRAY_SIZE(kCachedPowers)));
+   CachedPower cached_power = kCachedPowers[index];
+   ASSERT(min_exponent <= cached_power.binary_exponent);
++  (void) max_exponent;  // Mark variable as used.
+   ASSERT(cached_power.binary_exponent <= max_exponent);
+   *decimal_exponent = cached_power.decimal_exponent;
+   *power = DiyFp(cached_power.significand, cached_power.binary_exponent);
+diff -upr mozjs24-1/mfbt/double-conversion/diy-fp.h mozjs24-double-conversion-update/mfbt/double-conversion/diy-fp.h
+--- mozjs24-1/mfbt/double-conversion/diy-fp.h	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/diy-fp.h	2016-04-20 16:03:03.706387583 +0100
+@@ -42,7 +42,7 @@ class DiyFp {
+   static const int kSignificandSize = 64;
+ 
+   DiyFp() : f_(0), e_(0) {}
+-  DiyFp(uint64_t f, int e) : f_(f), e_(e) {}
++  DiyFp(uint64_t significand, int exponent) : f_(significand), e_(exponent) {}
+ 
+   // this = this - other.
+   // The exponents of both numbers must be the same and the significand of this
+@@ -76,22 +76,22 @@ class DiyFp {
+ 
+   void Normalize() {
+     ASSERT(f_ != 0);
+-    uint64_t f = f_;
+-    int e = e_;
++    uint64_t significand = f_;
++    int exponent = e_;
+ 
+     // This method is mainly called for normalizing boundaries. In general
+     // boundaries need to be shifted by 10 bits. We thus optimize for this case.
+     const uint64_t k10MSBits = UINT64_2PART_C(0xFFC00000, 00000000);
+-    while ((f & k10MSBits) == 0) {
+-      f <<= 10;
+-      e -= 10;
++    while ((significand & k10MSBits) == 0) {
++      significand <<= 10;
++      exponent -= 10;
+     }
+-    while ((f & kUint64MSB) == 0) {
+-      f <<= 1;
+-      e--;
++    while ((significand & kUint64MSB) == 0) {
++      significand <<= 1;
++      exponent--;
+     }
+-    f_ = f;
+-    e_ = e;
++    f_ = significand;
++    e_ = exponent;
+   }
+ 
+   static DiyFp Normalize(const DiyFp& a) {
+diff -upr mozjs24-1/mfbt/double-conversion/double-conversion.cc mozjs24-double-conversion-update/mfbt/double-conversion/double-conversion.cc
+--- mozjs24-1/mfbt/double-conversion/double-conversion.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/double-conversion.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -118,7 +118,7 @@ void DoubleToStringConverter::CreateDeci
+     StringBuilder* result_builder) const {
+   // Create a representation that is padded with zeros if needed.
+   if (decimal_point <= 0) {
+-      // "0.00000decimal_rep".
++      // "0.00000decimal_rep" or "0.000decimal_rep00".
+     result_builder->AddCharacter('0');
+     if (digits_after_point > 0) {
+       result_builder->AddCharacter('.');
+@@ -129,7 +129,7 @@ void DoubleToStringConverter::CreateDeci
+       result_builder->AddPadding('0', remaining_digits);
+     }
+   } else if (decimal_point >= length) {
+-    // "decimal_rep0000.00000" or "decimal_rep.0000"
++    // "decimal_rep0000.00000" or "decimal_rep.0000".
+     result_builder->AddSubstring(decimal_digits, length);
+     result_builder->AddPadding('0', decimal_point - length);
+     if (digits_after_point > 0) {
+@@ -137,7 +137,7 @@ void DoubleToStringConverter::CreateDeci
+       result_builder->AddPadding('0', digits_after_point);
+     }
+   } else {
+-    // "decima.l_rep000"
++    // "decima.l_rep000".
+     ASSERT(digits_after_point > 0);
+     result_builder->AddSubstring(decimal_digits, decimal_point);
+     result_builder->AddCharacter('.');
+@@ -348,7 +348,6 @@ static BignumDtoaMode DtoaToBignumDtoaMo
+     case DoubleToStringConverter::PRECISION: return BIGNUM_DTOA_PRECISION;
+     default:
+       UNREACHABLE();
+-      return BIGNUM_DTOA_SHORTEST;  // To silence compiler.
+   }
+ }
+ 
+@@ -403,8 +402,8 @@ void DoubleToStringConverter::DoubleToAs
+                              vector, length, point);
+       break;
+     default:
+-      UNREACHABLE();
+       fast_worked = false;
++      UNREACHABLE();
+   }
+   if (fast_worked) return;
+ 
+@@ -417,8 +416,9 @@ void DoubleToStringConverter::DoubleToAs
+ 
+ // Consumes the given substring from the iterator.
+ // Returns false, if the substring does not match.
+-static bool ConsumeSubString(const char** current,
+-                             const char* end,
++template <class Iterator>
++static bool ConsumeSubString(Iterator* current,
++                             Iterator end,
+                              const char* substring) {
+   ASSERT(**current == *substring);
+   for (substring++; *substring != '\0'; substring++) {
+@@ -440,10 +440,36 @@ static bool ConsumeSubString(const char*
+ const int kMaxSignificantDigits = 772;
+ 
+ 
++static const char kWhitespaceTable7[] = { 32, 13, 10, 9, 11, 12 };
++static const int kWhitespaceTable7Length = ARRAY_SIZE(kWhitespaceTable7);
++
++
++static const uc16 kWhitespaceTable16[] = {
++  160, 8232, 8233, 5760, 6158, 8192, 8193, 8194, 8195,
++  8196, 8197, 8198, 8199, 8200, 8201, 8202, 8239, 8287, 12288, 65279
++};
++static const int kWhitespaceTable16Length = ARRAY_SIZE(kWhitespaceTable16);
++
++
++static bool isWhitespace(int x) {
++  if (x < 128) {
++    for (int i = 0; i < kWhitespaceTable7Length; i++) {
++      if (kWhitespaceTable7[i] == x) return true;
++    }
++  } else {
++    for (int i = 0; i < kWhitespaceTable16Length; i++) {
++      if (kWhitespaceTable16[i] == x) return true;
++    }
++  }
++  return false;
++}
++
++
+ // Returns true if a nonspace found and false if the end has reached.
+-static inline bool AdvanceToNonspace(const char** current, const char* end) {
++template <class Iterator>
++static inline bool AdvanceToNonspace(Iterator* current, Iterator end) {
+   while (*current != end) {
+-    if (**current != ' ') return true;
++    if (!isWhitespace(**current)) return true;
+     ++*current;
+   }
+   return false;
+@@ -462,26 +488,57 @@ static double SignedZero(bool sign) {
+ }
+ 
+ 
++// Returns true if 'c' is a decimal digit that is valid for the given radix.
++//
++// The function is small and could be inlined, but VS2012 emitted a warning
++// because it constant-propagated the radix and concluded that the last
++// condition was always true. By moving it into a separate function the
++// compiler wouldn't warn anymore.
++#if _MSC_VER
++#pragma optimize("",off)
++static bool IsDecimalDigitForRadix(int c, int radix) {
++  return '0' <= c && c <= '9' && (c - '0') < radix;
++}
++#pragma optimize("",on)
++#else
++static bool inline IsDecimalDigitForRadix(int c, int radix) {
++	return '0' <= c && c <= '9' && (c - '0') < radix;
++}
++#endif
++// Returns true if 'c' is a character digit that is valid for the given radix.
++// The 'a_character' should be 'a' or 'A'.
++//
++// The function is small and could be inlined, but VS2012 emitted a warning
++// because it constant-propagated the radix and concluded that the first
++// condition was always false. By moving it into a separate function the
++// compiler wouldn't warn anymore.
++static bool IsCharacterDigitForRadix(int c, int radix, char a_character) {
++  return radix > 10 && c >= a_character && c < a_character + radix - 10;
++}
++
++
+ // Parsing integers with radix 2, 4, 8, 16, 32. Assumes current != end.
+-template <int radix_log_2>
+-static double RadixStringToIeee(const char* current,
+-                                const char* end,
++template <int radix_log_2, class Iterator>
++static double RadixStringToIeee(Iterator* current,
++                                Iterator end,
+                                 bool sign,
+                                 bool allow_trailing_junk,
+                                 double junk_string_value,
+                                 bool read_as_double,
+-                                const char** trailing_pointer) {
+-  ASSERT(current != end);
++                                bool* result_is_junk) {
++  ASSERT(*current != end);
+ 
+   const int kDoubleSize = Double::kSignificandSize;
+   const int kSingleSize = Single::kSignificandSize;
+   const int kSignificandSize = read_as_double? kDoubleSize: kSingleSize;
+ 
++  *result_is_junk = true;
++
+   // Skip leading 0s.
+-  while (*current == '0') {
+-    ++current;
+-    if (current == end) {
+-      *trailing_pointer = end;
++  while (**current == '0') {
++    ++(*current);
++    if (*current == end) {
++      *result_is_junk = false;
+       return SignedZero(sign);
+     }
+   }
+@@ -492,14 +549,14 @@ static double RadixStringToIeee(const ch
+ 
+   do {
+     int digit;
+-    if (*current >= '0' && *current <= '9' && *current < '0' + radix) {
+-      digit = static_cast<char>(*current) - '0';
+-    } else if (radix > 10 && *current >= 'a' && *current < 'a' + radix - 10) {
+-      digit = static_cast<char>(*current) - 'a' + 10;
+-    } else if (radix > 10 && *current >= 'A' && *current < 'A' + radix - 10) {
+-      digit = static_cast<char>(*current) - 'A' + 10;
++    if (IsDecimalDigitForRadix(**current, radix)) {
++      digit = static_cast<char>(**current) - '0';
++    } else if (IsCharacterDigitForRadix(**current, radix, 'a')) {
++      digit = static_cast<char>(**current) - 'a' + 10;
++    } else if (IsCharacterDigitForRadix(**current, radix, 'A')) {
++      digit = static_cast<char>(**current) - 'A' + 10;
+     } else {
+-      if (allow_trailing_junk || !AdvanceToNonspace(&current, end)) {
++      if (allow_trailing_junk || !AdvanceToNonspace(current, end)) {
+         break;
+       } else {
+         return junk_string_value;
+@@ -523,14 +580,14 @@ static double RadixStringToIeee(const ch
+       exponent = overflow_bits_count;
+ 
+       bool zero_tail = true;
+-      while (true) {
+-        ++current;
+-        if (current == end || !isDigit(*current, radix)) break;
+-        zero_tail = zero_tail && *current == '0';
++      for (;;) {
++        ++(*current);
++        if (*current == end || !isDigit(**current, radix)) break;
++        zero_tail = zero_tail && **current == '0';
+         exponent += radix_log_2;
+       }
+ 
+-      if (!allow_trailing_junk && AdvanceToNonspace(&current, end)) {
++      if (!allow_trailing_junk && AdvanceToNonspace(current, end)) {
+         return junk_string_value;
+       }
+ 
+@@ -552,13 +609,13 @@ static double RadixStringToIeee(const ch
+       }
+       break;
+     }
+-    ++current;
+-  } while (current != end);
++    ++(*current);
++  } while (*current != end);
+ 
+   ASSERT(number < ((int64_t)1 << kSignificandSize));
+   ASSERT(static_cast<int64_t>(static_cast<double>(number)) == number);
+ 
+-  *trailing_pointer = current;
++  *result_is_junk = false;
+ 
+   if (exponent == 0) {
+     if (sign) {
+@@ -573,13 +630,14 @@ static double RadixStringToIeee(const ch
+ }
+ 
+ 
++template <class Iterator>
+ double StringToDoubleConverter::StringToIeee(
+-    const char* input,
++    Iterator input,
+     int length,
+-    int* processed_characters_count,
+-    bool read_as_double) {
+-  const char* current = input;
+-  const char* end = input + length;
++    bool read_as_double,
++    int* processed_characters_count) const {
++  Iterator current = input;
++  Iterator end = input + length;
+ 
+   *processed_characters_count = 0;
+ 
+@@ -600,7 +658,7 @@ double StringToDoubleConverter::StringTo
+ 
+   if (allow_leading_spaces || allow_trailing_spaces) {
+     if (!AdvanceToNonspace(&current, end)) {
+-      *processed_characters_count = current - input;
++      *processed_characters_count = static_cast<int>(current - input);
+       return empty_string_value_;
+     }
+     if (!allow_leading_spaces && (input != current)) {
+@@ -626,7 +684,7 @@ double StringToDoubleConverter::StringTo
+   if (*current == '+' || *current == '-') {
+     sign = (*current == '-');
+     ++current;
+-    const char* next_non_space = current;
++    Iterator next_non_space = current;
+     // Skip following spaces (if allowed).
+     if (!AdvanceToNonspace(&next_non_space, end)) return junk_string_value_;
+     if (!allow_spaces_after_sign && (current != next_non_space)) {
+@@ -649,7 +707,7 @@ double StringToDoubleConverter::StringTo
+       }
+ 
+       ASSERT(buffer_pos == 0);
+-      *processed_characters_count = current - input;
++      *processed_characters_count = static_cast<int>(current - input);
+       return sign ? -Double::Infinity() : Double::Infinity();
+     }
+   }
+@@ -668,7 +726,7 @@ double StringToDoubleConverter::StringTo
+       }
+ 
+       ASSERT(buffer_pos == 0);
+-      *processed_characters_count = current - input;
++      *processed_characters_count = static_cast<int>(current - input);
+       return sign ? -Double::NaN() : Double::NaN();
+     }
+   }
+@@ -677,7 +735,7 @@ double StringToDoubleConverter::StringTo
+   if (*current == '0') {
+     ++current;
+     if (current == end) {
+-      *processed_characters_count = current - input;
++      *processed_characters_count = static_cast<int>(current - input);
+       return SignedZero(sign);
+     }
+ 
+@@ -690,17 +748,17 @@ double StringToDoubleConverter::StringTo
+         return junk_string_value_;  // "0x".
+       }
+ 
+-      const char* tail_pointer = NULL;
+-      double result = RadixStringToIeee<4>(current,
++      bool result_is_junk;
++      double result = RadixStringToIeee<4>(&current,
+                                            end,
+                                            sign,
+                                            allow_trailing_junk,
+                                            junk_string_value_,
+                                            read_as_double,
+-                                           &tail_pointer);
+-      if (tail_pointer != NULL) {
+-        if (allow_trailing_spaces) AdvanceToNonspace(&tail_pointer, end);
+-        *processed_characters_count = tail_pointer - input;
++                                           &result_is_junk);
++      if (!result_is_junk) {
++        if (allow_trailing_spaces) AdvanceToNonspace(&current, end);
++        *processed_characters_count = static_cast<int>(current - input);
+       }
+       return result;
+     }
+@@ -709,7 +767,7 @@ double StringToDoubleConverter::StringTo
+     while (*current == '0') {
+       ++current;
+       if (current == end) {
+-        *processed_characters_count = current - input;
++        *processed_characters_count = static_cast<int>(current - input);
+         return SignedZero(sign);
+       }
+     }
+@@ -757,7 +815,7 @@ double StringToDoubleConverter::StringTo
+       while (*current == '0') {
+         ++current;
+         if (current == end) {
+-          *processed_characters_count = current - input;
++          *processed_characters_count = static_cast<int>(current - input);
+           return SignedZero(sign);
+         }
+         exponent--;  // Move this 0 into the exponent.
+@@ -801,9 +859,9 @@ double StringToDoubleConverter::StringTo
+         return junk_string_value_;
+       }
+     }
+-    char sign = '+';
++    char exponen_sign = '+';
+     if (*current == '+' || *current == '-') {
+-      sign = static_cast<char>(*current);
++      exponen_sign = static_cast<char>(*current);
+       ++current;
+       if (current == end) {
+         if (allow_trailing_junk) {
+@@ -837,7 +895,7 @@ double StringToDoubleConverter::StringTo
+       ++current;
+     } while (current != end && *current >= '0' && *current <= '9');
+ 
+-    exponent += (sign == '-' ? -num : num);
++    exponent += (exponen_sign == '-' ? -num : num);
+   }
+ 
+   if (!(allow_trailing_spaces || allow_trailing_junk) && (current != end)) {
+@@ -855,16 +913,17 @@ double StringToDoubleConverter::StringTo
+ 
+   if (octal) {
+     double result;
+-    const char* tail_pointer = NULL;
+-    result = RadixStringToIeee<3>(buffer,
++    bool result_is_junk;
++    char* start = buffer;
++    result = RadixStringToIeee<3>(&start,
+                                   buffer + buffer_pos,
+                                   sign,
+                                   allow_trailing_junk,
+                                   junk_string_value_,
+                                   read_as_double,
+-                                  &tail_pointer);
+-    ASSERT(tail_pointer != NULL);
+-    *processed_characters_count = current - input;
++                                  &result_is_junk);
++    ASSERT(!result_is_junk);
++    *processed_characters_count = static_cast<int>(current - input);
+     return result;
+   }
+ 
+@@ -882,8 +941,42 @@ double StringToDoubleConverter::StringTo
+   } else {
+     converted = Strtof(Vector<const char>(buffer, buffer_pos), exponent);
+   }
+-  *processed_characters_count = current - input;
++  *processed_characters_count = static_cast<int>(current - input);
+   return sign? -converted: converted;
+ }
+ 
++
++double StringToDoubleConverter::StringToDouble(
++    const char* buffer,
++    int length,
++    int* processed_characters_count) const {
++  return StringToIeee(buffer, length, true, processed_characters_count);
++}
++
++
++double StringToDoubleConverter::StringToDouble(
++    const uc16* buffer,
++    int length,
++    int* processed_characters_count) const {
++  return StringToIeee(buffer, length, true, processed_characters_count);
++}
++
++
++float StringToDoubleConverter::StringToFloat(
++    const char* buffer,
++    int length,
++    int* processed_characters_count) const {
++  return static_cast<float>(StringToIeee(buffer, length, false,
++                                         processed_characters_count));
++}
++
++
++float StringToDoubleConverter::StringToFloat(
++    const uc16* buffer,
++    int length,
++    int* processed_characters_count) const {
++  return static_cast<float>(StringToIeee(buffer, length, false,
++                                         processed_characters_count));
++}
++
+ }  // namespace double_conversion
+diff -upr mozjs24-1/mfbt/double-conversion/double-conversion.h mozjs24-double-conversion-update/mfbt/double-conversion/double-conversion.h
+--- mozjs24-1/mfbt/double-conversion/double-conversion.h	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/double-conversion.h	2016-04-20 16:03:16.050527696 +0100
+@@ -416,9 +416,10 @@ class StringToDoubleConverter {
+   //          junk, too.
+   //  - ALLOW_TRAILING_JUNK: ignore trailing characters that are not part of
+   //      a double literal.
+-  //  - ALLOW_LEADING_SPACES: skip over leading spaces.
+-  //  - ALLOW_TRAILING_SPACES: ignore trailing spaces.
+-  //  - ALLOW_SPACES_AFTER_SIGN: ignore spaces after the sign.
++  //  - ALLOW_LEADING_SPACES: skip over leading whitespace, including spaces,
++  //                          new-lines, and tabs.
++  //  - ALLOW_TRAILING_SPACES: ignore trailing whitespace.
++  //  - ALLOW_SPACES_AFTER_SIGN: ignore whitespace after the sign.
+   //       Ex: StringToDouble("-   123.2") -> -123.2.
+   //           StringToDouble("+   123.2") -> 123.2
+   //
+@@ -503,19 +504,24 @@ class StringToDoubleConverter {
+   // in the 'processed_characters_count'. Trailing junk is never included.
+   double StringToDouble(const char* buffer,
+                         int length,
+-                        int* processed_characters_count) {
+-    return StringToIeee(buffer, length, processed_characters_count, true);
+-  }
++                        int* processed_characters_count) const;
++
++  // Same as StringToDouble above but for 16 bit characters.
++  double StringToDouble(const uc16* buffer,
++                        int length,
++                        int* processed_characters_count) const;
+ 
+   // Same as StringToDouble but reads a float.
+   // Note that this is not equivalent to static_cast<float>(StringToDouble(...))
+   // due to potential double-rounding.
+   float StringToFloat(const char* buffer,
+                       int length,
+-                      int* processed_characters_count) {
+-    return static_cast<float>(StringToIeee(buffer, length,
+-                                           processed_characters_count, false));
+-  }
++                      int* processed_characters_count) const;
++
++  // Same as StringToFloat above but for 16 bit characters.
++  float StringToFloat(const uc16* buffer,
++                      int length,
++                      int* processed_characters_count) const;
+ 
+  private:
+   const int flags_;
+@@ -524,10 +530,11 @@ class StringToDoubleConverter {
+   const char* const infinity_symbol_;
+   const char* const nan_symbol_;
+ 
+-  double StringToIeee(const char* buffer,
++  template <class Iterator>
++  double StringToIeee(Iterator start_pointer,
+                       int length,
+-                      int* processed_characters_count,
+-                      bool read_as_double);
++                      bool read_as_double,
++                      int* processed_characters_count) const;
+ 
+   DISALLOW_IMPLICIT_CONSTRUCTORS(StringToDoubleConverter);
+ };
+diff -upr mozjs24-1/mfbt/double-conversion/fast-dtoa.cc mozjs24-double-conversion-update/mfbt/double-conversion/fast-dtoa.cc
+--- mozjs24-1/mfbt/double-conversion/fast-dtoa.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/fast-dtoa.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -248,10 +248,7 @@ static void BiggestPowerTen(uint32_t num
+   // Note: kPowersOf10[i] == 10^(i-1).
+   exponent_plus_one_guess++;
+   // We don't have any guarantees that 2^number_bits <= number.
+-  // TODO(floitsch): can we change the 'while' into an 'if'? We definitely see
+-  // number < (2^number_bits - 1), but I haven't encountered
+-  // number < (2^number_bits - 2) yet.
+-  while (number < kSmallPowersOfTen[exponent_plus_one_guess]) {
++  if (number < kSmallPowersOfTen[exponent_plus_one_guess]) {
+     exponent_plus_one_guess--;
+   }
+   *power = kSmallPowersOfTen[exponent_plus_one_guess];
+@@ -350,7 +347,8 @@ static bool DigitGen(DiyFp low,
+   // that is smaller than integrals.
+   while (*kappa > 0) {
+     int digit = integrals / divisor;
+-    buffer[*length] = '0' + digit;
++    ASSERT(digit <= 9);
++    buffer[*length] = static_cast<char>('0' + digit);
+     (*length)++;
+     integrals %= divisor;
+     (*kappa)--;
+@@ -379,13 +377,14 @@ static bool DigitGen(DiyFp low,
+   ASSERT(one.e() >= -60);
+   ASSERT(fractionals < one.f());
+   ASSERT(UINT64_2PART_C(0xFFFFFFFF, FFFFFFFF) / 10 >= one.f());
+-  while (true) {
++  for (;;) {
+     fractionals *= 10;
+     unit *= 10;
+     unsafe_interval.set_f(unsafe_interval.f() * 10);
+     // Integer division by one.
+     int digit = static_cast<int>(fractionals >> -one.e());
+-    buffer[*length] = '0' + digit;
++    ASSERT(digit <= 9);
++    buffer[*length] = static_cast<char>('0' + digit);
+     (*length)++;
+     fractionals &= one.f() - 1;  // Modulo by one.
+     (*kappa)--;
+@@ -459,7 +458,8 @@ static bool DigitGenCounted(DiyFp w,
+   // that is smaller than 'integrals'.
+   while (*kappa > 0) {
+     int digit = integrals / divisor;
+-    buffer[*length] = '0' + digit;
++    ASSERT(digit <= 9);
++    buffer[*length] = static_cast<char>('0' + digit);
+     (*length)++;
+     requested_digits--;
+     integrals %= divisor;
+@@ -492,7 +492,8 @@ static bool DigitGenCounted(DiyFp w,
+     w_error *= 10;
+     // Integer division by one.
+     int digit = static_cast<int>(fractionals >> -one.e());
+-    buffer[*length] = '0' + digit;
++    ASSERT(digit <= 9);
++    buffer[*length] = static_cast<char>('0' + digit);
+     (*length)++;
+     requested_digits--;
+     fractionals &= one.f() - 1;  // Modulo by one.
+diff -upr mozjs24-1/mfbt/double-conversion/fixed-dtoa.cc mozjs24-double-conversion-update/mfbt/double-conversion/fixed-dtoa.cc
+--- mozjs24-1/mfbt/double-conversion/fixed-dtoa.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/fixed-dtoa.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -133,7 +133,7 @@ static void FillDigits32(uint32_t number
+   while (number != 0) {
+     int digit = number % 10;
+     number /= 10;
+-    buffer[(*length) + number_length] = '0' + digit;
++    buffer[(*length) + number_length] = static_cast<char>('0' + digit);
+     number_length++;
+   }
+   // Exchange the digits.
+@@ -150,7 +150,7 @@ static void FillDigits32(uint32_t number
+ }
+ 
+ 
+-static void FillDigits64FixedLength(uint64_t number, int requested_length,
++static void FillDigits64FixedLength(uint64_t number,
+                                     Vector<char> buffer, int* length) {
+   const uint32_t kTen7 = 10000000;
+   // For efficiency cut the number into 3 uint32_t parts, and print those.
+@@ -253,7 +253,8 @@ static void FillFractionals(uint64_t fra
+       fractionals *= 5;
+       point--;
+       int digit = static_cast<int>(fractionals >> point);
+-      buffer[*length] = '0' + digit;
++      ASSERT(digit <= 9);
++      buffer[*length] = static_cast<char>('0' + digit);
+       (*length)++;
+       fractionals -= static_cast<uint64_t>(digit) << point;
+     }
+@@ -274,7 +275,8 @@ static void FillFractionals(uint64_t fra
+       fractionals128.Multiply(5);
+       point--;
+       int digit = fractionals128.DivModPowerOf2(point);
+-      buffer[*length] = '0' + digit;
++      ASSERT(digit <= 9);
++      buffer[*length] = static_cast<char>('0' + digit);
+       (*length)++;
+     }
+     if (fractionals128.BitAt(point - 1) == 1) {
+@@ -358,7 +360,7 @@ bool FastFixedDtoa(double v,
+       remainder = (dividend % divisor) << exponent;
+     }
+     FillDigits32(quotient, buffer, length);
+-    FillDigits64FixedLength(remainder, divisor_power, buffer, length);
++    FillDigits64FixedLength(remainder, buffer, length);
+     *decimal_point = *length;
+   } else if (exponent >= 0) {
+     // 0 <= exponent <= 11
+diff -upr mozjs24-1/mfbt/double-conversion/ieee.h mozjs24-double-conversion-update/mfbt/double-conversion/ieee.h
+--- mozjs24-1/mfbt/double-conversion/ieee.h	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/ieee.h	2016-04-20 16:03:03.706387583 +0100
+@@ -256,6 +256,8 @@ class Double {
+     return (significand & kSignificandMask) |
+         (biased_exponent << kPhysicalSignificandSize);
+   }
++
++  DISALLOW_COPY_AND_ASSIGN(Double);
+ };
+ 
+ class Single {
+@@ -391,6 +393,8 @@ class Single {
+   static const uint32_t kNaN = 0x7FC00000;
+ 
+   const uint32_t d32_;
++
++  DISALLOW_COPY_AND_ASSIGN(Single);
+ };
+ 
+ }  // namespace double_conversion
+diff -upr mozjs24-1/mfbt/double-conversion/strtod.cc mozjs24-double-conversion-update/mfbt/double-conversion/strtod.cc
+--- mozjs24-1/mfbt/double-conversion/strtod.cc	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/strtod.cc	2016-04-20 16:03:00.150347220 +0100
+@@ -137,6 +137,7 @@ static void TrimAndCut(Vector<const char
+   Vector<const char> right_trimmed = TrimTrailingZeros(left_trimmed);
+   exponent += left_trimmed.length() - right_trimmed.length();
+   if (right_trimmed.length() > kMaxSignificantDecimalDigits) {
++    (void) space_size;  // Mark variable as used.
+     ASSERT(space_size >= kMaxSignificantDecimalDigits);
+     CutToMaxSignificantDigits(right_trimmed, exponent,
+                               buffer_copy_space, updated_exponent);
+@@ -263,7 +264,6 @@ static DiyFp AdjustmentPowerOfTen(int ex
+     case 7: return DiyFp(UINT64_2PART_C(0x98968000, 00000000), -40);
+     default:
+       UNREACHABLE();
+-      return DiyFp(0, 0);
+   }
+ }
+ 
+@@ -286,7 +286,7 @@ static bool DiyFpStrtod(Vector<const cha
+   const int kDenominator = 1 << kDenominatorLog;
+   // Move the remaining decimals into the exponent.
+   exponent += remaining_decimals;
+-  int error = (remaining_decimals == 0 ? 0 : kDenominator / 2);
++  uint64_t error = (remaining_decimals == 0 ? 0 : kDenominator / 2);
+ 
+   int old_e = input.e();
+   input.Normalize();
+@@ -515,6 +515,7 @@ float Strtof(Vector<const char> buffer,
+     double double_next2 = Double(double_next).NextDouble();
+     f4 = static_cast<float>(double_next2);
+   }
++  (void) f2;  // Mark variable as used.
+   ASSERT(f1 <= f2 && f2 <= f3 && f3 <= f4);
+ 
+   // If the guess doesn't lie near a single-precision boundary we can simply
+diff -upr mozjs24-1/mfbt/double-conversion/utils.h mozjs24-double-conversion-update/mfbt/double-conversion/utils.h
+--- mozjs24-1/mfbt/double-conversion/utils.h	2013-10-29 20:40:19.000000000 +0000
++++ mozjs24-double-conversion-update/mfbt/double-conversion/utils.h	2016-04-20 16:03:23.534612645 +0100
+@@ -33,14 +33,29 @@
+ 
+ #include <assert.h>
+ #ifndef ASSERT
+-#define ASSERT(condition)      (assert(condition))
++#define ASSERT(condition)         \
++    assert(condition);
+ #endif
+ #ifndef UNIMPLEMENTED
+ #define UNIMPLEMENTED() (abort())
+ #endif
++#ifndef DOUBLE_CONVERSION_NO_RETURN
++#ifdef _MSC_VER
++#define DOUBLE_CONVERSION_NO_RETURN __declspec(noreturn)
++#else
++#define DOUBLE_CONVERSION_NO_RETURN __attribute__((noreturn))
++#endif
++#endif
+ #ifndef UNREACHABLE
++#ifdef _MSC_VER
++void DOUBLE_CONVERSION_NO_RETURN abort_noreturn();
++inline void abort_noreturn() { abort(); }
++#define UNREACHABLE()   (abort_noreturn())
++#else
+ #define UNREACHABLE()   (abort())
+ #endif
++#endif
++
+ 
+ // Double operations detection based on target architecture.
+ // Linux uses a 80bit wide floating point stack on x86. This induces double
+@@ -55,11 +70,16 @@
+ #if defined(_M_X64) || defined(__x86_64__) || \
+     defined(__ARMEL__) || defined(__avr32__) || \
+     defined(__hppa__) || defined(__ia64__) || \
+-    defined(__mips__) || defined(__powerpc__) || \
++    defined(__mips__) || \
++    defined(__powerpc__) || defined(__ppc__) || defined(__ppc64__) || \
++    defined(_POWER) || defined(_ARCH_PPC) || defined(_ARCH_PPC64) || \
+     defined(__sparc__) || defined(__sparc) || defined(__s390__) || \
+     defined(__SH4__) || defined(__alpha__) || \
+-    defined(_MIPS_ARCH_MIPS32R2)
++    defined(_MIPS_ARCH_MIPS32R2) || \
++    defined(__AARCH64EL__) || defined(__aarch64__)
+ #define DOUBLE_CONVERSION_CORRECT_DOUBLE_OPERATIONS 1
++#elif defined(__mc68000__)
++#undef DOUBLE_CONVERSION_CORRECT_DOUBLE_OPERATIONS
+ #elif defined(_M_IX86) || defined(__i386__) || defined(__i386)
+ #if defined(_WIN32)
+ // Windows uses a 64bit wide floating point stack.
+@@ -71,9 +91,16 @@
+ #error Target architecture was not detected as supported by Double-Conversion.
+ #endif
+ 
++#if defined(__GNUC__)
++#define DOUBLE_CONVERSION_UNUSED __attribute__((unused))
++#else
++#define DOUBLE_CONVERSION_UNUSED
++#endif
+ 
+ #include "mozilla/StandardInteger.h"
+ 
++typedef uint16_t uc16;
++
+ // The following macro works on both 32 and 64-bit platforms.
+ // Usage: instead of writing 0x1234567890123456
+ //      write UINT64_2PART_C(0x12345678,90123456);
+@@ -139,8 +166,8 @@ template <typename T>
+ class Vector {
+  public:
+   Vector() : start_(NULL), length_(0) {}
+-  Vector(T* data, int length) : start_(data), length_(length) {
+-    ASSERT(length == 0 || (length > 0 && data != NULL));
++  Vector(T* data, int len) : start_(data), length_(len) {
++    ASSERT(len == 0 || (len > 0 && data != NULL));
+   }
+ 
+   // Returns a vector using the same backing storage as this one,
+@@ -182,8 +209,8 @@ class Vector {
+ // buffer bounds on all operations in debug mode.
+ class StringBuilder {
+  public:
+-  StringBuilder(char* buffer, int size)
+-      : buffer_(buffer, size), position_(0) { }
++  StringBuilder(char* buffer, int buffer_size)
++      : buffer_(buffer, buffer_size), position_(0) { }
+ 
+   ~StringBuilder() { if (!is_finalized()) Finalize(); }
+ 
+@@ -280,7 +307,8 @@ template <class Dest, class Source>
+ inline Dest BitCast(const Source& source) {
+   // Compile time assertion: sizeof(Dest) == sizeof(Source)
+   // A compile error here means your Dest and Source have different sizes.
+-  typedef char VerifySizesAreEqual[sizeof(Dest) == sizeof(Source) ? 1 : -1];
++  DOUBLE_CONVERSION_UNUSED
++      typedef char VerifySizesAreEqual[sizeof(Dest) == sizeof(Source) ? 1 : -1];
+ 
+   Dest dest;
+   memmove(&dest, &source, sizeof(dest));
+Only in mozjs24-double-conversion-update/mfbt/double-conversion: utils.h.orig
