@@ -1,18 +1,18 @@
 [Runtime]
 name=org.gnome.Platform
-runtime=org.gnome.Platform/x86_64/master
-sdk=org.gnome.Sdk/x86_64/master
+runtime=org.gnome.Platform/@@SDK_ARCH@@/@@SDK_BRANCH@@
+sdk=org.gnome.Sdk/@@SDK_ARCH@@/@@SDK_BRANCH@@
 
 [Extension org.freedesktop.Platform.GL]
-version=1.4
+version=@@SDK_RUNTIME_VERSION@@
 directory=lib/GL
 
 [Extension org.freedesktop.Platform.Timezones]
-version=1.4
+version=@@SDK_RUNTIME_VERSION@@
 directory=share/zoneinfo
 
 [Extension org.freedesktop.Platform.GStreamer]
-version=1.4
+version=@@SDK_RUNTIME_VERSION@@
 directory=lib/extensions/gstreamer-1.0
 subdirectories=true
 
