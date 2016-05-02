@@ -26,7 +26,9 @@ endef
 all: repo $(patsubst %,%.in,$(SUBST_FILES))
 	rm -rf sdk
 	$(call subst-metadata)
-	flatpak-builder --force-clean --ccache --require-changes --repo=repo --subject="build of org.gnome.Sdk, `date`" ${EXPORT_ARGS} sdk org.gnome.Sdk.json
+	flatpak-builder --force-clean --ccache --require-changes --repo=repo --arch=${ARCH} \
+                        --subject="build of org.gnome.Sdk, `date`" \
+                        ${EXPORT_ARGS} sdk org.gnome.Sdk.json
 	rm -rf sdk
 
 repo:
