@@ -512,6 +512,20 @@
         },
         {
             "name": "mozjs24",
+            "build-options" : {
+                "arch" : {
+                    "i386" : {
+                        "config-opts" : [
+                            "--host=i586-unknown-linux-gnu"
+                        ]
+                    },
+		    "arm" : {
+                        "config-opts" : [
+                            "--host=arm-unknown-linux-gnueabi"
+			]
+		    }
+                }
+            },
             "config-opts": [  "--disable-static",
                               "--with-system-nspr",
                               "--enable-threadsafe",
