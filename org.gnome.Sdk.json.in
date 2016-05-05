@@ -616,11 +616,41 @@
         },
         {
             "name": "webkitgtk4",
+            "cmake": true,
             "build-options" : {
                 "cflags": "-O2 -g1",
-                "cxxflags": "-O2 -g1"
+                "cxxflags": "-O2 -g1",
+                "arch" : {
+                    "i386" : {
+                        "config-opts" : [
+                            "-DCMAKE_SYSTEM_PROCESSOR=i586"
+                        ]
+                    },
+		    "arm" : {
+                        "config-opts" : [
+                            "-DCMAKE_SYSTEM_PROCESSOR=arm"
+			]
+		    }
+                }
             },
-            "sources": [
+            "config-opts": [
+		"-DPORT=GTK",
+		"-DCMAKE_BUILD_TYPE=Release",
+		"-DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG",
+		"-DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG",
+		"-DENABLE_ACCELERATED_2D_CANVAS=OFF",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/usr",
+		"-DLIB_INSTALL_DIR:PATH=/usr/lib",
+		"-DSYSCONF_INSTALL_DIR:PATH=/usr/etc",
+		"-DSHARE_INSTALL_PREFIX:PATH=/usr/share",
+		"-DINCLUDE_INSTALL_DIR:PATH=/usr/include",
+		"-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
+		"-DBUILD_SHARED_LIBS:BOOL=ON",
+		"-DENABLE_GTKDOC=OFF",
+		"-DENABLE_VIDEO=ON",
+		"-DENABLE_WEB_AUDIO=ON"
+	    ],
+	    "sources": [
                 {
                     "type": "archive",
                     "url": "http://www.webkitgtk.org/releases/webkitgtk-2.11.5.tar.xz",
@@ -629,11 +659,6 @@
                 {
                     "type": "patch",
                     "path": "webkitgtk-cmake-buildapi.patch"
-                },
-                {
-                    "type": "file",
-                    "path": "webkitgtk-configure",
-                    "dest-filename": "configure"
                 }
             ]
         },
