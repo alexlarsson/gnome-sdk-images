@@ -650,11 +650,11 @@
 		"-DENABLE_VIDEO=ON",
 		"-DENABLE_WEB_AUDIO=ON"
 	    ],
-	    "sources": [
+            "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.webkitgtk.org/releases/webkitgtk-2.11.5.tar.xz",
-                    "sha256": "f6bb102ec2db2f1c134280551cd19fac9ea067324268709df97c2221b08baa02"
+                    "url": "http://www.webkitgtk.org/releases/webkitgtk-2.12.1.tar.xz",
+                    "sha256": "5b1a2d5227553f3cecbdb258c68b384f9235747b2c07c15afb555fe4fa6ae896"
                 },
                 {
                     "type": "patch",
