@@ -708,8 +708,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.webkitgtk.org/releases/webkitgtk-2.12.1.tar.xz",
-                    "sha256": "5b1a2d5227553f3cecbdb258c68b384f9235747b2c07c15afb555fe4fa6ae896"
+                    "url": "https://www.webkitgtk.org/releases/webkitgtk-2.13.4.tar.xz",
+                    "sha256": "d044d656ed8c8ce7e64efa0eee7939f130d151c72612b51e4e002d9a4f3a3084"
                 },
                 {
                     "type": "patch",
