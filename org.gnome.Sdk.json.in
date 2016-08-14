@@ -416,7 +416,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/clutter-gst"
+                    "url": "git://git.gnome.org/clutter-gst",
+                    "branch": "clutter-gst-3.0"
                 }
             ]
         },
