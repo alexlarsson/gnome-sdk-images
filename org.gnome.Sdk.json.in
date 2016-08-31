@@ -244,8 +244,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "http://wayland.freedesktop.org/releases/wayland-protocols-1.5.tar.xz",
-                     "sha256": "7d0b426ccaeafc084fc579bb2a139f8ad4ea3492d54b7b0210d124c61fbeb2bf"
+                     "url": "http://wayland.freedesktop.org/releases/wayland-protocols-1.6.tar.xz",
+                     "sha256": "9e4070bcaa38d38fa66bf055c6b5ad9c7c2553a78b2dbe5493fe0f3764d00e81"
                  }
             ]
         },
