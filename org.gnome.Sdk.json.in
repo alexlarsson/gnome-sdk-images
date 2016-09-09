@@ -18,8 +18,8 @@
                  "/share/devhelp",
                  "/lib/systemd",
                  "*.la", "*.a"],
-    "cleanup-commands": [ "touch -d @1 /usr/share/fonts",
-                          "touch -d @1 /usr/share/fonts/*",
+    "cleanup-commands": [ "touch -d @0 /usr/share/fonts",
+                          "touch -d @0 /usr/share/fonts/*",
                           "fc-cache -fs"
                         ],
     "cleanup-platform": [ "/include",
