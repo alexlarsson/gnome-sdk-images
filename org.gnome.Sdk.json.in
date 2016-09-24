@@ -800,6 +800,20 @@
                     "url": "git://git.gnome.org/gcr"
                 }
             ]
+        },
+        {
+            "name": "os-release",
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "os-release"
+                },
+                {
+                    "type": "file",
+                    "path": "os-release-configure",
+                    "dest-filename": "configure"
+                }
+            ]
         }
     ]
 }

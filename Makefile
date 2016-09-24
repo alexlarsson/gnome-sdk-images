@@ -11,7 +11,7 @@ SDK_BRANCH=master
 SDK_RUNTIME_VERSION=1.4
 
 # Canned recipe for generating metadata
-SUBST_FILES=org.gnome.Sdk.json metadata.sdk metadata.platform
+SUBST_FILES=org.gnome.Sdk.json metadata.sdk metadata.platform os-release
 define subst-metadata
 	@echo -n "Generating files: ${SUBST_FILES}... ";
 	@for file in ${SUBST_FILES}; do 					\
