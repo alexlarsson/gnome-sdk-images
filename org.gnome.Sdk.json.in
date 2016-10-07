@@ -345,7 +345,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/gtk+"
+                    "url": "git://git.gnome.org/gtk+",
+                    "branch": "gtk-3-22"
                 }
             ]
         },
