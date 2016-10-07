@@ -5,5 +5,5 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)/usr/lib
-        install os-release $(DESTDIR)/usr/lib
+	install os-release $(DESTDIR)/usr/lib
 EOF
