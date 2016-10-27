@@ -14,8 +14,6 @@
     "cleanup": [ "/cache",
                  "/man",
                  "/share/man",
-                 "/share/gtk-doc",
-                 "/share/devhelp",
                  "/lib/systemd",
                  "*.la", "*.a"],
     "cleanup-commands": [ "touch -d @0 /usr/share/fonts",
@@ -100,7 +98,7 @@
         },
         {
             "name": "gobject-introspection",
-            "config-opts": ["--disable-gtk-doc", "--disable-static" ],
+            "config-opts": ["--disable-static" ],
             "cleanup-platform": ["/lib/gobject-introspection/giscanner",
                                  "/share/gobject-introspection/giscanner",
                                  "/bin"],
@@ -185,7 +183,7 @@
         },
         {
             "name": "dbus-glib",
-            "config-opts": [ "--disable-static", "--disable-gtk-doc" ],
+            "config-opts": [ "--disable-static" ],
             "sources": [
                 {
                     "type": "git",
@@ -195,8 +193,7 @@
         },
         {
             "name": "json-glib",
-            "config-opts": [ "--disable-static",
-                             "--disable-gtk-doc" ],
+            "config-opts": [ "--disable-static" ],
             "sources": [
                 {
                     "type": "git",
@@ -288,7 +285,6 @@
         {
             "name": "gdk-pixbuf",
             "config-opts": ["--disable-static",
-                            "--disable-gtk-doc",
                             "--without-x11",
                             "--without-libjasper",
                             "--with-included-loaders=png,jpeg" ],
@@ -321,8 +317,7 @@
         },
         {
             "name": "gtk2",
-            "config-opts": ["--disable-gtk-doc",
-                            "--disable-man",
+            "config-opts": ["--disable-man",
                             "--with-xinput=xfree"],
             "sources": [
                 {
@@ -361,7 +356,7 @@
         },
         {
             "name": "gstreamer",
-            "config-opts": ["--disable-gtk-doc", "--enable-debug", "--disable-examples" ],
+            "config-opts": ["--enable-debug", "--disable-examples" ],
             "sources": [
                 {
                     "type": "git",
@@ -371,7 +366,7 @@
         },
         {
             "name": "gstreamer-plugins-base",
-            "config-opts": ["--disable-gtk-doc", "--enable-experimental", "--enable-orc" ],
+            "config-opts": ["--enable-experimental", "--enable-orc" ],
             "sources": [
                 {
                     "type": "git",
@@ -385,7 +380,6 @@
                               "--enable-cogl-pango=yes",
                               "--enable-gdk-pixbuf=yes",
                               "--enable-glx=yes",
-                              "--disable-gtk-doc",
                               "--enable-introspection=yes",
                               "--enable-kms-egl-platform",
                               "--enable-wayland-egl-platform",
@@ -447,7 +441,7 @@
 		    }
                 }
             },
-            "config-opts": ["--disable-gtk-doc", "--enable-experimental", "--enable-orc" ,
+            "config-opts": ["--enable-experimental", "--enable-orc" ,
                             "--disable-monoscope",
                             "--disable-aalib",
                             "--enable-cairo",
@@ -477,7 +471,7 @@
 		    }
                 }
             },
-            "config-opts": ["--disable-gtk-doc", "--enable-experimental", "--enable-orc" ],
+            "config-opts": ["--enable-experimental", "--enable-orc" ],
             "sources": [
                 {
                     "type": "git",
@@ -496,7 +490,7 @@
         },
         {
             "name": "libsecret",
-            "config-opts": ["--disable-static", "--disable-gtk-doc", "--disable-manpages"],
+            "config-opts": ["--disable-static", "--disable-manpages"],
             "sources": [
                 {
                     "type": "git",
@@ -658,8 +652,7 @@
                     "LDFLAGS": "-Wl,-z,relro -Wl,-z,now -pie -lssp"
                 }
             },
-            "config-opts": ["--disable-gtk-doc",
-                            "--disable-gnome-pty-helper",
+            "config-opts": ["--disable-gnome-pty-helper",
                             "--disable-static",
                             "--with-gtk=3.0",
                             "--enable-introspection",
