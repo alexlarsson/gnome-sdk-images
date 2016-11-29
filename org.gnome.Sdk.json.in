@@ -703,8 +703,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.webkitgtk.org/releases/webkitgtk-2.13.92.tar.xz",
-                    "sha256": "97db90daa1f7241eade79f91c0c94001a7ad4b17ebb0a1c5c0b7a8449dae94e0"
+                    "url": "https://www.webkitgtk.org/releases/webkitgtk-2.14.2.tar.xz",
+                    "sha256": "2edbcbd5105046aea55af9671c4de8deedb5b0e3567c618034d440a760675556"
                 },
                 {
                     "type": "patch",
