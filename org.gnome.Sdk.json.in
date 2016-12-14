@@ -621,6 +621,7 @@
         },
         {
             "name": "gjs",
+            "config-opts": [  "--disable-Werror"],
             "sources": [
                 {
                     "type": "git",
