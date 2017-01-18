@@ -311,7 +311,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/librsvg"
+                    "url": "git://git.gnome.org/librsvg",
+                    "branch": "librsvg-2-40"
                 }
             ]
         },
