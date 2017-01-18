@@ -4,6 +4,11 @@ cat <<EOF > Makefile
 all:
 
 install:
-	mkdir -p $(DESTDIR)/usr/lib
-	install os-release $(DESTDIR)/usr/lib
+	mkdir -p ${DESTDIR}/usr/lib
+	install os-release ${DESTDIR}/usr/lib
+	mkdir -p ${DESTDIR}/usr/share/appdata
+	install org.gnome.Platform.appdata.xml ${DESTDIR}/usr/share/appdata
+	install org.gnome.Sdk.appdata.xml ${DESTDIR}/usr/share/appdata
+	appstream-compose --basename=org.gnome.Platform --prefix=/usr --origin=flatpak org.gnome.Platform
+	appstream-compose --basename=org.gnome.Sdk --prefix=/usr --origin=flatpak org.gnome.Sdk
 EOF
