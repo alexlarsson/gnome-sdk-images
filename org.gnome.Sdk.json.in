@@ -777,6 +777,7 @@
         },
         {
             "name": "pygobject",
+            "config-opts": ["--enable-compile-warnings=minimum"],
             "build-options" : {
                 "env": {
                     "PYTHON": "/usr/bin/python3"
