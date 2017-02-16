@@ -115,6 +115,11 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/glib"
+                },
+                {
+                    "type": "shell",
+                    /* Work around the .pyc files being in the base, and python compilation editin them in-place */
+                    "commands": [ "rm -rf /usr/share/glib-2.0/codegen/*.pyc" ]
                 }
             ]
         },
@@ -128,6 +133,11 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/gobject-introspection"
+                },
+                {
+                    "type": "shell",
+                    /* Work around the .pyc files being in the base, and python compilation editin them in-place */
+                    "commands": [ "rm -rf /usr/lib/gobject-introspection/giscanner/*.pyc /usr/lib/gobject-introspection/giscanner/*/*.pyc" ]
                 }
             ]
         },
@@ -314,6 +324,11 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/gdk-pixbuf"
+                },
+                {
+                    "type": "shell",
+                    /* Work around the loader files being in the base,install editing it in-place */
+                    "commands": [ "rm -rf /usr/lib/gdk-pixbuf-2.0/*/loaders.cache" ]
                 }
             ]
         },
@@ -335,6 +350,11 @@
                     "type": "git",
                     "url": "git://git.gnome.org/librsvg",
                     "branch": "librsvg-2-40"
+                },
+                {
+                    "type": "shell",
+                    /* Work around the loader files being in the base,install editing it in-place */
+                    "commands": [ "rm -rf /usr/lib/gdk-pixbuf-2.0/*/loaders.cache" ]
                 }
             ]
         },
