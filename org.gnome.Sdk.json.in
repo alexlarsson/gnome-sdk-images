@@ -601,8 +601,7 @@
             ]
         },
         {
-            "name": "mozjs31",
-            "no-parallel-make": true,
+            "name": "mozjs38",
             "build-options" : {
                 "arch" : {
                     "i386" : {
@@ -617,36 +616,41 @@
 		    }
                 }
             },
-            "config-opts": [  "--with-system-nspr",
+            "config-opts": [  "--enable-posix-nspr-emulation",
                               "--with-system-zlib",
                               "--enable-system-ffi",
-                              "--with-system-icu"],
+                              "--with-system-icu",
+                              "--with-intl-api"],
             "subdir": "js/src",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://people.mozilla.org/~sstangl/mozjs-31.5.0.tar.bz2",
-                    "sha256": "4d63976b88c4e2135f1bd6d1f85285fe299713cde4baf2fe1b2f4058286611e1"
+                    "url": "https://people.mozilla.org/~sstangl/mozjs-38.2.1.rc0.tar.bz2",
+                    "sha256": "01994c758174bc173bcf4960f05ecb4da21014f09641a63b2952bbf9eeaa8b5c"
                 },
                 {
                     "type": "patch",
-                    "path": "mozjs31-1021171.patch"
+                    "path": "mozjs38-fix-tracelogger.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "mozjs31-1037470.patch"
+                    "path": "mozjs38-release-number.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "mozjs31-1046176.patch"
+                    "path": "mozjs38-shell-version.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "mozjs31-1119228.patch"
+                    "path": "mozjs38-pkg-config-version.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "mozjs31-install-name.patch"
+                    "path": "mozjs38-copy-headers.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "mozjs38-1269317.patch"
                 },
                 {
                     "type": "shell",
@@ -657,9 +661,7 @@
                 }
             ],
             "post-install": [
-                "cd /usr/include/mozjs-31; for link in `find . -type l`; do header=`readlink $link`; rm -f $link;  cp -p $header $link; done",
-                "cp -p js/src/js-config.h /usr/include/mozjs-31"
-
+                "cp -p js/src/js-config.h /usr/include/mozjs-38"
             ]
         },
         {
