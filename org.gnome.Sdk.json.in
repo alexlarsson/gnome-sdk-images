@@ -565,7 +565,7 @@
         },
         {
             "name": "enchant",
-            "config-opts": ["--disable-static"],
+            "config-opts": ["--disable-static", "--with-myspell-dir=/usr/share/myspell"],
             "sources": [
                 {
                     "type": "archive",
