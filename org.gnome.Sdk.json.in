@@ -104,6 +104,7 @@
         {
             "name": "glib",
             "config-opts": [ "--with-pcre=system" ],
+            "ensure-writable": [ "/share/glib-2.0/codegen/*.pyc" ],
             "cleanup-platform": [ "/share/glib-2.0/codegen",
                                   "/bin/gdbus-codegen",
                                   "/bin/glib-*",
@@ -115,17 +116,14 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/glib"
-                },
-                {
-                    "type": "shell",
-                    /* Work around the .pyc files being in the base, and python compilation editin them in-place */
-                    "commands": [ "rm -rf /usr/share/glib-2.0/codegen/*.pyc" ]
                 }
             ]
         },
         {
             "name": "gobject-introspection",
             "config-opts": ["--disable-static" ],
+            "ensure-writable": [ "/lib/gobject-introspection/giscanner/*.pyc",
+                                 "/lib/gobject-introspection/giscanner/*/*.pyc" ],
             "cleanup-platform": ["/lib/gobject-introspection/giscanner",
                                  "/share/gobject-introspection/giscanner",
                                  "/bin"],
@@ -133,11 +131,6 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/gobject-introspection"
-                },
-                {
-                    "type": "shell",
-                    /* Work around the .pyc files being in the base, and python compilation editin them in-place */
-                    "commands": [ "rm -rf /usr/lib/gobject-introspection/giscanner/*.pyc /usr/lib/gobject-introspection/giscanner/*/*.pyc" ]
                 }
             ]
         },
@@ -316,6 +309,7 @@
         },
         {
             "name": "gdk-pixbuf",
+            "ensure-writable": ["/lib/gdk-pixbuf-2.0/*/loaders.cache"],
             "config-opts": ["--disable-static",
                             "--without-x11",
                             "--without-libjasper",
@@ -324,11 +318,6 @@
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/gdk-pixbuf"
-                },
-                {
-                    "type": "shell",
-                    /* Work around the loader files being in the base,install editing it in-place */
-                    "commands": [ "rm -rf /usr/lib/gdk-pixbuf-2.0/*/loaders.cache" ]
                 }
             ]
         },
@@ -345,16 +334,12 @@
         {
             "name": "librsvg",
             "config-opts": ["--disable-static"],
+            "ensure-writable": ["/lib/gdk-pixbuf-2.0/*/loaders.cache"],
             "sources": [
                 {
                     "type": "git",
                     "url": "git://git.gnome.org/librsvg",
                     "branch": "librsvg-2-40"
-                },
-                {
-                    "type": "shell",
-                    /* Work around the loader files being in the base,install editing it in-place */
-                    "commands": [ "rm -rf /usr/lib/gdk-pixbuf-2.0/*/loaders.cache" ]
                 }
             ]
         },
