@@ -641,7 +641,7 @@
                     "type": "shell",
                     "commands": [
                         /* Work around mtime issue in configure and configure.ac (see bug 778802) */
-                        "touch configure",
+                        "touch js/src/configure",
                         "cp -f /usr/share/gnu-config/config.sub ./build/autoconf/",
                         "cp -f /usr/share/gnu-config/config.guess ./build/autoconf/"
                     ]
