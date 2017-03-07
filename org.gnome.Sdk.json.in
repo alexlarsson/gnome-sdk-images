@@ -798,7 +798,8 @@
                     "path": "cairo-waf-use-python-config-as-shell-script.patch"
                 },
                 {
-                    "type": "file",
+                    "type": "patch",
+                    "strip-components": 0,
                     "path": "pycairo-1.10.0-pickle-python3.patch"
                 },
                 {
