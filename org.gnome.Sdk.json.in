@@ -50,10 +50,11 @@
                                    "ldconfig -C /usr/etc/ld.so.cache"
                                  ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
+        "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+        "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
         "env": {
-            "V": "1"
+            "V": "1",
+            "LDFLAGS": "-fstack-protector-strong -Wl,-z,relro,-z,now"
         }
     },
     "modules": [
@@ -696,10 +697,10 @@
         {
             "name": "vte",
             "build-options" : {
-                "cflags": "-O2 -g  -fPIE -DPIE",
-                "cxxflags": "-O2 -g  -fPIE -DPIE",
+                "cflags": "-O2 -g  -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -DPIE",
+                "cxxflags": "-O2 -g  -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -DPIE",
                 "env": {
-                    "LDFLAGS": "-Wl,-z,relro -Wl,-z,now -pie -lssp"
+                    "LDFLAGS": "-fstack-protector-strong -Wl,-z,relro -Wl,-z,now -pie -lssp"
                 }
             },
             "config-opts": ["--disable-gnome-pty-helper",
@@ -719,8 +720,8 @@
             "cleanup-platform": [ "/libexec/webkit2gtk-4.0/MiniBrowser" ],
             "cmake": true,
             "build-options" : {
-                "cflags": "-O2 -g1",
-                "cxxflags": "-O2 -g1",
+                "cflags": "-O2 -g1 -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+                "cxxflags": "-O2 -g1 -fstack-protector-strong -D_FORTIFY_SOURCE=2",
                 "arch" : {
                     "i386" : {
                         "config-opts" : [
