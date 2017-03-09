@@ -649,7 +649,8 @@
                 }
             ],
             "post-install": [
-                "cp -p js/src/js-config.h /usr/include/mozjs-38"
+                "cp -p js/src/js-config.h /usr/include/mozjs-38",
+                "rm /usr/lib/libjs_static.ajs"
             ]
         },
         {
