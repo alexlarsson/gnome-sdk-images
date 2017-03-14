@@ -64,8 +64,9 @@
             "cleanup-platform": [ "*" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gnome-common"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-common/3.18/gnome-common-3.18.0.tar.xz",
+                    "sha256": "22569e370ae755e04527b76328befc4c73b62bfd4a572499fde116b8318af8cf"
                 }
             ]
         },
@@ -75,8 +76,9 @@
             "config-opts": ["--disable-doc"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/yelp-xsl"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/yelp-xsl/3.20/yelp-xsl-3.20.1.tar.xz",
+                    "sha256": "dc61849e5dca473573d32e28c6c4e3cf9c1b6afe241f8c26e29539c415f97ba0"
                 }
             ]
         },
@@ -85,8 +87,9 @@
             "cleanup-platform": [ "*" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/yelp-tools"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/yelp-tools/3.18/yelp-tools-3.18.0.tar.xz",
+                    "sha256": "c6c1d65f802397267cdc47aafd5398c4b60766e0a7ad2190426af6c0d0716932"
                 }
             ]
         },
@@ -98,8 +101,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/cantarell-fonts"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/cantarell-fonts/0.0/cantarell-fonts-0.0.25.tar.xz",
+                    "sha256": "14a228aa0b516dfc367b434a850f955a00c57fc549cbb05348e2b150196a737f"
                 }
             ]
         },
@@ -116,8 +120,9 @@
                                ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/glib"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glib/2.51/glib-2.51.5.tar.xz",
+                    "sha256": "fec5483099c8309c4b4c06cd88eb37f464f0f4642bdc225344cd497fe25abe75"
                 }
             ]
         },
@@ -131,8 +136,9 @@
                                  "/bin"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gobject-introspection"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gobject-introspection/1.51/gobject-introspection-1.51.3.tar.xz",
+                    "sha256": "80acbffd89452b8e30f8a50f46d64517a866ca63157bd1fa78bedb69f9de11c3"
                 }
             ]
         },
@@ -141,25 +147,9 @@
             "config-opts": ["--disable-static", "--with-libproxy"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/glib-networking"
-                }
-            ]
-        },
-        {
-            "name": "vala-bootstrap",
-            "cleanup": [ "/bin/*-0.16",
-                         "/lib/*-0.16*",
-                         "/lib/pkgconfig/*",
-                         "/include/vala-0.16",
-                         "/share/vala-0.16" ],
-            "cleanup-platform": [ "*" ],
-            "config-opts": [ "--disable-build-from-vala",
-                             "--disable-vapigen" ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://git.gnome.org/vala-bootstrap"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glib-networking/2.50/glib-networking-2.50.0.tar.xz",
+                    "sha256": "3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee"
                 }
             ]
         },
@@ -169,8 +159,9 @@
             "config-opts": [ "--enable-vapigen", "--enable-unversioned" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/vala"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/vala/0.35/vala-0.35.90.tar.xz",
+                    "sha256": "4175cdf476e048f7c7d2418e88cda752c4df0d8b9fdfb349e07cbad5e4f63489"
                 }
             ]
         },
@@ -180,8 +171,9 @@
             "cleanup": [ "/libexec/dconf-service", "/share/dbus-1/services/*" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/dconf"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/dconf/0.26/dconf-0.26.0.tar.xz",
+                    "sha256": "8683292eb31a3fae31e561f0a4220d8569b0f6d882e9958b68373f9043d658c9"
                 },
                 {
                     "type": "patch",
@@ -194,8 +186,9 @@
             "config-opts": ["--disable-static"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libsoup"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libsoup/2.57/libsoup-2.57.1.tar.xz",
+                    "sha256": "ca1ca037e89e8bc7b782559f3ec5d89c9d0b836f505b2f95e008ed517fd6658f"
                 }
             ]
         },
@@ -203,8 +196,9 @@
             "name": "gsettings-desktop-schemas",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gsettings-desktop-schemas"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gsettings-desktop-schemas/3.23/gsettings-desktop-schemas-3.23.90.tar.xz",
+                    "sha256": "bed8a14286f887cd0ce88b9f23e4d8aa3adf78cf6808bda873545e50c5e925a5"
                 }
             ]
         },
@@ -213,8 +207,9 @@
             "config-opts": [ "--disable-static" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/git/dbus/dbus-glib"
+                    "type": "archive",
+                    "url": "https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.108.tar.gz",
+                    "sha256": "9f340c7e2352e9cdf113893ca77ca9075d9f8d5e81476bf2bf361099383c602c"
                 }
             ]
         },
@@ -223,8 +218,9 @@
             "config-opts": [ "--disable-static" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/json-glib"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/json-glib/1.2/json-glib-1.2.6.tar.xz",
+                    "sha256": "958fa59909ef28399c811aff29a5340b330b20660ca3586b4c5aa3a53997776c"
                 }
             ]
         },
@@ -251,34 +247,12 @@
             ]
         },
         {
-            "name": "wayland-updated",
-            "config-opts": ["--disable-static", "--disable-documentation"],
-            "cleanup-platform": [ "/bin/wayland-scanner" ],
-            "sources": [
-                 {
-                     "type": "archive",
-                     "url": "https://wayland.freedesktop.org/releases/wayland-1.11.0.tar.xz",
-                     "sha256": "9540925f7928becfdf5e3b84c70757f6589bf1ceef09bea78784d8e4772c0db0"
-                 }
-            ]
-        },
-        {
-            "name": "wayland-protocols-updated",
-            "cleanup-platform": [ "*" ],
-            "sources": [
-                 {
-                     "type": "archive",
-                     "url": "http://wayland.freedesktop.org/releases/wayland-protocols-1.7.tar.xz",
-                     "sha256": "635f2a937d318f1fecb97b54074ca211486e38af943868dd0fa82ea38d091c1f"
-                 }
-            ]
-        },
-        {
             "name": "pango",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/pango"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/pango/1.40/pango-1.40.4.tar.xz",
+                    "sha256": "f8fdc5fc66356dc4edf915048cceeee065a0e0cb70b3b2598f62bda320129a3e"
                 }
             ]
         },
@@ -286,8 +260,9 @@
             "name": "atk",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/atk"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/atk/2.23/atk-2.23.4.tar.xz",
+                    "sha256": "6888f4e902fc4727b1687ff512d5d087050f4c0d11035566484988cf698c2c1a"
                 }
             ]
         },
@@ -295,8 +270,9 @@
             "name": "at-spi2-core",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/at-spi2-core"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/at-spi2-core/2.23/at-spi2-core-2.23.92.tar.xz",
+                    "sha256": "ec1bc1d1d9234aa21cb48630c7a7ebaeb8e3c12a97a898eba2820be4d634366e"
                 }
             ]
         },
@@ -304,8 +280,9 @@
             "name": "at-spi2-atk",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/at-spi2-atk"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/at-spi2-atk/2.22/at-spi2-atk-2.22.0.tar.xz",
+                    "sha256": "e8bdedbeb873eb229eb08c88e11d07713ec25ae175251648ad1a9da6c21113c1"
                 }
             ]
         },
@@ -318,8 +295,9 @@
                             "--with-included-loaders=png,jpeg" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gdk-pixbuf"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.5.tar.xz",
+                    "sha256": "7ace06170291a1f21771552768bace072ecdea9bd4a02f7658939b9a314c40fc"
                 }
             ]
         },
@@ -328,8 +306,9 @@
             "config-opts": ["--disable-static"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libcroco"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libcroco/0.6/libcroco-0.6.11.tar.xz",
+                    "sha256": "132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056"
                 }
             ]
         },
@@ -339,9 +318,9 @@
             "ensure-writable": ["/lib/gdk-pixbuf-2.0/*/loaders.cache"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/librsvg",
-                    "branch": "librsvg-2-40"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.16.tar.xz",
+                    "sha256": "d48bcf6b03fa98f07df10332fb49d8c010786ddca6ab34cbba217684f533ff2e"
                 }
             ]
         },
@@ -351,9 +330,9 @@
                             "--with-xinput=xfree"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gtk+",
-                    "branch": "gtk-2-24"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.31.tar.xz",
+                    "sha256": "68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658"
                 }
             ]
         },
@@ -369,9 +348,9 @@
                              "--enable-wayland-backend" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gtk+",
-                    "branch": "gtk-3-22"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.10.tar.xz",
+                    "sha256": "352a90b3d09256d597cb2768ee5d685285ccc284ff22adf19df16753a829c554"
                 }
             ]
         },
@@ -379,31 +358,13 @@
             "name": "adwaita-icon-theme",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/adwaita-icon-theme"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/adwaita-icon-theme/3.23/adwaita-icon-theme-3.23.91.tar.xz",
+                    "sha256": "ee2286b118ef9ba49be5f4f897623b927db64201e645a2965df1a3278df0e522"
                 }
             ]
         },
-        {
-            "name": "gstreamer",
-            "config-opts": ["--enable-debug", "--disable-examples" ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/gstreamer/gstreamer"
-                }
-            ]
-        },
-        {
-            "name": "gstreamer-plugins-base",
-            "config-opts": ["--enable-experimental", "--enable-orc" ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/gstreamer/gst-plugins-base"
-                }
-            ]
-        },
+        /* gstreamer, gstreamer-plugins-base 1.10 are in freedesktop base */
         {
             "name": "cogl",
             "config-opts": [  "--enable-cairo=yes",
@@ -418,9 +379,9 @@
                               "--enable-cogl-gst" ],
             "sources": [
                 {
-                    "type": "git",
-                    "branch": "cogl-1.22",
-                    "url": "git://git.gnome.org/cogl"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/cogl/1.22/cogl-1.22.2.tar.xz",
+                    "sha256": "39a718cdb64ea45225a7e94f88dddec1869ab37a21b339ad058a9d898782c00d"
                 }
             ]
         },
@@ -431,8 +392,9 @@
                             "--enable-evdev-input" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/clutter"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/clutter/1.26/clutter-1.26.0.tar.xz",
+                    "sha256": "67514e7824b3feb4723164084b36d6ce1ae41cb3a9897e9f1a56c8334993ce06"
                 }
             ]
         },
@@ -440,9 +402,9 @@
             "name": "clutter-gst",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/clutter-gst",
-                    "branch": "clutter-gst-3.0"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/clutter-gst/3.0/clutter-gst-3.0.22.tar.xz",
+                    "sha256": "f1fc57fb32ea7e3d9234b58db35eb9ef3028cf0b266d85235f959edc0fe3dfd4"
                 }
             ]
         },
@@ -450,8 +412,9 @@
             "name": "clutter-gtk",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/clutter-gtk"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/clutter-gtk/1.8/clutter-gtk-1.8.2.tar.xz",
+                    "sha256": "da27d486325490ad3f65d2abf9413aeb8b4a8f7b559e4b2f73567a5344a26b94"
                 }
             ]
         },
@@ -480,8 +443,9 @@
                             "--with-default-visualizer=autoaudiosink" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/gstreamer/gst-plugins-good"
+                    "type": "archive",
+                    "url": "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.4.tar.xz",
+                    "sha256": "8a86c61434a8c44665365bd0b3557a040937d1f44bf69caee4e9ea816ce74d7e"
                 }
             ]
         },
@@ -504,8 +468,9 @@
             "config-opts": ["--enable-experimental", "--enable-orc" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/gstreamer/gst-plugins-bad"
+                    "type": "archive",
+                    "url": "http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.10.4.tar.xz",
+                    "sha256": "23ddae506b3a223b94869a0d3eea3e9a12e847f94d2d0e0b97102ce13ecd6966"
                 }
             ]
         },
@@ -513,8 +478,9 @@
             "name": "libcanberra",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.0pointer.net/libcanberra.git"
+                    "type": "archive",
+                    "url": "http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz",
+                    "sha256": "c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72"
                 }
             ]
         },
@@ -523,8 +489,13 @@
             "config-opts": ["--disable-static", "--disable-manpages"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libsecret"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libsecret/0.18/libsecret-0.18.5.tar.xz",
+                    "sha256": "9ce7bd8dd5831f2786c935d82638ac428fa085057cc6780aba0e39375887ccb3"
+                },
+                {
+                    "type": "shell",
+                    "commands": ["autoreconf -f"]
                 }
             ]
         },
@@ -533,8 +504,9 @@
             "config-opts": ["--disable-static"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libnotify"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libnotify/0.7/libnotify-0.7.6.tar.xz",
+                    "sha256": "0ef61ca400d30e28217979bfa0e73a7406b19c32dd76150654ec5b2bdf47d837"
                 }
             ]
         },
@@ -545,8 +517,9 @@
                              "--disable-avahi", "--disable-documentation", "--disable-admin" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gvfs"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gvfs/1.31/gvfs-1.31.92.tar.xz",
+                    "sha256": "87388291bdcd6e6b810c9d35297e8ff7eedc82dfaa32cfc6fa413e5161d999b4"
                 }
             ]
         },
@@ -573,8 +546,9 @@
             "config-opts": ["--disable-static", "--enable-fast-install"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gcab"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gcab/0.7/gcab-0.7.tar.xz",
+                    "sha256": "a16e5ef88f1c547c6c8c05962f684ec127e078d302549f3dfd2291e167d4adef"
                 }
             ]
         },
@@ -582,8 +556,9 @@
             "name": "gnome-themes-standard",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gnome-themes-standard"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-themes-standard/3.22/gnome-themes-standard-3.22.2.tar.xz",
+                    "sha256": "b34516cd59b873c187c1897c25bac3b9ce2d30a472f1fd7ae9d7105d93e17da5"
                 }
             ]
         },
@@ -659,8 +634,9 @@
             "config-opts": [  "--disable-Werror"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gjs"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gjs/1.47/gjs-1.47.92.tar.xz",
+                    "sha256": "da02ea6b75459a9fd10e7d664c94befcdfa6e3c79138f54b5869b27b8a2da9cb"
                 }
             ]
         },
@@ -710,8 +686,9 @@
                             "--without-pcre2"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/vte"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/vte/0.47/vte-0.47.90.tar.xz",
+                    "sha256": "46c6b8feac65d54de99e3f03b8d395d3e66f22efdba8b80ad6954757ea832784"
                 }
             ]
         },
@@ -756,8 +733,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.webkitgtk.org/releases/webkitgtk-2.15.90.tar.xz",
-                    "sha256": "d9c13cf5b1db9e398d9d6a55e1b272a85e86bd00650cc068a9744864f48996ba"
+                    "url": "https://www.webkitgtk.org/releases/webkitgtk-2.15.92.tar.xz",
+                    "sha256": "2aede64671a2ae5576bb43960d199d35d5a4e3e9b725d4d34a1004fc98f2eadc"
                 },
                 {
                     "type": "patch",
@@ -771,8 +748,9 @@
             "config-opts": ["--disable-webkitgtk" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/zenity"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/zenity/3.22/zenity-3.22.0.tar.xz",
+                    "sha256": "1ecdfa1071d383b373b8135954b3ec38d402d671dcd528e69d144aff36a0e466"
                 }
             ]
         },
@@ -820,8 +798,9 @@
             },
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/pygobject"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/pygobject/3.22/pygobject-3.22.0.tar.xz",
+                    "sha256": "08b29cfb08efc80f7a8630a2734dec65a99c1b59f1e5771c671d2e4ed8a5cbe7"
                 }
             ]
         },
@@ -834,8 +813,9 @@
             },
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://anongit.freedesktop.org/gstreamer/gst-python"
+                    "type": "archive",
+                    "url": "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.10.4.tar.xz",
+                    "sha256": "59508174b8bc86c05290aa9a7c5d480ac556a6f36306ddbc1d0eacf4f7868212"
                 }
             ]
         },
@@ -845,8 +825,13 @@
             "cleanup-platform": [ "/libexec", "/bin", "/share/applications", "/share/dbus-1/services" ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gcr"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gcr/3.20/gcr-3.20.0.tar.xz",
+                    "sha256": "90572c626d8a708225560c42b4421f7941315247fa1679d4ef569bde7f4bb379"
+                },
+                {
+                    "type": "shell",
+                    "commands": ["autoreconf -f"]
                 }
             ]
         },
