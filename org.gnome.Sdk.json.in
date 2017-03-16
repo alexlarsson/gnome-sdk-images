@@ -138,8 +138,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gobject-introspection/1.51/gobject-introspection-1.51.3.tar.xz",
-                    "sha256": "80acbffd89452b8e30f8a50f46d64517a866ca63157bd1fa78bedb69f9de11c3"
+                    "url": "https://download.gnome.org/sources/gobject-introspection/1.51/gobject-introspection-1.51.5.tar.xz",
+                    "sha256": "62c31bd10a8a32b51f43b8e6ec8784ad7a029ccdf06beb3f272d468dfa7bbdd2"
                 }
             ]
         },
