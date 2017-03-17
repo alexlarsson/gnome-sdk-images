@@ -73,7 +73,6 @@
         },
         {
             "name": "yelp-xsl",
-            "cleanup-platform": [ "*" ],
             "config-opts": ["--disable-doc"],
             "sources": [
                 {
