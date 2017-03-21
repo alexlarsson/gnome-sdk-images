@@ -40,7 +40,8 @@
                  "*.la", "*.a"],
     "cleanup-commands": [ "touch -d @0 /usr/share/fonts",
                           "touch -d @0 /usr/share/fonts/*",
-                          "fc-cache -fs"
+                          "fc-cache -fs",
+                          "update-desktop-database"
                         ],
     "cleanup-platform": [ "/include",
                           "/share/aclocal",
