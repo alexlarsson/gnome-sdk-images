@@ -368,8 +368,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/adwaita-icon-theme/3.23/adwaita-icon-theme-3.23.91.tar.xz",
-                    "sha256": "ee2286b118ef9ba49be5f4f897623b927db64201e645a2965df1a3278df0e522"
+                    "url": "https://download.gnome.org/sources/adwaita-icon-theme/3.24/adwaita-icon-theme-3.24.0.tar.xz",
+                    "sha256": "ccf79ff3bd340254737ce4d28b87f0ccee4b3358cd3cd5cd11dc7b42f41b272a"
                 }
             ]
         },
