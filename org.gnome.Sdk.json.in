@@ -718,7 +718,7 @@
 		    "arm" : {
                         "config-opts" : [
                             "-DCMAKE_SYSTEM_PROCESSOR=arm",
-                            "-DENABLE_FTL_JIT=OFF"
+                            "-DENABLE_JIT=OFF"
 			]
 		    }
                 }
