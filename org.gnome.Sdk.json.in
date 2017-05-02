@@ -52,7 +52,9 @@
     "cleanup-commands": [ "touch -d @0 /usr/share/fonts",
                           "touch -d @0 /usr/share/fonts/*",
                           "fc-cache -fs",
-                          "update-desktop-database"
+                          "update-desktop-database",
+                          "ldconfig -C /usr/etc/ld.so.cache",
+                          "cp -d /usr/lib/extra-links/* /usr/lib/ || true"
                         ],
     "cleanup-platform": [ "/include",
                           "/share/aclocal",
@@ -64,7 +66,8 @@
     "cleanup-platform-commands": [ "touch -d @0 /usr/share/fonts",
                                    "touch -d @0 /usr/share/fonts/*",
                                    "fc-cache -fs",
-                                   "ldconfig -C /usr/etc/ld.so.cache"
+                                   "ldconfig -C /usr/etc/ld.so.cache",
+                                   "cp -d /usr/lib/extra-links/* /usr/lib/ || true"
                                  ],
     "build-options" : {
         "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
