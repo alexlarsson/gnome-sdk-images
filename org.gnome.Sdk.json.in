@@ -638,6 +638,14 @@
                     "path": "mozjs38-1269317.patch"
                 },
                 {
+                    "type": "patch",
+                    "path": "mozjs38-fix-64bit-archs.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "mozjs38-1143022.patch"
+                },
+                {
                     "type": "shell",
                     "commands": [
                         /* Work around mtime issue in configure and configure.ac (see bug 778802) */
