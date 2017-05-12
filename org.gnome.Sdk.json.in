@@ -289,8 +289,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz",
-                    "sha256": "6179f314fbd903b3cd3477a57b6b1fecca88b76ce769ce777fda0d3e5f61afcd"
+                    "url": "https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.1.tar.xz",
+                    "sha256": "1e90d064b937aacfe79a96232ac7e63d28d716e85bd9ff4333f865305a959b5b"
                 }
             ]
         },
@@ -299,8 +299,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/at-spi2-atk/2.24/at-spi2-atk-2.24.0.tar.xz",
-                    "sha256": "022d68497c05cc65ba7cd2b166132de9a160c8d90e9200b5faa473ef7e784c61"
+                    "url": "https://download.gnome.org/sources/at-spi2-atk/2.24/at-spi2-atk-2.24.1.tar.xz",
+                    "sha256": "60dc90ac4f74b8ffe96a9363c25208a443b381bacecfefea6de549f20ed6957d"
                 }
             ]
         },
