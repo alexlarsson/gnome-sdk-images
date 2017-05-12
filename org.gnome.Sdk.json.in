@@ -666,8 +666,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gjs/1.48/gjs-1.48.0.tar.xz",
-                    "sha256": "ed7db93e12709fe43b2fbe1e157331a0b1dcf3e0d19b81ccebd2d96bfcbe9525"
+                    "url": "https://download.gnome.org/sources/gjs/1.48/gjs-1.48.3.tar.xz",
+                    "sha256": "669b7d78ad98390a762eec50d7cc637e25f196d986c0200d9f1c3a0e0cd90f33"
                 }
             ]
         },
