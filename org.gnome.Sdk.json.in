@@ -337,8 +337,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.16.tar.xz",
-                    "sha256": "d48bcf6b03fa98f07df10332fb49d8c010786ddca6ab34cbba217684f533ff2e"
+                    "url": "https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.17.tar.xz",
+                    "sha256": "e6f6c5cbecc405bb945c7cd15061276035ae3173bbb3bb25e8a916779c7f69cc"
                 }
             ]
         },
