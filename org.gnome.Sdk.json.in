@@ -126,52 +126,6 @@
             ]
         },
         {
-            "name": "glib",
-            "config-opts": [ "--with-pcre=system" ],
-            "ensure-writable": [ "/share/glib-2.0/codegen/*.pyc" ],
-            "cleanup-platform": [ "/share/glib-2.0/codegen",
-                                  "/bin/gdbus-codegen",
-                                  "/bin/glib-*",
-                                  "/bin/gobject-query",
-                                  "/bin/gresource",
-                                  "/bin/gtester*"
-                               ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/glib/2.52/glib-2.52.2.tar.xz",
-                    "sha256": "f00e5d9e2a2948b1da25fcba734a6b7a40f556de8bc9f528a53f6569969ac5d0"
-                }
-            ]
-        },
-        {
-            "name": "gobject-introspection",
-            "config-opts": ["--disable-static" ],
-            "ensure-writable": [ "/lib/gobject-introspection/giscanner/*.pyc",
-                                 "/lib/gobject-introspection/giscanner/*/*.pyc" ],
-            "cleanup-platform": ["/lib/gobject-introspection/giscanner",
-                                 "/share/gobject-introspection/giscanner",
-                                 "/bin"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gobject-introspection/1.52/gobject-introspection-1.52.1.tar.xz",
-                    "sha256": "2ed0c38d52fe1aa6fc4def0c868fe481cb87b532fc694756b26d6cfab29faff4"
-                }
-            ]
-        },
-        {
-            "name": "glib-networking",
-            "config-opts": ["--disable-static", "--with-libproxy"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/glib-networking/2.50/glib-networking-2.50.0.tar.xz",
-                    "sha256": "3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee"
-                }
-            ]
-        },
-        {
             "name": "vala",
             "cleanup-platform": [ "*" ],
             "config-opts": [ "--enable-vapigen", "--enable-unversioned" ],
@@ -243,106 +197,6 @@
             ]
         },
         {
-            "name": "libdatrie",
-            "config-opts": ["--disable-static"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.9.tar.xz",
-                    "sha256": "d980713e7ad8e19cf3b54ee0173782b94332af8e7e4e936dde01d2cd72e1da1d"
-                }
-            ]
-        },
-        {
-            "name": "libthai",
-            "config-opts": ["--disable-static"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.22.tar.xz",
-                    "sha256": "bdb291dcc3a6784e86b1b342ec75005e9ab487f8c1decc7c3e7d18d1bbc9b7b7"
-                }
-            ]
-        },
-        {
-            "name": "pango",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/pango/1.40/pango-1.40.5.tar.xz",
-                    "sha256": "24748140456c42360b07b2c77a1a2e1216d07c056632079557cd4e815b9d01c9"
-                }
-            ]
-        },
-        {
-            "name": "atk",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/atk/2.24/atk-2.24.0.tar.xz",
-                    "sha256": "bb2daa9a808c73a7a79d2983f333e0ba74be42fc51e3ba1faf2551a636487a49"
-                }
-            ]
-        },
-        {
-            "name": "at-spi2-core",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.1.tar.xz",
-                    "sha256": "1e90d064b937aacfe79a96232ac7e63d28d716e85bd9ff4333f865305a959b5b"
-                }
-            ]
-        },
-        {
-            "name": "at-spi2-atk",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/at-spi2-atk/2.24/at-spi2-atk-2.24.1.tar.xz",
-                    "sha256": "60dc90ac4f74b8ffe96a9363c25208a443b381bacecfefea6de549f20ed6957d"
-                }
-            ]
-        },
-        {
-            "name": "gdk-pixbuf",
-            "ensure-writable": ["/lib/gdk-pixbuf-2.0/*/loaders.cache"],
-            "config-opts": ["--disable-static",
-                            "--without-x11",
-                            "--without-libjasper",
-                            "--with-included-loaders=png,jpeg" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gdk-pixbuf/2.36/gdk-pixbuf-2.36.6.tar.xz",
-                    "sha256": "455eb90c09ed1b71f95f3ebfe1c904c206727e0eeb34fc94e5aaf944663a820c"
-                }
-            ]
-        },
-        {
-            "name": "libcroco",
-            "config-opts": ["--disable-static"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/libcroco/0.6/libcroco-0.6.11.tar.xz",
-                    "sha256": "132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056"
-                }
-            ]
-        },
-        {
-            "name": "librsvg",
-            "config-opts": ["--disable-static"],
-            "ensure-writable": ["/lib/gdk-pixbuf-2.0/*/loaders.cache"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.17.tar.xz",
-                    "sha256": "e6f6c5cbecc405bb945c7cd15061276035ae3173bbb3bb25e8a916779c7f69cc"
-                }
-            ]
-        },
-        {
             "name": "gtk2",
             "config-opts": ["--disable-man",
                             "--with-xinput=xfree"],
@@ -351,29 +205,6 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.31.tar.xz",
                     "sha256": "68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658"
-                }
-            ]
-        },
-        {
-            "name": "gtk3",
-            "config-opts": [ "--enable-xkb",
-                             "--enable-xinerama",
-                             "--enable-xrandr",
-                             "--enable-xfixes",
-                             "--enable-xcomposite",
-                             "--enable-xdamage",
-                             "--enable-x11-backend",
-                             "--enable-wayland-backend" ],
-            "cleanup-platform": [
-                "/bin/gtk3-*",
-                "/bin/gtk-builder-tool",
-                "/bin/gtk-encode-symbolic-svg"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.15.tar.xz",
-                    "sha256": "c8a012c2a99132629ab043f764a2b7cb6388483a015cd15c7a4288bec3590fdb"
                 }
             ]
         },
