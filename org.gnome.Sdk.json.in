@@ -153,11 +153,21 @@
             "name": "vala",
             "cleanup-platform": [ "*" ],
             "config-opts": [ "--enable-vapigen", "--enable-unversioned" ],
+            "rm-configure": true,
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/vala/0.38/vala-0.38.0.tar.xz",
                     "sha256": "2d88f3961ea64c17f2fe14ad61db9129dd42b4f6de41432ad6a1a29ffe05c479"
+                },
+                {
+                    "type": "patch",
+                    "path": "vala-no-valadoc.patch"
+                },
+                {
+                    "type": "script",
+                    "commands": [ "autoreconf -v" ],
+                    "dest-filename": "autogen.sh"
                 }
             ]
         },
