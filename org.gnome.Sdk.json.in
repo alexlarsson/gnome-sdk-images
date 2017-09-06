@@ -297,7 +297,38 @@
                 }
             ]
         },
-        /* gstreamer, gstreamer-plugins-base 1.10 are in freedesktop base */
+        {
+            "name": "gstreamer",
+            "config-opts": ["--enable-debug", "--disable-examples" ],
+            "sources": [
+                 {
+                     "type": "archive",
+                     "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.2.tar.xz",
+                     "sha256": "9fde3f39a2ea984f9e07ce09250285ce91f6e3619d186889f75b5154ecf994ba"
+                 }
+            ]
+        },
+        {
+            "name": "opus",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/xiph/opus/releases/download/v1.1.2/opus-1.1.2.tar.gz",
+                    "sha256": "0e290078e31211baa7b5886bcc8ab6bc048b9fc83882532da4a1a45e58e907fd"
+                }
+            ]
+        },
+        {
+            "name": "gstreamer-plugins-base",
+            "config-opts": ["--enable-experimental", "--enable-orc" ],
+            "sources": [
+                 {
+                     "type": "archive",
+                     "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.2.tar.xz",
+                     "sha256": "5067dce3afe197a9536fea0107c77213fab536dff4a213b07fc60378d5510675"
+                 }
+            ]
+        },
         {
             "name": "cogl",
             "config-opts": [  "--enable-cairo=yes",
@@ -353,21 +384,8 @@
         },
         {
             "name": "gstreamer-plugins-good",
-            "build-options" : {
-                "arch" : {
-                    "i386" : {
-                        "config-opts" : [
-                            "--build=i586-unknown-linux-gnu"
-                        ]
-                    },
-		    "arm" : {
-                        "config-opts" : [
-                            "--build=arm-unknown-linux-gnueabi"
-			]
-		    }
-                }
-            },
-            "config-opts": ["--enable-experimental", "--enable-orc" ,
+            "config-opts": ["--enable-experimental",
+                            "--enable-orc" ,
                             "--disable-monoscope",
                             "--disable-aalib",
                             "--enable-cairo",
@@ -375,36 +393,34 @@
                             "--disable-jack",
                             "--with-default-visualizer=autoaudiosink" ],
             "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.4.tar.xz",
-                    "sha256": "8a86c61434a8c44665365bd0b3557a040937d1f44bf69caee4e9ea816ce74d7e"
-                }
+                 {
+                     "type": "archive",
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.2.tar.xz",
+                     "sha256": "5591ee7208ab30289a30658a82b76bf87169c927572d9b794f3a41ed48e1ee96"
+                 }
             ]
         },
         {
             "name": "gstreamer-plugins-bad",
-            "build-options" : {
-                "arch" : {
-                    "i386" : {
-                        "config-opts" : [
-                            "--build=i586-unknown-linux-gnu"
-                        ]
-                    },
-		    "arm" : {
-                        "config-opts" : [
-                            "--build=arm-unknown-linux-gnueabi"
-			]
-		    }
-                }
-            },
             "config-opts": ["--enable-experimental", "--enable-orc" ],
             "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.10.4.tar.xz",
-                    "sha256": "23ddae506b3a223b94869a0d3eea3e9a12e847f94d2d0e0b97102ce13ecd6966"
-                }
+                 {
+                     "type": "archive",
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.2.tar.xz",
+                     "sha256": "9c2c7edde4f59d74eb414e0701c55131f562e5c605a3ce9b091754f106c09e37"
+                 }
+            ]
+        },
+        {
+            "name": "gstreamer-plugins-ugly",
+            "config-opts": ["--disable-asfdemux", "--disable-dvdlpcmdec", "--disable-dvdsub",
+                            "--disable-xingmux", "--disable-realmedia"],
+            "sources": [
+                 {
+                     "type": "archive",
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.12.2.tar.xz",
+                     "sha256": "1cc3942bbf3ea87da3e35437d4e014e991b103db22a6174f62a98c89c3f5f466"
+                 }
             ]
         },
         {
@@ -688,8 +704,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.10.4.tar.xz",
-                    "sha256": "59508174b8bc86c05290aa9a7c5d480ac556a6f36306ddbc1d0eacf4f7868212"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.12.2.tar.xz",
+                    "sha256": "f4cc32ad46a653e1ae2f27ac2a16078b00075c9106b2784a1a8d1f31c5069e47"
                 }
             ]
         },
