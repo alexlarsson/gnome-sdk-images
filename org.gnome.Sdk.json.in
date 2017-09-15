@@ -474,7 +474,7 @@
         },
         {
             "name": "enchant",
-            "config-opts": ["--disable-static", "--with-myspell-dir=/usr/share/myspell"],
+            "config-opts": ["--disable-static", "--with-myspell-dir=/usr/share/hunspell"],
             "sources": [
                 {
                     "type": "archive",
