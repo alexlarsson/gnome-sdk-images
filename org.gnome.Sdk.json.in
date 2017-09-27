@@ -121,8 +121,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/vala/0.36/vala-0.36.3.tar.xz",
-                    "sha256": "ac8a4ecd01f62d0c5f62ba50b7290d8c5a1edb308eec772a65b8e79be68f061c"
+                    "url": "https://download.gnome.org/sources/vala/0.36/vala-0.36.5.tar.xz",
+                    "sha256": "7ae7eb8a976005afecf4f647b9043f2bb11e8b263c7fe9e905ab740b3d8a9f40"
                 }
             ]
         },
