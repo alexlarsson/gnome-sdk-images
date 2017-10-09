@@ -129,8 +129,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/glib/2.54/glib-2.54.0.tar.xz",
-                    "sha256": "fe22998ff0394ec31e6e5511c379b74011bee61a4421bca7fcab223dfbe0fc6a"
+                    "url": "https://download.gnome.org/sources/glib/2.54/glib-2.54.1.tar.xz",
+                    "sha256": "50c01b1419324f10fbf9b9709ec2164b18586968bdce7540583bf32302cf47a3"
                  }
             ]
         },
@@ -145,8 +145,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "https://download.gnome.org/sources/gobject-introspection/1.54/gobject-introspection-1.54.0.tar.xz",
-                     "sha256": "67e76742ce78821bce8a613183368222919b24e2dcf5fe26f17726c11c422ed7"
+                     "url": "https://download.gnome.org/sources/gobject-introspection/1.54/gobject-introspection-1.54.1.tar.xz",
+                     "sha256": "b88ded5e5f064ab58a93aadecd6d58db2ec9d970648534c63807d4f9a7bb877e"
                  }
             ]
         },
@@ -158,8 +158,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/vala/0.38/vala-0.38.1.tar.xz",
-                    "sha256": "1035344f3ba50a572894c0aed3f794dd0efb9f08fce1c1d0cc537936e9a05084"
+                    "url": "https://download.gnome.org/sources/vala/0.38/vala-0.38.2.tar.xz",
+                    "sha256": "20d5d9c4fbd17877969dbce27e6428da67138e116b1717cc07b5b75fd6ab78a7"
                 },
                 {
                     "type": "patch",
@@ -179,8 +179,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/dconf/0.26/dconf-0.26.0.tar.xz",
-                    "sha256": "8683292eb31a3fae31e561f0a4220d8569b0f6d882e9958b68373f9043d658c9"
+                    "url": "https://download.gnome.org/sources/dconf/0.26/dconf-0.26.1.tar.xz",
+                    "sha256": "d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535"
                 },
                 {
                     "type": "patch",
@@ -293,8 +293,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/adwaita-icon-theme/3.25/adwaita-icon-theme-3.25.91.tar.xz",
-                    "sha256": "d64193c8f3f9e98bca0275cc384aa23d3ae493cd1a5228ac7d2016a2ee48f99b"
+                    "url": "https://download.gnome.org/sources/adwaita-icon-theme/3.26/adwaita-icon-theme-3.26.0.tar.xz",
+                    "sha256": "9cad85de19313f5885497aceab0acbb3f08c60fcd5fa5610aeafff37a1d12212"
                 }
             ]
         },
@@ -304,8 +304,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.2.tar.xz",
-                     "sha256": "9fde3f39a2ea984f9e07ce09250285ce91f6e3619d186889f75b5154ecf994ba"
+                     "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.3.tar.xz",
+                     "sha256": "d388f492440897f02b01eebb033ca2d41078a3d85c0eddc030cdea5a337a216e"
                  }
             ],
             "build-commands": [
@@ -329,8 +329,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.2.tar.xz",
-                     "sha256": "5067dce3afe197a9536fea0107c77213fab536dff4a213b07fc60378d5510675"
+                     "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.3.tar.xz",
+                     "sha256": "d3d37b8489d37fa0018973d850bd2067b98af335fef2fa543ee7d40359e3cea5"
                  }
             ]
         },
@@ -400,8 +400,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.2.tar.xz",
-                     "sha256": "5591ee7208ab30289a30658a82b76bf87169c927572d9b794f3a41ed48e1ee96"
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz",
+                     "sha256": "13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03"
                  }
             ]
         },
@@ -411,8 +411,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.2.tar.xz",
-                     "sha256": "9c2c7edde4f59d74eb414e0701c55131f562e5c605a3ce9b091754f106c09e37"
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.3.tar.xz",
+                     "sha256": "36d059761852bed0f1a7fcd3ef64a8aeecab95d2bca53cd6aa0f08054b1cbfec"
                  }
             ]
         },
@@ -423,8 +423,8 @@
             "sources": [
                  {
                      "type": "archive",
-                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.12.2.tar.xz",
-                     "sha256": "1cc3942bbf3ea87da3e35437d4e014e991b103db22a6174f62a98c89c3f5f466"
+                     "url": "http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.12.3.tar.xz",
+                     "sha256": "e88ca584c94ea78eeecbf3af00ef7f134b66bdee7408aa4aa6c547235e060052"
                  }
             ]
         },
@@ -472,8 +472,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gvfs/1.34/gvfs-1.34.0.tar.xz",
-                    "sha256": "79fb4fd9a671333efc6f3c88dd5d1589481390bc3978b03b6de89599a62e015a"
+                    "url": "https://download.gnome.org/sources/gvfs/1.34/gvfs-1.34.1.tar.xz",
+                    "sha256": "7ef9b2aec234004271a575118a0e35b3c36ce3309e5f9da109635651843372b4"
                 }
             ]
         },
@@ -528,7 +528,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ptomato/mozjs.git",
-                    "commit": "bb19aaea0a0f77827369242969f0eaa243e62472"
+                    "commit": "83e3cd609f8bca08105d6665c3a4d5af28234004"
                 }
             ],
             "post-install": [
@@ -542,8 +542,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gjs/1.50/gjs-1.50.0.tar.xz",
-                    "sha256": "2d529d315fc926995c5174d0ac45dacd604e52b9213ba3c4cd77f30bc4aec945"
+                    "url": "https://download.gnome.org/sources/gjs/1.50/gjs-1.50.1.tar.xz",
+                    "sha256": "41519fd63978745d17dbccb688a55f1850a7ba72f3c86274ca985d88dbff9fdf"
                 }
             ]
         },
@@ -561,8 +561,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/vte/0.50/vte-0.50.0.tar.xz",
-                    "sha256": "b893ae819c77857e4f4b059e7b4b8a9a49efa397cf548d91e8e02ebe30f09656"
+                    "url": "https://download.gnome.org/sources/vte/0.50/vte-0.50.1.tar.xz",
+                    "sha256": "cf1708e3e573160e1db107014b3ef70888fefe6b668373fed70e8d1cac45a8c2"
                 }
             ]
         },
@@ -662,8 +662,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/pygobject/3.25/pygobject-3.25.1.tar.xz",
-                    "sha256": "8728bb27078f7ee45c431ccbc237a58fb6d6eb1b7a0668bbe29eb107267bd736"
+                    "url": "https://download.gnome.org/sources/pygobject/3.26/pygobject-3.26.0.tar.xz",
+                    "sha256": "7411acd600c8cb6f00d2125afa23303f2104e59b83e0a4963288dbecc3b029fa"
                 }
             ]
         },
@@ -677,8 +677,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.12.2.tar.xz",
-                    "sha256": "f4cc32ad46a653e1ae2f27ac2a16078b00075c9106b2784a1a8d1f31c5069e47"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.12.3.tar.xz",
+                    "sha256": "c3f529dec1294633132690806703b80bad5752eff482eaf81f209c2aba012ba7"
                 }
             ]
         },
