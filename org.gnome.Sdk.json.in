@@ -528,7 +528,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/ptomato/mozjs.git",
-                    "commit": "83e3cd609f8bca08105d6665c3a4d5af28234004"
+                    "commit": "bb19aaea0a0f77827369242969f0eaa243e62472"
                 }
             ],
             "post-install": [
