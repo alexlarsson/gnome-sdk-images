@@ -105,7 +105,7 @@
             "name": "cantarell-fonts",
             "config-opts": [ "--disable-source-rebuild"],
             "post-install": [
-                "ln -s /usr/share/fontconfig/conf.avail/31-cantarell.conf /etc/fonts/conf.d/31-cantarell.conf"
+                "ln -s  /usr/share/fontconfig/conf.avail/31-cantarell.conf /etc/fonts/conf.d/31-cantarell.conf"
             ],
             "sources": [
                 {
