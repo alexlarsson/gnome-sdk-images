@@ -522,6 +522,15 @@
         },
         {
             "name": "mozjs52",
+            "build-options": {
+                "arch" : {
+                    "arm" : {
+                        /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1337263. See https://bugzilla.gnome.org/show_bug.cgi?id=790097 */
+                        "cflags": "-fno-schedule-insns",
+                        "cxxflags": "-fno-schedule-insns"
+                    }
+                }
+            },
             "config-opts": [  "--enable-posix-nspr-emulation",
                               "--with-system-zlib",
                               "--without-system-icu",
