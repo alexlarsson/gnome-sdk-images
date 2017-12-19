@@ -621,8 +621,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://webkitgtk.org/releases/webkitgtk-2.18.3.tar.xz",
-                    "sha256": "e15420e1616a6f70f321541d467af5ca285bff66b1e0fa68a01df3ccf1b18f9e"
+                    "url": "https://webkitgtk.org/releases/webkitgtk-2.18.4.tar.xz",
+                    "sha256": "87b6bb9a6065b949ecbe6191313c43e57ad28efdf1f2b5e763405093520632b8"
                 },
                 {
                     "type": "patch",
