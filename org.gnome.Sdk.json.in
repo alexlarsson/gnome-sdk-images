@@ -557,8 +557,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://webkitgtk.org/releases/webkitgtk-2.16.6.tar.xz",
-                    "sha256": "fc23650df953123c59b9c0edf3855e7bd55bd107820997fc72375811e1ea4b21"
+                    "url": "https://webkitgtk.org/releases/webkitgtk-2.18.4.tar.xz",
+                    "sha256": "87b6bb9a6065b949ecbe6191313c43e57ad28efdf1f2b5e763405093520632b8"
                 },
                 {
                     "type": "patch",
