@@ -1,0 +1,143 @@
+From c42fc82666ef82dccc8353722f08a8dba3ab0ce0 Mon Sep 17 00:00:00 2001
+From: Michael Saboff <msaboff@apple.com>
+Date: Thu, 4 Jan 2018 01:53:41 +0000
+Subject: [PATCH 1/2] Disable SharedArrayBuffers from Web API
+
+https://bugs.webkit.org/show_bug.cgi?id=181266
+
+Reviewed by Saam Barati.
+
+Source/JavaScriptCore:
+
+Removed SharedArrayBuffer prototype and structure from GlobalObject creation
+to disable.
+
+* runtime/JSGlobalObject.cpp:
+(JSC::JSGlobalObject::init):
+(JSC::JSGlobalObject::visitChildren):
+* runtime/JSGlobalObject.h:
+(JSC::JSGlobalObject::arrayBufferPrototype const):
+(JSC::JSGlobalObject::arrayBufferStructure const):
+
+Source/WTF:
+
+Turn off SharedArrayBuffers using a compile time flag ENABLE_SHARED_ARRAY_BUFFER.
+
+* wtf/Platform.h:
+
+git-svn-id: http://svn.webkit.org/repository/webkit/trunk@226386 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ Source/JavaScriptCore/runtime/JSGlobalObject.cpp |  9 ++++++++-
+ Source/JavaScriptCore/runtime/JSGlobalObject.h   | 12 ++++++++++++
+ Source/WTF/wtf/Platform.h                        |  3 +++
+ 3 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/Source/JavaScriptCore/runtime/JSGlobalObject.cpp b/Source/JavaScriptCore/runtime/JSGlobalObject.cpp
+index 2137b41..a3c18d0 100644
+--- a/Source/JavaScriptCore/runtime/JSGlobalObject.cpp
++++ b/Source/JavaScriptCore/runtime/JSGlobalObject.cpp
+@@ -574,8 +574,10 @@ void JSGlobalObject::init(VM& vm)
+     
+     m_arrayBufferPrototype.set(vm, this, JSArrayBufferPrototype::create(vm, this, JSArrayBufferPrototype::createStructure(vm, this, m_objectPrototype.get()), ArrayBufferSharingMode::Default));
+     m_arrayBufferStructure.set(vm, this, JSArrayBuffer::createStructure(vm, this, m_arrayBufferPrototype.get()));
++#if ENABLE(SHARED_ARRAY_BUFFER)
+     m_sharedArrayBufferPrototype.set(vm, this, JSArrayBufferPrototype::create(vm, this, JSArrayBufferPrototype::createStructure(vm, this, m_objectPrototype.get()), ArrayBufferSharingMode::Shared));
+     m_sharedArrayBufferStructure.set(vm, this, JSArrayBuffer::createStructure(vm, this, m_sharedArrayBufferPrototype.get()));
++#endif
+ 
+     m_iteratorPrototype.set(vm, this, IteratorPrototype::create(vm, this, IteratorPrototype::createStructure(vm, this, m_objectPrototype.get())));
+     m_generatorPrototype.set(vm, this, GeneratorPrototype::create(vm, this, GeneratorPrototype::createStructure(vm, this, m_iteratorPrototype.get())));
+@@ -620,10 +622,11 @@ m_ ## properName ## Structure.set(vm, this, instanceType::createStructure(vm, th
+     
+     JSArrayBufferConstructor* arrayBufferConstructor = JSArrayBufferConstructor::create(vm, JSArrayBufferConstructor::createStructure(vm, this, m_functionPrototype.get()), m_arrayBufferPrototype.get(), m_speciesGetterSetter.get(), ArrayBufferSharingMode::Default);
+     m_arrayBufferPrototype->putDirectWithoutTransition(vm, vm.propertyNames->constructor, arrayBufferConstructor, DontEnum);
++#if ENABLE(SHARED_ARRAY_BUFFER)
+     JSArrayBufferConstructor* sharedArrayBufferConstructor = nullptr;
+     sharedArrayBufferConstructor = JSArrayBufferConstructor::create(vm, JSArrayBufferConstructor::createStructure(vm, this, m_functionPrototype.get()), m_sharedArrayBufferPrototype.get(), m_speciesGetterSetter.get(), ArrayBufferSharingMode::Shared);
+     m_sharedArrayBufferPrototype->putDirectWithoutTransition(vm, vm.propertyNames->constructor, sharedArrayBufferConstructor, DontEnum);
+-    
++#endif
+ #define CREATE_CONSTRUCTOR_FOR_SIMPLE_TYPE(capitalName, lowerName, properName, instanceType, jsName, prototypeBase) \
+ capitalName ## Constructor* lowerName ## Constructor = capitalName ## Constructor::create(vm, capitalName ## Constructor::createStructure(vm, this, m_functionPrototype.get()), m_ ## lowerName ## Prototype.get(), m_speciesGetterSetter.get()); \
+ m_ ## lowerName ## Prototype->putDirectWithoutTransition(vm, vm.propertyNames->constructor, lowerName ## Constructor, DontEnum); \
+@@ -686,7 +689,9 @@ m_ ## lowerName ## Prototype->putDirectWithoutTransition(vm, vm.propertyNames->c
+     putDirectWithoutTransition(vm, vm.propertyNames->builtinNames().ArrayPrivateName(), arrayConstructor, DontEnum | DontDelete | ReadOnly);
+ 
+     putDirectWithoutTransition(vm, vm.propertyNames->ArrayBuffer, arrayBufferConstructor, DontEnum);
++#if ENABLE(SHARED_ARRAY_BUFFER)
+     putDirectWithoutTransition(vm, vm.propertyNames->SharedArrayBuffer, sharedArrayBufferConstructor, DontEnum);
++#endif
+ 
+ #define PUT_CONSTRUCTOR_FOR_SIMPLE_TYPE(capitalName, lowerName, properName, instanceType, jsName, prototypeBase) \
+ putDirectWithoutTransition(vm, vm.propertyNames-> jsName, lowerName ## Constructor, DontEnum); \
+@@ -1288,8 +1293,10 @@ void JSGlobalObject::visitChildren(JSCell* cell, SlotVisitor& visitor)
+     
+     visitor.append(thisObject->m_arrayBufferPrototype);
+     visitor.append(thisObject->m_arrayBufferStructure);
++#if ENABLE(SHARED_ARRAY_BUFFER)
+     visitor.append(thisObject->m_sharedArrayBufferPrototype);
+     visitor.append(thisObject->m_sharedArrayBufferStructure);
++#endif
+ 
+ #define VISIT_SIMPLE_TYPE(CapitalName, lowerName, properName, instanceType, jsName, prototypeBase) \
+     visitor.append(thisObject->m_ ## lowerName ## Prototype); \
+diff --git a/Source/JavaScriptCore/runtime/JSGlobalObject.h b/Source/JavaScriptCore/runtime/JSGlobalObject.h
+index 7730362..0c756c4 100644
+--- a/Source/JavaScriptCore/runtime/JSGlobalObject.h
++++ b/Source/JavaScriptCore/runtime/JSGlobalObject.h
+@@ -338,8 +338,10 @@ public:
+     WriteBarrier<Structure> m_moduleLoaderStructure;
+     WriteBarrier<JSArrayBufferPrototype> m_arrayBufferPrototype;
+     WriteBarrier<Structure> m_arrayBufferStructure;
++#if ENABLE(SHARED_ARRAY_BUFFER)
+     WriteBarrier<JSArrayBufferPrototype> m_sharedArrayBufferPrototype;
+     WriteBarrier<Structure> m_sharedArrayBufferStructure;
++#endif
+ 
+ #define DEFINE_STORAGE_FOR_SIMPLE_TYPE(capitalName, lowerName, properName, instanceType, jsName, prototypeBase) \
+     WriteBarrier<capitalName ## Prototype> m_ ## lowerName ## Prototype; \
+@@ -670,8 +672,13 @@ public:
+         switch (sharingMode) {
+         case ArrayBufferSharingMode::Default:
+             return m_arrayBufferPrototype.get();
++#if ENABLE(SHARED_ARRAY_BUFFER)
+         case ArrayBufferSharingMode::Shared:
+             return m_sharedArrayBufferPrototype.get();
++#else
++        default:
++            return m_arrayBufferPrototype.get();
++#endif
+         }
+     }
+     Structure* arrayBufferStructure(ArrayBufferSharingMode sharingMode) const
+@@ -679,8 +686,13 @@ public:
+         switch (sharingMode) {
+         case ArrayBufferSharingMode::Default:
+             return m_arrayBufferStructure.get();
++#if ENABLE(SHARED_ARRAY_BUFFER)
+         case ArrayBufferSharingMode::Shared:
+             return m_sharedArrayBufferStructure.get();
++#else
++        default:
++            return m_arrayBufferStructure.get();
++#endif
+         }
+         RELEASE_ASSERT_NOT_REACHED();
+         return nullptr;
+diff --git a/Source/WTF/wtf/Platform.h b/Source/WTF/wtf/Platform.h
+index 1c1b9a6..6947c20 100644
+--- a/Source/WTF/wtf/Platform.h
++++ b/Source/WTF/wtf/Platform.h
+@@ -1190,6 +1190,9 @@
+ #define HAVE_NS_ACTIVITY 1
+ #endif
+ 
++/* Disable SharedArrayBuffers until Spectre security concerns are mitigated. */
++#define ENABLE_SHARED_ARRAY_BUFFER 0
++
+ #if (OS(DARWIN) && USE(CG)) || (USE(FREETYPE) && !PLATFORM(GTK)) || (PLATFORM(WIN) && (USE(CG) || USE(CAIRO)))
+ #undef ENABLE_OPENTYPE_MATH
+ #define ENABLE_OPENTYPE_MATH 1
+-- 
+2.14.3
+

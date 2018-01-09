@@ -627,6 +627,14 @@
                 {
                     "type": "patch",
                     "path": "webkitgtk-cmake-buildapi.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "webkitgtk-disable-SharedArrayBuffers.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "webkitgtk-reduce-timer-precision.patch"
                 }
             ]
         },
