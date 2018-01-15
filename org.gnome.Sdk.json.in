@@ -32,18 +32,13 @@
         "--sdk=org.gnome.Sdk//@@SDK_BRANCH@@",
         "--runtime=org.gnome.Platform//@@SDK_BRANCH@@"
     ],
-    "cleanup": [ "/cache",
-                 "/man",
+    "cleanup": [ "/man",
                  "/share/man",
                  "/share/gtk-doc/html",
                  "/lib/systemd",
                  "*.la", "*.a"],
-    "cleanup-commands": [ "touch -d @0 /usr/share/fonts",
-                          "touch -d @0 /usr/share/fonts/*",
-                          "fc-cache -fs",
-                          "update-desktop-database",
-                          "ldconfig -C /usr/etc/ld.so.cache",
-                          "cp -d /usr/lib/extra-links/* /usr/lib/ || true"
+    "cleanup-commands": [ "update-desktop-database",
+                          "/usr/libexec/freedesktop-post.sh"
                         ],
     "cleanup-platform": [ "/share/runtime/docs",
                           "/include",
@@ -53,12 +48,7 @@
                           "/share/gir-1.0",
                           "/share/vala"
                         ],
-    "cleanup-platform-commands": [ "touch -d @0 /usr/share/fonts",
-                                   "touch -d @0 /usr/share/fonts/*",
-                                   "fc-cache -fs",
-                                   "ldconfig -C /usr/etc/ld.so.cache",
-                                   "cp -d /usr/lib/extra-links/* /usr/lib/ || true"
-                                 ],
+    "cleanup-platform-commands": [  "/usr/libexec/freedesktop-post.sh" ],
     "build-options" : {
         "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
         "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
