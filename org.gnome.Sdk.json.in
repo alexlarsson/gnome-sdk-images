@@ -184,8 +184,27 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.31.tar.xz",
-                    "sha256": "68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658"
+                    "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.32.tar.xz",
+                    "sha256": "b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e"
+                },
+                {
+                    "type": "patch",
+                    "path": "gtk2-use-adwaita-theme.patch"
+                }
+            ]
+        },
+        {
+            "name": "gtk2-engines",
+            "cleanup": [ "/share/doc/gtk2-engines",  "/usr/share/gtk-engines",
+                         "/usr/share/themes", "libclearlooks.so", "libcrux-engine.so", "libglide.so",
+                         "libindustrial.so", "libmist.so", "libredmond95.so", "libthinice.so"
+                       ],
+            "config-opts": [],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2",
+                    "sha256": "15b680abca6c773ecb85253521fa100dd3b8549befeecc7595b10209d62d66b5"
                 }
             ]
         },
