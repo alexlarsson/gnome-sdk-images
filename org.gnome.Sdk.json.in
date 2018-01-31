@@ -669,8 +669,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/pygobject/pycairo/releases/download/v1.12.0/pycairo-1.12.0.tar.gz",
-                    "sha256": "243c351d7abcef41ac1fa984d2c753f3d065336a0fcf4c20fafb191b23423095"
+                    "url": "https://github.com/pygobject/pycairo/releases/download/v1.14.1/pycairo-1.14.1.tar.gz",
+                    "sha256": "0d13a0a6eeaf0c357db04392943eb9b25767445608d31dde1307f003f68c5754"
                 }
             ]
         },
