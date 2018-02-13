@@ -1,6 +1,7 @@
 # Override the arch with `make ARCH=i386`
 ARCH   ?= $(shell flatpak --default-arch)
 REPO   ?= repo
+FB_ARGS ?=
 
 # SDK Versions setup here
 #
@@ -28,7 +29,7 @@ all: ${REPO} $(patsubst %,%.in,$(SUBST_FILES))
 	$(call subst-metadata)
 	flatpak-builder --force-clean --require-changes --repo=${REPO} --arch=${ARCH} \
                         --subject="build of org.gnome.Sdk, `date`" \
-                        ${EXPORT_ARGS} sdk org.gnome.Sdk.json
+                        ${EXPORT_ARGS} ${FB_ARGS} sdk org.gnome.Sdk.json
 
 ${REPO}:
 	ostree  init --mode=archive-z2 --repo=${REPO}
